@@ -1,0 +1,210 @@
+import os
+import time
+from datetime import datetime
+import pandas as pd
+import yfinance as yf
+import glob
+
+def get_data_path(symbol):
+    """
+    Tự động tìm kiếm file CSV của một mã chứng khoán trong thư mục data/ và các thư mục con (VN, US, JP...).
+    """
+    matches = glob.glob(f"data/**/{symbol}_from_*.csv", recursive=True)
+    if matches:
+        return matches[0]
+    return f"data/{symbol}_from_2021-01-01.csv"
+
+try:
+    from vnstock import stock_historical_data
+except ImportError:
+    print("Vui lòng cài đặt vnstock: pip install vnstock beautifulsoup4 pydantic")
+
+# Danh sách 30 mã chứng khoán rổ VN30
+VN30_TICKERS = [
+    'ACB', 'BCM', 'BID', 'BVH', 'CTG', 'FPT', 'GAS', 'GVR', 'HDB', 'HPG', 
+    'MBB', 'MSN', 'MWG', 'PLX', 'POW', 'SAB', 'SHB', 'SSB', 'SSI', 'STB', 
+    'TCB', 'TPB', 'VCB', 'VHM', 'VIB', 'VIC', 'VJC', 'VNM', 'VPB', 'VRE'
+]
+
+# Mở rộng Watchlist tự chọn (Ngoài VN30)
+def load_watchlist(filename='watchlist.txt'):
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as f:
+            raw_text = f.read().replace(',', ' ').replace('\n', ' ')
+            tokens = [t.strip().upper() for t in raw_text.split() if t.strip()]
+            return list(set(tokens))
+    return []
+
+def fetch_stock_data(symbol='ACB', start_date='2024-01-01', output_dir='data/'):
+    """Tự động tải dữ liệu lịch sử của 1 mã bất kỳ và format theo chuẩn schema."""
+    
+    end_date = datetime.today().strftime('%Y-%m-%d')
+    output_path = os.path.join(output_dir, f"{symbol}_from_{start_date}.csv")
+    
+    # Kiểm tra xem file đã được tải trong ngày hôm nay chưa
+    if os.path.exists(output_path):
+        file_mtime = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
+        today_date = datetime.today().date()
+        if file_mtime == today_date:
+            return pd.read_csv(output_path)
+    
+    # 1. Tải dữ liệu từ vnstock
+    try:
+        df_raw = stock_historical_data(symbol=symbol, 
+                                       start_date=start_date, 
+                                       end_date=end_date,
+                                       resolution='1D', 
+                                       type='stock')
+        
+        if df_raw is None or df_raw.empty:
+            print(f"[!] Bỏ qua {symbol}: Không lấy được dữ liệu.")
+            return None
+            
+        # 2. Đổi tên cột chuẩn hóa theo yêu cầu
+        rename_mapping = {
+            'ticker': 'code',
+            'time': 'Date',           # Dùng cột này để làm ngày giao dịch
+            'volume': 'volume_match'
+        }
+        df = df_raw.rename(columns=rename_mapping)
+        
+        # 3. Tính toán hoặc tạo các cột còn thiếu
+        if 'code' not in df.columns:
+            df['code'] = symbol
+            
+        if 'adjust' not in df.columns:
+            df['adjust'] = df['close']
+            
+        if 'value_match' not in df.columns:
+            df['value_match'] = df['close'] * df['volume_match']
+            
+        # Đảm bảo có đủ cột
+        final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
+        for col in final_columns:
+            if col not in df.columns:
+                df[col] = 0
+                
+        df = df[final_columns]
+        
+        # Sắp xếp theo ngày tăng dần cho chắc chắn
+        df.sort_values('Date', inplace=True)
+        df.reset_index(drop=True, inplace=True)
+        
+        # 4. Lưu ra file CSV
+        os.makedirs(output_dir, exist_ok=True)
+        df.to_csv(output_path, index=False)
+        
+        return df
+
+    except Exception as e:
+        print(f"[!] Lỗi khi tải mã {symbol}: {e}")
+        return None
+
+def fetch_yfinance_data(symbol='AAPL', start_date='2021-01-01', output_dir='data/'):
+    """Tải và chuẩn hóa dữ liệu quốc tế từ Yahoo Finance sang định dạng tương thích VNStock."""
+    end_date = datetime.today().strftime('%Y-%m-%d')
+    output_path = os.path.join(output_dir, f"{symbol}_from_{start_date}.csv")
+    
+    # Kiểm tra xem file đã được tải trong ngày hôm nay chưa
+    if os.path.exists(output_path):
+        file_mtime = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
+        today_date = datetime.today().date()
+        if file_mtime == today_date:
+            return pd.read_csv(output_path)
+            
+    try:
+        # Tải Data từ Yahoo
+        ticker = yf.Ticker(symbol)
+        df = ticker.history(start=start_date, end=end_date)
+        if df.empty:
+            print(f"[!] Bỏ qua {symbol} (YF): Không có dữ liệu.")
+            return None
+            
+        # Chuẩn hóa Dataset cho khớp 100% với form của VNStock
+        df.reset_index(inplace=True)
+        # Sàn Mỹ có timezone ở cột Date, cần convert sang YYYY-MM-DD
+        df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+        df['code'] = symbol
+        
+        # Đổi tên cột
+        df.rename(columns={
+            'Open': 'open',
+            'High': 'high',
+            'Low': 'low',
+            'Close': 'close',
+            'Volume': 'volume_match'
+        }, inplace=True)
+        
+        # Tạo thêm các cột mock giống với hệ VNStock để Pipeline trơn tru
+        df['adjust'] = df['close']
+        df['value_match'] = df['close'] * df['volume_match']
+        
+        final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
+        df = df[final_columns]
+        
+        df.sort_values('Date', inplace=True)
+        df.reset_index(drop=True, inplace=True)
+        
+        # Lưu file
+        os.makedirs(output_dir, exist_ok=True)
+        df.to_csv(output_path, index=False)
+        return df
+        
+    except Exception as e:
+        print(f"[!] Lỗi khi tải mã quốc tế {symbol}: {e}")
+        return None
+
+def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='VN', include_watchlist=True, watchlist_only=False):
+    """Vòng lặp tải dữ liệu dựa trên Market được chọn (VN, US, JP, ALL)"""
+    
+    # 1. Định vị danh sách cổ phiếu
+    target_tickers = []
+    is_foreign = market.upper() in ['US', 'JP']
+    
+    if not watchlist_only:
+        if market.upper() == 'VN':
+            target_tickers = load_watchlist('market_lists/vn100.txt') or VN30_TICKERS.copy()
+            output_dir = 'data/VN/'
+        elif market.upper() == 'US':
+            target_tickers = load_watchlist('market_lists/us100.txt')
+            output_dir = 'data/US/'
+        elif market.upper() == 'JP':
+            target_tickers = load_watchlist('market_lists/jp50.txt')
+            output_dir = 'data/JP/'
+            
+    # Nạp thêm từ Custom Watchlist gốc nếu cần
+    # if include_watchlist or watchlist_only:
+    #     custom_list = load_watchlist('watchlist.txt')
+    #     unique_custom = [sym for sym in custom_list if sym not in target_tickers]
+    #     target_tickers.extend(unique_custom)
+        
+    print(f"Bắt đầu tải dữ liệu lịch sử nhóm {market.upper()} (Tổng: {len(target_tickers)} mã) từ {start_date}...")
+    success_count = 0
+    failure_list = []
+    
+    for i, symbol in enumerate(target_tickers, 1):
+        print(f"[{i}/{len(target_tickers)}] Đang tải {symbol}...", end=" ")
+        
+        # 2. Định tuyến Fetcher (VNStock vs Yahoo Finance)
+        # Tạm định nghĩa: US, JP dùng YF. Nếu là custom Watchlist ngoại lệ mà mã có dấu '.T' hoặc chữ số -> chuyển sang YF.
+        if is_foreign or ('.' in symbol) or (symbol.isalpha() and len(symbol) > 3) or symbol.startswith('^'):
+            df = fetch_yfinance_data(symbol, start_date, output_dir)
+        else:
+            df = fetch_stock_data(symbol, start_date, output_dir)
+            
+        if df is not None:
+            print(f"OK ({len(df)} dòng).")
+            success_count += 1
+        else:
+            failure_list.append(symbol)
+            
+        time.sleep(1)
+        
+    print(f"\n[HOÀN TẤT TẢI DATA] Thành công {success_count}/{len(target_tickers)} mã.")
+    if failure_list:
+        print(f"Các mã gặp lỗi: {', '.join(failure_list)}")
+        
+    return target_tickers
+
+if __name__ == "__main__":
+    fetch_all_market_data()

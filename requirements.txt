@@ -1,0 +1,5 @@
+pandas
+yfinance
+vnstock
+beautifulsoup4
+pydantic
