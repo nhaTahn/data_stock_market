@@ -9,10 +9,10 @@ def get_data_path(symbol):
     """
     Tự động tìm kiếm file CSV của một mã chứng khoán trong thư mục data/ và các thư mục con (VN, US, JP...).
     """
-    matches = glob.glob(f"data/**/{symbol}_from_*.csv", recursive=True)
+    matches = glob.glob(f"data/**/{symbol}.csv", recursive=True)
     if matches:
         return matches[0]
-    return f"data/{symbol}_from_2021-01-01.csv"
+    return f"data/{symbol}.csv"
 
 try:
     from vnstock import stock_historical_data
@@ -35,18 +35,24 @@ def load_watchlist(filename='watchlist.txt'):
             return list(set(tokens))
     return []
 
-def fetch_stock_data(symbol='ACB', start_date='2024-01-01', output_dir='data/'):
+def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
     """Tự động tải dữ liệu lịch sử của 1 mã bất kỳ và format theo chuẩn schema."""
     
     end_date = datetime.today().strftime('%Y-%m-%d')
-    output_path = os.path.join(output_dir, f"{symbol}_from_{start_date}.csv")
+    output_path = os.path.join(output_dir, f"{symbol}.csv")
     
-    # Kiểm tra xem file đã được tải trong ngày hôm nay chưa
+    existing_df = None
     if os.path.exists(output_path):
-        file_mtime = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
-        today_date = datetime.today().date()
-        if file_mtime == today_date:
-            return pd.read_csv(output_path)
+        try:
+            existing_df = pd.read_csv(output_path)
+            if not existing_df.empty and 'Date' in existing_df.columns:
+                max_date = existing_df['Date'].max()
+                if max_date >= end_date:
+                    return existing_df
+                # Chỉ lấy dữ liệu từ ngày mới nhất có trong file
+                start_date = max_date
+        except Exception as e:
+            print(f"Lỗi đọc file cũ {output_path}: {e}")
     
     # 1. Tải dữ liệu từ vnstock
     try:
@@ -58,7 +64,7 @@ def fetch_stock_data(symbol='ACB', start_date='2024-01-01', output_dir='data/'):
         
         if df_raw is None or df_raw.empty:
             print(f"[!] Bỏ qua {symbol}: Không lấy được dữ liệu.")
-            return None
+            return existing_df
             
         # 2. Đổi tên cột chuẩn hóa theo yêu cầu
         rename_mapping = {
@@ -86,10 +92,16 @@ def fetch_stock_data(symbol='ACB', start_date='2024-01-01', output_dir='data/'):
                 
         df = df[final_columns]
         
-        # Sắp xếp theo ngày tăng dần cho chắc chắn
         df.sort_values('Date', inplace=True)
         df.reset_index(drop=True, inplace=True)
         
+        # Hợp nhất với dữ liệu cũ nếu có
+        if existing_df is not None and not existing_df.empty:
+            df = pd.concat([existing_df, df])
+            df.drop_duplicates(subset=['Date', 'code'], keep='last', inplace=True)
+            df.sort_values('Date', inplace=True)
+            df.reset_index(drop=True, inplace=True)
+            
         # 4. Lưu ra file CSV
         os.makedirs(output_dir, exist_ok=True)
         df.to_csv(output_path, index=False)
@@ -100,17 +112,23 @@ def fetch_stock_data(symbol='ACB', start_date='2024-01-01', output_dir='data/'):
         print(f"[!] Lỗi khi tải mã {symbol}: {e}")
         return None
 
-def fetch_yfinance_data(symbol='AAPL', start_date='2021-01-01', output_dir='data/'):
+def fetch_yfinance_data(symbol='AAPL', start_date='2010-01-01', output_dir='data/'):
     """Tải và chuẩn hóa dữ liệu quốc tế từ Yahoo Finance sang định dạng tương thích VNStock."""
     end_date = datetime.today().strftime('%Y-%m-%d')
-    output_path = os.path.join(output_dir, f"{symbol}_from_{start_date}.csv")
+    output_path = os.path.join(output_dir, f"{symbol}.csv")
     
-    # Kiểm tra xem file đã được tải trong ngày hôm nay chưa
+    existing_df = None
     if os.path.exists(output_path):
-        file_mtime = datetime.fromtimestamp(os.path.getmtime(output_path)).date()
-        today_date = datetime.today().date()
-        if file_mtime == today_date:
-            return pd.read_csv(output_path)
+        try:
+            existing_df = pd.read_csv(output_path)
+            if not existing_df.empty and 'Date' in existing_df.columns:
+                max_date = existing_df['Date'].max()
+                if max_date >= end_date:
+                    return existing_df
+                # Fetch từ max_date
+                start_date = max_date
+        except Exception as e:
+            print(f"Lỗi đọc file cũ {output_path}: {e}")
             
     try:
         # Tải Data từ Yahoo
@@ -118,7 +136,7 @@ def fetch_yfinance_data(symbol='AAPL', start_date='2021-01-01', output_dir='data
         df = ticker.history(start=start_date, end=end_date)
         if df.empty:
             print(f"[!] Bỏ qua {symbol} (YF): Không có dữ liệu.")
-            return None
+            return existing_df
             
         # Chuẩn hóa Dataset cho khớp 100% với form của VNStock
         df.reset_index(inplace=True)
@@ -145,6 +163,13 @@ def fetch_yfinance_data(symbol='AAPL', start_date='2021-01-01', output_dir='data
         df.sort_values('Date', inplace=True)
         df.reset_index(drop=True, inplace=True)
         
+        # Hợp nhất với dữ liệu cũ nếu có
+        if existing_df is not None and not existing_df.empty:
+            df = pd.concat([existing_df, df])
+            df.drop_duplicates(subset=['Date', 'code'], keep='last', inplace=True)
+            df.sort_values('Date', inplace=True)
+            df.reset_index(drop=True, inplace=True)
+            
         # Lưu file
         os.makedirs(output_dir, exist_ok=True)
         df.to_csv(output_path, index=False)
@@ -173,10 +198,10 @@ def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='V
             output_dir = 'data/JP/'
             
     # Nạp thêm từ Custom Watchlist gốc nếu cần
-    # if include_watchlist or watchlist_only:
-    #     custom_list = load_watchlist('watchlist.txt')
-    #     unique_custom = [sym for sym in custom_list if sym not in target_tickers]
-    #     target_tickers.extend(unique_custom)
+    if include_watchlist or watchlist_only:
+        custom_list = load_watchlist('watchlist.txt')
+        unique_custom = [sym for sym in custom_list if sym not in target_tickers]
+        target_tickers.extend(unique_custom)
         
     print(f"Bắt đầu tải dữ liệu lịch sử nhóm {market.upper()} (Tổng: {len(target_tickers)} mã) từ {start_date}...")
     success_count = 0
