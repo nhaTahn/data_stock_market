@@ -26,8 +26,8 @@ VN30_TICKERS = [
     'TCB', 'TPB', 'VCB', 'VHM', 'VIB', 'VIC', 'VJC', 'VNM', 'VPB', 'VRE'
 ]
 
-# Mở rộng Watchlist tự chọn (Ngoài VN30)
-def load_watchlist(filename='watchlist.txt'):
+# Đọc list các mã chứng khoán (100 mã)
+def load_market_list(filename):
     if os.path.exists(filename):
         with open(filename, 'r', encoding='utf-8') as f:
             raw_text = f.read().replace(',', ' ').replace('\n', ' ')
@@ -46,7 +46,7 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         try:
             existing_df = pd.read_csv(output_path)
             if not existing_df.empty and 'Date' in existing_df.columns:
-                max_date = existing_df['Date'].max()
+                max_date = str(existing_df['Date'].max())
                 if max_date >= end_date:
                     return existing_df
                 # Chỉ lấy dữ liệu từ ngày mới nhất có trong file
@@ -83,6 +83,9 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
             
         if 'value_match' not in df.columns:
             df['value_match'] = df['close'] * df['volume_match']
+            
+        # Đảm bảo cột Date luôn là string (YYYY-MM-DD) để tránh lỗi so sánh '<' not supported
+        df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             
         # Đảm bảo có đủ cột
         final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
@@ -122,7 +125,7 @@ def fetch_yfinance_data(symbol='AAPL', start_date='2010-01-01', output_dir='data
         try:
             existing_df = pd.read_csv(output_path)
             if not existing_df.empty and 'Date' in existing_df.columns:
-                max_date = existing_df['Date'].max()
+                max_date = str(existing_df['Date'].max())
                 if max_date >= end_date:
                     return existing_df
                 # Fetch từ max_date
@@ -179,29 +182,24 @@ def fetch_yfinance_data(symbol='AAPL', start_date='2010-01-01', output_dir='data
         print(f"[!] Lỗi khi tải mã quốc tế {symbol}: {e}")
         return None
 
-def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='VN', include_watchlist=True, watchlist_only=False):
+def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='VN'):
     """Vòng lặp tải dữ liệu dựa trên Market được chọn (VN, US, JP, ALL)"""
     
     # 1. Định vị danh sách cổ phiếu
     target_tickers = []
     is_foreign = market.upper() in ['US', 'JP']
     
-    if not watchlist_only:
-        if market.upper() == 'VN':
-            target_tickers = load_watchlist('market_lists/vn100.txt') or VN30_TICKERS.copy()
-            output_dir = 'data/VN/'
-        elif market.upper() == 'US':
-            target_tickers = load_watchlist('market_lists/us100.txt')
-            output_dir = 'data/US/'
-        elif market.upper() == 'JP':
-            target_tickers = load_watchlist('market_lists/jp50.txt')
-            output_dir = 'data/JP/'
+    if market.upper() == 'VN':
+        target_tickers = load_market_list('market_lists/vn100.txt') or VN30_TICKERS.copy()
+        output_dir = 'data/VN/'
+    elif market.upper() == 'US':
+        target_tickers = load_market_list('market_lists/us100.txt')
+        output_dir = 'data/US/'
+    elif market.upper() == 'JP':
+        target_tickers = load_market_list('market_lists/jp50.txt')
+        output_dir = 'data/JP/'
             
-    # Nạp thêm từ Custom Watchlist gốc nếu cần
-    if include_watchlist or watchlist_only:
-        custom_list = load_watchlist('watchlist.txt')
-        unique_custom = [sym for sym in custom_list if sym not in target_tickers]
-        target_tickers.extend(unique_custom)
+
         
     print(f"Bắt đầu tải dữ liệu lịch sử nhóm {market.upper()} (Tổng: {len(target_tickers)} mã) từ {start_date}...")
     success_count = 0
