@@ -14,10 +14,7 @@ def get_data_path(symbol):
         return matches[0]
     return f"data/{symbol}.csv"
 
-try:
-    from vnstock import stock_historical_data
-except ImportError:
-    print("Vui lòng cài đặt vnstock: pip install vnstock beautifulsoup4 pydantic")
+
 
 # Danh sách 30 mã chứng khoán rổ VN30
 VN30_TICKERS = [
@@ -56,6 +53,8 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
     
     # 1. Tải dữ liệu từ vnstock
     try:
+        from vnstock import stock_historical_data
+        
         df_raw = stock_historical_data(symbol=symbol, 
                                        start_date=start_date, 
                                        end_date=end_date,
@@ -111,6 +110,9 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         
         return df
 
+    except ImportError:
+        print("[!] Không tìm thấy thư viện vnstock. Bỏ qua tải dữ liệu VN.")
+        return existing_df
     except Exception as e:
         print(f"[!] Lỗi khi tải mã {symbol}: {e}")
         return None
