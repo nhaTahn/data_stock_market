@@ -3,3 +3,5 @@ yfinance
 vnstock==0.2.9.2.3
 beautifulsoup4
 pydantic
+packaging
+ipython
