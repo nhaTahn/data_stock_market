@@ -189,7 +189,7 @@ def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='V
     
     # 1. Định vị danh sách cổ phiếu
     target_tickers = []
-    is_foreign = market.upper() in ['US', 'JP']
+    is_foreign = market.upper() in ['US', 'JP', 'KR', 'HK']
     
     if market.upper() == 'VN':
         target_tickers = load_market_list('market_lists/vn100.txt') or VN30_TICKERS.copy()
@@ -200,9 +200,14 @@ def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='V
     elif market.upper() == 'JP':
         target_tickers = load_market_list('market_lists/jp50.txt')
         output_dir = 'data/JP/'
+    elif market.upper() == 'KR':
+        target_tickers = load_market_list('market_lists/kr50.txt')
+        output_dir = 'data/KR/'
+    elif market.upper() == 'HK':
+        target_tickers = load_market_list('market_lists/hk50.txt')
+        output_dir = 'data/HK/'
             
 
-        
     print(f"Bắt đầu tải dữ liệu lịch sử nhóm {market.upper()} (Tổng: {len(target_tickers)} mã) từ {start_date}...")
     success_count = 0
     failure_list = []
