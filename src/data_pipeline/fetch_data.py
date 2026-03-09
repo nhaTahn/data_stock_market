@@ -52,13 +52,18 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         except Exception as e:
             print(f"Lỗi đọc file cũ {output_path}: {e}")
     
-    # 1. Tải dữ liệu từ vnstock3
+    # 1. Tải dữ liệu từ vnstock (Legacy)
     try:
-        from vnstock import Vnstock
+        from vnstock import stock_historical_data
         
-        # Khởi tạo kết nối tới TCBS để lấy dữ liệu chuẩn
-        stock = Vnstock().stock(symbol=symbol, source='TCBS')
-        df_raw = stock.quote.history(start=start_date, end=end_date)
+        df_raw = stock_historical_data(symbol=symbol, 
+                                       start_date=start_date, 
+                                       end_date=end_date,
+                                       resolution='1D', 
+                                       type='stock',
+                                       beautify=True,
+                                       decor=False,
+                                       source='DNSE')
         
         if df_raw is None or df_raw.empty:
             print(f"[!] Bỏ qua {symbol}: Không lấy được dữ liệu.")
@@ -66,17 +71,20 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
             
         # 2. Đổi tên cột chuẩn hóa theo yêu cầu
         rename_mapping = {
+            'ticker': 'code',
             'time': 'Date',           # Dùng cột này để làm ngày giao dịch
             'volume': 'volume_match'
         }
         df = df_raw.rename(columns=rename_mapping)
         
         # 3. Tính toán hoặc tạo các cột còn thiếu
-        df['code'] = symbol
+        if 'code' not in df.columns:
+            df['code'] = symbol
             
         # [QUAN TRỌNG]: Dữ liệu trả về từ TCBS mặc định là giá ĐÃ ĐIỀU CHỈNH
         # Nên ta gán nó vào cột adjust
-        df['adjust'] = df['close']
+        if 'adjust' not in df.columns:
+            df['adjust'] = df['close']
             
         if 'value_match' not in df.columns:
             df['value_match'] = df['close'] * df['volume_match']
@@ -109,7 +117,7 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         return df
 
     except ImportError:
-        print("[!] Không tìm thấy thư viện vnstock. Hãy chạy lệnh: !pip install vnstock")
+        print("[!] Không tìm thấy thư viện vnstock. Bỏ qua tải dữ liệu VN.")
         return existing_df
     except Exception as e:
         print(f"[!] Lỗi khi tải mã {symbol}: {e}")
