@@ -33,11 +33,12 @@ def load_market_list(filename):
     return []
 
 def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
-    """Tự động tải dữ liệu lịch sử của 1 mã bất kỳ và format theo chuẩn schema."""
+    """Tự động tải dữ liệu lịch sử của 1 mã bất kỳ và format theo chuẩn schema bằng vnstock3."""
     
     end_date = datetime.today().strftime('%Y-%m-%d')
     output_path = os.path.join(output_dir, f"{symbol}.csv")
     
+    # Kiểm tra xem file đã có chưa, nếu có thì chỉ tải tiếp từ ngày cuối cùng (tiết kiệm thời gian)
     existing_df = None
     if os.path.exists(output_path):
         try:
@@ -51,15 +52,13 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         except Exception as e:
             print(f"Lỗi đọc file cũ {output_path}: {e}")
     
-    # 1. Tải dữ liệu từ vnstock
+    # 1. Tải dữ liệu từ vnstock3
     try:
-        from vnstock import stock_historical_data
+        from vnstock import Vnstock
         
-        df_raw = stock_historical_data(symbol=symbol, 
-                                       start_date=start_date, 
-                                       end_date=end_date,
-                                       resolution='1D', 
-                                       type='stock')
+        # Khởi tạo kết nối tới TCBS để lấy dữ liệu chuẩn
+        stock = Vnstock().stock(symbol=symbol, source='TCBS')
+        df_raw = stock.quote.history(start=start_date, end=end_date)
         
         if df_raw is None or df_raw.empty:
             print(f"[!] Bỏ qua {symbol}: Không lấy được dữ liệu.")
@@ -67,23 +66,22 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
             
         # 2. Đổi tên cột chuẩn hóa theo yêu cầu
         rename_mapping = {
-            'ticker': 'code',
             'time': 'Date',           # Dùng cột này để làm ngày giao dịch
             'volume': 'volume_match'
         }
         df = df_raw.rename(columns=rename_mapping)
         
         # 3. Tính toán hoặc tạo các cột còn thiếu
-        if 'code' not in df.columns:
-            df['code'] = symbol
+        df['code'] = symbol
             
-        if 'adjust' not in df.columns:
-            df['adjust'] = df['close']
+        # [QUAN TRỌNG]: Dữ liệu trả về từ TCBS mặc định là giá ĐÃ ĐIỀU CHỈNH
+        # Nên ta gán nó vào cột adjust
+        df['adjust'] = df['close']
             
         if 'value_match' not in df.columns:
             df['value_match'] = df['close'] * df['volume_match']
             
-        # Đảm bảo cột Date luôn là string (YYYY-MM-DD) để tránh lỗi so sánh '<' not supported
+        # Đảm bảo cột Date luôn là string (YYYY-MM-DD)
         df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             
         # Đảm bảo có đủ cột
@@ -111,7 +109,7 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         return df
 
     except ImportError:
-        print("[!] Không tìm thấy thư viện vnstock. Bỏ qua tải dữ liệu VN.")
+        print("[!] Không tìm thấy thư viện vnstock. Hãy chạy lệnh: !pip install vnstock")
         return existing_df
     except Exception as e:
         print(f"[!] Lỗi khi tải mã {symbol}: {e}")
@@ -228,7 +226,7 @@ def fetch_all_market_data(start_date='2010-01-01', output_dir='data/', market='V
         else:
             failure_list.append(symbol)
             
-        time.sleep(1)
+        time.sleep(4)
         
     print(f"\n[HOÀN TẤT TẢI DATA] Thành công {success_count}/{len(target_tickers)} mã.")
     if failure_list:
