@@ -81,18 +81,10 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         if 'code' not in df.columns:
             df['code'] = symbol
             
-        # [QUAN TRỌNG]: Dữ liệu trả về từ TCBS mặc định là giá ĐÃ ĐIỀU CHỈNH
-        # Nên ta gán nó vào cột adjust
-        if 'adjust' not in df.columns:
-            df['adjust'] = df['close']
-            
-        if 'value_match' not in df.columns:
-            df['value_match'] = df['close'] * df['volume_match']
-            
         # Đảm bảo cột Date luôn là string (YYYY-MM-DD)
         df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             
-        # Đảm bảo có đủ cột
+        # Đảm bảo có đủ cột ban đầu
         final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
         for col in final_columns:
             if col not in df.columns:
@@ -100,15 +92,45 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
                 
         df = df[final_columns]
         
-        df.sort_values('Date', inplace=True)
-        df.reset_index(drop=True, inplace=True)
-        
-        # Hợp nhất với dữ liệu cũ nếu có
+        # Hợp nhất với dữ liệu cũ (nếu có) TRƯỚC khi tính adjust
+        # để đảm bảo adjust được cập nhật mượt cho toàn bộ lịch sử (backward-filling)
         if existing_df is not None and not existing_df.empty:
             df = pd.concat([existing_df, df])
             df.drop_duplicates(subset=['Date', 'code'], keep='last', inplace=True)
             df.sort_values('Date', inplace=True)
             df.reset_index(drop=True, inplace=True)
+
+        # [QUAN TRỌNG]: Tải toàn bộ dữ liệu giá từ Yahoo Finance để lấy giá ĐÃ ĐIỀU CHỈNH
+        # Do DNSE chỉ trả giá chưa điều chỉnh, việc gán adjust = close sẽ bị sai lệch sau chia tách
+        try:
+            yf_ticker = f"{symbol}.VN"
+            full_yf = yf.Ticker(yf_ticker).history(period="max")
+            
+            if not full_yf.empty:
+                full_yf.reset_index(inplace=True)
+                full_yf['time_str'] = pd.to_datetime(full_yf['Date']).dt.strftime('%Y-%m-%d')
+                
+                # Close của YF mặc định là Adjusted Close
+                adj_mapping = dict(zip(full_yf['time_str'], full_yf['Close']))
+                df['adjust'] = df['Date'].map(adj_mapping)
+                
+                # Nếu YF thiếu data ở một số ngày, ta điền tiếp bằng giá liền kề (ffill) hoặc fallback sang close
+                df['adjust'] = df['adjust'].ffill().fillna(df['close'])
+            else:
+                if 'adjust' not in df.columns or (df['adjust'] == 0).all():
+                    df['adjust'] = df['close']
+        except Exception as e:
+            print(f"[!] Không lấy được giá điều chỉnh từ YF cho {symbol}: {e}")
+            if 'adjust' not in df.columns or (df['adjust'] == 0).all():
+                df['adjust'] = df['close']
+                
+        if 'value_match' not in df.columns or (df['value_match'] == 0).all():
+            df['value_match'] = df['close'] * df['volume_match']
+
+        # Dọn dẹp lại DataFrame
+        df = df[final_columns]
+        df.sort_values('Date', inplace=True)
+        df.reset_index(drop=True, inplace=True)
             
         # 4. Lưu ra file CSV
         os.makedirs(output_dir, exist_ok=True)
