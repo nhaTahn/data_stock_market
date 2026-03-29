@@ -1,0 +1,38 @@
+TensorFlow/Keras LSTM Next-Day Adjusted Price Training
+
+Problem definition:
+X_t = [adjust_t, volume_t] over a historical window.
+y_t = adjusted price on the next trading day.
+
+Baseline 1:
+Predict next-day adjusted price by reusing today's adjusted price.
+
+Configuration:
+framework: tensorflow
+data_path: /Users/lap15111/Documents/research-paper/data_stock_market/data/assests/data_info_vn/history/vn_gold_recommended.csv
+train_end: 2023-12-31
+val_end: 2024-12-31
+window_size: 30
+features: ['adjust', 'volume_match']
+target: target_next_adjust_price
+lstm_units: 64
+dropout: 0.1
+batch_size: 128
+epochs: 20
+learning_rate: 0.0005
+train_sequences: 222100
+val_sequences: 20541
+test_sequences: 25107
+target_scaling: z-score using train split
+
+Baseline metrics:
+split        mae        rmse  mape_pct
+train 337.909760  659.859314  1.635002
+  val 476.916321  872.075745  1.255063
+ test 733.151611 1326.632202  1.708037
+
+LSTM metrics:
+split        mae        rmse  mape_pct
+train 357.294830  667.634705  1.927253
+  val 494.606201  885.589600  1.315952
+ test 752.898376 1339.365601  1.790174

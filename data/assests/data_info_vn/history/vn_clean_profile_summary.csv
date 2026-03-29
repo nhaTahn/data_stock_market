@@ -1,0 +1,4 @@
+profile,rows_kept,tickers_kept,date_start,date_end,row_retention_pct,ticker_retention_pct,rows_with_target
+balanced,284429,98,2012-03-19,2026-03-23,99.21,98.0,284331
+model_strict,277351,93,2012-03-19,2026-03-23,96.74,93.0,277258
+trust_max,275932,93,2012-03-19,2026-03-23,96.24,93.0,275839

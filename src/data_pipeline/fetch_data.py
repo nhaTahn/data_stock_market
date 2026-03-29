@@ -32,6 +32,34 @@ def load_market_list(filename):
             return list(set(tokens))
     return []
 
+
+def add_value_match_metadata(df, has_source_value_match=True):
+    """
+    Preserve observed value_match from the source, while exposing an estimated fallback
+    and a flag for rows where observed value_match is missing or zero despite matched volume.
+    """
+    if not {'close', 'volume_match'}.issubset(df.columns):
+        return df
+
+    if 'value_match' not in df.columns:
+        df['value_match'] = pd.NA
+
+    volume_match = pd.to_numeric(df['volume_match'], errors='coerce').fillna(0)
+    close = pd.to_numeric(df['close'], errors='coerce')
+    value_match = pd.to_numeric(df['value_match'], errors='coerce')
+
+    df['value_match_est'] = close * volume_match
+
+    if has_source_value_match:
+        imputed_mask = volume_match.gt(0) & (value_match.isna() | value_match.eq(0))
+    else:
+        df['value_match'] = pd.NA
+        imputed_mask = volume_match.gt(0)
+
+    df['value_match_imputed'] = imputed_mask.astype(int)
+
+    return df
+
 def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
     """Tự động tải dữ liệu lịch sử của 1 mã bất kỳ và format theo chuẩn schema bằng vnstock3."""
     
@@ -85,11 +113,15 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
         df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             
         # Đảm bảo có đủ cột ban đầu
-        final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
+        final_columns = [
+            'Date', 'code', 'high', 'low', 'open', 'close', 'adjust',
+            'volume_match', 'value_match', 'value_match_est', 'value_match_imputed'
+        ]
         for col in final_columns:
             if col not in df.columns:
-                df[col] = 0
+                df[col] = pd.NA if col == 'value_match' else 0
                 
+        df = add_value_match_metadata(df, has_source_value_match=True)
         df = df[final_columns]
         
         # Hợp nhất với dữ liệu cũ (nếu có) TRƯỚC khi tính adjust
@@ -123,9 +155,8 @@ def fetch_stock_data(symbol='ACB', start_date='2010-01-01', output_dir='data/'):
             print(f"[!] Không lấy được giá điều chỉnh từ YF cho {symbol}: {e}")
             if 'adjust' not in df.columns or (df['adjust'] == 0).all():
                 df['adjust'] = df['close']
-                
-        if 'value_match' not in df.columns or (df['value_match'] == 0).all():
-            df['value_match'] = df['close'] * df['volume_match']
+
+        df = add_value_match_metadata(df, has_source_value_match=True)
 
         # Dọn dẹp lại DataFrame
         df = df[final_columns]
@@ -188,9 +219,13 @@ def fetch_yfinance_data(symbol='AAPL', start_date='2010-01-01', output_dir='data
         
         # Tạo thêm các cột mock giống với hệ VNStock để Pipeline trơn tru
         df['adjust'] = df['close']
-        df['value_match'] = df['close'] * df['volume_match']
+        df['value_match'] = pd.NA
+        df = add_value_match_metadata(df, has_source_value_match=False)
         
-        final_columns = ['Date', 'code', 'high', 'low', 'open', 'close', 'adjust', 'volume_match', 'value_match']
+        final_columns = [
+            'Date', 'code', 'high', 'low', 'open', 'close', 'adjust',
+            'volume_match', 'value_match', 'value_match_est', 'value_match_imputed'
+        ]
         df = df[final_columns]
         
         df.sort_values('Date', inplace=True)

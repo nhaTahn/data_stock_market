@@ -1,0 +1,58 @@
+VN Data Quality Report
+
+Recommended training dataset: vn_gold_trust_max.csv
+
+Input overview:
+                    metric      value
+                total_rows     286708
+             total_tickers        100
+         total_market_days       3497
+              market_start 2012-03-19
+                market_end 2026-03-23
+     missing_required_rows          0
+  duplicate_code_date_rows          0
+       negative_price_rows          0
+      negative_volume_rows          0
+         ohlc_invalid_rows        832
+  value_match_imputed_rows          0
+ close_violation_7pct_rows        979
+close_violation_10pct_rows        332
+close_violation_15pct_rows         38
+   adjust_jump_155pct_rows         42
+    adjust_jump_20pct_rows         17
+        high_trust_tickers         82
+    good_or_better_tickers         86
+
+Clean profile summary:
+     profile  rows_kept  tickers_kept date_start   date_end  row_retention_pct  ticker_retention_pct  rows_with_target
+    balanced     284429            98 2012-03-19 2026-03-23              99.21                  98.0            284331
+model_strict     277351            93 2012-03-19 2026-03-23              96.74                  93.0            277258
+   trust_max     275932            93 2012-03-19 2026-03-23              96.24                  93.0            275839
+
+Lowest quality tickers to inspect first:
+code  coverage_pct  days_since_latest  hard_issue_rows  imputed_rows  close_violation_7pct_rows  adjust_jump_155pct_rows  quality_score quality_band
+ HHV      0.994194                  0                6             0                         70                        1       0.000000       review
+ GEE      0.627742                  0                0             0                         43                        2      11.887097       review
+ SIP      0.996774                  0                3             0                         34                        1      16.338710       review
+ SHB      0.998065                  0                0             0                         40                        0      39.903226       review
+ VTP      0.994839                  0                3             0                         14                        3      41.241935       review
+ VIX      0.995484                  0                0             0                         31                        2      48.274194       review
+ EVF      0.994839                  0                2             0                         16                        0      55.741935       review
+ BCM      0.995484                  0                2             0                         12                        0      61.774194       usable
+ NAB      0.872258                  0                0             0                         17                        2      63.112903       usable
+ DSE      0.277419                  0                0             0                          0                        0      63.870968       usable
+
+Tickers removed from the recommended dataset:
+code                     remove_reason  coverage_pct  days_since_latest  hard_issue_rows  imputed_rows  close_violation_7pct_rows  adjust_jump_155pct_rows  quality_score quality_band
+ DSE                     coverage<95%;      0.277419                  0                0             0                          0                        0      63.870968       usable
+ GEE coverage<95%;quality_band=review;      0.627742                  0                0             0                         43                        2      11.887097       review
+ DXS                     coverage<95%;      0.749677                  0                0             0                          2                        0      84.483871         good
+ SSB                     coverage<95%;      0.803871                  0                0             0                          0                        0      90.193548   high_trust
+ OCB                     coverage<95%;      0.825806                  0                0             0                          3                        0      86.790323         good
+ MSB                     coverage<95%;      0.841935                  0                0             0                          0                        0      92.096774   high_trust
+ NAB                     coverage<95%;      0.872258                  0                0             0                         17                        2      63.112903       usable
+
+How to use:
+1. Review vn_input_quality_overview.csv and vn_ticker_quality_summary.csv in /Users/lap15111/Documents/research-paper/data_stock_market/data/assests/data_info_vn/history
+2. Train baseline models on vn_gold_trust_max.csv
+3. Only fall back to model_strict or balanced if you need more rows for experiments

@@ -17,9 +17,11 @@ The CSV data files in the `data/` directory have the following structure:
 - `open`, `high`, `low`, `close`: The OHLVC daily prices.
 - `adjust`: Adjusted close price.
 - `volume_match`: The matched trading volume.
-- `value_match`: The value matched (close * volume).
+- `value_match`: Observed matched value from the source when available.
+- `value_match_est`: Estimated matched value (`close * volume_match`).
+- `value_match_imputed`: `1` when `value_match` is missing/zero despite matched volume, so downstream analysis should rely on `value_match_est` instead.
 
-*Note: For international markets, the schema is formatted to match the VN format for consistency.*
+*Note: For international markets fetched from Yahoo Finance, `value_match` is not observed from the source, so it is left blank and `value_match_est` is the usable proxy.*
 
 ## How to Run Locally
 

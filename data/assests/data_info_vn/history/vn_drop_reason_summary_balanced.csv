@@ -1,0 +1,6 @@
+metric,value
+hard_issue_rows,832
+imputed_value_match_rows,0
+event_buffer_rows,44
+rows_before_filter,285305
+rows_after_filter,284429
