@@ -6,7 +6,7 @@ from types import SimpleNamespace
 import numpy as np
 import pandas as pd
 
-from tf_lstm.config import FEATURE_COLUMNS, TARGET_COLUMN
+from tf_lstm.config import TARGET_COLUMN
 from tf_lstm.data import (
     build_sequences,
     fit_feature_scaler,
@@ -36,21 +36,25 @@ def run_experiment(args: SimpleNamespace, run_name: str | None = None) -> tuple[
     np.random.seed(args.seed)
     set_seed(args.seed)
 
-    df = load_dataset(Path(args.data_path))
+    feature_groups = getattr(args, "feature_groups", ["base"])
+    if isinstance(feature_groups, str):
+        feature_groups = [group.strip() for group in feature_groups.split(",") if group.strip()]
+
+    df, feature_columns, normalized_groups = load_dataset(Path(args.data_path), feature_groups=feature_groups)
     train_df, val_df, test_df = split_dataset(df, train_end=args.train_end, val_end=args.val_end)
     if train_df.empty or val_df.empty or test_df.empty:
         raise ValueError("One of the splits is empty. Adjust --train-end / --val-end.")
 
-    feature_mean, feature_std = fit_feature_scaler(train_df)
+    feature_mean, feature_std = fit_feature_scaler(train_df, feature_columns)
     target_mean, target_std = fit_target_scaler(train_df)
 
-    scaled_train = scale_split(train_df, feature_mean, feature_std, target_mean, target_std)
-    scaled_val = scale_split(val_df, feature_mean, feature_std, target_mean, target_std)
-    scaled_test = scale_split(test_df, feature_mean, feature_std, target_mean, target_std)
+    scaled_train = scale_split(train_df, feature_mean, feature_std, target_mean, target_std, feature_columns)
+    scaled_val = scale_split(val_df, feature_mean, feature_std, target_mean, target_std, feature_columns)
+    scaled_test = scale_split(test_df, feature_mean, feature_std, target_mean, target_std, feature_columns)
 
-    train_seq = build_sequences(scaled_train, window_size=args.window_size)
-    val_seq = build_sequences(scaled_val, window_size=args.window_size)
-    test_seq = build_sequences(scaled_test, window_size=args.window_size)
+    train_seq = build_sequences(scaled_train, window_size=args.window_size, feature_columns=feature_columns)
+    val_seq = build_sequences(scaled_val, window_size=args.window_size, feature_columns=feature_columns)
+    test_seq = build_sequences(scaled_test, window_size=args.window_size, feature_columns=feature_columns)
     if len(train_seq.targets) == 0 or len(val_seq.targets) == 0 or len(test_seq.targets) == 0:
         raise ValueError("Sequence generation returned an empty split. Reduce --window-size or adjust split dates.")
 
@@ -71,7 +75,7 @@ def run_experiment(args: SimpleNamespace, run_name: str | None = None) -> tuple[
 
     model = build_model(
         window_size=args.window_size,
-        num_features=len(FEATURE_COLUMNS),
+        num_features=len(feature_columns),
         lstm_units=args.lstm_units,
         dropout=args.dropout,
         lr=args.lr,
@@ -106,7 +110,8 @@ def run_experiment(args: SimpleNamespace, run_name: str | None = None) -> tuple[
         "train_end": args.train_end,
         "val_end": args.val_end,
         "window_size": args.window_size,
-        "features": FEATURE_COLUMNS,
+        "feature_groups": normalized_groups,
+        "features": feature_columns,
         "target": TARGET_COLUMN,
         "lstm_units": args.lstm_units,
         "dropout": args.dropout,

@@ -5,10 +5,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_DATA_PATH = ROOT / "data" / "assests" / "data_info_vn" / "history" / "vn_gold_recommended.csv"
-DEFAULT_OUTPUT_DIR = ROOT / "data" / "assests" / "data_info_vn" / "history" / "training_runs"
-
-FEATURE_COLUMNS = ["adjust", "volume_match"]
+DEFAULT_DATA_PATH = ROOT / "data" / "assets" / "data_info_vn" / "history" / "vn_gold_recommended.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "data" / "assets" / "data_info_vn" / "history" / "training_runs"
 TARGET_COLUMN = "target_next_adjust_return"
 
 # Shared time boundaries for all TensorFlow LSTM training scripts.
@@ -29,6 +27,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--train-end", default=TRAIN_END_DATE, help="Last date in the training split.")
     parser.add_argument("--val-end", default=VAL_END_DATE, help="Last date in the validation split.")
     parser.add_argument("--window-size", type=int, default=20, help="Number of historical days in each input sequence.")
+    parser.add_argument(
+        "--feature-groups",
+        default="base",
+        help="Comma-separated feature groups. Available: base,momentum,liquidity,volatility,trend",
+    )
     parser.add_argument("--lstm-units", type=int, default=32, help="Number of hidden units in the LSTM layer.")
     parser.add_argument("--dropout", type=float, default=0.0, help="Dropout after the LSTM layer.")
     parser.add_argument("--batch-size", type=int, default=128, help="Batch size.")

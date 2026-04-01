@@ -1,0 +1,40 @@
+TensorFlow/Keras LSTM Next-Day Adjusted Return Training
+
+Problem definition:
+X_t = [adjust_t, volume_t] over a historical window.
+y_t = adjusted return on the next trading day.
+
+Baseline 1:
+Predict next-day return = 0, equivalent to reusing today's adjusted price.
+Thresholded directional accuracy uses |return| > 0.002.
+
+Configuration:
+framework: tensorflow
+data_path: /Users/lap15111/Documents/research-paper/data_stock_market/data/assets/data_info_vn/history/vn_gold_recommended.csv
+train_end: 2023-12-31
+val_end: 2024-12-31
+window_size: 40
+features: ['adjust', 'volume_match']
+target: target_next_adjust_return
+lstm_units: 64
+dropout: 0.1
+batch_size: 128
+epochs: 25
+learning_rate: 0.0005
+train_sequences: 221170
+val_sequences: 19611
+test_sequences: 24177
+target_scaling: z-score using train split
+baseline_1: predict next-day return = 0
+
+Baseline metrics:
+split      mae     rmse  directional_accuracy  thresholded_directional_accuracy
+train 0.016470 0.024481              0.430633                          0.499250
+  val 0.012656 0.018447              0.436643                          0.482733
+ test 0.017439 0.025041              0.459941                          0.494729
+
+LSTM metrics:
+split      mae     rmse  directional_accuracy  thresholded_directional_accuracy
+train 0.016504 0.024472              0.431455                          0.500350
+  val 0.012643 0.018461              0.438376                          0.483161
+ test 0.017420 0.025032              0.463043                          0.499642

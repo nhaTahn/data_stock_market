@@ -7,8 +7,8 @@ from tf_lstm.config import RETURN_DIRECTION_THRESHOLD
 
 
 def baseline_predict(targets_scaled: np.ndarray, target_mean: float, target_std: float) -> np.ndarray:
-    zero_return = np.zeros_like(targets_scaled, dtype=np.float32)
-    return invert_target_scale(zero_return, target_mean, target_std)
+    del target_mean, target_std
+    return np.zeros_like(targets_scaled, dtype=np.float32)
 
 
 def invert_target_scale(values: np.ndarray, target_mean: float, target_std: float) -> np.ndarray:

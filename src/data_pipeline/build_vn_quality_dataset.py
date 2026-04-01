@@ -12,7 +12,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 VN_DATA_DIR = ROOT / "data" / "VN"
-OUTPUT_DIR = ROOT / "data" / "assests" / "data_info_vn" / "history"
+OUTPUT_DIR = ROOT / "data" / "assets" / "data_info_vn" / "history"
 
 TRAIN_START_DATE = "2020-01-01"
 RECENT_ACTIVE_TOLERANCE_DAYS = 30

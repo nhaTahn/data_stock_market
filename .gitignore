@@ -8,6 +8,7 @@ venv/
 env/
 test_venv/
 .venv/
+.venv_debug_vnstock/
 
 # macOS system files
 .DS_Store
@@ -35,4 +36,15 @@ logs/
 .pytest_cache/
 .mypy_cache/
 
-# (Lưu ý: Thư mục data/ KHÔNG bị ignore vì cần được push lên GitHub qua GitHub Actions)
+# Local experiment outputs
+artifacts/
+
+# Generated training outputs kept locally unless explicitly promoted
+data/assets/data_info_vn/history/vn_gold_recommended_smoke*.csv
+data/assets/data_info_vn/history/training_runs/ablation_*/
+data/assets/data_info_vn/history/training_runs/model_benchmark_*/
+data/assets/data_info_vn/history/training_runs/sequence_*/
+data/assets/data_info_vn/history/training_runs/tf_feature_ablation/
+data/assets/data_info_vn/history/training_runs/transformer_focus_sweep/
+
+# (Lưu ý: Thư mục data/ KHÔNG bị ignore toàn bộ vì cần được push lên GitHub qua GitHub Actions)

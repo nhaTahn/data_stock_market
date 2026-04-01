@@ -6,7 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from tf_lstm.config import FEATURE_COLUMNS, TARGET_COLUMN
+from tf_lstm.config import TARGET_COLUMN
+from tf_lstm.features import engineer_feature_groups
 
 
 @dataclass
@@ -17,17 +18,18 @@ class SequenceBatch:
     codes: list[str]
 
 
-def load_dataset(data_path: Path) -> pd.DataFrame:
+def load_dataset(data_path: Path, feature_groups: list[str] | tuple[str, ...] | None = None) -> tuple[pd.DataFrame, list[str], list[str]]:
     df = pd.read_csv(data_path)
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.sort_values(["code", "Date"]).reset_index(drop=True)
+    df, feature_columns, normalized_groups = engineer_feature_groups(df, feature_groups)
 
-    required_cols = ["Date", "code", *FEATURE_COLUMNS, TARGET_COLUMN]
+    required_cols = ["Date", "code", *feature_columns, TARGET_COLUMN]
     missing = [col for col in required_cols if col not in df.columns]
     if missing:
         raise ValueError(f"Input dataset is missing required columns: {missing}")
 
-    return df.dropna(subset=[*FEATURE_COLUMNS, TARGET_COLUMN]).copy()
+    return df.dropna(subset=[*feature_columns, TARGET_COLUMN]).copy(), feature_columns, normalized_groups
 
 
 def split_dataset(df: pd.DataFrame, train_end: str, val_end: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -39,9 +41,9 @@ def split_dataset(df: pd.DataFrame, train_end: str, val_end: str) -> tuple[pd.Da
     return train_df, val_df, test_df
 
 
-def fit_feature_scaler(train_df: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
-    mean = train_df[FEATURE_COLUMNS].mean()
-    std = train_df[FEATURE_COLUMNS].std(ddof=0).replace(0, 1.0)
+def fit_feature_scaler(train_df: pd.DataFrame, feature_columns: list[str]) -> tuple[pd.Series, pd.Series]:
+    mean = train_df[feature_columns].mean()
+    std = train_df[feature_columns].std(ddof=0).replace(0, 1.0)
     return mean, std
 
 
@@ -51,9 +53,9 @@ def fit_target_scaler(train_df: pd.DataFrame) -> tuple[float, float]:
     return mean, (std if std != 0 else 1.0)
 
 
-def apply_feature_scaler(df: pd.DataFrame, mean: pd.Series, std: pd.Series) -> pd.DataFrame:
+def apply_feature_scaler(df: pd.DataFrame, mean: pd.Series, std: pd.Series, feature_columns: list[str]) -> pd.DataFrame:
     scaled = df.copy()
-    scaled[FEATURE_COLUMNS] = (scaled[FEATURE_COLUMNS] - mean) / std
+    scaled[feature_columns] = (scaled[feature_columns] - mean) / std
     return scaled
 
 
@@ -63,11 +65,22 @@ def apply_target_scaler(df: pd.DataFrame, target_mean: float, target_std: float)
     return scaled
 
 
-def scale_split(df: pd.DataFrame, feature_mean: pd.Series, feature_std: pd.Series, target_mean: float, target_std: float) -> pd.DataFrame:
-    return apply_target_scaler(apply_feature_scaler(df, feature_mean, feature_std), target_mean, target_std)
+def scale_split(
+    df: pd.DataFrame,
+    feature_mean: pd.Series,
+    feature_std: pd.Series,
+    target_mean: float,
+    target_std: float,
+    feature_columns: list[str],
+) -> pd.DataFrame:
+    return apply_target_scaler(
+        apply_feature_scaler(df, feature_mean, feature_std, feature_columns),
+        target_mean,
+        target_std,
+    )
 
 
-def build_sequences(df: pd.DataFrame, window_size: int) -> SequenceBatch:
+def build_sequences(df: pd.DataFrame, window_size: int, feature_columns: list[str]) -> SequenceBatch:
     features_list: list[np.ndarray] = []
     targets_list: list[float] = []
     dates: list[str] = []
@@ -75,7 +88,7 @@ def build_sequences(df: pd.DataFrame, window_size: int) -> SequenceBatch:
 
     for code, group in df.groupby("code"):
         group = group.sort_values("Date").reset_index(drop=True)
-        feature_values = group[FEATURE_COLUMNS].to_numpy(dtype=np.float32)
+        feature_values = group[feature_columns].to_numpy(dtype=np.float32)
         target_values = group[TARGET_COLUMN].to_numpy(dtype=np.float32)
         date_values = group["Date"].dt.strftime("%Y-%m-%d").tolist()
 
@@ -88,7 +101,7 @@ def build_sequences(df: pd.DataFrame, window_size: int) -> SequenceBatch:
 
     if not features_list:
         return SequenceBatch(
-            features=np.empty((0, window_size, len(FEATURE_COLUMNS)), dtype=np.float32),
+            features=np.empty((0, window_size, len(feature_columns)), dtype=np.float32),
             targets=np.empty((0,), dtype=np.float32),
             dates=[],
             codes=[],
