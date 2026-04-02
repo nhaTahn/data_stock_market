@@ -46,3 +46,9 @@ def plot_summary(output_dir: Path, summary_df: pd.DataFrame) -> None:
         plt.savefig(output_dir / f"benchmark_test_{metric}.png", dpi=150)
         plt.close()
 
+    try:
+        from model_benchmark.dashboard import render_dashboard
+
+        render_dashboard(output_dir)
+    except Exception:
+        pass

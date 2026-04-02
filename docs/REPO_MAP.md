@@ -12,6 +12,8 @@ Use the guide below to avoid digging through everything.
 
 ```text
 data_stock_market/
+├── configs/fk_lstm/       Full FK experiment configs for VN/US runs
+├── configs/fk_lstm_fast/  Faster FK configs for Colab and early comparison
 ├── data/                  Raw market CSVs and curated VN history assets
 ├── market_lists/          Universe definitions used by the fetcher
 ├── notebook/              Ad-hoc exploration
@@ -40,8 +42,14 @@ data_stock_market/
 
 - `src/training/tf_lstm/`: reusable modules for the existing TensorFlow regression pipeline.
 - `src/training/fk_lstm_classifier/`: modular binary classification pipeline with optional temporal attention.
+- `src/training/fk_lstm_classifier/market_rules.py`: market-specific runtime assumptions such as VN `T+2.5` approximation and long-only evaluation.
+- `src/training/scripts/run_vn_fischer_krauss_pack.py`: VN-only walk-forward pack runner for baseline vs attention.
 - `src/training/model_benchmark/`: classical and transformer benchmark helpers.
 - `src/training/scripts/`: script entrypoints for experiments, ablations, sweeps, and benchmarks.
+- `configs/fk_lstm/`: walk-forward experiment presets for baseline vs attention across VN and US.
+- `configs/fk_lstm_fast/`: lighter walk-forward presets intended for Colab and faster iteration.
+- `notebook/fk_lstm_colab_batch_runner.ipynb`: Colab-friendly batch notebook for FK runs.
+- `notebook/fk_lstm_vn_walkforward_colab.ipynb`: Colab-friendly VN-only walk-forward notebook.
 
 ## Generated Output Convention
 

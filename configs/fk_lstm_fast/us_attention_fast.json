@@ -1,0 +1,22 @@
+{
+  "run_name": "us_attention_fast",
+  "markets": ["US"],
+  "model_type": "attention",
+  "evaluation_mode": "walk_forward",
+  "lookback": 240,
+  "min_train_days": 1008,
+  "validation_days": 63,
+  "test_days": 63,
+  "step_days": 252,
+  "window_scheme": "expanding",
+  "transaction_cost_bps": 5.0,
+  "top_k": 10,
+  "max_epochs": 200,
+  "patience": 5,
+  "lstm_units": 25,
+  "dropout": 0.16,
+  "learning_rate": 0.001,
+  "batch_size": 128,
+  "min_cross_sectional_count": 20,
+  "seed": 42
+}

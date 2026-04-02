@@ -50,3 +50,10 @@ def save_results(
         ]
     )
     (output_dir / "training_report.txt").write_text("\n".join(report_lines), encoding="utf-8")
+
+    try:
+        from tf_lstm.dashboard import render_dashboard
+
+        render_dashboard(output_dir)
+    except Exception:
+        pass
