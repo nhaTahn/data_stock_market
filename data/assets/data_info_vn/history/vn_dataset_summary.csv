@@ -1,0 +1,14 @@
+metric,value
+market,VN
+rows,276487
+tickers,93
+date_start,2012-03-19
+date_end,2026-03-31
+target_price_mean,24975.99806971978
+target_growth_pct_mean,0.07423173052473554
+target_return_mean,0.0007423173052473554
+target_return_std,0.02314328961340382
+target_return_3d_mean,0.0023687817010169497
+target_return_3d_std,0.04205492216624108
+target_return_5d_mean,0.004006815720906397
+target_return_5d_std,0.05491464078114321

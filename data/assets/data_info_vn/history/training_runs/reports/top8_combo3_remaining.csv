@@ -1,0 +1,5 @@
+stock,prev_best_features,prev_best_test_rel_score,prev_best_val_rel_score,combo3_best_features,combo3_best_test_rel_score,combo3_best_val_rel_score,test_rel_score_delta
+BCM,"volume_ratio_20,volatility_ratio",0.0388719772443424,0.0487611731283599,"volume_change,volume_ratio_5,volatility_ratio",0.044923967033813406,0.06906067571355923,0.006051989789471003
+PVD,"volume_ma_20,obv_change",0.0345211620178599,0.0526249823115406,"volume_ma_20,obv_change",0.03452116201785993,0.05262498231154067,2.7755575615628914e-17
+SCS,"volume_change,ma_cross_5_20",0.0460937275918654,-0.0052757920365535,"overnight_return,atr_14,atr_gap",0.01276317973267782,0.01193184557646243,-0.03333054785918758
+VNM,"lower_shadow,price_acceleration",0.0345860347304932,0.0358944195441138,"lower_shadow,return_3,volatility_20",-0.04176165494776307,0.049212151943491156,-0.07634768967825628

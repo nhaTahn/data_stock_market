@@ -35,4 +35,46 @@ logs/
 .pytest_cache/
 .mypy_cache/
 
-# (Lưu ý: Thư mục data/ KHÔNG bị ignore vì cần được push lên GitHub qua GitHub Actions)
+# ML / training artifacts
+*.keras
+*.h5
+*.joblib
+*.npz
+
+# Generated plots / reports
+artifacts/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+
+# Training run outputs
+data/assets/**/history/training_runs/active/
+data/assets/**/history/training_runs/search_runs/
+data/assets/**/history/training_runs/representative_runs/
+data/assets/**/history/training_runs/reports/plots/
+data/assets/**/history/training_runs/**/predictions.csv
+data/assets/**/history/training_runs/**/history.csv
+data/assets/**/history/training_runs/**/metric_details.json
+data/assets/**/history/training_runs/**/metric_series_*.csv
+data/assets/**/history/training_runs/**/threshold_backtest*.csv
+data/assets/**/history/training_runs/**/threshold_backtest*.json
+data/assets/**/history/training_runs/**/actual_vs_prediction_*.png
+
+# Keep only important summaries in training_runs root
+!data/assets/**/history/training_runs/
+!data/assets/**/history/training_runs/README.md
+!data/assets/**/history/training_runs/reports/
+!data/assets/**/history/training_runs/reports/*.csv
+!data/assets/**/history/training_runs/reports/*.json
+!data/assets/**/history/training_runs/reports/*.md
+
+# Generated market datasets
+data/assets/**/history/*_gold_recommended.csv
+data/assets/**/history/*_quality_dataset.csv
+
+# Keep lightweight summaries / maps
+!data/assets/**/history/*_dataset_summary.csv
+!data/assets/**/history/*_ticker_quality_summary.csv
+!data/assets/**/history/*_stock_sector_map.csv
