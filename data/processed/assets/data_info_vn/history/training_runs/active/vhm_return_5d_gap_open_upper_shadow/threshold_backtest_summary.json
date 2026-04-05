@@ -1,0 +1,20 @@
+{
+  "lstm": {
+    "threshold": 0.02,
+    "selected_rows": 129,
+    "coverage": 0.4271523178807947,
+    "directional_accuracy": 0.7131782945736435,
+    "avg_actual_return": 0.02051946942325581,
+    "avg_strategy_return": 0.03800105113023255,
+    "cumulative_strategy_return": 4.902135595799999
+  },
+  "linear_regression": {
+    "threshold": 0.02,
+    "selected_rows": 72,
+    "coverage": 0.23841059602649006,
+    "directional_accuracy": 0.6527777777777778,
+    "avg_actual_return": 0.031189667497222223,
+    "avg_strategy_return": 0.02633882685833333,
+    "cumulative_strategy_return": 1.8963955337999998
+  }
+}

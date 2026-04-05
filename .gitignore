@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+AGENTS.md
 
 # Virtual environments
 venv/
@@ -71,8 +72,8 @@ data/assets/**/history/training_runs/**/actual_vs_prediction_*.png
 !data/assets/**/history/training_runs/reports/*.md
 
 # Generated market datasets
-data/assets/**/history/*_gold_recommended.csv
-data/assets/**/history/*_quality_dataset.csv
+data/**/history/*_gold_recommended.csv
+data/**/history/*_quality_dataset.csv
 
 # Keep lightweight summaries / maps
 !data/assets/**/history/*_dataset_summary.csv

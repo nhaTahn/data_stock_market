@@ -1,0 +1,54 @@
+{
+  "paths": {
+    "default_data_path_rel": "data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+    "default_output_dir_rel": "data/processed/assets/data_info_vn/history/training_runs",
+    "default_plot_dir_rel": "artifacts/plots"
+  },
+  "dates": {
+    "train_end_date": "2023-12-31",
+    "val_end_date": "2024-12-31"
+  },
+  "targets": {
+    "price": "target_next_price",
+    "growth": "target_next_growth_pct",
+    "return": "target_next_return",
+    "return_3d": "target_next_3d_return",
+    "return_5d": "target_next_5d_return"
+  },
+  "features": [
+    "volume_ratio_20",
+    "volume_zscore_20",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "momentum_5",
+    "momentum_20",
+    "atr_gap",
+    "volatility_20",
+    "ma_20_gap",
+    "ma_200_gap",
+    "above_ma_200",
+    "rolling_max_20_gap",
+    "bb_width",
+    "bb_position",
+    "bb_zscore",
+    "vwap_gap",
+    "obv_change",
+    "macd",
+    "macd_signal",
+    "macd_hist"
+  ],
+  "hyperparameters": {
+    "window_size": 20,
+    "lstm_units": 64,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "loss": "mse",
+    "huber_delta": 0.01,
+    "batch_size": 32,
+    "epochs": 10,
+    "patience": 3
+  }
+}

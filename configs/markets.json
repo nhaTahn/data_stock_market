@@ -1,0 +1,50 @@
+{
+  "VN": {
+    "data_dir_rel": "data/raw/VN",
+    "output_dir_rel": "data/processed/assets/data_info_vn/history",
+    "output_prefix": "vn",
+    "train_start_date": "2020-01-01",
+    "min_coverage": 0.95,
+    "recent_active_tolerance_days": 30,
+    "exchange_limits": {
+      "HOSE": {
+        "max_close_return_abs": 0.075,
+        "max_adjust_return_abs": 0.155
+      },
+      "HNX": {
+        "max_close_return_abs": 0.105,
+        "max_adjust_return_abs": 0.205
+      },
+      "UPCOM": {
+        "max_close_return_abs": 0.155,
+        "max_adjust_return_abs": 0.305
+      }
+    },
+    "drop_imputed_value_match": true,
+    "drop_neighbors_around_events": true
+  },
+  "US": {
+    "data_dir_rel": "data/raw/US",
+    "output_dir_rel": "data/processed/assets/data_info_us/history",
+    "output_prefix": "us",
+    "train_start_date": "2020-01-01",
+    "min_coverage": 0.97,
+    "recent_active_tolerance_days": 10,
+    "max_close_return_abs": 0.20,
+    "max_adjust_return_abs": 0.20,
+    "drop_imputed_value_match": false,
+    "drop_neighbors_around_events": false
+  },
+  "JP": {
+    "data_dir_rel": "data/raw/JP",
+    "output_dir_rel": "data/processed/assets/data_info_jp/history",
+    "output_prefix": "jp",
+    "train_start_date": "2020-01-01",
+    "min_coverage": 0.97,
+    "recent_active_tolerance_days": 15,
+    "max_close_return_abs": 0.15,
+    "max_adjust_return_abs": 0.15,
+    "drop_imputed_value_match": false,
+    "drop_neighbors_around_events": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "stocks": "VHM",
+  "target_mode": "return_5d",
+  "target_column": "target_next_5d_return",
+  "window_size": 20,
+  "feature_pool": [
+    "gap_open",
+    "upper_shadow",
+    "ma_200_gap",
+    "above_ma_200",
+    "bb_width",
+    "bb_position",
+    "bb_zscore"
+  ],
+  "min_combo_size": 1,
+  "max_combo_size": 3,
+  "min_rel_score": 0.03,
+  "tested_combinations": 63,
+  "good_combinations": 0,
+  "best_val_rel_score": 0.005031621032720257,
+  "best_test_rel_score": 0.011848254259879676,
+  "best_features": "above_ma_200,bb_width,bb_position"
+}

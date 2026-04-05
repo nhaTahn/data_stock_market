@@ -1,0 +1,54 @@
+{
+  "lstm": {
+    "train": {
+      "base_loss": 0.025424090400338183,
+      "abs_loss": 0.025797641929239043,
+      "rel_score": -0.014692817836106098,
+      "directional_accuracy": 0.4556596971881759,
+      "error_len": 1387,
+      "base_len": 1387
+    },
+    "val": {
+      "base_loss": 0.01932658115401864,
+      "abs_loss": 0.01896117569413036,
+      "rel_score": 0.018906885650196825,
+      "directional_accuracy": 0.45564516129032256,
+      "error_len": 248,
+      "base_len": 248
+    },
+    "test": {
+      "base_loss": 0.04961440712213516,
+      "abs_loss": 0.044657985633239146,
+      "rel_score": 0.09989883536640587,
+      "directional_accuracy": 0.5197368421052632,
+      "error_len": 304,
+      "base_len": 304
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "base_loss": 0.025424090400338183,
+      "abs_loss": 0.026183713297359648,
+      "rel_score": -0.029878075677836735,
+      "directional_accuracy": 0.44844989185291995,
+      "error_len": 1387,
+      "base_len": 1387
+    },
+    "val": {
+      "base_loss": 0.01932658115401864,
+      "abs_loss": 0.018314575962722304,
+      "rel_score": 0.052363384047669825,
+      "directional_accuracy": 0.45564516129032256,
+      "error_len": 248,
+      "base_len": 248
+    },
+    "test": {
+      "base_loss": 0.04961440712213516,
+      "abs_loss": 0.044691645138664166,
+      "rel_score": 0.09922041336405962,
+      "directional_accuracy": 0.4605263157894737,
+      "error_len": 304,
+      "base_len": 304
+    }
+  }
+}

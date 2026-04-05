@@ -1,0 +1,26 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return_3d",
+  "target_column": "target_next_3d_return",
+  "feature_columns": [
+    "gap_open",
+    "upper_shadow"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 20,
+  "lstm_units": 64,
+  "dropout": 0.2,
+  "lr": 0.001,
+  "batch_size": 32,
+  "epochs": 20,
+  "patience": 3,
+  "stocks": "VHM",
+  "raw_rows_train": 1409,
+  "raw_rows_val": 250,
+  "raw_rows_test": 306,
+  "seq_rows_train": 1389,
+  "seq_rows_val": 250,
+  "seq_rows_test": 304,
+  "baseline_model": "linear_regression(flatten_sequence)"
+}

@@ -5,14 +5,15 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.data_pipeline.market_config import CleanConfig
-from src.model.config import FEATURE_COLUMNS
+from src.data_pipeline.market_config import CleanConfig, ROOT
+from src.models.config import FEATURE_COLUMNS
 from src.utils.features import ensure_columns
 
 
 BASE_PRICE_COLS = [
     "Date",
     "code",
+    "exchange",
     "open",
     "high",
     "low",
@@ -95,14 +96,35 @@ def prepare_dataset(df: pd.DataFrame) -> pd.DataFrame:
     return df.replace([np.inf, -np.inf], np.nan)
 
 
+def _get_event_mask(df: pd.DataFrame, config: CleanConfig) -> pd.Series:
+    if config.exchange_limits and "exchange" in df.columns:
+        default_c = config.max_close_return_abs or 0.15
+        default_a = config.max_adjust_return_abs or 0.30
+
+        def get_limit(ex, key, default):
+            if pd.isna(ex): return default
+            if not isinstance(config.exchange_limits, dict): return default
+            return config.exchange_limits.get(ex, {}).get(key, default)
+
+        limit_close = df["exchange"].apply(lambda ex: get_limit(ex, "max_close_return_abs", default_c))
+        limit_adjust = df["exchange"].apply(lambda ex: get_limit(ex, "max_adjust_return_abs", default_a))
+
+        return (
+            (df["close_return"].abs() > limit_close)
+            | (df["adjust_return"].abs() > limit_adjust)
+        ).fillna(False)
+    else:
+        return (
+            (df["close_return"].abs() > config.max_close_return_abs)
+            | (df["adjust_return"].abs() > config.max_adjust_return_abs)
+        ).fillna(False)
+
+
 def summarize_tickers(df: pd.DataFrame, config: CleanConfig) -> pd.DataFrame:
     recent = df[df["Date"] >= pd.Timestamp(config.train_start_date)].copy()
     total_days = recent["Date"].nunique()
     market_now = recent["Date"].max()
-    recent["event_row"] = (
-        (recent["close_return"].abs() > config.max_close_return_abs)
-        | (recent["adjust_return"].abs() > config.max_adjust_return_abs)
-    ).fillna(False)
+    recent["event_row"] = _get_event_mask(recent, config)
 
     ticker = (
         recent.groupby("code")
@@ -134,10 +156,7 @@ def build_clean_dataset(df: pd.DataFrame, ticker_summary: pd.DataFrame, config: 
     ]["code"]
 
     clean = df[df["code"].isin(valid_tickers)].copy()
-    clean["event_row"] = (
-        (clean["close_return"].abs() > config.max_close_return_abs)
-        | (clean["adjust_return"].abs() > config.max_adjust_return_abs)
-    ).fillna(False)
+    clean["event_row"] = _get_event_mask(clean, config)
 
     if config.drop_neighbors_around_events:
         by_code = clean.groupby("code")["event_row"]
@@ -184,6 +203,20 @@ def save_outputs(clean: pd.DataFrame, ticker_summary: pd.DataFrame, config: Clea
 
 def build_market_quality_dataset(config: CleanConfig) -> tuple[pd.DataFrame, pd.DataFrame]:
     base = prepare_dataset(load_market_data(config.data_dir))
+    
+    # Load exchange mappings if they exist
+    zinfo_dir = ROOT / "data" / "external" / "zInfo" / f"data_info_{config.market.lower()}"
+    exchange_csv = zinfo_dir / "symbols_by_exchange.csv"
+    
+    if exchange_csv.exists():
+        exchange_df = pd.read_csv(exchange_csv)
+        if "symbol" in exchange_df.columns and "exchange" in exchange_df.columns:
+            exchange_df["exchange"] = exchange_df["exchange"].str.upper()
+            exchange_map = dict(zip(exchange_df["symbol"], exchange_df["exchange"]))
+            
+            # Map code to exchange if info exists in the map
+            base["exchange"] = base["code"].map(exchange_map)
+
     ticker_summary = summarize_tickers(base, config)
     clean = build_clean_dataset(base, ticker_summary, config)
     save_outputs(clean, ticker_summary, config)
