@@ -15,7 +15,7 @@
     "return_3d": "target_next_3d_return",
     "return_5d": "target_next_5d_return"
   },
-  "features": [
+  "default_features": [
     "volume_ratio_20",
     "volume_zscore_20",
     "intraday_return",
@@ -40,12 +40,55 @@
     "macd_signal",
     "macd_hist"
   ],
+  "sector_features": {
+    "Bất động sản": [
+      "alpha_sector",
+      "vwap_gap_20",
+      "volatility_20",
+      "gap_open",
+      "ma_200_gap",
+      "bb_width"
+    ],
+    "Ngân hàng": [
+      "alpha_sector",
+      "vwap_gap_20",
+      "obv_change",
+      "momentum_5",
+      "above_ma_200",
+      "lower_shadow"
+    ],
+    "Thực phẩm và đồ uống": [
+      "vwap_gap",
+      "bb_width",
+      "upper_shadow",
+      "momentum_20",
+      "close_position"
+    ],
+    "Dịch vụ tài chính": [
+      "close_position",
+      "obv_change",
+      "intraday_return",
+      "vwap_gap",
+      "upper_shadow"
+    ]
+  },
   "hyperparameters": {
+    "window_size": 20,
+    "lstm_units": 16,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "loss": "huber",
+    "huber_delta": 0.01,
+    "batch_size": 32,
+    "epochs": 10,
+    "patience": 3
+  },
+  "hyperparameters_2": {
     "window_size": 20,
     "lstm_units": 64,
     "dropout": 0.2,
-    "lr": 0.001,
-    "loss": "mse",
+    "lr": 0.0005,
+    "loss": "huber",
     "huber_delta": 0.01,
     "batch_size": 32,
     "epochs": 10,

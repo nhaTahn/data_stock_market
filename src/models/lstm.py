@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 from tensorflow import keras
-from tensorflow.keras import layers
+from tensorflow.keras import layers, regularizers
 
 from src.evaluation.metric import evaluate
 
@@ -83,7 +83,6 @@ def build_model(
                 kernel_regularizer=regularizers.l2(1e-4),
                 recurrent_regularizer=regularizers.l2(1e-4)
             ),
-            layers.BatchNormalization(),
             layers.Dropout(dropout),
             layers.Dense(1),
         ]

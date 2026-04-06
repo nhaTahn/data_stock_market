@@ -230,7 +230,17 @@ def add_price_volume_features(df: pd.DataFrame) -> pd.DataFrame:
         df["obv"] = delta.groupby(df["code"]).cumsum()
     if "obv_change" not in df.columns and "obv" in df.columns:
         df["obv_change"] = by_code["obv"].pct_change()
+        
+    if "vwap_20" not in df.columns and {"value_match", "volume_match"}.issubset(df.columns):
+        roll_vol = by_code["volume_match"].rolling(20).sum().reset_index(level=0, drop=True)
+        roll_val = by_code["value_match"].rolling(20).sum().reset_index(level=0, drop=True)
+        df["vwap_20"] = roll_val / roll_vol.replace(0, np.nan)
+        
+    if "vwap_gap_20" not in df.columns and {"close", "vwap_20"}.issubset(df.columns):
+        df["vwap_gap_20"] = df["close"] / df["vwap_20"] - 1
+        
     return df
+
 
 # https://github.com/romanmichaelpaolucci/Quant-Guild-Library/blob/655c00f733382e177b0d7fe8f0db80f244f5e3ed/2025%20Video%20Lectures/6.%20How%20to%20Trade%20with%20the%20Black-Scholes%20Model/Black-ScholesTrading.ipynb
 def black_scholes_call(S, K, sigma, r, t):
@@ -238,6 +248,29 @@ def black_scholes_call(S, K, sigma, r, t):
     d2 = d1 - (sigma * np.sqrt(t))
     C = S * norm.cdf(d1) - K * np.exp(-r*t) * norm.cdf(d2)
     return C
+
+
+def add_cross_sectional_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    if "adjust_return" not in df.columns:
+        return df
+        
+    # Group by Date to get cross-sectional means
+    if "market_return" not in df.columns:
+        df["market_return"] = df.groupby("Date")["adjust_return"].transform(lambda x: x.mean())
+        
+    if "sector" in df.columns and "sector_return" not in df.columns:
+        df["sector_return"] = df.groupby(["Date", "sector"])["adjust_return"].transform(lambda x: x.mean())
+        
+    if "alpha_market" not in df.columns:
+        df["alpha_market"] = df["adjust_return"] - df["market_return"]
+        
+    if "sector" in df.columns and "alpha_sector" not in df.columns:
+        df["alpha_sector"] = df["adjust_return"] - df["sector_return"]
+        
+    return df
+
+
 
 
 def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -250,5 +283,6 @@ def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = add_bollinger_features(df)
     df = add_macd_features(df)
     df = add_price_volume_features(df)
+    df = add_cross_sectional_features(df)
 
     return df.replace([np.inf, -np.inf], np.nan)

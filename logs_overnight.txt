@@ -1,0 +1,127 @@
+===========================================
+🌙 BẮT ĐẦU CHUỖI NHIỆM VỤ CHẠY QUA ĐÊM 🌙
+===========================================
+
+
+[3/4] Đang rà soát Feature tốt nhất cho toàn bộ thị trường...
+⚠️ Lưu ý: Quá trình này sẽ tốn vài giờ để quét tất cả các mã.
+[1/93] ACB: best=intraday_return,close_position test=0.001579
+[2/93] ANV: best=volume_ratio_20 test=-0.008811
+[3/93] BCM: best=lower_shadow,volatility_20 test=0.018019
+[4/93] BID: best=atr_gap,ma_20_gap test=-0.003322
+[5/93] BMP: best=momentum_20,obv_change test=0.009134
+[6/93] BSI: best=gap_open,bb_width test=-0.013983
+[7/93] BVH: best=atr_gap,ma_200_gap test=0.013689
+[8/93] BWE: best=gap_open,atr_gap test=-0.021274
+[9/93] CII: best=close_position,ma_200_gap test=0.024658
+[10/93] CMG: best=atr_gap,obv_change test=-0.020743
+[11/93] CTD: best=upper_shadow,above_ma_200 test=-0.050249
+[12/93] CTG: best=atr_gap,bb_width test=-0.022983
+[13/93] CTR: best=intraday_return,momentum_20 test=-0.030703
+[14/93] CTS: best=gap_open,volatility_20 test=-0.021040
+[15/93] DBC: best=gap_open,above_ma_200 test=0.009402
+[16/93] DCM: best=volume_ratio_20,upper_shadow test=0.003295
+[17/93] DGC: best=intraday_return,bb_position test=-0.001000
+[18/93] DGW: best=volatility_20,above_ma_200 test=0.000077
+[19/93] DIG: best=close_position,bb_width test=-0.008276
+[20/93] DPM: best=intraday_return,macd test=-0.040897
+[21/93] DXG: best=close_position,momentum_20 test=0.012881
+[22/93] EIB: best=bb_width,macd_hist test=-0.060602
+[23/93] EVF: best=lower_shadow,above_ma_200 test=-0.018907
+[24/93] FPT: best=gap_open,volatility_20 test=-0.087054
+[25/93] FRT: best=rolling_max_20_gap,bb_width test=-0.053321
+[26/93] FTS: best=volume_zscore_20,lower_shadow test=-0.003424
+[27/93] GAS: best=close_position,atr_gap test=-0.037028
+[28/93] GEX: best=intraday_return,bb_position test=0.017871
+[29/93] GMD: best=intraday_return,volatility_20 test=-0.007483
+[30/93] GVR: best=atr_gap,bb_width test=-0.010902
+[31/93] HAG: best=gap_open,volatility_20 test=-0.001335
+[32/93] HCM: best=lower_shadow,atr_gap test=-0.067480
+[33/93] HDB: best=volume_ratio_20,gap_open test=-0.007147
+[34/93] HDC: best=bb_width,macd_signal test=-0.000905
+[35/93] HDG: best=lower_shadow test=0.007328
+[36/93] HHV: best=ma_20_gap,macd_signal test=-0.018720
+[37/93] HPG: best=momentum_5,above_ma_200 test=0.002867
+[38/93] HSG: best=volume_ratio_20,obv_change test=-0.032274
+[39/93] HT1: best=gap_open,close_position test=0.000877
+[40/93] IMP: best=lower_shadow,atr_gap test=0.035236
+[41/93] KBC: best=volatility_20,obv_change test=0.028992
+[42/93] KDC: best=momentum_5,momentum_20 test=-0.030887
+[43/93] KDH: best=gap_open,volatility_20 test=-0.001062
+[44/93] KOS: best=vwap_gap test=0.056233
+[45/93] LPB: best=atr_gap,above_ma_200 test=-0.008780
+[46/93] MBB: best=lower_shadow,bb_position test=0.000448
+[47/93] MSN: best=atr_gap,volatility_20 test=0.017530
+[48/93] MWG: best=volume_zscore_20,bb_width test=-0.011437
+[49/93] NKG: best=volume_ratio_20,volatility_20 test=0.007400
+[50/93] NLG: best=gap_open,bb_position test=0.032060
+[51/93] NT2: best=volume_zscore_20,bb_width test=-0.076569
+[52/93] PAN: best=gap_open,volatility_20 test=0.050308
+[53/93] PC1: best=lower_shadow,obv_change test=-0.014917
+[54/93] PDR: best=volume_zscore_20,above_ma_200 test=0.015920
+[55/93] PHR: best=gap_open,obv_change test=0.002456
+[56/93] PLX: best=gap_open,obv_change test=-0.002677
+[57/93] PNJ: best=volume_zscore_20,upper_shadow test=-0.055607
+[58/93] POW: best=rolling_max_20_gap,macd test=-0.038774
+[59/93] PPC: best=momentum_20,bb_width test=-0.049519
+[60/93] PTB: best=lower_shadow,bb_position test=-0.090967
+[61/93] PVD: best=vwap_gap test=0.002539
+[62/93] PVT: best=bb_width,vwap_gap test=0.061396
+[63/93] REE: best=close_position,upper_shadow test=-0.071358
+[64/93] SAB: best=volume_ratio_20,close_position test=-0.009694
+[65/93] SBT: best=upper_shadow,ma_200_gap test=-0.026871
+[66/93] SCS: best=gap_open,ma_200_gap test=-0.011367
+[67/93] SHB: best=vwap_gap,obv_change test=0.002553
+[68/93] SIP: best=atr_gap,volatility_20 test=-0.011616
+[69/93] SJS: best=atr_gap,rolling_max_20_gap test=-0.026415
+[70/93] SSI: best=volatility_20,bb_width test=-0.053458
+[71/93] STB: best=intraday_return,bb_width test=0.010604
+[72/93] SZC: best=vwap_gap test=-0.021351
+[73/93] TCB: best=momentum_20,rolling_max_20_gap test=-0.031879
+[74/93] TCH: best=momentum_20,above_ma_200 test=-0.033738
+[75/93] TLG: best=intraday_return,vwap_gap test=0.053646
+[76/93] TPB: best=volatility_20,vwap_gap test=0.055745
+[77/93] VCB: best=momentum_20,rolling_max_20_gap test=-0.044285
+[78/93] VCG: best=upper_shadow,macd_hist test=0.019584
+[79/93] VCI: best=lower_shadow,volatility_20 test=-0.042872
+[80/93] VGC: best=upper_shadow,lower_shadow test=0.000185
+[81/93] VHC: best=lower_shadow,bb_width test=0.006273
+[82/93] VHM: best=gap_open,upper_shadow test=0.099220
+[83/93] VIB: best=upper_shadow,ma_200_gap test=-0.024183
+[84/93] VIC: best=upper_shadow,atr_gap test=0.032219
+[85/93] VIX: best=momentum_20,rolling_max_20_gap test=0.027317
+[86/93] VJC: best=gap_open,upper_shadow test=-0.078687
+[87/93] VND: best=above_ma_200,macd_signal test=-0.059098
+[88/93] VNM: best=lower_shadow,atr_gap test=0.000484
+[89/93] VPB: best=close_position,momentum_20 test=-0.006946
+[90/93] VPI: best=ma_20_gap,rolling_max_20_gap test=-0.023512
+[91/93] VRE: best=volatility_20,above_ma_200 test=-0.022395
+[92/93] VSC: best=intraday_return,ma_20_gap test=0.024989
+[93/93] VTP: best=momentum_20,macd test=-0.091302
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn_all_stock_search_summary.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_stock_sector_map.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/stock_sector_search_summary.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/sector_feature_top5_long.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/sector_combo_top3_long.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/sector_feature_final_summary.csv
+                       sector  searched_stock_count                                                         searched_stocks                                                                                                                                                                                            top_5_features                                                                                                                                                                     top_3_combos
+                 Bất động sản                    18 BCM,DIG,DXG,HDC,HDG,KBC,KDH,KOS,NLG,PDR,SIP,SJS,SZC,TCH,VHM,VIC,VPI,VRE         vwap_gap (13 mã, 36 lần, max=0.083) | volatility_20 (10 mã, 25 lần, max=0.070) | gap_open (10 mã, 20 lần, max=0.064) | ma_200_gap (10 mã, 15 lần, max=0.120) | bb_width (9 mã, 28 lần, max=0.138)                                           KOS:bb_width,obv_change (test=0.138, val=0.056) | KOS:bb_width (test=0.133, val=0.048) | VHM:momentum_20,macd (test=0.125, val=-0.009)
+                    Ngân hàng                    14                 ACB,BID,CTG,EIB,HDB,LPB,MBB,SHB,STB,TCB,TPB,VCB,VIB,VPB      vwap_gap (12 mã, 29 lần, max=0.056) | obv_change (10 mã, 15 lần, max=0.042) | momentum_5 (9 mã, 18 lần, max=0.050) | above_ma_200 (9 mã, 16 lần, max=0.045) | lower_shadow (8 mã, 19 lần, max=0.046)            BID:intraday_return,close_position (test=0.060, val=-0.078) | TPB:volatility_20,vwap_gap (test=0.056, val=0.055) | VCB:gap_open,upper_shadow (test=0.051, val=-0.029)
+         Thực phẩm và đồ uống                    10                                 ANV,DBC,HAG,KDC,MSN,PAN,SAB,SBT,VHC,VNM       vwap_gap (8 mã, 27 lần, max=0.082) | bb_width (7 mã, 10 lần, max=0.078) | upper_shadow (6 mã, 16 lần, max=0.061) | momentum_20 (6 mã, 11 lần, max=0.065) | close_position (6 mã, 11 lần, max=0.051)                                SBT:atr_gap,vwap_gap (test=0.082, val=-0.007) | PAN:atr_gap,bb_width (test=0.078, val=-0.045) | PAN:gap_open,macd_signal (test=0.075, val=-0.032)
+            Dịch vụ tài chính                     9                                     BSI,CTS,EVF,FTS,HCM,SSI,VCI,VIX,VND close_position (7 mã, 16 lần, max=0.077) | obv_change (7 mã, 12 lần, max=0.070) | intraday_return (7 mã, 11 lần, max=0.075) | vwap_gap (6 mã, 14 lần, max=0.038) | upper_shadow (5 mã, 13 lần, max=0.055)                      VIX:volume_zscore_20,macd (test=0.078, val=0.040) | VIX:close_position,macd_hist (test=0.077, val=0.022) | VIX:intraday_return,macd (test=0.075, val=0.032)
+         Xây dựng và Vật liệu                     9                                     BMP,CII,CTD,CTR,HHV,HT1,PC1,VCG,VGC         momentum_5 (7 mã, 17 lần, max=0.066) | momentum_20 (6 mã, 12 lần, max=0.062) | vwap_gap (6 mã, 12 lần, max=0.037) | bb_width (6 mã, 6 lần, max=0.057) | volume_ratio_20 (5 mã, 11 lần, max=0.053)                            CII:momentum_5,bb_position (test=0.066, val=0.031) | CII:momentum_5,bb_zscore (test=0.066, val=0.031) | CII:upper_shadow,macd (test=0.066, val=0.025)
+Điện, nước & xăng dầu khí đốt                     6                                                 BWE,GAS,NT2,POW,PPC,REE          momentum_20 (6 mã, 14 lần, max=0.071) | vwap_gap (4 mã, 13 lần, max=0.030) | obv_change (4 mã, 9 lần, max=0.058) | atr_gap (3 mã, 11 lần, max=0.054) | volume_zscore_20 (3 mã, 5 lần, max=0.011) GAS:momentum_20,rolling_max_20_gap (test=0.071, val=-0.071) | GAS:momentum_20,obv_change (test=0.058, val=-0.047) | GAS:above_ma_200,rolling_max_20_gap (test=0.054, val=-0.186)
+   Hàng & Dịch vụ Công nghiệp                     5                                                     GEX,GMD,PVT,VSC,VTP                ma_20_gap (4 mã, 8 lần, max=0.077) | bb_position (4 mã, 7 lần, max=0.092) | bb_zscore (4 mã, 7 lần, max=0.092) | momentum_20 (4 mã, 6 lần, max=0.070) | bb_width (3 mã, 10 lần, max=0.092)                             PVT:bb_width,bb_position (test=0.092, val=-0.033) | PVT:bb_width,bb_zscore (test=0.092, val=-0.033) | PVT:ma_20_gap,bb_width (test=0.077, val=0.005)
+                     Hóa chất                     5                                                     DCM,DGC,DPM,GVR,PHR        volatility_20 (4 mã, 17 lần, max=0.086) | bb_width (3 mã, 9 lần, max=0.043) | volume_ratio_20 (3 mã, 7 lần, max=0.079) | momentum_5 (3 mã, 5 lần, max=0.056) | ma_200_gap (3 mã, 4 lần, max=0.084)            PHR:volatility_20,bb_position (test=0.086, val=-0.021) | PHR:volatility_20,bb_zscore (test=0.086, val=-0.021) | PHR:volatility_20,ma_200_gap (test=0.084, val=-0.056)
+            Tài nguyên Cơ bản                     4                                                         HPG,HSG,NKG,PTB            vwap_gap (4 mã, 9 lần, max=0.025) | obv_change (4 mã, 8 lần, max=0.016) | above_ma_200 (3 mã, 9 lần, max=0.009) | upper_shadow (3 mã, 9 lần, max=0.004) | momentum_20 (2 mã, 8 lần, max=0.009)                        NKG:volatility_20 (test=0.026, val=-0.025) | NKG:volatility_20,vwap_gap (test=0.025, val=-0.025) | NKG:close_position,ma_200_gap (test=0.019, val=-0.058)
+                       Bán lẻ                     3                                                             DGW,FRT,MWG    vwap_gap (3 mã, 10 lần, max=0.050) | obv_change (3 mã, 5 lần, max=0.024) | lower_shadow (2 mã, 8 lần, max=0.038) | volume_ratio_20 (2 mã, 4 lần, max=0.050) | intraday_return (2 mã, 4 lần, max=0.025)                        DGW:volume_ratio_20,vwap_gap (test=0.050, val=0.004) | MWG:lower_shadow (test=0.038, val=-0.034) | MWG:lower_shadow,above_ma_200 (test=0.035, val=-0.016)
+          Công nghệ Thông tin                     2                                                                 CMG,FPT   close_position (2 mã, 9 lần, max=0.013) | volatility_20 (2 mã, 6 lần, max=0.019) | volume_ratio_20 (2 mã, 5 lần, max=0.021) | above_ma_200 (2 mã, 2 lần, max=0.019) | bb_width (2 mã, 2 lần, max=0.012)       CMG:volume_ratio_20,atr_gap (test=0.021, val=0.002) | CMG:volatility_20,above_ma_200 (test=0.019, val=-0.026) | CMG:volume_ratio_20,volatility_20 (test=0.018, val=-0.018)
+          Du lịch và Giải trí                     2                                                                 SCS,VJC         momentum_20 (2 mã, 7 lần, max=0.043) | momentum_5 (2 mã, 7 lần, max=0.037) | volatility_20 (2 mã, 5 lần, max=0.037) | intraday_return (2 mã, 4 lần, max=0.038) | atr_gap (2 mã, 3 lần, max=0.043)                  SCS:momentum_20,atr_gap (test=0.043, val=-0.024) | SCS:lower_shadow,macd_hist (test=0.039, val=-0.025) | SCS:intraday_return,macd_hist (test=0.038, val=-0.035)
+                      Dầu khí                     2                                                                 PLX,PVD momentum_20 (2 mã, 3 lần, max=0.051) | volume_zscore_20 (2 mã, 3 lần, max=0.049) | intraday_return (2 mã, 2 lần, max=0.065) | upper_shadow (1 mã, 4 lần, max=0.058) | momentum_5 (1 mã, 3 lần, max=0.077)                      PLX:momentum_5,macd (test=0.077, val=0.002) | PLX:momentum_5,macd_hist (test=0.071, val=-0.001) | PVD:close_position,volatility_20 (test=0.065, val=-0.080)
+      Hàng cá nhân & Gia dụng                     2                                                                 PNJ,TLG               vwap_gap (2 mã, 6 lần, max=0.054) | close_position (2 mã, 6 lần, max=0.048) | atr_gap (2 mã, 4 lần, max=0.044) | obv_change (2 mã, 2 lần, max=0.038) | momentum_20 (1 mã, 3 lần, max=0.038)                   TLG:intraday_return,vwap_gap (test=0.054, val=0.055) | TLG:ma_200_gap,vwap_gap (test=0.048, val=-0.056) | TLG:close_position,vwap_gap (test=0.048, val=-0.013)
+                     Bảo hiểm                     1                                                                     BVH                upper_shadow (1 mã, 5 lần, max=0.049) | lower_shadow (1 mã, 3 lần, max=0.049) | macd (1 mã, 2 lần, max=0.047) | bb_width (1 mã, 2 lần, max=0.036) | volatility_20 (1 mã, 1 lần, max=0.048)                     BVH:upper_shadow,lower_shadow (test=0.049, val=-0.001) | BVH:upper_shadow,volatility_20 (test=0.048, val=0.006) | BVH:ma_20_gap,macd (test=0.047, val=0.016)
+                         Y tế                     1                                                                     IMP             bb_position (1 mã, 4 lần, max=0.072) | bb_zscore (1 mã, 4 lần, max=0.072) | close_position (1 mã, 2 lần, max=0.073) | ma_200_gap (1 mã, 2 lần, max=0.072) | vwap_gap (1 mã, 2 lần, max=0.068)              IMP:close_position,volatility_20 (test=0.073, val=-0.002) | IMP:ma_200_gap,bb_position (test=0.072, val=-0.004) | IMP:ma_200_gap,bb_zscore (test=0.072, val=-0.004)
+
+[4/4] Cập nhật báo cáo tổng kết cuối cùng...
+usage: update_run_reports.py [-h] run_dirs [run_dirs ...]
+update_run_reports.py: error: the following arguments are required: run_dirs

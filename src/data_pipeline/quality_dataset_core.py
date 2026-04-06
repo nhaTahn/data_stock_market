@@ -6,13 +6,14 @@ import numpy as np
 import pandas as pd
 
 from src.data_pipeline.market_config import CleanConfig, ROOT
-from src.models.config import FEATURE_COLUMNS
+from src.models.config import ALL_FEATURE_COLUMNS
 from src.utils.features import ensure_columns
 
 
 BASE_PRICE_COLS = [
     "Date",
     "code",
+    "sector",
     "exchange",
     "open",
     "high",
@@ -37,7 +38,7 @@ BASE_TARGET_COLS = [
     "target_next_5d_return",
 ]
 
-BASE_KEEP_COLS = BASE_PRICE_COLS + BASE_REVIEW_COLS + list(FEATURE_COLUMNS) + BASE_TARGET_COLS
+BASE_KEEP_COLS = BASE_PRICE_COLS + BASE_REVIEW_COLS + list(ALL_FEATURE_COLUMNS) + BASE_TARGET_COLS
 
 
 def load_market_data(data_dir: Path) -> pd.DataFrame:
@@ -55,6 +56,16 @@ def load_market_data(data_dir: Path) -> pd.DataFrame:
 
 def prepare_dataset(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
+
+    try:
+        from src.utils.vn_sector import load_industry_reference
+        ind_df = load_industry_reference()
+        sector_map = dict(zip(ind_df["code"], ind_df["sector"]))
+        df["sector"] = df["code"].map(sector_map).fillna("Unknown")
+    except Exception as e:
+        df["sector"] = "Unknown"
+        print(f"Warning: Could not assign sector: {e}")
+
     for col in ["open", "high", "low", "close", "adjust", "volume_match", "value_match"]:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")

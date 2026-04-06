@@ -1,0 +1,931 @@
+sector,stock,combo,test_rel_score,val_rel_score
+Bán lẻ,DGW,"volume_ratio_20,vwap_gap",0.0496749616657941,0.0038677351968956
+Bán lẻ,MWG,lower_shadow,0.0375692821398619,-0.0337192236575278
+Bán lẻ,MWG,"lower_shadow,above_ma_200",0.0350639771591005,-0.0164146784649172
+Bán lẻ,DGW,vwap_gap,0.0272860827179471,0.0048993957097764
+Bán lẻ,MWG,"intraday_return,close_position",0.0252651719992252,-0.1018744660300423
+Bán lẻ,DGW,"ma_200_gap,vwap_gap",0.0249255254663355,0.0132012758401145
+Bán lẻ,FRT,"gap_open,lower_shadow",0.0242958001738485,-0.0210052028793275
+Bán lẻ,DGW,"vwap_gap,obv_change",0.0241858560184222,0.0093733821353543
+Bán lẻ,DGW,volume_ratio_20,0.0225314962129145,0.0124796055185203
+Bán lẻ,MWG,"close_position,volatility_20",0.0220789838239561,-0.0519177872245186
+Bán lẻ,DGW,"volume_zscore_20,above_ma_200",0.0198805549084667,-0.0100265239967651
+Bán lẻ,MWG,"lower_shadow,momentum_5",0.0198015820494115,-0.0318830061036383
+Bán lẻ,MWG,"lower_shadow,vwap_gap",0.019298838448969,-0.0337192097354215
+Bán lẻ,DGW,"ma_20_gap,vwap_gap",0.0187933807638965,0.0005483729950218
+Bán lẻ,DGW,"volume_ratio_20,above_ma_200",0.0187347545460855,0.0208171242937807
+Bán lẻ,MWG,"lower_shadow,obv_change",0.0187327460730919,-0.0233329179142545
+Bán lẻ,MWG,"gap_open,lower_shadow",0.0180262659559944,-0.0323199413417107
+Bán lẻ,DGW,"upper_shadow,vwap_gap",0.0177147118562037,-0.0055183017863886
+Bán lẻ,DGW,"bb_position,vwap_gap",0.0165203400405337,0.0027854588203931
+Bán lẻ,MWG,"volume_ratio_20,volume_zscore_20",0.0154939350555483,-0.020154836415827
+Bán lẻ,FRT,"volatility_20,obv_change",0.0144445828839168,-0.0762084724000138
+Bán lẻ,MWG,bb_width,0.014066662864471,-0.0041766040506936
+Bán lẻ,FRT,"vwap_gap,obv_change",0.0132917920478468,0.0244557271360001
+Bán lẻ,FRT,obv_change,0.0122475107874214,0.0244557432620661
+Bán lẻ,FRT,"intraday_return,upper_shadow",0.0119256994457281,0.0182239333923445
+Bán lẻ,FRT,vwap_gap,0.0067777084922958,0.0076467062792722
+Bán lẻ,FRT,"upper_shadow,lower_shadow",0.0049670158138654,-0.0369128066038819
+Bán lẻ,FRT,"intraday_return,bb_position",0.0042012700648258,0.0040077581581274
+Bán lẻ,FRT,"intraday_return,bb_zscore",0.0042012700648258,0.0040077581581274
+Bán lẻ,FRT,bb_width,0.0008453929801452,-0.0348440938289615
+Bảo hiểm,BVH,"upper_shadow,lower_shadow",0.0485970345905255,-0.0012528409720713
+Bảo hiểm,BVH,"upper_shadow,volatility_20",0.0480064064399635,0.0056907973479096
+Bảo hiểm,BVH,"ma_20_gap,macd",0.0466551770822047,0.0157943052490193
+Bảo hiểm,BVH,"momentum_5,macd",0.0373490115971677,-0.0263119803244578
+Bảo hiểm,BVH,"upper_shadow,bb_width",0.0357662208023991,0.0213737739004025
+Bảo hiểm,BVH,lower_shadow,0.0356309221996082,0.0182996769880959
+Bảo hiểm,BVH,"atr_gap,bb_width",0.0354790436949844,0.0194720047787793
+Bảo hiểm,BVH,"lower_shadow,obv_change",0.032968487625417,0.020798713127492
+Bảo hiểm,BVH,"volume_ratio_20,upper_shadow",0.031198999069201,-0.036011762214227
+Bảo hiểm,BVH,"upper_shadow,above_ma_200",0.0302362324523551,0.0180467922483682
+Bất động sản,KOS,"bb_width,obv_change",0.1376172706520294,0.0559392245774075
+Bất động sản,KOS,bb_width,0.1327607741291425,0.0478078312053791
+Bất động sản,VHM,"momentum_20,macd",0.124932308192373,-0.0091929143393441
+Bất động sản,VHM,"upper_shadow,ma_20_gap",0.1231448908213728,-0.0228334938458347
+Bất động sản,VHM,"above_ma_200,macd_signal",0.1223749538791311,-0.0054652419576877
+Bất động sản,VHM,"upper_shadow,macd",0.1221795741840567,0.0261716314306568
+Bất động sản,VHM,"ma_20_gap,rolling_max_20_gap",0.1221577582809955,-0.0189279067602874
+Bất động sản,VHM,"volume_zscore_20,macd_hist",0.1199185693308348,-0.0012797069101397
+Bất động sản,VHM,"volume_zscore_20,ma_200_gap",0.1198740746355419,-0.0090675649849145
+Bất động sản,VHM,"atr_gap,ma_200_gap",0.1195127292659571,-0.0553414621615082
+Bất động sản,VHM,"volume_zscore_20,macd",0.1191363387696267,-0.0089808967273785
+Bất động sản,VHM,"momentum_5,rolling_max_20_gap",0.1188456609141159,-0.0020041894883271
+Bất động sản,KOS,obv_change,0.1099002092045723,0.0971829834606449
+Bất động sản,VRE,"momentum_20,rolling_max_20_gap",0.1036852985845091,-0.0430880936981967
+Bất động sản,VRE,"intraday_return,momentum_5",0.1029959716977535,-0.0521426803108957
+Bất động sản,VRE,"momentum_20,bb_position",0.0856032700293966,-0.0410990106540647
+Bất động sản,VRE,"momentum_20,bb_zscore",0.0856032700293966,-0.0410990106540647
+Bất động sản,VRE,"bb_position,macd_signal",0.0832653126668711,-0.0485186311765402
+Bất động sản,VRE,"bb_zscore,macd_signal",0.0832653126668711,-0.0485186311765402
+Bất động sản,VRE,"vwap_gap,macd_hist",0.0829521974158261,-0.0216856204826654
+Bất động sản,VRE,"momentum_5,vwap_gap",0.0821076737437036,-0.0483278918616114
+Bất động sản,VRE,"momentum_20,macd_signal",0.0820898106619356,-0.0509056176942381
+Bất động sản,VRE,"momentum_20,macd",0.0819162000658718,-0.0524656236964555
+Bất động sản,BCM,"volume_ratio_20,upper_shadow",0.0760451035742755,-0.0166597927884986
+Bất động sản,BCM,"volume_ratio_20,bb_width",0.0728650818272701,0.0336478993160914
+Bất động sản,VIC,"upper_shadow,momentum_20",0.0720828428931114,-0.0164899754175202
+Bất động sản,BCM,"volume_ratio_20,macd_signal",0.0719267031848291,0.0102117625664119
+Bất động sản,VIC,"intraday_return,upper_shadow",0.070904498742489,0.0078545006998841
+Bất động sản,SZC,"upper_shadow,volatility_20",0.0701919438765161,-0.0810156317008086
+Bất động sản,DIG,"lower_shadow,momentum_20",0.0696899836673708,0.0339254356710478
+Bất động sản,KOS,"bb_width,vwap_gap",0.0695969924656462,0.0478078425666526
+Bất động sản,KOS,momentum_20,0.0682424869852331,-0.104867528715788
+Bất động sản,KOS,"volume_ratio_20,obv_change",0.0681874728162439,-0.0404872642282954
+Bất động sản,VIC,"ma_200_gap,vwap_gap",0.0659088249528339,-0.0233301598591277
+Bất động sản,DIG,"momentum_20,atr_gap",0.0641694431681817,-0.0273632843214073
+Bất động sản,KOS,gap_open,0.0641048797414743,-0.1136436857189078
+Bất động sản,BCM,"ma_200_gap,macd_signal",0.0640761494131961,-0.0058549254831228
+Bất động sản,VIC,"upper_shadow,momentum_5",0.0639062257343007,0.005964464976379
+Bất động sản,BCM,"volume_ratio_20,volatility_20",0.0630652327275335,0.006976172273671
+Bất động sản,BCM,"upper_shadow,atr_gap",0.0616461467970627,0.0064484228088645
+Bất động sản,DIG,"momentum_20,bb_position",0.0608721947235701,-0.0342630046429102
+Bất động sản,DIG,"momentum_20,bb_zscore",0.0608721947235701,-0.0342630046429102
+Bất động sản,DIG,"atr_gap,above_ma_200",0.0607373189880151,-0.0330435132607203
+Bất động sản,VIC,ma_200_gap,0.0605420146242063,-0.0233303687967951
+Bất động sản,BCM,"volume_ratio_20,gap_open",0.0597086094029267,0.0235437942283945
+Bất động sản,BCM,"upper_shadow,vwap_gap",0.058880140816458,-0.0354853061412865
+Bất động sản,VIC,"upper_shadow,bb_position",0.0587554030089884,-0.0285136985831733
+Bất động sản,VIC,"upper_shadow,bb_zscore",0.0587554030089884,-0.0285136985831733
+Bất động sản,KOS,volume_ratio_20,0.0585432817539683,-0.0514110754204268
+Bất động sản,VIC,"close_position,upper_shadow",0.058453639521379,-0.0326370954634609
+Bất động sản,KOS,"obv_change,macd_signal",0.0581105424553399,-0.0068162258458464
+Bất động sản,HDG,"ma_200_gap,macd_signal",0.0568606687323249,-0.0902981421998072
+Bất động sản,BCM,"volume_zscore_20,upper_shadow",0.0567821199454355,-0.0669762180851485
+Bất động sản,VIC,"ma_200_gap,above_ma_200",0.0562436463039464,-0.0182743434625676
+Bất động sản,KOS,vwap_gap,0.0562328719786324,0.1002666439759318
+Bất động sản,VIC,"volume_zscore_20,upper_shadow",0.0562013573947437,-0.0898312460320678
+Bất động sản,BCM,"volatility_20,macd",0.0542834395875875,-0.012058966118559
+Bất động sản,DIG,"lower_shadow,bb_position",0.0534313329837116,-0.0756794026915046
+Bất động sản,DIG,"lower_shadow,bb_zscore",0.0534313329837116,-0.0756794026915046
+Bất động sản,DIG,"gap_open,ma_200_gap",0.0508992922301032,0.0089596658216879
+Bất động sản,DXG,"upper_shadow,obv_change",0.0502192138150658,-0.0156154835784856
+Bất động sản,DIG,"intraday_return,volatility_20",0.0497340895269765,-0.0399823044268983
+Bất động sản,DIG,"gap_open,momentum_5",0.048697331964669,0.0163357525743242
+Bất động sản,NLG,"bb_width,macd",0.0438790406604888,-0.0108994160454463
+Bất động sản,NLG,"ma_200_gap,bb_width",0.042603886049219,-0.0002470304080535
+Bất động sản,VPI,"volatility_20,bb_width",0.042072644799181,-0.087020972449715
+Bất động sản,NLG,"gap_open,bb_width",0.0418883025645522,0.0178415000312779
+Bất động sản,SIP,"volume_zscore_20,lower_shadow",0.0418712289286545,-0.0695832653449932
+Bất động sản,HDG,"gap_open,rolling_max_20_gap",0.0416365038797901,-0.0432691323294249
+Bất động sản,NLG,"gap_open,macd",0.0414196711308426,-0.0218169896340327
+Bất động sản,DXG,"upper_shadow,vwap_gap",0.0378856868014105,-0.0003941397190423
+Bất động sản,KDH,"momentum_5,bb_width",0.0362777309101817,-0.0101835984371061
+Bất động sản,SIP,"volume_zscore_20,volatility_20",0.036181046812321,-0.0346525874717917
+Bất động sản,KDH,"bb_width,vwap_gap",0.0358702427730347,-0.003607156021562
+Bất động sản,NLG,"above_ma_200,macd",0.0357942363662592,-0.0577050562582197
+Bất động sản,KDH,"atr_gap,bb_width",0.0354771776393586,-0.0216388484696159
+Bất động sản,NLG,"intraday_return,momentum_5",0.0350025276220631,-0.0166845512197932
+Bất động sản,DXG,"gap_open,vwap_gap",0.0348682177238558,-0.0134706585345281
+Bất động sản,NLG,"momentum_20,bb_width",0.0347728922252014,-0.0073646555870259
+Bất động sản,NLG,"intraday_return,gap_open",0.03468973711952,-0.0102170350705903
+Bất động sản,NLG,"volume_ratio_20,bb_width",0.0345788044381943,0.0222724311333032
+Bất động sản,HDG,"rolling_max_20_gap,bb_position",0.033838624921454,-0.0580496471826399
+Bất động sản,HDG,"rolling_max_20_gap,bb_zscore",0.033838624921454,-0.0580496471826399
+Bất động sản,DXG,"intraday_return,upper_shadow",0.033588320005799,0.0028111385008727
+Bất động sản,NLG,"momentum_20,vwap_gap",0.0333443643598949,-0.0166420622449134
+Bất động sản,DXG,"momentum_5,vwap_gap",0.0332468549971217,0.0216306873770958
+Bất động sản,DXG,"upper_shadow,macd",0.0331511380526436,-0.0082910286962625
+Bất động sản,VPI,"volume_zscore_20,above_ma_200",0.0330865209304319,-0.0224039858691689
+Bất động sản,SZC,upper_shadow,0.0325567822190154,-0.0241258567711306
+Bất động sản,HDC,"bb_width,vwap_gap",0.032552588621168,-0.0109869413510788
+Bất động sản,DXG,"ma_200_gap,vwap_gap",0.0322622265418158,-0.0030730508171366
+Bất động sản,DXG,"volatility_20,macd_signal",0.0317618755185418,-0.0077895473085447
+Bất động sản,KDH,"gap_open,atr_gap",0.0316439405259197,-0.0004980336814464
+Bất động sản,HDG,"lower_shadow,obv_change",0.0315744979746173,-0.0537226483927877
+Bất động sản,HDC,"volatility_20,ma_200_gap",0.0315717045409988,-0.0328983858366631
+Bất động sản,HDG,"rolling_max_20_gap,macd_signal",0.0312728786470725,-0.0724210391600583
+Bất động sản,TCH,"atr_gap,ma_20_gap",0.0309849107028746,-0.0315761106993446
+Bất động sản,SIP,"gap_open,vwap_gap",0.0309420526009894,0.001318902670959
+Bất động sản,KBC,"intraday_return,vwap_gap",0.030679752044166,0.0075158901870014
+Bất động sản,HDG,"close_position,atr_gap",0.0306540150782022,-0.0518277998335316
+Bất động sản,HDG,"ma_200_gap,bb_width",0.0305190641441254,-0.0480526206531501
+Bất động sản,TCH,"atr_gap,bb_position",0.0304471060812624,-0.0577893850944839
+Bất động sản,TCH,"atr_gap,bb_zscore",0.0304471060812624,-0.0577893850944839
+Bất động sản,SIP,"upper_shadow,volatility_20",0.0303701287703356,-0.0028607015387618
+Bất động sản,SIP,"gap_open,obv_change",0.0300829863760324,0.0042062647166823
+Bất động sản,SIP,"gap_open,atr_gap",0.0297803878213542,0.0203145336194785
+Bất động sản,DXG,"above_ma_200,vwap_gap",0.0296278614611724,-0.0371339114993971
+Bất động sản,SZC,"close_position,volatility_20",0.0296266395992425,-0.1672390578114821
+Bất động sản,KDH,"bb_width,obv_change",0.0293016096284601,0.0037470240329575
+Bất động sản,KBC,volatility_20,0.0291994743213533,0.0332958465265885
+Bất động sản,HDG,"lower_shadow,macd_signal",0.029011853924956,-0.0896799451869048
+Bất động sản,KBC,"volatility_20,obv_change",0.0289916054018981,0.0391617207761294
+Bất động sản,HDG,"momentum_5,rolling_max_20_gap",0.0289405565660773,-0.0120177136889143
+Bất động sản,SIP,"gap_open,volatility_20",0.0287740741743167,0.0299526506761899
+Bất động sản,PDR,"rolling_max_20_gap,macd",0.0284749006700857,0.0070993960326343
+Bất động sản,SIP,gap_open,0.028315172487072,0.0020905944292904
+Bất động sản,VPI,"above_ma_200,bb_position",0.028126235340175,-0.0162224442870679
+Bất động sản,VPI,"above_ma_200,bb_zscore",0.028126235340175,-0.0162224442870679
+Bất động sản,VPI,volume_zscore_20,0.027880899251981,-0.0351819849857431
+Bất động sản,KBC,"lower_shadow,volatility_20",0.0277929903345833,0.0012477471259224
+Bất động sản,KDH,"upper_shadow,bb_width",0.0277845681150773,-0.0141992738293186
+Bất động sản,KDH,"gap_open,bb_width",0.0277290097499814,0.0014561541208339
+Bất động sản,PDR,"volume_ratio_20,macd_signal",0.0274709907091905,-0.0037429460740212
+Bất động sản,SIP,"volume_zscore_20,atr_gap",0.0273318889556651,-0.04151751764326
+Bất động sản,DXG,"momentum_5,atr_gap",0.0271379932167354,0.0071584648806036
+Bất động sản,HDC,"momentum_20,vwap_gap",0.0268148033771659,-0.0329216075073799
+Bất động sản,VPI,"above_ma_200,vwap_gap",0.0265588937823663,-0.0484657287933436
+Bất động sản,TCH,"gap_open,bb_width",0.0264188309553949,-0.015215267208462
+Bất động sản,SZC,"close_position,upper_shadow",0.026129981842101,-0.1367732477217189
+Bất động sản,VPI,"volume_zscore_20,vwap_gap",0.0260601056458321,-0.0351817847863131
+Bất động sản,SIP,"upper_shadow,vwap_gap",0.0252491848919654,-0.027584452071623
+Bất động sản,SZC,"volatility_20,ma_20_gap",0.0249974545223536,-0.121959972185577
+Bất động sản,HDC,"volume_ratio_20,vwap_gap",0.0249195294743987,-0.052877255208694
+Bất động sản,HDC,"volume_ratio_20,volatility_20",0.0248536537849866,-0.0105794688772244
+Bất động sản,TCH,"gap_open,bb_position",0.0247382928348037,-0.069991227359355
+Bất động sản,TCH,"gap_open,bb_zscore",0.0247382928348037,-0.069991227359355
+Bất động sản,PDR,"volatility_20,macd_signal",0.0246098540609915,-0.0295610740817009
+Bất động sản,SZC,"upper_shadow,vwap_gap",0.0244447095787807,-0.0241257571594082
+Bất động sản,PDR,"volume_zscore_20,macd_signal",0.0240693838353172,-0.0114126392082645
+Bất động sản,HDC,"ma_200_gap,vwap_gap",0.0238568434877837,-0.0482941540337507
+Bất động sản,HDC,"rolling_max_20_gap,macd_signal",0.0236801055965554,-0.0512552944769166
+Bất động sản,HDC,"intraday_return,vwap_gap",0.0236708757653765,-0.0300183491693635
+Bất động sản,KDH,"upper_shadow,vwap_gap",0.0234142761676617,-0.0392016471214988
+Bất động sản,VPI,"volatility_20,bb_position",0.0229359725616331,-0.0247884917745608
+Bất động sản,VPI,"volatility_20,bb_zscore",0.0229359725616331,-0.0247884917745608
+Bất động sản,VPI,"bb_width,vwap_gap",0.0226935503489162,-0.045441399694621
+Bất động sản,PDR,"volume_zscore_20,macd",0.0226641568660393,-0.0214348631256782
+Bất động sản,KBC,"volatility_20,vwap_gap",0.0226517268732139,0.0332958609854785
+Bất động sản,KDH,bb_width,0.0222500315515513,-0.0035403842457162
+Bất động sản,TCH,"atr_gap,ma_200_gap",0.0221818635688111,-0.0512357702987129
+Bất động sản,KDH,"volatility_20,bb_width",0.022089446698852,-0.0205443675287473
+Bất động sản,PDR,"volume_ratio_20,macd",0.0217334188494126,-0.0054423148207578
+Bất động sản,PDR,"volatility_20,macd_hist",0.0211929185679125,-0.0291503782486997
+Bất động sản,PDR,"volatility_20,macd",0.0208692688485384,-0.0246239243077943
+Bất động sản,SZC,"upper_shadow,obv_change",0.020733632666157,-0.0221509859488227
+Bất động sản,HDC,"gap_open,vwap_gap",0.0204565599141833,-0.0476872698364179
+Bất động sản,PDR,"rolling_max_20_gap,macd_signal",0.0198293129950092,-0.0060065094044672
+Bất động sản,HDC,"volatility_20,ma_20_gap",0.0193999039877201,-0.0370833866282482
+Bất động sản,PDR,"volume_ratio_20,upper_shadow",0.0185246982726743,0.0127592275895246
+Bất động sản,SZC,"volume_ratio_20,volume_zscore_20",0.0178057192234705,-0.0862100497458706
+Bất động sản,SJS,"ma_20_gap,vwap_gap",0.0172280275734661,-0.0405093505413456
+Bất động sản,SZC,"volume_ratio_20,macd_signal",0.0169899978173294,-0.1142800082296784
+Bất động sản,KBC,vwap_gap,0.0152298044541394,-0.0025590250079825
+Bất động sản,SZC,"volume_ratio_20,volatility_20",0.0148561318837177,-0.0847982853869593
+Bất động sản,KBC,"volume_ratio_20,volume_zscore_20",0.0146890912304392,-0.0065911691226756
+Bất động sản,KBC,"atr_gap,vwap_gap",0.0141410244379207,-0.0237853165457155
+Bất động sản,TCH,bb_width,0.0137646409373035,-0.0210133659877327
+Bất động sản,KBC,"vwap_gap,obv_change",0.0127714836626072,-0.0012691155293003
+Bất động sản,KBC,close_position,0.0127156120279215,-0.0056102769919761
+Bất động sản,SJS,"bb_position,vwap_gap",0.0121532396830863,-0.0716883485162713
+Bất động sản,SJS,"bb_zscore,vwap_gap",0.0121532396830863,-0.0716883485162713
+Bất động sản,TCH,"bb_width,bb_position",0.0118045501951877,-0.0702459745759322
+Bất động sản,TCH,"bb_width,bb_zscore",0.0118045501951877,-0.0702459745759322
+Bất động sản,SJS,"above_ma_200,bb_position",0.0091352928890278,-0.0636113573838412
+Bất động sản,SJS,"above_ma_200,bb_zscore",0.0091352928890278,-0.0636113573838412
+Bất động sản,SJS,"ma_200_gap,vwap_gap",0.0089846653713948,-0.0096799447791067
+Bất động sản,SJS,bb_width,0.0055153917018568,-0.0262650609288119
+Bất động sản,SJS,"intraday_return,vwap_gap",0.0051960311300116,-0.0134087756243888
+Bất động sản,SJS,"bb_width,bb_position",0.0042127897126287,-0.0566691910259564
+Bất động sản,SJS,"bb_width,bb_zscore",0.0042127897126287,-0.0566691910259564
+Công nghệ Thông tin,CMG,"volume_ratio_20,atr_gap",0.0212551107949885,0.0024109627920956
+Công nghệ Thông tin,CMG,"volatility_20,above_ma_200",0.0191542759295013,-0.0258413780116273
+Công nghệ Thông tin,CMG,"volume_ratio_20,volatility_20",0.01823171328543,-0.0181869638057066
+Công nghệ Thông tin,CMG,"volume_zscore_20,volatility_20",0.0129028835979,-0.0526568416202837
+Công nghệ Thông tin,CMG,"close_position,momentum_20",0.0125127696500715,-0.0030494829030991
+Công nghệ Thông tin,CMG,"volatility_20,bb_width",0.0121463158662373,-0.0401175821191117
+Công nghệ Thông tin,CMG,"close_position,lower_shadow",0.0112084809947577,-0.005558023675086
+Công nghệ Thông tin,CMG,"volume_ratio_20,lower_shadow",0.0111840669320305,-0.030321427861123
+Công nghệ Thông tin,CMG,"close_position,atr_gap",0.0110617645817955,0.024250291729796
+Công nghệ Thông tin,CMG,atr_gap,0.0108117554469007,0.0279801582206976
+Công nghệ Thông tin,FPT,"close_position,vwap_gap",0.0044603260657825,0.0010509783344019
+Công nghệ Thông tin,FPT,"volatility_20,above_ma_200",0.00052137832995,-0.011940007744271
+Công nghệ Thông tin,FPT,"volatility_20,vwap_gap",-0.0021759358789064,-0.0078609279595394
+Công nghệ Thông tin,FPT,close_position,-0.0035437334326138,0.0010510215708545
+Công nghệ Thông tin,FPT,"volume_ratio_20,close_position",-0.0052724712652922,-0.0037632253809403
+Công nghệ Thông tin,FPT,"upper_shadow,bb_width",-0.0053225057960184,-0.0041680237772157
+Công nghệ Thông tin,FPT,"volume_ratio_20,upper_shadow",-0.0056858884407198,-0.0236236072139615
+Công nghệ Thông tin,FPT,"close_position,bb_position",-0.0065134466341481,0.0096529950649727
+Công nghệ Thông tin,FPT,"close_position,bb_zscore",-0.0065134466341481,0.0096529950649727
+Công nghệ Thông tin,FPT,"intraday_return,close_position",-0.0065203047162607,-0.0070977454989022
+Du lịch và Giải trí,SCS,"momentum_20,atr_gap",0.0425867585219396,-0.0243734074013595
+Du lịch và Giải trí,SCS,"lower_shadow,macd_hist",0.0388457390515951,-0.0248223215555967
+Du lịch và Giải trí,SCS,"intraday_return,macd_hist",0.0380585864892094,-0.034994520431278
+Du lịch và Giải trí,SCS,"intraday_return,macd_signal",0.0370183906163051,-0.0201500228524325
+Du lịch và Giải trí,SCS,"momentum_20,volatility_20",0.0367661826101107,-0.0341310646653341
+Du lịch và Giải trí,SCS,"intraday_return,ma_20_gap",0.0367021764039317,-0.0385541923011885
+Du lịch và Giải trí,SCS,"atr_gap,ma_200_gap",0.0366658125291303,-0.0245373757198974
+Du lịch và Giải trí,SCS,"momentum_5,volatility_20",0.0366615374941041,-0.0477123321607138
+Du lịch và Giải trí,SCS,"ma_200_gap,vwap_gap",0.0364902236987657,-0.0188835606727295
+Du lịch và Giải trí,SCS,"momentum_5,rolling_max_20_gap",0.0351091270613037,-0.0200711200157523
+Du lịch và Giải trí,VJC,"close_position,momentum_5",0.0254396483786816,-0.0844296550926844
+Du lịch và Giải trí,VJC,"momentum_5,momentum_20",0.0129498632886133,-0.0935529018089424
+Du lịch và Giải trí,VJC,"close_position,momentum_20",0.011756838366519,-0.0464888902356579
+Du lịch và Giải trí,VJC,"momentum_5,volatility_20",0.0024011787382656,-0.0180121539394246
+Du lịch và Giải trí,VJC,"momentum_5,ma_20_gap",-0.0003685359655067,-0.0848378176809898
+Du lịch và Giải trí,VJC,"momentum_20,volatility_20",-0.0014713399250283,-0.0861628682089314
+Du lịch và Giải trí,VJC,"momentum_20,ma_20_gap",-0.0041783629113902,-0.0774705068511245
+Du lịch và Giải trí,VJC,"momentum_20,above_ma_200",-0.0044086398456992,-0.1172381851560078
+Du lịch và Giải trí,VJC,"momentum_5,atr_gap",-0.0069662677911617,-0.080368513002643
+Du lịch và Giải trí,VJC,"intraday_return,volatility_20",-0.0070788702909891,-0.0457158976185116
+Dầu khí,PLX,"momentum_5,macd",0.077135523413184,0.0021812870145425
+Dầu khí,PLX,"momentum_5,macd_hist",0.0714902935320599,-0.0009463761160541
+Dầu khí,PVD,"close_position,volatility_20",0.065388215594107,-0.0802878731875991
+Dầu khí,PVD,"intraday_return,gap_open",0.0650468572972992,-0.0359803899755253
+Dầu khí,PLX,"ma_20_gap,ma_200_gap",0.059900020119084,0.0019495679825201
+Dầu khí,PVD,"upper_shadow,vwap_gap",0.0581031089270371,0.0024084464096606
+Dầu khí,PVD,"volume_ratio_20,upper_shadow",0.0579521288936933,-0.033900174953837
+Dầu khí,PVD,"upper_shadow,bb_width",0.0531479653918443,-0.0462210960747255
+Dầu khí,PVD,"volatility_20,above_ma_200",0.052656628374719,-0.0075842600913658
+Dầu khí,PVD,"gap_open,close_position",0.051693734746683,-0.0285528750487029
+Dầu khí,PLX,"momentum_20,macd_signal",0.0514462256953286,-0.0114930227324652
+Dầu khí,PVD,"gap_open,momentum_20",0.0494803226011398,-0.0088548079829737
+Dầu khí,PLX,"volume_zscore_20,bb_position",0.0486063584310326,-0.0307003990685019
+Dầu khí,PLX,"volume_zscore_20,bb_zscore",0.0486063584310326,-0.0307003990685019
+Dầu khí,PVD,"volume_zscore_20,upper_shadow",0.048001259172688,-0.0678613160936638
+Dầu khí,PLX,"ma_20_gap,macd_signal",0.0477362315398047,-0.0056338537743094
+Dầu khí,PVD,"volume_ratio_20,obv_change",0.0470674955743511,-0.0101107366415811
+Dầu khí,PLX,rolling_max_20_gap,0.0469239122328372,-0.0127179139070174
+Dầu khí,PLX,"momentum_5,macd_signal",0.0449170943653639,-0.0282395330195086
+Dầu khí,PLX,"intraday_return,momentum_20",0.0389895946684198,-0.0114142957819782
+Dịch vụ tài chính,VIX,"volume_zscore_20,macd",0.0777623824459714,0.0395556502395315
+Dịch vụ tài chính,VIX,"close_position,macd_hist",0.0770298901638817,0.0217520405907258
+Dịch vụ tài chính,VIX,"intraday_return,macd",0.0747223056497462,0.0318515834231156
+Dịch vụ tài chính,VIX,"bb_position,macd_hist",0.0727444906821033,0.0377442912349329
+Dịch vụ tài chính,VIX,"bb_zscore,macd_hist",0.0727444906821033,0.0377442912349329
+Dịch vụ tài chính,VIX,"lower_shadow,macd",0.07246470589324,0.0248413189332317
+Dịch vụ tài chính,VIX,"close_position,macd",0.0711799480101122,0.0527580639917066
+Dịch vụ tài chính,VIX,"obv_change,macd_hist",0.0695906012809556,0.0506957534489896
+Dịch vụ tài chính,VIX,"lower_shadow,macd_hist",0.0692503464187813,0.0266703377478182
+Dịch vụ tài chính,VIX,"rolling_max_20_gap,macd_hist",0.0690160421935045,0.0630445526426773
+Dịch vụ tài chính,BSI,"close_position,upper_shadow",0.0548282635907371,-0.0808406276066715
+Dịch vụ tài chính,BSI,"upper_shadow,above_ma_200",0.0508595496846163,-0.0486704497595349
+Dịch vụ tài chính,BSI,"upper_shadow,momentum_20",0.0478488376834763,-0.053005613784067
+Dịch vụ tài chính,BSI,"intraday_return,upper_shadow",0.0469964939705301,-0.0512058948622053
+Dịch vụ tài chính,BSI,"intraday_return,close_position",0.046268131522966,-0.0322238314801892
+Dịch vụ tài chính,VCI,"close_position,obv_change",0.0449172915702958,-0.0098690146143884
+Dịch vụ tài chính,BSI,"close_position,momentum_20",0.044777413318677,-0.0741436752867139
+Dịch vụ tài chính,BSI,"upper_shadow,ma_20_gap",0.0439701329707985,-0.04893384482417
+Dịch vụ tài chính,BSI,"volume_zscore_20,upper_shadow",0.0419793418979005,-0.0270809916049279
+Dịch vụ tài chính,VCI,intraday_return,0.0384691604233936,-0.0128281005084018
+Dịch vụ tài chính,BSI,"upper_shadow,vwap_gap",0.0377360949726685,-0.0533036742397938
+Dịch vụ tài chính,BSI,upper_shadow,0.0376046156399751,-0.0589368266997689
+Dịch vụ tài chính,VCI,close_position,0.0373616539754199,-0.0416669549365589
+Dịch vụ tài chính,HCM,"volume_zscore_20,upper_shadow",0.036449314559157,-0.0227635530501215
+Dịch vụ tài chính,FTS,"lower_shadow,volatility_20",0.0322535879666058,-0.046564280150861
+Dịch vụ tài chính,CTS,"volume_ratio_20,lower_shadow",0.0321270464996245,-0.0153797127235963
+Dịch vụ tài chính,VCI,"close_position,vwap_gap",0.0300917942028361,-0.0416669209083242
+Dịch vụ tài chính,CTS,"volume_zscore_20,gap_open",0.0284347631219542,-0.0104452158120238
+Dịch vụ tài chính,VCI,"momentum_5,vwap_gap",0.0278661327294291,-0.0112615328135123
+Dịch vụ tài chính,VCI,"intraday_return,obv_change",0.0278194386496389,0.0043135175436181
+Dịch vụ tài chính,VCI,"ma_20_gap,macd_hist",0.0275904140816795,-0.0808390613359428
+Dịch vụ tài chính,EVF,"ma_200_gap,bb_width",0.0274152497007813,-0.0202704728044949
+Dịch vụ tài chính,CTS,"atr_gap,bb_position",0.0270293870224576,-0.0011947235993599
+Dịch vụ tài chính,CTS,"atr_gap,bb_zscore",0.0270293870224576,-0.0011947235993599
+Dịch vụ tài chính,FTS,"volume_ratio_20,volatility_20",0.0265908539404888,-0.0238911393000074
+Dịch vụ tài chính,VCI,"intraday_return,vwap_gap",0.0264477897333188,-0.0128281036425812
+Dịch vụ tài chính,EVF,"volatility_20,ma_200_gap",0.0260996331559469,-0.0316692279446568
+Dịch vụ tài chính,EVF,"close_position,bb_position",0.0258292802390636,-0.0178114235963977
+Dịch vụ tài chính,EVF,"close_position,bb_zscore",0.0258292802390636,-0.0178114235963977
+Dịch vụ tài chính,CTS,"volume_zscore_20,vwap_gap",0.02534061407299,0.0081561575385369
+Dịch vụ tài chính,VCI,"close_position,momentum_20",0.025029200177243,-0.013561643807525
+Dịch vụ tài chính,VCI,"vwap_gap,obv_change",0.0247895732677702,0.0060904813664185
+Dịch vụ tài chính,CTS,"atr_gap,obv_change",0.0236933756504779,-0.0108231521369792
+Dịch vụ tài chính,VND,"volatility_20,macd",0.0233298027765573,-0.0356320487000545
+Dịch vụ tài chính,CTS,"bb_position,vwap_gap",0.0231169032803751,-0.0086391331400184
+Dịch vụ tài chính,CTS,"bb_zscore,vwap_gap",0.0231169032803751,-0.0086391331400184
+Dịch vụ tài chính,CTS,"volume_zscore_20,upper_shadow",0.0229449639036437,-0.0270859135079823
+Dịch vụ tài chính,VND,"volatility_20,macd_hist",0.0225959457569681,-0.0434780582876719
+Dịch vụ tài chính,EVF,"ma_200_gap,rolling_max_20_gap",0.0223343527436313,-0.0600404471909994
+Dịch vụ tài chính,CTS,"gap_open,momentum_5",0.0218798568084379,-0.0015245142116468
+Dịch vụ tài chính,VND,"intraday_return,vwap_gap",0.0211744075106752,-0.0234556486291273
+Dịch vụ tài chính,SSI,"momentum_20,macd_signal",0.0199654833548893,-0.0491686839898608
+Dịch vụ tài chính,VND,"volatility_20,bb_width",0.0194910188567903,-0.0287662009880755
+Dịch vụ tài chính,EVF,"volume_ratio_20,ma_200_gap",0.0192350691751886,-0.0217133351142304
+Dịch vụ tài chính,EVF,"momentum_5,volatility_20",0.018999268032381,-0.0173017301290734
+Dịch vụ tài chính,VND,"close_position,ma_20_gap",0.0187020644418158,-0.0273393016169367
+Dịch vụ tài chính,FTS,"lower_shadow,bb_width",0.0181785072340193,0.03353014145458
+Dịch vụ tài chính,VND,"volume_ratio_20,macd_signal",0.017835855159255,-0.0099402876588075
+Dịch vụ tài chính,VND,"close_position,macd_signal",0.0178330084812177,-0.0133231028732903
+Dịch vụ tài chính,VND,"vwap_gap,macd_signal",0.0175818821749862,0.0048268946455166
+Dịch vụ tài chính,EVF,"atr_gap,ma_200_gap",0.0174651921042431,-0.0391422806746262
+Dịch vụ tài chính,VND,"volume_zscore_20,macd_signal",0.0173370402458719,-0.0314727372864458
+Dịch vụ tài chính,VND,"momentum_5,rolling_max_20_gap",0.0160403910871843,-0.0054006244922386
+Dịch vụ tài chính,HCM,"volume_ratio_20,upper_shadow",0.0160063721376616,-0.0063622818273161
+Dịch vụ tài chính,EVF,"obv_change,macd_hist",0.0149862973055812,-0.0663176571555033
+Dịch vụ tài chính,FTS,"upper_shadow,volatility_20",0.0147285094561636,-0.071517816188465
+Dịch vụ tài chính,EVF,"upper_shadow,atr_gap",0.0143294568433699,-0.0117402471437522
+Dịch vụ tài chính,FTS,"volume_ratio_20,lower_shadow",0.0140378273680579,0.0505435649013565
+Dịch vụ tài chính,HCM,"vwap_gap,obv_change",0.0136459373651873,0.0163094777519632
+Dịch vụ tài chính,HCM,"volume_ratio_20,volume_zscore_20",0.0122772881253602,-0.0035498155565205
+Dịch vụ tài chính,SSI,gap_open,0.0122459734399309,-0.041076854336342
+Dịch vụ tài chính,HCM,vwap_gap,0.0120159211302373,0.0166277120528693
+Dịch vụ tài chính,SSI,"close_position,ma_20_gap",0.0117805073737888,-0.0485837113696261
+Dịch vụ tài chính,HCM,"volume_zscore_20,intraday_return",0.0117132999508599,0.0134327601292796
+Dịch vụ tài chính,HCM,"volume_ratio_20,obv_change",0.0088165675223677,0.0230136219566657
+Dịch vụ tài chính,SSI,"rolling_max_20_gap,bb_position",0.0079174179263582,-0.0291927437590264
+Dịch vụ tài chính,SSI,"rolling_max_20_gap,bb_zscore",0.0079174179263582,-0.0291927437590264
+Dịch vụ tài chính,FTS,"above_ma_200,obv_change",0.0074909062192392,0.0052472007022034
+Dịch vụ tài chính,SSI,"close_position,rolling_max_20_gap",0.0072494758503174,-0.0003695486722001
+Dịch vụ tài chính,FTS,obv_change,0.0071593812240045,0.0446521927711429
+Dịch vụ tài chính,HCM,volume_ratio_20,0.0070059391880203,0.0269289252118496
+Dịch vụ tài chính,SSI,"rolling_max_20_gap,obv_change",0.006686427237779,-0.0143384669019415
+Dịch vụ tài chính,SSI,"intraday_return,vwap_gap",0.0061629583165503,-0.0344131368125399
+Dịch vụ tài chính,FTS,"volatility_20,bb_width",0.0057270961623208,0.0057710944769495
+Dịch vụ tài chính,FTS,"intraday_return,bb_width",0.0055343311582849,-0.0442204081681127
+Dịch vụ tài chính,FTS,"volume_ratio_20,obv_change",0.0043443533204801,0.0440784018143844
+Dịch vụ tài chính,SSI,"gap_open,lower_shadow",0.0043384083050487,-0.0228016803496633
+Dịch vụ tài chính,SSI,"gap_open,vwap_gap",0.0040775653998929,-0.0410768827608649
+Dịch vụ tài chính,HCM,"volume_zscore_20,close_position",0.0040274417538255,0.0057375289029691
+Dịch vụ tài chính,HCM,"volume_ratio_20,intraday_return",0.0001585200727289,0.003648206087267
+Hàng & Dịch vụ Công nghiệp,PVT,"bb_width,bb_position",0.09177112637727,-0.0332784454828332
+Hàng & Dịch vụ Công nghiệp,PVT,"bb_width,bb_zscore",0.09177112637727,-0.0332784454828332
+Hàng & Dịch vụ Công nghiệp,PVT,"ma_20_gap,bb_width",0.0771965170781849,0.0050741620654525
+Hàng & Dịch vụ Công nghiệp,PVT,"intraday_return,bb_position",0.0756926720685194,-0.0038194863003131
+Hàng & Dịch vụ Công nghiệp,PVT,"intraday_return,bb_zscore",0.0756926720685194,-0.0038194863003131
+Hàng & Dịch vụ Công nghiệp,PVT,"ma_20_gap,rolling_max_20_gap",0.0736531996222024,0.0029967551807683
+Hàng & Dịch vụ Công nghiệp,PVT,"upper_shadow,bb_position",0.073413553121183,-0.0546172982351644
+Hàng & Dịch vụ Công nghiệp,PVT,"upper_shadow,bb_zscore",0.073413553121183,-0.0546172982351644
+Hàng & Dịch vụ Công nghiệp,PVT,"intraday_return,bb_width",0.0699028326631491,-0.0525052226057416
+Hàng & Dịch vụ Công nghiệp,PVT,"momentum_20,bb_width",0.0695282878972841,0.0127630414339772
+Hàng & Dịch vụ Công nghiệp,VSC,"ma_20_gap,rolling_max_20_gap",0.0692330148159704,-0.0124933712682111
+Hàng & Dịch vụ Công nghiệp,VSC,"momentum_20,ma_20_gap",0.0615028101175573,-0.0256598804255379
+Hàng & Dịch vụ Công nghiệp,VSC,"momentum_20,bb_width",0.0591096157725221,-0.0374115530187997
+Hàng & Dịch vụ Công nghiệp,VSC,"ma_200_gap,vwap_gap",0.057049856387923,0.0044748407506614
+Hàng & Dịch vụ Công nghiệp,VSC,"momentum_20,rolling_max_20_gap",0.0554097339026825,-0.0531462332484324
+Hàng & Dịch vụ Công nghiệp,VSC,"ma_20_gap,bb_width",0.0530887189917739,-0.0309425548030122
+Hàng & Dịch vụ Công nghiệp,VSC,"rolling_max_20_gap,bb_width",0.0530808425619153,-0.0631530525628851
+Hàng & Dịch vụ Công nghiệp,VSC,"bb_width,obv_change",0.0526975363158298,-0.1463757987493239
+Hàng & Dịch vụ Công nghiệp,VSC,"ma_200_gap,rolling_max_20_gap",0.0526459908661508,-0.0286272183433391
+Hàng & Dịch vụ Công nghiệp,VSC,"gap_open,vwap_gap",0.0521494524028907,-0.018585858067984
+Hàng & Dịch vụ Công nghiệp,GEX,"volatility_20,bb_width",0.0464344733896788,-0.0468896958999947
+Hàng & Dịch vụ Công nghiệp,VTP,"atr_gap,bb_position",0.0423083449195555,0.0088114323690973
+Hàng & Dịch vụ Công nghiệp,VTP,"atr_gap,bb_zscore",0.0423083449195555,0.0088114323690973
+Hàng & Dịch vụ Công nghiệp,GEX,"above_ma_200,obv_change",0.0392062392201395,-0.0122566596188311
+Hàng & Dịch vụ Công nghiệp,GEX,"intraday_return,gap_open",0.0390334869047193,0.0212815677394714
+Hàng & Dịch vụ Công nghiệp,GEX,"momentum_5,above_ma_200",0.0387358179823097,-0.0129889242849077
+Hàng & Dịch vụ Công nghiệp,GEX,"momentum_5,momentum_20",0.0350192631229147,0.0186817750205704
+Hàng & Dịch vụ Công nghiệp,GEX,"close_position,ma_20_gap",0.0350063197625079,-0.0102114709002156
+Hàng & Dịch vụ Công nghiệp,GEX,"close_position,bb_position",0.0343334947503002,-0.0211947566967007
+Hàng & Dịch vụ Công nghiệp,GEX,"close_position,bb_zscore",0.0343334947503002,-0.0211947566967007
+Hàng & Dịch vụ Công nghiệp,GEX,ma_200_gap,0.0342309811336002,-0.027966043147233
+Hàng & Dịch vụ Công nghiệp,GEX,"gap_open,momentum_5",0.032926034325288,-0.0237456085877403
+Hàng & Dịch vụ Công nghiệp,VTP,"gap_open,vwap_gap",0.0317965407816408,-0.0431515251096188
+Hàng & Dịch vụ Công nghiệp,VTP,"volatility_20,vwap_gap",0.0283896654360077,0.0096333572352289
+Hàng & Dịch vụ Công nghiệp,VTP,"bb_position,vwap_gap",0.0279500047028211,-0.0163876797189947
+Hàng & Dịch vụ Công nghiệp,VTP,"bb_zscore,vwap_gap",0.0279500047028211,-0.0163876797189947
+Hàng & Dịch vụ Công nghiệp,VTP,"volume_zscore_20,vwap_gap",0.0271851035856768,-0.0175941824914667
+Hàng & Dịch vụ Công nghiệp,VTP,"upper_shadow,atr_gap",0.0270923366571858,-0.0227414306791866
+Hàng & Dịch vụ Công nghiệp,VTP,"volume_ratio_20,vwap_gap",0.0253773544241633,0.0029261429181729
+Hàng & Dịch vụ Công nghiệp,VTP,"atr_gap,vwap_gap",0.0227324680960431,0.0171862390578059
+Hàng & Dịch vụ Công nghiệp,GMD,"intraday_return,ma_200_gap",0.0174908385060413,-0.0004146185963564
+Hàng & Dịch vụ Công nghiệp,GMD,"intraday_return,momentum_5",0.0153500674216326,-0.0176842370641168
+Hàng & Dịch vụ Công nghiệp,GMD,"close_position,upper_shadow",0.0149737878501704,-0.0542685283440058
+Hàng & Dịch vụ Công nghiệp,GMD,"intraday_return,ma_20_gap",0.0149695112035977,-0.0110823361714307
+Hàng & Dịch vụ Công nghiệp,GMD,"upper_shadow,momentum_5",0.013395299149309,-0.0303753366403354
+Hàng & Dịch vụ Công nghiệp,GMD,"ma_200_gap,bb_position",0.0125838987104563,-0.1120404996134865
+Hàng & Dịch vụ Công nghiệp,GMD,"ma_200_gap,bb_zscore",0.0125838987104563,-0.1120404996134865
+Hàng & Dịch vụ Công nghiệp,GMD,"momentum_5,ma_20_gap",0.0118173774706872,-0.0073551555002788
+Hàng & Dịch vụ Công nghiệp,GMD,"intraday_return,atr_gap",0.0094444840117657,-0.0027838934428419
+Hàng & Dịch vụ Công nghiệp,GMD,"momentum_20,rolling_max_20_gap",0.0089736056965683,-0.0236794929254482
+Hàng cá nhân & Gia dụng,TLG,"intraday_return,vwap_gap",0.0536463869332074,0.0554183216630129
+Hàng cá nhân & Gia dụng,TLG,"ma_200_gap,vwap_gap",0.0480192578109879,-0.0558312792262796
+Hàng cá nhân & Gia dụng,TLG,"close_position,vwap_gap",0.0477431768542845,-0.0130572124586691
+Hàng cá nhân & Gia dụng,TLG,"atr_gap,macd_signal",0.0440122479638833,-0.0015808537901453
+Hàng cá nhân & Gia dụng,TLG,"atr_gap,bb_position",0.0409375617289494,-0.0279886859935105
+Hàng cá nhân & Gia dụng,TLG,"atr_gap,bb_zscore",0.0409375617289494,-0.0279886859935105
+Hàng cá nhân & Gia dụng,TLG,"intraday_return,macd_signal",0.0395692568948523,-0.0318436134867365
+Hàng cá nhân & Gia dụng,TLG,momentum_20,0.0380737891928483,0.0104459839262649
+Hàng cá nhân & Gia dụng,TLG,"momentum_20,obv_change",0.0377910326708867,0.0099713242427719
+Hàng cá nhân & Gia dụng,TLG,"momentum_20,vwap_gap",0.0371044640510768,0.0252763540794377
+Hàng cá nhân & Gia dụng,PNJ,"close_position,atr_gap",0.0327533929996959,-0.0369673952036815
+Hàng cá nhân & Gia dụng,PNJ,"gap_open,bb_width",0.0294004815494123,-0.0443533077906417
+Hàng cá nhân & Gia dụng,PNJ,"close_position,bb_width",0.0250434902798054,-0.0160367716163087
+Hàng cá nhân & Gia dụng,PNJ,"gap_open,close_position",0.0238008872399824,-0.0077555815848848
+Hàng cá nhân & Gia dụng,PNJ,"volume_zscore_20,close_position",0.0230912561834978,-0.0409412327044702
+Hàng cá nhân & Gia dụng,PNJ,vwap_gap,0.0212960104420739,0.0051708280041059
+Hàng cá nhân & Gia dụng,PNJ,"close_position,vwap_gap",0.0206084561843662,-0.0262161846396726
+Hàng cá nhân & Gia dụng,PNJ,gap_open,0.018497026798777,-0.0135853895973336
+Hàng cá nhân & Gia dụng,PNJ,"obv_change,macd_hist",0.016634531103458,-0.0499704163280467
+Hàng cá nhân & Gia dụng,PNJ,bb_width,0.0149890713932737,-0.0366270736046636
+Hóa chất,PHR,"volatility_20,bb_position",0.0855378979807854,-0.0210245222053186
+Hóa chất,PHR,"volatility_20,bb_zscore",0.0855378979807854,-0.0210245222053186
+Hóa chất,PHR,"volatility_20,ma_200_gap",0.0842502051210769,-0.0558800895675715
+Hóa chất,PHR,"upper_shadow,volatility_20",0.0823772790383206,-0.0236587668844843
+Hóa chất,PHR,"volume_ratio_20,macd",0.0786350712573641,-0.0677892712027612
+Hóa chất,PHR,"volatility_20,ma_20_gap",0.0774561044712842,-0.0397078481053079
+Hóa chất,PHR,"volume_ratio_20,macd_hist",0.0758585741223946,-0.0823130960503104
+Hóa chất,PHR,"volume_zscore_20,macd",0.0756957551812946,-0.0820808841126361
+Hóa chất,PHR,"gap_open,close_position",0.0740478342403591,-0.0297604075602744
+Hóa chất,PHR,"volatility_20,macd_hist",0.0730028825508533,-0.0992873373914986
+Hóa chất,DGC,"ma_20_gap,ma_200_gap",0.0674521180698541,0.003634824500963
+Hóa chất,DCM,"close_position,rolling_max_20_gap",0.0565469442185029,-0.0393774643723445
+Hóa chất,DCM,"rolling_max_20_gap,obv_change",0.056429923692656,-0.0192390405067721
+Hóa chất,DCM,rolling_max_20_gap,0.0562101777515778,-0.0178431346076626
+Hóa chất,DGC,"momentum_5,above_ma_200",0.0561615280380076,0.0265013058364251
+Hóa chất,DCM,"gap_open,rolling_max_20_gap",0.0559845632991914,-0.0553587031502385
+Hóa chất,DGC,"above_ma_200,bb_position",0.0509339465348255,0.0059636162478082
+Hóa chất,DGC,"above_ma_200,bb_zscore",0.0509339465348255,0.0059636162478082
+Hóa chất,DCM,"intraday_return,rolling_max_20_gap",0.0494346500976469,-0.0152304690408526
+Hóa chất,DCM,"momentum_5,rolling_max_20_gap",0.0487829139486191,-0.0353578818981294
+Hóa chất,DCM,"intraday_return,close_position",0.0485408209905395,-0.0751218768567481
+Hóa chất,GVR,"volatility_20,macd_signal",0.0459712317969496,-0.0401211088148774
+Hóa chất,DCM,"intraday_return,lower_shadow",0.0454467082384496,-0.053708396994242
+Hóa chất,DCM,"lower_shadow,rolling_max_20_gap",0.0451494524817728,-0.0358830233831128
+Hóa chất,GVR,"momentum_5,volatility_20",0.0441574970551329,-0.068611432829075
+Hóa chất,DPM,"volatility_20,bb_width",0.0425780706403157,-0.0043952831357345
+Hóa chất,DCM,"rolling_max_20_gap,bb_width",0.0420388996386212,-0.0418620595392285
+Hóa chất,DPM,"volume_zscore_20,bb_width",0.0414278694240413,-0.0069327457983614
+Hóa chất,GVR,"volume_ratio_20,momentum_5",0.040168815908399,-0.0188690671669411
+Hóa chất,DPM,"volume_ratio_20,volatility_20",0.0400918564019039,0.0324412019144284
+Hóa chất,GVR,"volatility_20,obv_change",0.0397254356566899,-0.0153255791279409
+Hóa chất,DPM,"above_ma_200,bb_width",0.0375627073436662,0.0035831117200298
+Hóa chất,DPM,"volume_ratio_20,bb_width",0.0375401030366636,-0.0003533074812691
+Hóa chất,GVR,volatility_20,0.0374333905640882,-0.016231525068062
+Hóa chất,GVR,"momentum_5,vwap_gap",0.0363730678654277,-0.0188055844823382
+Hóa chất,DPM,"close_position,volatility_20",0.0353197084337865,0.0264647280644358
+Hóa chất,GVR,"ma_200_gap,macd_hist",0.0352633490035718,-0.0364749454251913
+Hóa chất,DPM,"atr_gap,above_ma_200",0.0345525759882534,0.0249899336589394
+Hóa chất,DPM,"volume_ratio_20,above_ma_200",0.0341895775556737,0.0153538121646555
+Hóa chất,DGC,"above_ma_200,bb_width",0.0338706723372314,0.005807222020304
+Hóa chất,DPM,"volume_zscore_20,bb_position",0.0337363191981642,0.0145841027906813
+Hóa chất,DPM,"volume_zscore_20,bb_zscore",0.0337363191981642,0.0145841027906813
+Hóa chất,GVR,"volume_ratio_20,volatility_20",0.0313820228395934,-0.0392232404495151
+Hóa chất,DGC,"gap_open,above_ma_200",0.0313708477893198,0.0269282934604367
+Hóa chất,GVR,"atr_gap,volatility_20",0.0310417233972404,-0.038712340717157
+Hóa chất,DGC,"volatility_20,bb_width",0.030068392551411,-0.0156719323380416
+Hóa chất,DGC,bb_width,0.028791535686432,-0.0044584168331736
+Hóa chất,DGC,"bb_width,obv_change",0.0266963348337333,-0.0028725139377014
+Hóa chất,DGC,"volatility_20,above_ma_200",0.0263850563219145,-0.0149176959711272
+Hóa chất,GVR,"ma_200_gap,macd",0.025546448305047,-0.0276586725143166
+Ngân hàng,BID,"intraday_return,close_position",0.0601710856595871,-0.0781601708959014
+Ngân hàng,TPB,"volatility_20,vwap_gap",0.0557453591191305,0.0554162977888937
+Ngân hàng,VCB,"gap_open,upper_shadow",0.0512017393629206,-0.0288415418886271
+Ngân hàng,MBB,"intraday_return,momentum_5",0.050190114197595,-0.0601199333720434
+Ngân hàng,HDB,"intraday_return,momentum_20",0.0501489075655274,-0.0369731781456699
+Ngân hàng,MBB,"volume_zscore_20,ma_200_gap",0.049016891630517,-0.0586801304907114
+Ngân hàng,TPB,"lower_shadow,volatility_20",0.0458843079637405,-0.0176074655662255
+Ngân hàng,MBB,"intraday_return,vwap_gap",0.0457456540565074,-0.0334730779210488
+Ngân hàng,MBB,"volume_ratio_20,ma_200_gap",0.0455657651685398,-0.0383606594381404
+Ngân hàng,CTG,"ma_200_gap,macd_signal",0.0453168099379618,-0.0308567148224836
+Ngân hàng,MBB,"momentum_5,above_ma_200",0.0451672981607165,-0.0542481059878336
+Ngân hàng,TPB,"lower_shadow,vwap_gap",0.0447672875762225,-0.0047633971661529
+Ngân hàng,HDB,"intraday_return,momentum_5",0.0436467714588925,-0.0524307773797552
+Ngân hàng,MBB,"intraday_return,ma_20_gap",0.0435026516592368,-0.0692837438883664
+Ngân hàng,BID,"close_position,upper_shadow",0.0430732467757223,-0.1204922204754084
+Ngân hàng,MBB,"momentum_5,vwap_gap",0.0430490612370311,-0.0382733391353864
+Ngân hàng,BID,"close_position,ma_200_gap",0.0426410229966324,-0.0786305897543602
+Ngân hàng,CTG,"close_position,vwap_gap",0.0426016816247729,0.019965197970858
+Ngân hàng,MBB,"volume_zscore_20,rolling_max_20_gap",0.0425233399348885,-0.0634135634969323
+Ngân hàng,MBB,"momentum_5,obv_change",0.0418678487265493,-0.0458217472376643
+Ngân hàng,SHB,"upper_shadow,lower_shadow",0.0418109298242316,-0.1236298847108527
+Ngân hàng,MBB,"volume_zscore_20,momentum_5",0.0417617700871491,-0.0897088501756269
+Ngân hàng,HDB,"intraday_return,vwap_gap",0.0412912430739046,-0.0113249688397687
+Ngân hàng,BID,"close_position,rolling_max_20_gap",0.0401566284235286,-0.0650225445259375
+Ngân hàng,TPB,volatility_20,0.040111075111876,0.0554162840452401
+Ngân hàng,VCB,"intraday_return,vwap_gap",0.040097828919367,0.0625459432215366
+Ngân hàng,TPB,"lower_shadow,obv_change",0.0398341015479709,-0.007635964292934
+Ngân hàng,BID,"close_position,obv_change",0.0398004080127175,-0.0390091704268431
+Ngân hàng,HDB,intraday_return,0.0395683196658982,-0.0113248647869572
+Ngân hàng,BID,"close_position,vwap_gap",0.039034783841482,-0.0388385503357213
+Ngân hàng,SHB,"momentum_20,volatility_20",0.0387853762373864,-0.0892188243791394
+Ngân hàng,TPB,"lower_shadow,bb_position",0.0385502485271174,-0.0461950148158285
+Ngân hàng,TPB,"lower_shadow,bb_zscore",0.0385502485271174,-0.0461950148158285
+Ngân hàng,SHB,"volume_ratio_20,lower_shadow",0.0382994577827974,-0.1481504677283862
+Ngân hàng,TPB,lower_shadow,0.0378993154568386,-0.004763500172711
+Ngân hàng,VIB,"atr_gap,macd_signal",0.037805958451341,-0.0762928998540457
+Ngân hàng,BID,"close_position,momentum_5",0.0376737007334233,-0.0666377183381048
+Ngân hàng,STB,"intraday_return,bb_position",0.0372527787067495,-0.0129824799824755
+Ngân hàng,STB,"intraday_return,bb_zscore",0.0372527787067495,-0.0129824799824755
+Ngân hàng,BID,"upper_shadow,lower_shadow",0.0370795435359192,-0.0932362381165996
+Ngân hàng,TPB,"atr_gap,vwap_gap",0.0369939229472583,0.0315715891669313
+Ngân hàng,BID,close_position,0.0369158289286032,-0.0388386347882245
+Ngân hàng,SHB,"gap_open,lower_shadow",0.0358148513894006,-0.1178872733585354
+Ngân hàng,BID,"close_position,lower_shadow",0.0352828795929044,-0.0454632510760528
+Ngân hàng,SHB,"volatility_20,above_ma_200",0.0349679659452236,-0.1589820470165781
+Ngân hàng,TPB,"volatility_20,obv_change",0.0348265390631872,0.0495099517540517
+Ngân hàng,CTG,"volume_ratio_20,vwap_gap",0.0345782681722551,0.0203847865570369
+Ngân hàng,SHB,"volume_ratio_20,volatility_20",0.0341362578669465,-0.1525173073038774
+Ngân hàng,SHB,"lower_shadow,volatility_20",0.0340704008425437,-0.1082046614226499
+Ngân hàng,SHB,"lower_shadow,bb_width",0.0337287330154545,-0.0899334252765207
+Ngân hàng,SHB,"upper_shadow,obv_change",0.0321401366828537,-0.1190367860242131
+Ngân hàng,STB,"above_ma_200,rolling_max_20_gap",0.0319573618639644,0.0161246743489108
+Ngân hàng,TCB,"above_ma_200,vwap_gap",0.0316234740575965,0.0562946459870656
+Ngân hàng,ACB,"momentum_20,ma_200_gap",0.0313784678973945,-0.0170646140873176
+Ngân hàng,SHB,"lower_shadow,vwap_gap",0.0312726105114394,-0.1044041757207032
+Ngân hàng,ACB,"ma_20_gap,above_ma_200",0.0309944919655283,0.0080959927443772
+Ngân hàng,VIB,"atr_gap,bb_width",0.0308186315715067,-0.041059597500868
+Ngân hàng,EIB,"intraday_return,rolling_max_20_gap",0.0305142872317257,-0.0040656024229079
+Ngân hàng,HDB,"momentum_5,atr_gap",0.0295411433999992,-0.0565830747842395
+Ngân hàng,HDB,"momentum_5,ma_20_gap",0.0289250642556817,-0.0613768216919603
+Ngân hàng,ACB,"ma_200_gap,above_ma_200",0.0285330276898944,0.0097091134822149
+Ngân hàng,TCB,"volatility_20,vwap_gap",0.0282331089694065,0.0179907911875769
+Ngân hàng,STB,"above_ma_200,bb_position",0.0276856709908656,-0.0406555387831961
+Ngân hàng,STB,"above_ma_200,bb_zscore",0.0276856709908656,-0.0406555387831961
+Ngân hàng,VCB,"close_position,upper_shadow",0.0274653340470222,0.0302808624348306
+Ngân hàng,TCB,"upper_shadow,vwap_gap",0.0274345693147017,0.0225736534241942
+Ngân hàng,STB,rolling_max_20_gap,0.0271970708103233,0.0466801491004911
+Ngân hàng,STB,"rolling_max_20_gap,obv_change",0.0269142304474684,0.0417020761723577
+Ngân hàng,EIB,"intraday_return,momentum_5",0.0266609451813447,-0.0049826399163706
+Ngân hàng,HDB,"intraday_return,gap_open",0.0263441546050345,0.0010824788884841
+Ngân hàng,VIB,vwap_gap,0.0263081132249792,-0.0635971050558033
+Ngân hàng,HDB,"volume_ratio_20,vwap_gap",0.0261339995775632,-0.0055212780674935
+Ngân hàng,VIB,"lower_shadow,atr_gap",0.025816011142478,-0.0602243324246916
+Ngân hàng,HDB,"close_position,momentum_20",0.0251229127141499,-0.0314954849791973
+Ngân hàng,TCB,"momentum_5,vwap_gap",0.0250808423668255,0.0170031084993455
+Ngân hàng,ACB,"ma_20_gap,ma_200_gap",0.0244950484476331,0.0014408057302791
+Ngân hàng,ACB,"ma_20_gap,vwap_gap",0.0238538709318627,-0.004925841158536
+Ngân hàng,ACB,momentum_5,0.0235102106323683,-0.0138573191621542
+Ngân hàng,CTG,"intraday_return,lower_shadow",0.0234684808142884,0.0345659323834344
+Ngân hàng,HDB,"momentum_5,vwap_gap",0.0231920389529634,-0.0131719000000845
+Ngân hàng,TCB,"gap_open,vwap_gap",0.0230266258402832,0.0039326094726733
+Ngân hàng,ACB,"momentum_5,obv_change",0.0227284059430254,-0.0151994293720392
+Ngân hàng,CTG,"close_position,above_ma_200",0.0226997718326267,-0.0015931850915009
+Ngân hàng,ACB,"above_ma_200,rolling_max_20_gap",0.0226594728550283,-0.0434050131449212
+Ngân hàng,STB,"rolling_max_20_gap,bb_position",0.0226095719175075,-0.0047853896921137
+Ngân hàng,STB,"rolling_max_20_gap,bb_zscore",0.0226095719175075,-0.0047853896921137
+Ngân hàng,STB,"close_position,rolling_max_20_gap",0.0224942029701137,0.0122427515513531
+Ngân hàng,EIB,"gap_open,rolling_max_20_gap",0.022422120122397,0.0099329162293907
+Ngân hàng,VIB,atr_gap,0.022033315872354,-0.0531209474819531
+Ngân hàng,VPB,"gap_open,close_position",0.0218886956924786,0.0380720947616931
+Ngân hàng,EIB,"intraday_return,momentum_20",0.0218761387980118,-0.0125759441933992
+Ngân hàng,EIB,"close_position,momentum_5",0.0215488134695707,-0.0488488724524447
+Ngân hàng,CTG,"ma_200_gap,rolling_max_20_gap",0.0214436121002262,0.0098607362440416
+Ngân hàng,ACB,"ma_200_gap,bb_position",0.0210868878312634,-0.0274132325132439
+Ngân hàng,ACB,"ma_200_gap,bb_zscore",0.0210868878312634,-0.0274132325132439
+Ngân hàng,VCB,"gap_open,above_ma_200",0.0203217058278049,-0.0079221458003724
+Ngân hàng,VIB,"atr_gap,vwap_gap",0.0201452576794881,-0.0470608609607596
+Ngân hàng,CTG,close_position,0.019358797874066,0.0199651823418157
+Ngân hàng,VCB,"upper_shadow,atr_gap",0.0190435823929334,0.015873941488725
+Ngân hàng,VPB,"gap_open,obv_change",0.0187601025207531,0.0398905340865129
+Ngân hàng,VPB,gap_open,0.0186221575341545,0.0413896815910044
+Ngân hàng,CTG,"bb_position,macd_signal",0.0184268379378456,-0.0096962758742997
+Ngân hàng,CTG,"bb_zscore,macd_signal",0.0184268379378456,-0.0096962758742997
+Ngân hàng,CTG,"bb_position,obv_change",0.0183947885796017,0.036986902827014
+Ngân hàng,VCB,"upper_shadow,momentum_5",0.0171754593785751,0.0070930741690268
+Ngân hàng,VIB,"upper_shadow,momentum_20",0.0171053003574488,-0.0747093256255049
+Ngân hàng,TCB,"volatility_20,above_ma_200",0.0163199150266029,0.0570201785750691
+Ngân hàng,VIB,bb_width,0.0163017906331045,-0.0565039071838193
+Ngân hàng,VCB,obv_change,0.0161252964602457,0.0312272276819384
+Ngân hàng,VCB,"lower_shadow,obv_change",0.0159034261376318,0.0151782188721604
+Ngân hàng,VCB,"close_position,vwap_gap",0.015584040169018,0.0402830747753992
+Ngân hàng,EIB,"gap_open,upper_shadow",0.0154800715157144,-0.0714914579474894
+Ngân hàng,EIB,"intraday_return,ma_200_gap",0.0154299538467339,0.0043148340486881
+Ngân hàng,VCB,above_ma_200,0.0153517114599274,-0.0145757566804984
+Ngân hàng,EIB,"volume_ratio_20,vwap_gap",0.0151511555867805,-0.0420729646611903
+Ngân hàng,VIB,"upper_shadow,bb_width",0.0148866151723587,-0.0506111771762649
+Ngân hàng,EIB,"above_ma_200,bb_position",0.0146724077638988,-0.0319628685755861
+Ngân hàng,EIB,"above_ma_200,bb_zscore",0.0146724077638988,-0.0319628685755861
+Ngân hàng,TCB,"lower_shadow,vwap_gap",0.0137448044569322,0.0384011794463112
+Ngân hàng,VIB,"momentum_5,atr_gap",0.0135051010303313,-0.0437849217799313
+Ngân hàng,TCB,"volume_zscore_20,vwap_gap",0.0120644299082505,0.0265295145312025
+Ngân hàng,TCB,"rolling_max_20_gap,vwap_gap",0.0116350494652784,0.0148010150496342
+Ngân hàng,LPB,"ma_200_gap,rolling_max_20_gap",0.0112643498665293,0.0196177296499582
+Ngân hàng,LPB,"bb_width,obv_change",0.0111240348900296,0.0070391128147433
+Ngân hàng,TCB,"bb_width,vwap_gap",0.0104780001410099,0.0369895841034542
+Ngân hàng,VPB,"upper_shadow,obv_change",0.0103589568590641,0.0633406954653799
+Ngân hàng,LPB,bb_width,0.0094647227632326,0.0094371050838639
+Ngân hàng,VPB,"bb_position,vwap_gap",0.0025208347150518,0.0266027683351074
+Ngân hàng,VPB,"bb_zscore,vwap_gap",0.0025208347150518,0.0266027683351074
+Ngân hàng,VPB,"volume_ratio_20,gap_open",0.0013566362807296,0.0167632221548829
+Ngân hàng,VPB,upper_shadow,0.0010899411250505,0.0562470418695084
+Ngân hàng,VPB,"gap_open,upper_shadow",0.0004527135326731,0.0239458704479802
+Ngân hàng,VPB,volume_zscore_20,0.0002199815022295,-0.0001146481953442
+Ngân hàng,LPB,obv_change,-0.0015441250719787,0.0127041115133607
+Ngân hàng,LPB,"momentum_5,bb_width",-0.0057560990969531,-0.0198531889697097
+Ngân hàng,LPB,"upper_shadow,obv_change",-0.0062048644933609,0.0340205511798932
+Ngân hàng,LPB,upper_shadow,-0.0073627650311938,0.0320311463459658
+Ngân hàng,LPB,"atr_gap,above_ma_200",-0.0087796044908377,0.0597871906099557
+Ngân hàng,LPB,"atr_gap,bb_width",-0.00882116008896,0.0214628346798309
+Ngân hàng,LPB,"lower_shadow,bb_width",-0.0088730953707054,0.0059540427995227
+Thực phẩm và đồ uống,SBT,"atr_gap,vwap_gap",0.0816114946268093,-0.0071624017297553
+Thực phẩm và đồ uống,PAN,"atr_gap,bb_width",0.0779865790956926,-0.0449605287678138
+Thực phẩm và đồ uống,PAN,"gap_open,macd_signal",0.0748510789117991,-0.0321373102856989
+Thực phẩm và đồ uống,PAN,"atr_gap,macd_signal",0.0725996711280977,-0.0277818990953051
+Thực phẩm và đồ uống,PAN,"momentum_5,macd_signal",0.0725672257949693,-0.0506433910403953
+Thực phẩm và đồ uống,PAN,"intraday_return,macd_signal",0.0718298850097052,-0.0535608787332306
+Thực phẩm và đồ uống,PAN,"lower_shadow,bb_width",0.0713444869643854,-0.0219137107303002
+Thực phẩm và đồ uống,PAN,"volatility_20,bb_width",0.0702951279660186,-0.0354926827292312
+Thực phẩm và đồ uống,MSN,"volume_ratio_20,volume_zscore_20",0.0683343323418168,-0.0148988417673481
+Thực phẩm và đồ uống,SBT,"gap_open,vwap_gap",0.0656054202836744,0.0011770306421771
+Thực phẩm và đồ uống,PAN,"momentum_20,macd_signal",0.0647902748224925,-0.0415004585795315
+Thực phẩm và đồ uống,PAN,"rolling_max_20_gap,macd_signal",0.0640328554936581,-0.0198045812723712
+Thực phẩm và đồ uống,PAN,"volume_zscore_20,macd_signal",0.0634628093435425,-0.0293060171934134
+Thực phẩm và đồ uống,SBT,"bb_width,vwap_gap",0.061833784851642,-0.0042422312536387
+Thực phẩm và đồ uống,VNM,"upper_shadow,vwap_gap",0.061066279979806,-0.0177973031541245
+Thực phẩm và đồ uống,MSN,"upper_shadow,vwap_gap",0.0592249189130249,-0.0755840762996078
+Thực phẩm và đồ uống,SBT,"volume_ratio_20,vwap_gap",0.0586285465689685,-0.0055584534951487
+Thực phẩm và đồ uống,SBT,"volume_ratio_20,above_ma_200",0.056690972240345,-0.00365163297671
+Thực phẩm và đồ uống,MSN,"volume_zscore_20,upper_shadow",0.0558142883874916,-0.0579875998727918
+Thực phẩm và đồ uống,MSN,"upper_shadow,volatility_20",0.0553590384421766,-0.0283042263364756
+Thực phẩm và đồ uống,VHC,"intraday_return,atr_gap",0.054058949980823,-0.0507261202182622
+Thực phẩm và đồ uống,MSN,"volume_zscore_20,volatility_20",0.053965426852985,-0.018006348357656
+Thực phẩm và đồ uống,MSN,"volume_ratio_20,momentum_20",0.0515166988315994,-0.0573699650587233
+Thực phẩm và đồ uống,VNM,"close_position,lower_shadow",0.05067995175312,-0.0101628133528308
+Thực phẩm và đồ uống,VNM,"above_ma_200,vwap_gap",0.0494157406314166,-0.0241524163289374
+Thực phẩm và đồ uống,MSN,"volume_ratio_20,upper_shadow",0.0479960328837866,-0.0592421502422448
+Thực phẩm và đồ uống,MSN,"momentum_20,bb_width",0.0475891999672303,-0.0863510969065248
+Thực phẩm và đồ uống,MSN,"volume_zscore_20,vwap_gap",0.0454077513773212,-0.0286559958170664
+Thực phẩm và đồ uống,MSN,"volume_ratio_20,volatility_20",0.0447828713874088,0.0016641092429302
+Thực phẩm và đồ uống,SBT,"momentum_5,vwap_gap",0.043966280073817,-0.0070086464917207
+Thực phẩm và đồ uống,SBT,"above_ma_200,vwap_gap",0.0408223915966161,-0.0009362424580423
+Thực phẩm và đồ uống,VHC,"upper_shadow,momentum_20",0.0398144223345826,-0.1099060133694211
+Thực phẩm và đồ uống,VNM,"bb_position,vwap_gap",0.0394172516394224,-0.0654116419462449
+Thực phẩm và đồ uống,VNM,"bb_zscore,vwap_gap",0.0394172516394224,-0.0654116419462449
+Thực phẩm và đồ uống,SBT,"intraday_return,ma_20_gap",0.0392774464660888,-0.0128812432562739
+Thực phẩm và đồ uống,SBT,"momentum_5,ma_20_gap",0.0389509279614144,-0.0161587354891785
+Thực phẩm và đồ uống,SBT,"volume_ratio_20,obv_change",0.0379538114128182,-0.0096516553382304
+Thực phẩm và đồ uống,SAB,"volume_ratio_20,volume_zscore_20",0.0346456155646974,0.0375402153296079
+Thực phẩm và đồ uống,SAB,"volatility_20,macd_hist",0.0338158359733083,-0.027243174137822
+Thực phẩm và đồ uống,SAB,"intraday_return,close_position",0.0329475356294755,0.0210208307468435
+Thực phẩm và đồ uống,VNM,"upper_shadow,momentum_20",0.0328865954501159,-0.0371930115812502
+Thực phẩm và đồ uống,VNM,upper_shadow,0.0314926206371083,-0.0177972460694708
+Thực phẩm và đồ uống,VNM,"upper_shadow,ma_20_gap",0.0311008959480121,-0.0448053643329655
+Thực phẩm và đồ uống,VHC,"atr_gap,macd_signal",0.029752212929802,-0.0797459195507555
+Thực phẩm và đồ uống,VNM,"bb_width,vwap_gap",0.0290977324382895,-0.0149755299364311
+Thực phẩm và đồ uống,HAG,"gap_open,close_position",0.02908431999787,-0.0214881458238795
+Thực phẩm và đồ uống,VNM,"vwap_gap,macd",0.0283262302561684,-0.010511326328354
+Thực phẩm và đồ uống,SAB,"momentum_5,ma_200_gap",0.0273885770303218,0.0209538648000703
+Thực phẩm và đồ uống,VHC,"momentum_20,ma_200_gap",0.0267460708706769,-0.0649170024008651
+Thực phẩm và đồ uống,SAB,"volatility_20,macd_signal",0.0261299336280613,-0.0234425980667725
+Thực phẩm và đồ uống,VHC,"volume_zscore_20,momentum_20",0.0254394277490989,-0.0351159066343891
+Thực phẩm và đồ uống,VHC,"volatility_20,vwap_gap",0.025268961498656,-0.0302165178195736
+Thực phẩm và đồ uống,VHC,"volume_ratio_20,intraday_return",0.0250041039863794,-0.0280746684494113
+Thực phẩm và đồ uống,SAB,volume_ratio_20,0.0247773307206037,0.023551609985419
+Thực phẩm và đồ uống,ANV,vwap_gap,0.0242032605367268,0.0086792936660294
+Thực phẩm và đồ uống,HAG,"lower_shadow,obv_change",0.0238029748987772,0.0193745054039765
+Thực phẩm và đồ uống,VHC,"momentum_20,atr_gap",0.0227082265262675,-0.0556518463534918
+Thực phẩm và đồ uống,HAG,close_position,0.0224328129879487,-0.0105233114451102
+Thực phẩm và đồ uống,VHC,"vwap_gap,macd_signal",0.0222112086242053,-0.0611704211429047
+Thực phẩm và đồ uống,SAB,"volume_ratio_20,lower_shadow",0.0220256180804897,0.0347456102554433
+Thực phẩm và đồ uống,SAB,"volume_ratio_20,obv_change",0.0217556233162662,0.0192318652121246
+Thực phẩm và đồ uống,VHC,"atr_gap,macd_hist",0.0211438798844506,-0.0915170158916331
+Thực phẩm và đồ uống,SAB,"intraday_return,upper_shadow",0.0200328231501818,0.0213765669018627
+Thực phẩm và đồ uống,HAG,"close_position,vwap_gap",0.0192311859247951,-0.0105233867641247
+Thực phẩm và đồ uống,HAG,"close_position,obv_change",0.0182596472862546,-0.0155447984614962
+Thực phẩm và đồ uống,SAB,"volatility_20,above_ma_200",0.0182365548757807,-0.0827399515681805
+Thực phẩm và đồ uống,ANV,"upper_shadow,above_ma_200",0.0177971692709167,-0.0318450735521278
+Thực phẩm và đồ uống,ANV,"intraday_return,vwap_gap",0.0174038977441689,-0.0110167203074946
+Thực phẩm và đồ uống,ANV,"upper_shadow,vwap_gap",0.0172347310585314,0.0106157632194834
+Thực phẩm và đồ uống,DBC,"vwap_gap,obv_change",0.0166162184226111,0.0150538189342586
+Thực phẩm và đồ uống,KDC,"volatility_20,vwap_gap",0.0164539959161785,0.0379760932652947
+Thực phẩm và đồ uống,ANV,"close_position,upper_shadow",0.0160474112346904,0.0062646696988802
+Thực phẩm và đồ uống,HAG,lower_shadow,0.0155673527475813,0.0190982325193357
+Thực phẩm và đồ uống,HAG,"gap_open,lower_shadow",0.0155080779582349,0.0362868490313753
+Thực phẩm và đồ uống,ANV,intraday_return,0.0147449578579585,-0.0133608573323236
+Thực phẩm và đồ uống,ANV,"upper_shadow,volatility_20",0.0133640672887911,0.0004505486973815
+Thực phẩm và đồ uống,HAG,"lower_shadow,above_ma_200",0.0130929311254183,0.0100279330471568
+Thực phẩm và đồ uống,ANV,"above_ma_200,vwap_gap",0.0127418304964149,-0.0285961188632166
+Thực phẩm và đồ uống,ANV,above_ma_200,0.0120995255266888,-0.0319111937010314
+Thực phẩm và đồ uống,ANV,upper_shadow,0.0120820488876292,0.0174762398607817
+Thực phẩm và đồ uống,HAG,"gap_open,bb_width",0.0119526771541312,0.0286631019595804
+Thực phẩm và đồ uống,KDC,"upper_shadow,atr_gap",0.0109108531716095,-0.0531017711185795
+Thực phẩm và đồ uống,DBC,momentum_5,0.0105086245691302,-0.0079034661980679
+Thực phẩm và đồ uống,DBC,"intraday_return,close_position",0.0103331961078627,0.0199752020969966
+Thực phẩm và đồ uống,HAG,"close_position,lower_shadow",0.0101617474233688,-0.0166534126525665
+Thực phẩm và đồ uống,DBC,"gap_open,obv_change",0.0094689294831163,0.0063375940351567
+Thực phẩm và đồ uống,DBC,"gap_open,above_ma_200",0.0094019200252949,0.0453108853588857
+Thực phẩm và đồ uống,KDC,"momentum_20,vwap_gap",0.0091301649601719,0.0364654150574008
+Thực phẩm và đồ uống,DBC,gap_open,0.0080585531188188,0.0155395772366547
+Thực phẩm và đồ uống,DBC,close_position,0.0078963161416234,0.0284857349792453
+Thực phẩm và đồ uống,DBC,"ma_200_gap,bb_width",0.0074778958056929,-0.0066698009334953
+Thực phẩm và đồ uống,DBC,"gap_open,ma_200_gap",0.0066672794387399,-0.0050607184076152
+Thực phẩm và đồ uống,DBC,"gap_open,momentum_20",0.0065760582957737,-0.01353222970971
+Thực phẩm và đồ uống,KDC,"bb_width,vwap_gap",0.0060485155620944,0.0106864911050955
+Thực phẩm và đồ uống,KDC,"atr_gap,macd",0.0058920182072329,0.0628720305632563
+Thực phẩm và đồ uống,KDC,"momentum_20,bb_width",0.0037440031867923,0.0122976894590616
+Thực phẩm và đồ uống,KDC,"ma_200_gap,vwap_gap",0.0037022359520453,0.0497689937273198
+Thực phẩm và đồ uống,KDC,"momentum_5,ma_200_gap",0.0025799356417427,0.0249534929858933
+Thực phẩm và đồ uống,KDC,"close_position,vwap_gap",0.0011569386337461,0.0198256086759044
+Thực phẩm và đồ uống,KDC,"ma_200_gap,macd_hist",0.0003122995470684,0.0600511835222162
+Tài nguyên Cơ bản,NKG,volatility_20,0.0262180135166467,-0.0254781482134698
+Tài nguyên Cơ bản,NKG,"volatility_20,vwap_gap",0.0252405106141587,-0.0254780496249824
+Tài nguyên Cơ bản,NKG,"close_position,ma_200_gap",0.0186511305265566,-0.058241285762703
+Tài nguyên Cơ bản,HPG,"gap_open,vwap_gap",0.0160855951006075,-0.033839498655573
+Tài nguyên Cơ bản,NKG,"volatility_20,obv_change",0.0156829322452124,-0.0367792359549961
+Tài nguyên Cơ bản,NKG,"close_position,ma_20_gap",0.0134883780754386,-0.0465628312673098
+Tài nguyên Cơ bản,HPG,"gap_open,above_ma_200",0.0093722917216492,0.0135061391235051
+Tài nguyên Cơ bản,HPG,"lower_shadow,momentum_20",0.0092819776696447,0.0076993904238156
+Tài nguyên Cơ bản,HPG,"momentum_20,obv_change",0.0088025508287189,0.002615773357719
+Tài nguyên Cơ bản,NKG,"volatility_20,bb_width",0.0083382004628884,-0.0232482471579773
+Tài nguyên Cơ bản,NKG,"volume_ratio_20,volatility_20",0.0074001816695572,0.000510750760143
+Tài nguyên Cơ bản,HPG,momentum_20,0.0062707879109792,0.0004891413474771
+Tài nguyên Cơ bản,PTB,"volume_ratio_20,above_ma_200",0.0052650675314703,0.0093437923891891
+Tài nguyên Cơ bản,HPG,"upper_shadow,above_ma_200",0.0042734715491535,-0.0079416316159692
+Tài nguyên Cơ bản,HPG,"momentum_20,vwap_gap",0.0041736674806329,0.0004892658107531
+Tài nguyên Cơ bản,HPG,"intraday_return,upper_shadow",0.0037260015556151,0.0253219273581513
+Tài nguyên Cơ bản,PTB,"intraday_return,obv_change",0.0037127767922027,-0.0086702510275196
+Tài nguyên Cơ bản,HPG,"upper_shadow,momentum_20",0.0031707347980673,0.0048239880178975
+Tài nguyên Cơ bản,HPG,"momentum_20,above_ma_200",0.0030320342785712,0.0373019317663849
+Tài nguyên Cơ bản,PTB,"intraday_return,momentum_20",0.002229071691305,0.0089749846241565
+Tài nguyên Cơ bản,PTB,"upper_shadow,vwap_gap",0.0017242279717223,-0.0101612635936578
+Tài nguyên Cơ bản,PTB,"upper_shadow,ma_200_gap",0.0015895251913736,-0.0083211480980933
+Tài nguyên Cơ bản,NKG,"volume_zscore_20,bb_width",0.001453262257431,-0.019908883223116
+Tài nguyên Cơ bản,PTB,"upper_shadow,momentum_20",0.0003429299979564,-0.0270530000033766
+Tài nguyên Cơ bản,PTB,"atr_gap,above_ma_200",-0.0003851952332118,-0.0100778192438351
+Tài nguyên Cơ bản,PTB,"ma_20_gap,bb_position",-0.0005095240542893,0.012430653231416
+Tài nguyên Cơ bản,PTB,"ma_20_gap,bb_zscore",-0.0005095240542893,0.012430653231416
+Tài nguyên Cơ bản,PTB,"atr_gap,vwap_gap",-0.000560314828695,0.0149973429630703
+Tài nguyên Cơ bản,NKG,"momentum_5,atr_gap",-0.0008575212777763,-0.0598998496577081
+Tài nguyên Cơ bản,HSG,"above_ma_200,obv_change",-0.0027579873068248,-0.0001010305277957
+Tài nguyên Cơ bản,NKG,"atr_gap,volatility_20",-0.0032892025453388,-0.0895548539096784
+Tài nguyên Cơ bản,HSG,vwap_gap,-0.0033432777422621,0.0070548474918836
+Tài nguyên Cơ bản,HSG,"upper_shadow,above_ma_200",-0.0040669243128588,-0.0575702195196545
+Tài nguyên Cơ bản,HSG,"vwap_gap,obv_change",-0.004343030642226,0.0070283044286006
+Tài nguyên Cơ bản,HSG,above_ma_200,-0.0055752429292386,-0.0011386230840202
+Tài nguyên Cơ bản,HSG,"above_ma_200,vwap_gap",-0.0109452953475368,-0.0011385791066498
+Tài nguyên Cơ bản,HSG,obv_change,-0.0156129000216402,0.0070283044286006
+Tài nguyên Cơ bản,HSG,"upper_shadow,vwap_gap",-0.0161668152342071,-0.0411845586987125
+Tài nguyên Cơ bản,HSG,"upper_shadow,obv_change",-0.0241555784975702,-0.0365174579986733
+Tài nguyên Cơ bản,HSG,"volume_zscore_20,obv_change",-0.0243515255277784,-1.6262559547008948e-05
+Xây dựng và Vật liệu,CII,"momentum_5,bb_position",0.0662071658776107,0.0306217756892672
+Xây dựng và Vật liệu,CII,"momentum_5,bb_zscore",0.0662071658776107,0.0306217756892672
+Xây dựng và Vật liệu,CII,"upper_shadow,macd",0.0660352451620026,0.0247839104767452
+Xây dựng và Vật liệu,CII,"intraday_return,momentum_20",0.062214216549557,0.0138546571046714
+Xây dựng và Vật liệu,CII,"rolling_max_20_gap,macd",0.0618066123866105,-0.0139146567506653
+Xây dựng và Vật liệu,CII,"ma_200_gap,rolling_max_20_gap",0.0607071435544225,-0.0160408389909372
+Xây dựng và Vật liệu,CII,"gap_open,macd",0.0580242561245537,0.0149302282496002
+Xây dựng và Vật liệu,CII,"rolling_max_20_gap,bb_width",0.0570698180550792,0.0125436547139183
+Xây dựng và Vật liệu,CII,"intraday_return,ma_20_gap",0.0569399277030142,0.0048277577651884
+Xây dựng và Vật liệu,VGC,"volume_ratio_20,momentum_20",0.0525696163327372,-0.0297262689762936
+Xây dựng và Vật liệu,CII,"volume_zscore_20,ma_20_gap",0.0517391985407453,0.0032916640755923
+Xây dựng và Vật liệu,VGC,"volume_ratio_20,momentum_5",0.0509094968167158,-0.0345689917440144
+Xây dựng và Vật liệu,VGC,"momentum_5,atr_gap",0.0446424560228144,-0.0215583985115705
+Xây dựng và Vật liệu,VGC,"volume_ratio_20,bb_position",0.0426033476504376,-0.0052822240630885
+Xây dựng và Vật liệu,VGC,"volume_ratio_20,bb_zscore",0.0426033476504376,-0.0052822240630885
+Xây dựng và Vật liệu,VGC,"momentum_5,macd_signal",0.0419135453387506,0.0001902147397321
+Xây dựng và Vật liệu,HT1,"ma_200_gap,bb_position",0.0381514278021625,-0.0479694602919877
+Xây dựng và Vật liệu,HT1,"ma_200_gap,bb_zscore",0.0381514278021625,-0.0479694602919877
+Xây dựng và Vật liệu,VGC,"bb_position,vwap_gap",0.0368983282838463,-0.0054690930008405
+Xây dựng và Vật liệu,VGC,"bb_zscore,vwap_gap",0.0368983282838463,-0.0054690930008405
+Xây dựng và Vật liệu,PC1,"momentum_5,momentum_20",0.0367619286544812,-0.0998883326748238
+Xây dựng và Vật liệu,VGC,momentum_20,0.0363990679106105,0.0080572507996804
+Xây dựng và Vật liệu,VCG,"atr_gap,ma_200_gap",0.0358886806728223,-0.0086428494150865
+Xây dựng và Vật liệu,VCG,"volume_zscore_20,macd_signal",0.0351310938783556,-0.0124455462463231
+Xây dựng và Vật liệu,VCG,"volume_ratio_20,macd_signal",0.0345020425860895,-0.0167873148162671
+Xây dựng và Vật liệu,VCG,"volume_ratio_20,upper_shadow",0.0333547051701916,0.0086952146505221
+Xây dựng và Vật liệu,VGC,"vwap_gap,obv_change",0.0325066269493196,0.0008389560857836
+Xây dựng và Vật liệu,VCG,"volume_zscore_20,atr_gap",0.0321936316145988,-0.0343447864110051
+Xây dựng và Vật liệu,PC1,"momentum_20,bb_width",0.0317261111873858,-0.0487943907389913
+Xây dựng và Vật liệu,VCG,"atr_gap,macd",0.0311247728343185,-0.0021672872675477
+Xây dựng và Vật liệu,BMP,"lower_shadow,vwap_gap",0.0304400871272199,-0.0245785238691211
+Xây dựng và Vật liệu,HHV,"intraday_return,momentum_5",0.0303909142017586,-0.0072190408511045
+Xây dựng và Vật liệu,CTD,"intraday_return,obv_change",0.0287979494026381,-0.0256230691622221
+Xây dựng và Vật liệu,VCG,"volume_zscore_20,upper_shadow",0.0284690191255431,0.0013338785495531
+Xây dựng và Vật liệu,VCG,"upper_shadow,bb_width",0.0276704071767582,0.0054070322082011
+Xây dựng và Vật liệu,HT1,"ma_20_gap,bb_position",0.0274462872824741,-0.036206646417815
+Xây dựng và Vật liệu,HT1,"ma_20_gap,bb_zscore",0.0274462872824741,-0.036206646417815
+Xây dựng và Vật liệu,BMP,"lower_shadow,momentum_20",0.0274452328637614,-0.0109258698287044
+Xây dựng và Vật liệu,VCG,"close_position,atr_gap",0.0270063793063637,-0.0366853088089675
+Xây dựng và Vật liệu,BMP,"momentum_20,volatility_20",0.0268943177038603,-0.0068511289723305
+Xây dựng và Vật liệu,HHV,"gap_open,momentum_5",0.0267935063468847,-0.0230483897338023
+Xây dựng và Vật liệu,VCG,"volume_zscore_20,momentum_20",0.026221107132488,-0.0269303542183487
+Xây dựng và Vật liệu,BMP,lower_shadow,0.025838339634171,-0.0245785570677803
+Xây dựng và Vật liệu,CTD,"volume_zscore_20,close_position",0.0257250330130689,-0.0281810037657674
+Xây dựng và Vật liệu,HHV,"volume_ratio_20,lower_shadow",0.0255390658492973,-0.0401761216241376
+Xây dựng và Vật liệu,CTD,momentum_5,0.0251280902730804,-0.0194981342663347
+Xây dựng và Vật liệu,BMP,"lower_shadow,obv_change",0.0250488927508683,-0.0249057813541078
+Xây dựng và Vật liệu,HT1,"momentum_5,macd_hist",0.0248821389981132,-0.0073991594080786
+Xây dựng và Vật liệu,HHV,"momentum_5,obv_change",0.0248129095626654,0.0104633825956829
+Xây dựng và Vật liệu,HHV,"lower_shadow,volatility_20",0.0246151561742333,-0.0274005366761542
+Xây dựng và Vật liệu,HT1,"close_position,macd",0.0234732967028118,0.0479185767125636
+Xây dựng và Vật liệu,HHV,momentum_5,0.0227664080179998,0.011685654460219
+Xây dựng và Vật liệu,PC1,"momentum_20,above_ma_200",0.0226355533256729,-0.0231298857913164
+Xây dựng và Vật liệu,BMP,"gap_open,lower_shadow",0.0210022352802098,-0.0405163080155932
+Xây dựng và Vật liệu,HHV,"lower_shadow,vwap_gap",0.0205845199607129,-0.0267538926774455
+Xây dựng và Vật liệu,HHV,"lower_shadow,above_ma_200",0.0205830457123512,-0.0937585475912463
+Xây dựng và Vật liệu,PC1,"lower_shadow,momentum_20",0.0203086904929268,-0.0125741943800496
+Xây dựng và Vật liệu,BMP,"lower_shadow,volatility_20",0.0201863762742376,-0.016924939040452
+Xây dựng và Vật liệu,HT1,"rolling_max_20_gap,macd_signal",0.0197738696747323,0.0072603603391537
+Xây dựng và Vật liệu,BMP,"volatility_20,vwap_gap",0.0196441854238005,-0.0118443711724498
+Xây dựng và Vật liệu,HHV,lower_shadow,0.0194169327074139,-0.0513703090741293
+Xây dựng và Vật liệu,PC1,"intraday_return,bb_position",0.018944838594234,-0.0825473575771797
+Xây dựng và Vật liệu,PC1,"intraday_return,bb_zscore",0.018944838594234,-0.0825473575771797
+Xây dựng và Vật liệu,CTD,"volatility_20,vwap_gap",0.0186090682607629,-0.0251551712802606
+Xây dựng và Vật liệu,HHV,"lower_shadow,bb_width",0.0179297179896199,-0.0414894976440907
+Xây dựng và Vật liệu,BMP,"momentum_20,vwap_gap",0.0179192940410669,0.0089473297654478
+Xây dựng và Vật liệu,BMP,"atr_gap,volatility_20",0.0175247945948919,-0.0115300386064653
+Xây dựng và Vật liệu,HT1,"momentum_5,macd_signal",0.0175197493960425,0.0012850714385526
+Xây dựng và Vật liệu,PC1,"close_position,bb_position",0.0173647595793742,-0.1487690235026095
+Xây dựng và Vật liệu,PC1,"close_position,bb_zscore",0.0173647595793742,-0.1487690235026095
+Xây dựng và Vật liệu,CTD,"close_position,volatility_20",0.0167137150586107,-0.0111895898570939
+Xây dựng và Vật liệu,CTD,"volume_zscore_20,momentum_5",0.0160138880373301,-0.0270300865667025
+Xây dựng và Vật liệu,PC1,"vwap_gap,obv_change",0.015853358725276,0.0105955249974556
+Xây dựng và Vật liệu,PC1,"volatility_20,obv_change",0.0154215957944062,0.0027892991896263
+Xây dựng và Vật liệu,HT1,"ma_20_gap,macd_hist",0.0147102577868231,-0.0136522879371989
+Xây dựng và Vật liệu,HT1,"close_position,ma_200_gap",0.0146553646608437,0.0512143136224801
+Xây dựng và Vật liệu,CTD,"intraday_return,momentum_20",0.0138461411882561,-0.0319382802269476
+Xây dựng và Vật liệu,CTD,"intraday_return,volatility_20",0.0135974065017863,0.0286248672381178
+Xây dựng và Vật liệu,CTD,"volume_ratio_20,close_position",0.0124446610497327,-0.0057186880361315
+Xây dựng và Vật liệu,CTD,"close_position,bb_width",0.0113911783479293,-0.0372653798407061
+Xây dựng và Vật liệu,CTR,"volume_zscore_20,gap_open",0.0051961566182888,-0.0509725125710156
+Xây dựng và Vật liệu,CTR,"momentum_5,vwap_gap",-0.0019717138130164,-0.0293492098828671
+Xây dựng và Vật liệu,CTR,"volume_ratio_20,close_position",-0.0071156308949524,-0.0303984662592522
+Xây dựng và Vật liệu,CTR,"gap_open,momentum_5",-0.0084499189165661,-0.0161069473891055
+Xây dựng và Vật liệu,CTR,"volume_ratio_20,gap_open",-0.0110341868175221,-0.0402402530677903
+Xây dựng và Vật liệu,CTR,"volume_zscore_20,vwap_gap",-0.0128269222689212,-0.0528450089651797
+Xây dựng và Vật liệu,CTR,"volume_zscore_20,bb_width",-0.0160291720780534,-0.0776157593537871
+Xây dựng và Vật liệu,CTR,"volume_zscore_20,close_position",-0.0164040898085091,-0.0101852676468516
+Xây dựng và Vật liệu,CTR,"momentum_5,volatility_20",-0.016472554207396,-0.0132703867430692
+Xây dựng và Vật liệu,CTR,"volume_ratio_20,vwap_gap",-0.017101789115659,-0.0488091975650184
+Y tế,IMP,"close_position,volatility_20",0.0725433210024393,-0.0016179367540092
+Y tế,IMP,"ma_200_gap,bb_position",0.0715151031676749,-0.0039894074255402
+Y tế,IMP,"ma_200_gap,bb_zscore",0.0715151031676749,-0.0039894074255402
+Y tế,IMP,"bb_position,vwap_gap",0.0680277873268283,0.0361162790196258
+Y tế,IMP,"bb_zscore,vwap_gap",0.0680277873268283,0.0361162790196258
+Y tế,IMP,"ma_20_gap,bb_position",0.0679833785108482,-0.012561318331193
+Y tế,IMP,"ma_20_gap,bb_zscore",0.0679833785108482,-0.012561318331193
+Y tế,IMP,"close_position,rolling_max_20_gap",0.0660574205894257,-0.0185659127429824
+Y tế,IMP,"lower_shadow,bb_position",0.0644627238416823,0.0275940048278208
+Y tế,IMP,"lower_shadow,bb_zscore",0.0644627238416823,0.0275940048278208
+"Điện, nước & xăng dầu khí đốt",GAS,"momentum_20,rolling_max_20_gap",0.071054007452046,-0.0706292834714761
+"Điện, nước & xăng dầu khí đốt",GAS,"momentum_20,obv_change",0.0577538646930866,-0.0474372318576084
+"Điện, nước & xăng dầu khí đốt",GAS,"above_ma_200,rolling_max_20_gap",0.0538208761118385,-0.1855685995812581
+"Điện, nước & xăng dầu khí đốt",GAS,"volume_ratio_20,atr_gap",0.0536727016491894,-0.0345886365744831
+"Điện, nước & xăng dầu khí đốt",GAS,"volume_ratio_20,above_ma_200",0.0529268394466677,-0.1306402908344959
+"Điện, nước & xăng dầu khí đốt",GAS,"volume_ratio_20,rolling_max_20_gap",0.0529082294033513,-0.0898607997633567
+"Điện, nước & xăng dầu khí đốt",GAS,"rolling_max_20_gap,obv_change",0.0523986763991113,-0.0996654103256691
+"Điện, nước & xăng dầu khí đốt",GAS,rolling_max_20_gap,0.0509982310214462,-0.090093850010525
+"Điện, nước & xăng dầu khí đốt",GAS,"momentum_5,momentum_20",0.0509169750116084,-0.0654884467735565
+"Điện, nước & xăng dầu khí đốt",GAS,momentum_20,0.0495375854116104,-0.0541089887317078
+"Điện, nước & xăng dầu khí đốt",NT2,"intraday_return,close_position",0.0444264076553193,-0.0353913687453388
+"Điện, nước & xăng dầu khí đốt",NT2,"gap_open,macd",0.0337507870350464,-0.0014679613009835
+"Điện, nước & xăng dầu khí đốt",NT2,"intraday_return,macd_hist",0.0329357912975213,-0.020313821060377
+"Điện, nước & xăng dầu khí đốt",NT2,"close_position,ma_20_gap",0.0310715677120112,-0.0168112085783023
+"Điện, nước & xăng dầu khí đốt",NT2,"macd,macd_hist",0.0307810422180012,-0.0230615195993393
+"Điện, nước & xăng dầu khí đốt",NT2,"macd_signal,macd_hist",0.0307791833810554,-0.0230613349400659
+"Điện, nước & xăng dầu khí đốt",NT2,"macd,macd_signal",0.0307791821715051,-0.0230615496064712
+"Điện, nước & xăng dầu khí đốt",NT2,"close_position,ma_200_gap",0.0306718191917401,-0.0317171414363148
+"Điện, nước & xăng dầu khí đốt",POW,"bb_position,vwap_gap",0.0300879574122704,-0.0122698967120391
+"Điện, nước & xăng dầu khí đốt",POW,"bb_zscore,vwap_gap",0.0300879574122704,-0.0122698967120391
+"Điện, nước & xăng dầu khí đốt",NT2,"intraday_return,macd",0.029860461687412,-0.024317835693784
+"Điện, nước & xăng dầu khí đốt",NT2,"momentum_5,momentum_20",0.0292421506870029,-0.0176909914303535
+"Điện, nước & xăng dầu khí đốt",POW,"upper_shadow,bb_position",0.0287871975033091,-0.0629626752791592
+"Điện, nước & xăng dầu khí đốt",POW,"upper_shadow,bb_zscore",0.0287871975033091,-0.0629626752791592
+"Điện, nước & xăng dầu khí đốt",POW,"above_ma_200,bb_position",0.0285719657090588,-0.0418927307295269
+"Điện, nước & xăng dầu khí đốt",POW,"above_ma_200,bb_zscore",0.0285719657090588,-0.0418927307295269
+"Điện, nước & xăng dầu khí đốt",POW,"upper_shadow,momentum_20",0.0250267953501646,-0.0444950309290215
+"Điện, nước & xăng dầu khí đốt",POW,"bb_position,obv_change",0.0233122585628926,-0.0208422302904776
+"Điện, nước & xăng dầu khí đốt",POW,"bb_zscore,obv_change",0.0233122585628926,-0.0208422302904776
+"Điện, nước & xăng dầu khí đốt",POW,bb_position,0.0222558353423515,-0.0122698926772522
+"Điện, nước & xăng dầu khí đốt",PPC,"momentum_20,atr_gap",0.0184053307775252,0.0371648074584111
+"Điện, nước & xăng dầu khí đốt",PPC,"atr_gap,rolling_max_20_gap",0.0183758153242052,-0.0466930120717998
+"Điện, nước & xăng dầu khí đốt",PPC,"atr_gap,vwap_gap",0.0155110367701167,-0.0230203502322128
+"Điện, nước & xăng dầu khí đốt",BWE,"atr_gap,vwap_gap",0.0149335644963748,0.0116898074158565
+"Điện, nước & xăng dầu khí đốt",BWE,"atr_gap,obv_change",0.0115226036591847,0.0137973097074011
+"Điện, nước & xăng dầu khí đốt",BWE,"volume_zscore_20,ma_200_gap",0.0113216028949123,0.0101713428838222
+"Điện, nước & xăng dầu khí đốt",BWE,"upper_shadow,bb_width",0.008433181132053,-0.0316174975755854
+"Điện, nước & xăng dầu khí đốt",REE,"volume_ratio_20,momentum_20",0.0082152760597771,0.0119032679584327
+"Điện, nước & xăng dầu khí đốt",BWE,"volume_zscore_20,obv_change",0.0079462541918111,-0.0278068970924263
+"Điện, nước & xăng dầu khí đốt",PPC,"close_position,vwap_gap",0.0069397498622589,-0.0429260234515309
+"Điện, nước & xăng dầu khí đốt",REE,"volatility_20,vwap_gap",0.0067558437208908,0.0083480535469639
+"Điện, nước & xăng dầu khí đốt",BWE,"atr_gap,ma_200_gap",0.0065863763055321,-0.0054614331914655
+"Điện, nước & xăng dầu khí đốt",REE,"momentum_20,obv_change",0.0063736896578044,-0.0145340392830011
+"Điện, nước & xăng dầu khí đốt",BWE,"upper_shadow,vwap_gap",0.0061787351854877,-0.0006710826078923
+"Điện, nước & xăng dầu khí đốt",BWE,"volume_zscore_20,upper_shadow",0.0059946096949777,-0.0300736719390066
+"Điện, nước & xăng dầu khí đốt",BWE,atr_gap,0.0050697782419165,0.0116898242805959
+"Điện, nước & xăng dầu khí đốt",BWE,"momentum_20,atr_gap",0.0012509376166484,-0.0083665007743303
+"Điện, nước & xăng dầu khí đốt",REE,"volatility_20,obv_change",9.7702226471319e-05,-0.0008699496779396
+"Điện, nước & xăng dầu khí đốt",REE,"momentum_5,momentum_20",-4.040635521795899e-05,-0.0213048732290923
+"Điện, nước & xăng dầu khí đốt",REE,momentum_20,-0.0007885877666795,0.0020906070047338
+"Điện, nước & xăng dầu khí đốt",PPC,"atr_gap,ma_200_gap",-0.0027411705436377,0.0005107622466079
+"Điện, nước & xăng dầu khí đốt",REE,obv_change,-0.0031036089205518,0.0096365077548736
+"Điện, nước & xăng dầu khí đốt",PPC,"volatility_20,vwap_gap",-0.0032481079081267,-0.0507674016396917
+"Điện, nước & xăng dầu khí đốt",PPC,"lower_shadow,atr_gap",-0.0045086179526903,-0.0621998442686135
+"Điện, nước & xăng dầu khí đốt",PPC,"rolling_max_20_gap,vwap_gap",-0.0046465696758291,-0.0265052982152222
+"Điện, nước & xăng dầu khí đốt",REE,"momentum_20,vwap_gap",-0.0052633553604326,0.0020906717558435
+"Điện, nước & xăng dầu khí đốt",REE,"volume_zscore_20,momentum_20",-0.0054542951114391,0.0146927253212624
+"Điện, nước & xăng dầu khí đốt",PPC,"volume_zscore_20,vwap_gap",-0.0060545466588157,-0.0113244660100741
+"Điện, nước & xăng dầu khí đốt",PPC,"lower_shadow,vwap_gap",-0.0067655093830973,-0.0134358867834178
+"Điện, nước & xăng dầu khí đốt",REE,"lower_shadow,vwap_gap",-0.0069376115927377,-0.0190075698448048

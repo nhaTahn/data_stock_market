@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
 
 import numpy as np
 import pandas as pd
@@ -25,7 +30,7 @@ def load_best_threshold(run_dir: Path) -> dict[str, float]:
 
 def build_curve(model_df: pd.DataFrame, threshold: float) -> pd.DataFrame:
     curve_df = model_df.sort_values("Date").copy()
-    curve_df["signal"] = np.where(curve_df["prediction"].abs() >= threshold, np.sign(curve_df["prediction"]), 0.0)
+    curve_df["signal"] = np.where(curve_df["prediction"] >= threshold, 1.0, 0.0)
     curve_df["trade_return"] = curve_df["signal"] * curve_df["actual"]
     curve_df["equity"] = (1.0 + curve_df["trade_return"]).cumprod()
     curve_df["buy_hold_equity"] = (1.0 + curve_df["actual"]).cumprod()

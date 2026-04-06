@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
 from src.evaluation.metric import directional_accuracy, evaluate
 from src.models.baseline import fit_linear_regression, predict_linear_regression
 from src.models.config import get_config
+from src.utils.vn_sector import load_industry_reference
 from src.models.lstm import (
     apply_feature_scaler,
     build_sequence_dataset,
@@ -35,7 +36,7 @@ SPLIT_NAMES = ("train", "val", "test")
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train and evaluate LSTM for stock forecasting.")
     parser.add_argument("--data-path", type=Path, default=None)
-    parser.add_argument("--target-mode", choices=["price", "growth", "return", "return_3d", "return_5d"], default="return")
+    parser.add_argument("--target-mode", choices=["price", "growth", "return", "return_3d", "return_5d"], default="return_3d")
     parser.add_argument("--train-end-date", default=None)
     parser.add_argument("--val-end-date", default=None)
     parser.add_argument("--window-size", type=int, default=None)
@@ -231,12 +232,39 @@ def build_config_payload(config, args: argparse.Namespace, train_df: pd.DataFram
     }
 
 
+def resolve_features_for_df(df: pd.DataFrame, config) -> tuple[str, ...]:
+    codes = df["code"].unique()
+    try:
+        ind_df = load_industry_reference()
+        sector_map = ind_df.set_index("code")["sector"].to_dict()
+        sectors = {sector_map.get(c) for c in codes if sector_map.get(c) is not None}
+        
+        if len(sectors) == 1:
+            sector_name = list(sectors)[0]
+            if sector_name in config.sector_features_map:
+                print(f"Info: Detected single sector '{sector_name}'. Using {len(config.sector_features_map[sector_name])} optimized features.")
+                return config.sector_features_map[sector_name]
+            else:
+                print(f"Info: Detected single sector '{sector_name}' but no specific features mapped. Using default features.")
+        elif len(sectors) > 1:
+            print(f"Info: Detected multiple sectors. Using {len(config.feature_columns)} default features.")
+    except Exception as e:
+        print(f"Warning: Could not auto-detect sector: {e}")
+    
+    return config.feature_columns
+
+
 def main() -> None:
     args = parse_args()
     config = override_config(args)
     run_dir = build_run_dir(config.output_dir, args.run_name, config.target_mode)
 
     df = load_frame(config.data_path, args.stocks)
+    
+    if not args.feature_columns:
+        auto_features = resolve_features_for_df(df, config)
+        config.feature_columns = auto_features
+
     validate_columns(df, config.feature_columns, config.target_column)
 
     train_df, val_df, test_df = split_frame_by_date(df, config.train_end_date, config.val_end_date)

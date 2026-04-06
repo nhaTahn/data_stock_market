@@ -14,7 +14,7 @@ if str(ROOT) not in sys.path:
 
 from src.models.search_feature_combinations import build_run_dir, override_config, run_feature_search
 from src.models.summarize_vn_sector_features import main as summarize_sector_main
-from src.models.train_lstm import load_frame
+from scripts.run_train import load_frame
 from src.utils.vn_sector import DEFAULT_UNIVERSE_PATH
 
 
@@ -85,7 +85,7 @@ def main() -> None:
         print(f"[{idx}/{total}] {stock}: best={summary['best_features']} test={summary['best_test_rel_score']:.6f}")
 
     out = pd.DataFrame(rows).sort_values(["best_test_rel_score", "best_val_rel_score"], ascending=[False, False])
-    out_path = ROOT / "data" / "assets" / "data_info_vn" / "history" / "training_runs" / "vn_all_stock_search_summary.csv"
+    out_path = ROOT / "data" / "processed" / "assets" / "data_info_vn" / "history" / "training_runs" / "vn_all_stock_search_summary.csv"
     out.to_csv(out_path, index=False)
     print("Saved:", out_path)
     summarize_sector_main([])

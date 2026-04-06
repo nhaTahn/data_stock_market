@@ -22,7 +22,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--training-runs-dir",
         type=Path,
-        default=ROOT / "data" / "assets" / "data_info_vn" / "history" / "training_runs",
+        default=ROOT / "data" / "processed" / "assets" / "data_info_vn" / "history" / "training_runs",
     )
     parser.add_argument("--top-combos-per-stock", type=int, default=10)
     parser.add_argument("--top-features", type=int, default=5)

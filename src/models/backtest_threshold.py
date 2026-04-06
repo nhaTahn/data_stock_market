@@ -36,7 +36,7 @@ def select_non_overlap_trades(model_df: pd.DataFrame, threshold: float, holding_
     i = 0
     model_df = model_df.reset_index(drop=True)
     while i < len(model_df):
-        if abs(float(model_df.loc[i, "prediction"])) >= threshold:
+        if float(model_df.loc[i, "prediction"]) >= threshold:
             selected_indices.append(i)
             i += holding_period
             continue
@@ -67,7 +67,7 @@ def summarize_active_rows(
             "final_equity": 1.0,
             "sampled_buy_hold_equity": 1.0,
         }
-    strategy_return = np.sign(active["prediction"]) * active["actual"]
+    strategy_return = active["actual"]
     sampled_buy_hold_equity = float((1.0 + active["actual"]).cumprod().iloc[-1])
     final_equity = float((1.0 + strategy_return).cumprod().iloc[-1])
     return {
@@ -76,7 +76,7 @@ def summarize_active_rows(
         "holding_period": holding_period,
         "trade_count": int(len(active)),
         "coverage": float(len(active) / total_rows),
-        "directional_accuracy": float(np.mean(np.sign(active["prediction"]) == np.sign(active["actual"]))),
+        "directional_accuracy": float(np.mean(active["actual"] >= 0.0)),
         "avg_actual_return": float(active["actual"].mean()),
         "avg_strategy_return": float(strategy_return.mean()),
         "cumulative_strategy_return": float(strategy_return.sum()),
@@ -100,7 +100,7 @@ def compute_backtest_rows(
             if non_overlap and holding_period > 1:
                 active = select_non_overlap_trades(model_df, threshold, holding_period)
             else:
-                active = model_df[model_df["prediction"].abs() >= threshold].copy()
+                active = model_df[model_df["prediction"] >= threshold].copy()
             rows.append(summarize_active_rows(active, len(model_df), model_name, threshold, holding_period))
     return rows
 

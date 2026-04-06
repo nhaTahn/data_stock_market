@@ -19,7 +19,9 @@ TRAIN_END_DATE = _cfg["dates"]["train_end_date"]
 VAL_END_DATE = _cfg["dates"]["val_end_date"]
 
 TARGET_COLUMNS = _cfg["targets"]
-FEATURE_COLUMNS = tuple(_cfg["features"])
+DEFAULT_FEATURE_COLUMNS = tuple(_cfg["default_features"])
+SECTOR_FEATURES_MAP = {k: tuple(v) for k, v in _cfg.get("sector_features", {}).items()}
+ALL_FEATURE_COLUMNS = tuple(set(DEFAULT_FEATURE_COLUMNS).union(*(SECTOR_FEATURES_MAP.values())))
 
 
 def resolve_target_column(target_mode: str) -> str:
@@ -37,7 +39,8 @@ class LSTMConfig:
     val_end_date: str = VAL_END_DATE
     target_mode: str = "return"
     target_column: str | None = None
-    feature_columns: tuple[str, ...] = FEATURE_COLUMNS
+    feature_columns: tuple[str, ...] = DEFAULT_FEATURE_COLUMNS
+    sector_features_map: dict[str, tuple[str, ...]] = field(default_factory=lambda: dict(SECTOR_FEATURES_MAP))
     window_size: int = _cfg["hyperparameters"]["window_size"]
     lstm_units: int = _cfg["hyperparameters"]["lstm_units"]
     dropout: float = _cfg["hyperparameters"]["dropout"]

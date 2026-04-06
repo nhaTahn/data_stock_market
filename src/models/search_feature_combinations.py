@@ -26,7 +26,7 @@ from src.models.lstm import (
     split_frame_by_date,
     split_sequence_dataset,
 )
-from src.models.train_lstm import load_frame, validate_columns
+from scripts.run_train import load_frame, validate_columns
 
 
 def parse_args() -> argparse.Namespace:

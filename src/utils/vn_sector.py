@@ -6,8 +6,8 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_UNIVERSE_PATH = ROOT / "data" / "assets" / "data_info_vn" / "history" / "vn_gold_recommended.csv"
-DEFAULT_INDUSTRY_PATH = ROOT / "data" / "zInfo" / "data_info_vn" / "symbols_by_industries.csv"
+DEFAULT_UNIVERSE_PATH = ROOT / "data" / "processed" / "assets" / "data_info_vn" / "history" / "vn_gold_recommended.csv"
+DEFAULT_INDUSTRY_PATH = ROOT / "data" / "external" / "zInfo" / "data_info_vn" / "symbols_by_industries.csv"
 
 
 def load_industry_reference(industry_path: Path = DEFAULT_INDUSTRY_PATH) -> pd.DataFrame:
