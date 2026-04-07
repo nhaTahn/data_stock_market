@@ -19,7 +19,7 @@ TRAIN_END_DATE = _cfg["dates"]["train_end_date"]
 VAL_END_DATE = _cfg["dates"]["val_end_date"]
 
 TARGET_COLUMNS = _cfg["targets"]
-MACRO_FEATURE_COLUMNS = ("vingroup_momentum", "vnindex_return")
+MACRO_FEATURE_COLUMNS = ("vingroup_momentum", "vnindex_return", "a_d_ratio")
 DEFAULT_FEATURE_COLUMNS = tuple(dict.fromkeys([*_cfg["default_features"], *MACRO_FEATURE_COLUMNS]))
 SECTOR_FEATURES_MAP = {
     key: tuple(dict.fromkeys([*values, *MACRO_FEATURE_COLUMNS]))
@@ -61,12 +61,43 @@ class LSTMConfig:
     batch_size: int = _cfg["hyperparameters"]["batch_size"]
     epochs: int = _cfg["hyperparameters"]["epochs"]
     patience: int = _cfg["hyperparameters"]["patience"]
+    target_normalizer: str | None = _cfg["hyperparameters"].get("target_normalizer")
+    lstm_seeds: list[int] = field(default_factory=lambda: list(_cfg["hyperparameters"].get("lstm_seeds", [42])))
+    signmag_signed_loss_weight: float = _cfg["hyperparameters"].get("signmag_signed_loss_weight", 1.5)
+    signmag_sign_loss_weight: float = _cfg["hyperparameters"].get("signmag_sign_loss_weight", 0.15)
+    signmag_magnitude_loss_weight: float = _cfg["hyperparameters"].get("signmag_magnitude_loss_weight", 0.35)
+    signmag_log_magnitude: bool = _cfg["hyperparameters"].get("signmag_log_magnitude", True)
+    sample_weight_mode: str = _cfg["hyperparameters"].get("sample_weight_mode", "none")
+    sample_weight_strength: float = _cfg["hyperparameters"].get("sample_weight_strength", 1.5)
+    sample_weight_quantile: float = _cfg["hyperparameters"].get("sample_weight_quantile", 0.75)
+    sample_weight_clip: float = _cfg["hyperparameters"].get("sample_weight_clip", 3.0)
+    attention_enabled: bool = _cfg["hyperparameters"].get("attention_enabled", False)
+    attention_heads: int = _cfg["hyperparameters"].get("attention_heads", 2)
+    attention_key_dim: int = _cfg["hyperparameters"].get("attention_key_dim", 16)
+    event_enabled: bool = _cfg["hyperparameters"].get("event_enabled", False)
+    event_threshold: float = _cfg["hyperparameters"].get("event_threshold", 0.75)
+    event_signed_loss_weight: float = _cfg["hyperparameters"].get("event_signed_loss_weight", 2.0)
+    event_prob_loss_weight: float = _cfg["hyperparameters"].get("event_prob_loss_weight", 0.4)
+    event_sign_loss_weight: float = _cfg["hyperparameters"].get("event_sign_loss_weight", 0.1)
+    event_magnitude_loss_weight: float = _cfg["hyperparameters"].get("event_magnitude_loss_weight", 0.3)
+    event_log_magnitude: bool = _cfg["hyperparameters"].get("event_log_magnitude", True)
+    fk_benchmark_enabled: bool = _cfg["hyperparameters"].get("fk_benchmark_enabled", False)
+    fk_window_size: int = _cfg["hyperparameters"].get("fk_window_size", 240)
+    fk_hidden_units: int = _cfg["hyperparameters"].get("fk_hidden_units", 25)
+    fk_dropout: float = _cfg["hyperparameters"].get("fk_dropout", 0.16)
+    fk_learning_rate: float = _cfg["hyperparameters"].get("fk_learning_rate", 1e-3)
+    fk_batch_size: int = _cfg["hyperparameters"].get("fk_batch_size", 32)
+    fk_epochs: int = _cfg["hyperparameters"].get("fk_epochs", 1000)
+    fk_patience: int = _cfg["hyperparameters"].get("fk_patience", 10)
+    fk_train_fraction: float = _cfg["hyperparameters"].get("fk_train_fraction", 0.8)
+    fk_top_k: int = _cfg["hyperparameters"].get("fk_top_k", 10)
 
     def __post_init__(self) -> None:
         if self.target_column is None:
             self.target_column = resolve_target_column(self.target_mode)
         if isinstance(self.lstm_units, (list, tuple)):
             self.lstm_units = [int(item) for item in self.lstm_units]
+        self.lstm_seeds = [int(seed) for seed in self.lstm_seeds]
 
 
 def get_config(target_mode: str = "return") -> LSTMConfig:

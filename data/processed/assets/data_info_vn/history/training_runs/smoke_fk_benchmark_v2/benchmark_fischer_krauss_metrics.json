@@ -1,0 +1,26 @@
+{
+  "train": {
+    "accuracy": 0.5637206223104932,
+    "balanced_accuracy": 0.5082551663982824,
+    "positive_rate": 0.5710029791459782,
+    "predicted_positive_rate": 0.8917576961271102,
+    "mean_prob_class_1": 0.5102881789207458,
+    "log_loss": 0.6901084249805276
+  },
+  "val": {
+    "accuracy": 0.49973835688121404,
+    "balanced_accuracy": 0.49540676107023573,
+    "positive_rate": 0.5062794348508635,
+    "predicted_positive_rate": 0.8448456305599162,
+    "mean_prob_class_1": 0.5092691779136658,
+    "log_loss": 0.6937040565433082
+  },
+  "test": {
+    "accuracy": 0.4961748633879781,
+    "balanced_accuracy": 0.4925787666119158,
+    "positive_rate": 0.505464480874317,
+    "predicted_positive_rate": 0.8289617486338798,
+    "mean_prob_class_1": 0.5086691379547119,
+    "log_loss": 0.6935666543212745
+  }
+}

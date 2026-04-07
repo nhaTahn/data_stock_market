@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
+
 def add_return_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     by_code = df.groupby("code", group_keys=False)
@@ -270,6 +271,30 @@ def add_price_volume_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def add_wyckoff_vsa_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    if not {"high", "low", "close"}.issubset(df.columns):
+        return df
+
+    volume_column = "volume" if "volume" in df.columns else "volume_match" if "volume_match" in df.columns else None
+    if volume_column is None:
+        return df
+
+    spread = (df["high"] - df["low"]).astype(float) + 1e-8
+    if "effort_result_ratio" not in df.columns:
+        df["effort_result_ratio"] = df[volume_column] / spread
+    if "buying_pressure" not in df.columns:
+        df["buying_pressure"] = ((df["close"] - df["low"]) / spread) * df[volume_column]
+    if "selling_pressure" not in df.columns:
+        df["selling_pressure"] = ((df["high"] - df["close"]) / spread) * df[volume_column]
+    if "wyckoff_phase_60d" not in df.columns:
+        by_code = df.groupby("code", group_keys=False)
+        min_60d = by_code["low"].rolling(window=60, min_periods=1).min().reset_index(level=0, drop=True)
+        max_60d = by_code["high"].rolling(window=60, min_periods=1).max().reset_index(level=0, drop=True)
+        df["wyckoff_phase_60d"] = (df["close"] - min_60d) / (max_60d - min_60d + 1e-8)
+    return df
+
+
 # https://github.com/romanmichaelpaolucci/Quant-Guild-Library/blob/655c00f733382e177b0d7fe8f0db80f244f5e3ed/2025%20Video%20Lectures/6.%20How%20to%20Trade%20with%20the%20Black-Scholes%20Model/Black-ScholesTrading.ipynb
 def black_scholes_call(S, K, sigma, r, t):
     d1 = (np.log(S/K) + (r + ((sigma**2)/2))*t) / (sigma * np.sqrt(t))
@@ -312,6 +337,7 @@ def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = add_bollinger_features(df)
     df = add_macd_features(df)
     df = add_price_volume_features(df)
+    df = add_wyckoff_vsa_features(df)
     df = add_cross_sectional_features(df)
     df = add_calendar_features(df)
 

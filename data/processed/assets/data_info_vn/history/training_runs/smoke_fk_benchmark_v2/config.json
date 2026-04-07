@@ -1,0 +1,149 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "feature_columns": [
+    "alpha_sector",
+    "vwap_gap_20",
+    "volatility_20",
+    "gap_open",
+    "ma_200_gap",
+    "bb_width",
+    "rsi_14",
+    "day_of_week",
+    "vingroup_momentum",
+    "vnindex_return"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 15,
+  "lstm_units": 64,
+  "dropout": 0.1,
+  "lr": 0.0005,
+  "loss": "huber",
+  "huber_delta": 0.01,
+  "batch_size": 32,
+  "epochs": 1,
+  "patience": 1,
+  "target_normalizer": null,
+  "lstm_seeds": [
+    42
+  ],
+  "signmag_signed_loss_weight": 1.5,
+  "signmag_sign_loss_weight": 0.15,
+  "signmag_magnitude_loss_weight": 0.35,
+  "signmag_log_magnitude": true,
+  "sample_weight_mode": "none",
+  "sample_weight_strength": 1.5,
+  "sample_weight_quantile": 0.75,
+  "sample_weight_clip": 3.0,
+  "attention_enabled": false,
+  "attention_heads": 2,
+  "attention_key_dim": 16,
+  "event_enabled": false,
+  "event_threshold": 0.75,
+  "event_signed_loss_weight": 2.0,
+  "event_prob_loss_weight": 0.4,
+  "event_sign_loss_weight": 0.1,
+  "event_magnitude_loss_weight": 0.3,
+  "event_log_magnitude": true,
+  "fk_benchmark_enabled": true,
+  "fk_window_size": 240,
+  "fk_hidden_units": 25,
+  "fk_dropout": 0.16,
+  "fk_learning_rate": 0.001,
+  "fk_batch_size": 32,
+  "fk_epochs": 1,
+  "fk_patience": 1,
+  "fk_train_fraction": 0.8,
+  "fk_top_k": 2,
+  "monitor_metric": "val_rel_score",
+  "stocks": "VHM,KDH,NLG,DIG,DXG,PDR,NVL",
+  "use_all_features": false,
+  "raw_rows_train": 15846,
+  "raw_rows_val": 1500,
+  "raw_rows_test": 1836,
+  "seq_rows_train": 14558,
+  "seq_rows_val": 1500,
+  "seq_rows_test": 1836,
+  "baseline_model": "linear_regression(flatten_sequence)",
+  "baseline_models": [
+    "linear_regression(flatten_sequence)",
+    "arima_proxy(ar1_fast)"
+  ],
+  "lstm_use_stock_identity": true,
+  "lstm_stock_identity_codes": [
+    "DIG",
+    "DXG",
+    "KDH",
+    "NLG",
+    "PDR",
+    "VHM"
+  ],
+  "lstm_input_feature_count": 16,
+  "lstm_attention_enabled": false,
+  "lstm_event_enabled": false,
+  "lstm_signmag_enabled": false,
+  "fischer_krauss_benchmark": {
+    "train_end_date": "2022-06-15",
+    "validation_end_date": "2024-12-31",
+    "window_size": 240,
+    "hidden_units": 25,
+    "dropout": 0.16,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "epochs": 1,
+    "patience": 1,
+    "train_fraction": 0.8,
+    "top_k": 2,
+    "metrics": {
+      "train": {
+        "accuracy": 0.5637206223104932,
+        "balanced_accuracy": 0.5082551663982824,
+        "positive_rate": 0.5710029791459782,
+        "predicted_positive_rate": 0.8917576961271102,
+        "mean_prob_class_1": 0.5102881789207458,
+        "log_loss": 0.6901084249805276
+      },
+      "val": {
+        "accuracy": 0.49973835688121404,
+        "balanced_accuracy": 0.49540676107023573,
+        "positive_rate": 0.5062794348508635,
+        "predicted_positive_rate": 0.8448456305599162,
+        "mean_prob_class_1": 0.5092691779136658,
+        "log_loss": 0.6937040565433082
+      },
+      "test": {
+        "accuracy": 0.4961748633879781,
+        "balanced_accuracy": 0.4925787666119158,
+        "positive_rate": 0.505464480874317,
+        "predicted_positive_rate": 0.8289617486338798,
+        "mean_prob_class_1": 0.5086691379547119,
+        "log_loss": 0.6935666543212745
+      }
+    },
+    "long_short_summary": {
+      "num_days": 305,
+      "avg_daily_return": -0.0016991306329146028,
+      "vol_daily_return": 0.02035171166062355,
+      "sharpe_annualized": -1.3253362735003997,
+      "final_equity": 0.5585463643074036,
+      "max_drawdown": -0.5639342069625854
+    }
+  },
+  "family_selection_summary": {
+    "lstm": {
+      "ranked_models": [
+        {
+          "model": "lstm_seed_42",
+          "val_score": -0.017618161707234403,
+          "test_score": 0.00020759228572286847
+        }
+      ],
+      "best_by_val": "lstm_seed_42",
+      "top2_by_val": [
+        "lstm_seed_42"
+      ]
+    }
+  }
+}

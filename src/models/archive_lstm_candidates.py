@@ -44,12 +44,27 @@ def collect_row(run_dir: Path) -> dict[str, object] | None:
     backtest_path = run_dir / "threshold_backtest_summary_non_overlap.json"
     backtest = json.loads(backtest_path.read_text()) if backtest_path.exists() else {}
 
+    lstm_models = [name for name in metrics if name.startswith("lstm")]
+    if not lstm_models:
+        return None
+    ranked_models = sorted(
+        lstm_models,
+        key=lambda name: (
+            metrics.get(name, {}).get("test", {}).get("rel_score", float("-inf")),
+            metrics.get(name, {}).get("val", {}).get("rel_score", float("-inf")),
+        ),
+        reverse=True,
+    )
+    best_model = ranked_models[0]
     lstm_train = metrics.get("lstm", {}).get("train", {})
     lstm_val = metrics.get("lstm", {}).get("val", {})
     lstm_test = metrics.get("lstm", {}).get("test", {})
+    best_val = metrics.get(best_model, {}).get("val", {})
+    best_test = metrics.get(best_model, {}).get("test", {})
     linear_test = metrics.get("linear_regression", {}).get("test", {})
     arima_test = metrics.get("arima", {}).get("test", {})
     lstm_backtest = backtest.get("lstm", {})
+    best_backtest = backtest.get(best_model, {})
 
     return {
         "run_name": run_dir.name,
@@ -62,6 +77,13 @@ def collect_row(run_dir: Path) -> dict[str, object] | None:
         "lr": config.get("lr"),
         "epochs": config.get("epochs"),
         "patience": config.get("patience"),
+        "best_lstm_model": best_model,
+        "best_lstm_val_rel_score": best_val.get("rel_score"),
+        "best_lstm_test_rel_score": best_test.get("rel_score"),
+        "best_lstm_test_directional_accuracy": best_test.get("directional_accuracy"),
+        "best_lstm_backtest_final_equity": best_backtest.get("final_equity"),
+        "best_lstm_backtest_trade_count": best_backtest.get("trade_count"),
+        "best_lstm_backtest_threshold": best_backtest.get("threshold"),
         "lstm_train_rel_score": lstm_train.get("rel_score"),
         "lstm_val_rel_score": lstm_val.get("rel_score"),
         "lstm_test_rel_score": lstm_test.get("rel_score"),
@@ -95,12 +117,12 @@ def main() -> None:
         raise ValueError("No run directories with metrics.json found.")
 
     summary_df = pd.DataFrame(rows).sort_values(
-        ["lstm_test_rel_score", "lstm_val_rel_score", "lstm_backtest_final_equity"],
+        ["best_lstm_test_rel_score", "best_lstm_val_rel_score", "best_lstm_backtest_final_equity"],
         ascending=[False, False, False],
     )
 
     save_dir = args.save_dir or (args.run_base / "representative_runs" / f"lstm_relscore_ge_{str(args.threshold).replace('.', '_')}")
-    candidates_df = summary_df[summary_df["lstm_test_rel_score"] >= args.threshold].copy()
+    candidates_df = summary_df[summary_df["best_lstm_test_rel_score"] >= args.threshold].copy()
     if not candidates_df.empty:
         candidates_df["saved_path"] = [
             ensure_link(Path(run_dir), save_dir)

@@ -9,6 +9,53 @@ import numpy as np
 import pandas as pd
 
 
+def _prepare_rel_score_histogram_stats(split_df: pd.DataFrame) -> dict[str, float | np.ndarray]:
+    base_abs = np.abs(split_df["base"].to_numpy(dtype=float))
+    error_abs = np.abs(split_df["error"].to_numpy(dtype=float))
+
+    q50_base, q90_base = np.quantile(base_abs, [0.5, 0.9])
+    q50_error, q90_error = np.quantile(error_abs, [0.5, 0.9])
+
+    base_loss = float(q50_base + 0.5 * q90_base)
+    abs_loss = float(q50_error + 0.5 * q90_error)
+    rel_score = 1.0 - (abs_loss / base_loss) if base_loss > 0 else np.nan
+
+    raw_proxy_rel_score = 1.0 - (error_abs / np.maximum(base_abs, 1e-6))
+    raw_proxy_rel_score = np.clip(raw_proxy_rel_score, -3.0, 1.0)
+
+    # Stabilize the per-row proxy with the same robust scale used by the
+    # aggregate rel_score, so rows with tiny |base| do not collapse at -3.
+    proxy_floor = max(base_loss, 1e-4)
+    proxy_denom = np.maximum(base_abs, proxy_floor)
+    stabilized_proxy_rel_score = 1.0 - (error_abs / proxy_denom)
+    stabilized_proxy_rel_score = np.clip(stabilized_proxy_rel_score, -1.5, 1.0)
+
+    near_zero_threshold = max(1e-6, 0.05 * q50_base)
+    near_zero_share = float(np.mean(base_abs <= near_zero_threshold))
+    raw_positive_share = float(np.mean(raw_proxy_rel_score > 0.0))
+    raw_left_edge_share = float(np.mean(raw_proxy_rel_score <= -2.9))
+    stabilized_positive_share = float(np.mean(stabilized_proxy_rel_score > 0.0))
+    stabilized_hard_left_share = float(np.mean(stabilized_proxy_rel_score < -0.5))
+
+    return {
+        "raw_proxy_rel_score": raw_proxy_rel_score,
+        "stabilized_proxy_rel_score": stabilized_proxy_rel_score,
+        "q50_base": float(q50_base),
+        "q90_base": float(q90_base),
+        "q50_error": float(q50_error),
+        "q90_error": float(q90_error),
+        "base_loss": base_loss,
+        "abs_loss": abs_loss,
+        "rel_score": float(rel_score),
+        "proxy_floor": float(proxy_floor),
+        "near_zero_share": near_zero_share,
+        "raw_positive_share": raw_positive_share,
+        "raw_left_edge_share": raw_left_edge_share,
+        "stabilized_positive_share": stabilized_positive_share,
+        "stabilized_hard_left_share": stabilized_hard_left_share,
+    }
+
+
 def save_actual_vs_prediction_plot(run_dir: Path, prediction_df: pd.DataFrame, model_name: str) -> None:
     model_df = prediction_df[prediction_df["model"] == model_name].copy()
     if model_df.empty:
@@ -68,50 +115,99 @@ def save_rel_score_hist_plot(run_dir: Path, model_name: str) -> None:
     if not split_frames:
         return
 
-    fig, axes = plt.subplots(len(split_frames), 1, figsize=(14, 3.5 * len(split_frames)), squeeze=False)
+    fig, axes = plt.subplots(
+        len(split_frames),
+        2,
+        figsize=(16, 3.8 * len(split_frames)),
+        squeeze=False,
+    )
 
     for row_idx, (split_name, split_df) in enumerate(split_frames):
-        base_abs = np.abs(split_df["base"].to_numpy(dtype=float))
-        error_abs = np.abs(split_df["error"].to_numpy(dtype=float))
-        proxy_rel_score = 1.0 - (error_abs / np.maximum(base_abs, 1e-6))
-        proxy_rel_score = np.clip(proxy_rel_score, -3.0, 1.0)
+        stats = _prepare_rel_score_histogram_stats(split_df)
+        raw_proxy_rel_score = stats["raw_proxy_rel_score"]
+        stabilized_proxy_rel_score = stats["stabilized_proxy_rel_score"]
 
-        q50_base, q90_base = np.quantile(base_abs, [0.5, 0.9])
-        q50_error, q90_error = np.quantile(error_abs, [0.5, 0.9])
-        base_loss = float(q50_base + 0.5 * q90_base)
-        abs_loss = float(q50_error + 0.5 * q90_error)
-        rel_score = 1.0 - (abs_loss / base_loss) if base_loss > 0 else np.nan
-        hist_ax = axes[row_idx, 0]
-        hist_ax.hist(proxy_rel_score, bins=50, color="#1f77b4", alpha=0.75)
-        hist_ax.axvline(float(np.mean(proxy_rel_score)), color="#d62728", linewidth=1.5, label="mean proxy")
-        hist_ax.axvline(rel_score, color="#2ca02c", linewidth=1.5, linestyle="--", label="aggregate rel_score")
-        hist_ax.set_title(f"{model_name} | {split_name} | Rel Score Histogram")
-        hist_ax.set_xlabel("local rel score proxy")
-        hist_ax.set_ylabel("count")
-        hist_ax.grid(True, alpha=0.2)
-        hist_ax.legend(loc="upper left")
+        raw_ax = axes[row_idx, 0]
+        raw_ax.hist(raw_proxy_rel_score, bins=np.linspace(-3.0, 1.0, 41), color="#1f77b4", alpha=0.75)
+        raw_ax.axvline(0.0, color="black", linewidth=0.9, alpha=0.35)
+        raw_ax.axvline(float(np.mean(raw_proxy_rel_score)), color="#d62728", linewidth=1.5, label="mean proxy")
+        raw_ax.axvline(stats["rel_score"], color="#2ca02c", linewidth=1.5, linestyle="--", label="aggregate rel_score")
+        raw_ax.set_title(f"{model_name} | {split_name} | Raw Proxy")
+        raw_ax.set_xlabel("raw local rel score proxy")
+        raw_ax.set_ylabel("count")
+        raw_ax.grid(True, alpha=0.2)
+        raw_ax.legend(loc="upper left")
 
-        summary = (
-            f"base_loss={base_loss:.4f}\n"
-            f"abs_loss={abs_loss:.4f}\n"
-            f"rel_score={rel_score:.4f}\n"
-            f"mean_proxy={np.mean(proxy_rel_score):.4f}\n"
-            f"median_proxy={np.median(proxy_rel_score):.4f}\n"
-            f"q50(|base|)={q50_base:.4f}\n"
-            f"q90(|error|)={q90_error:.4f}"
+        raw_summary = (
+            f"base_loss={stats['base_loss']:.4f}\n"
+            f"abs_loss={stats['abs_loss']:.4f}\n"
+            f"rel_score={stats['rel_score']:.4f}\n"
+            f"mean_proxy={np.mean(raw_proxy_rel_score):.4f}\n"
+            f"median_proxy={np.median(raw_proxy_rel_score):.4f}\n"
+            f"share(proxy>0)={stats['raw_positive_share']:.1%}\n"
+            f"share(proxy<=-2.9)={stats['raw_left_edge_share']:.1%}\n"
+            f"near_zero_base={stats['near_zero_share']:.1%}"
         )
-        hist_ax.text(
+        raw_ax.text(
             0.98,
             0.98,
-            summary,
-            transform=hist_ax.transAxes,
+            raw_summary,
+            transform=raw_ax.transAxes,
             ha="right",
             va="top",
             fontsize=9,
             bbox={"boxstyle": "round", "facecolor": "white", "alpha": 0.85, "edgecolor": "#cccccc"},
         )
 
-    fig.suptitle("Rel Score Histogram", fontsize=14)
+        stable_ax = axes[row_idx, 1]
+        stable_ax.hist(
+            stabilized_proxy_rel_score,
+            bins=np.linspace(-1.5, 1.0, 41),
+            color="#1f77b4",
+            alpha=0.75,
+        )
+        stable_ax.axvline(0.0, color="black", linewidth=0.9, alpha=0.35)
+        stable_ax.axvline(
+            float(np.mean(stabilized_proxy_rel_score)),
+            color="#d62728",
+            linewidth=1.5,
+            label="mean proxy",
+        )
+        stable_ax.axvline(
+            stats["rel_score"],
+            color="#2ca02c",
+            linewidth=1.5,
+            linestyle="--",
+            label="aggregate rel_score",
+        )
+        stable_ax.set_title(f"{model_name} | {split_name} | Stabilized Proxy")
+        stable_ax.set_xlabel("stabilized local rel score proxy")
+        stable_ax.set_ylabel("count")
+        stable_ax.grid(True, alpha=0.2)
+        stable_ax.legend(loc="upper left")
+
+        stable_summary = (
+            f"base_loss={stats['base_loss']:.4f}\n"
+            f"abs_loss={stats['abs_loss']:.4f}\n"
+            f"rel_score={stats['rel_score']:.4f}\n"
+            f"mean_proxy={np.mean(stabilized_proxy_rel_score):.4f}\n"
+            f"median_proxy={np.median(stabilized_proxy_rel_score):.4f}\n"
+            f"share(proxy>0)={stats['stabilized_positive_share']:.1%}\n"
+            f"share(proxy<-0.5)={stats['stabilized_hard_left_share']:.1%}\n"
+            f"proxy_floor={stats['proxy_floor']:.4f}"
+        )
+        stable_ax.text(
+            0.98,
+            0.98,
+            stable_summary,
+            transform=stable_ax.transAxes,
+            ha="right",
+            va="top",
+            fontsize=9,
+            bbox={"boxstyle": "round", "facecolor": "white", "alpha": 0.85, "edgecolor": "#cccccc"},
+        )
+
+    fig.suptitle("Rel Score Histogram: Raw vs Stabilized Proxy", fontsize=14)
     fig.tight_layout(rect=(0, 0, 1, 0.98))
     fig.savefig(run_dir / f"rel_score_hist_{model_name}.png", dpi=200)
     plt.close(fig)
