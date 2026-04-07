@@ -1,0 +1,1703 @@
+===========================================
+BAT DAU CHUOI NHIEM VU CHAY QUA DEM
+Log dir: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260407_031830
+===========================================
+
+>>> build_vn_dataset
+Building quality dataset for VN...
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_quality_dataset.csv
+
+>>> search_vhm_return3d_default
+Saved search to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/search_vhm_return3d_default_overnight
+{
+  "stocks": "VHM",
+  "target_mode": "return_3d",
+  "target_column": "target_next_3d_return",
+  "window_size": 5,
+  "feature_pool": [
+    "volume_ratio_20",
+    "volume_zscore_20",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "momentum_5",
+    "momentum_20",
+    "atr_gap",
+    "volatility_20",
+    "ma_20_gap",
+    "ma_200_gap",
+    "rolling_max_20_gap",
+    "bb_width",
+    "bb_position",
+    "vwap_gap",
+    "obv_change",
+    "macd_hist",
+    "vingroup_momentum",
+    "vnindex_return",
+    "rsi_14",
+    "day_of_week"
+  ],
+  "min_combo_size": 2,
+  "max_combo_size": 3,
+  "min_rel_score": 0.01,
+  "tested_combinations": 2024,
+  "good_combinations": 40,
+  "best_val_rel_score": 0.06537481216695773,
+  "best_test_rel_score": -0.03011554957522833,
+  "best_features": "close_position,ma_20_gap,rsi_14"
+}
+
+>>> search_nlg_return3d_default
+Saved search to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/search_nlg_return3d_default_overnight
+{
+  "stocks": "NLG",
+  "target_mode": "return_3d",
+  "target_column": "target_next_3d_return",
+  "window_size": 5,
+  "feature_pool": [
+    "volume_ratio_20",
+    "volume_zscore_20",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "momentum_5",
+    "momentum_20",
+    "atr_gap",
+    "volatility_20",
+    "ma_20_gap",
+    "ma_200_gap",
+    "rolling_max_20_gap",
+    "bb_width",
+    "bb_position",
+    "vwap_gap",
+    "obv_change",
+    "macd_hist",
+    "vingroup_momentum",
+    "vnindex_return",
+    "rsi_14",
+    "day_of_week"
+  ],
+  "min_combo_size": 2,
+  "max_combo_size": 3,
+  "min_rel_score": 0.01,
+  "tested_combinations": 2024,
+  "good_combinations": 40,
+  "best_val_rel_score": 0.059574809140302,
+  "best_test_rel_score": -0.03813380367404373,
+  "best_features": "gap_open,close_position,vnindex_return"
+}
+
+>>> search_dig_return3d_default
+Saved search to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/search_dig_return3d_default_overnight
+{
+  "stocks": "DIG",
+  "target_mode": "return_3d",
+  "target_column": "target_next_3d_return",
+  "window_size": 5,
+  "feature_pool": [
+    "volume_ratio_20",
+    "volume_zscore_20",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "momentum_5",
+    "momentum_20",
+    "atr_gap",
+    "volatility_20",
+    "ma_20_gap",
+    "ma_200_gap",
+    "rolling_max_20_gap",
+    "bb_width",
+    "bb_position",
+    "vwap_gap",
+    "obv_change",
+    "macd_hist",
+    "vingroup_momentum",
+    "vnindex_return",
+    "rsi_14",
+    "day_of_week"
+  ],
+  "min_combo_size": 2,
+  "max_combo_size": 3,
+  "min_rel_score": 0.01,
+  "tested_combinations": 2024,
+  "good_combinations": 40,
+  "best_val_rel_score": 0.05165326890640576,
+  "best_test_rel_score": 0.032489733348157745,
+  "best_features": "gap_open,momentum_20,bb_width"
+}
+
+>>> overnight_bds_return3d_sector_u16_w7_train
+Info: Detected single sector 'Bất động sản'. Using 10 optimized features.
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u16_w7
+{
+  "lstm": {
+    "train": {
+      "mse": 0.001998021500185132,
+      "mae": 0.030978867784142494,
+      "directional_accuracy": 0.50671508839249,
+      "base_loss": 0.05794490519911052,
+      "abs_loss": 0.05773546772543342,
+      "rel_score": 0.00361442430456016
+    },
+    "val": {
+      "mse": 0.0011396532645449042,
+      "mae": 0.024282053112983704,
+      "directional_accuracy": 0.5141129032258065,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.044194293732289225,
+      "rel_score": 0.01802927948719224
+    },
+    "test": {
+      "mse": 0.0023982650600373745,
+      "mae": 0.03595691919326782,
+      "directional_accuracy": 0.4795805739514349,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06649147311691195,
+      "rel_score": -0.01742052488096202
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0019847119692713022,
+      "mae": 0.03137321397662163,
+      "directional_accuracy": 0.47944360696176513,
+      "base_loss": 0.05794490519911052,
+      "abs_loss": 0.05834146896377207,
+      "rel_score": -0.0068438072907166525
+    },
+    "val": {
+      "mse": 0.0011907626176252961,
+      "mae": 0.025037826970219612,
+      "directional_accuracy": 0.4543010752688172,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04624022273346781,
+      "rel_score": -0.02743003676696798
+    },
+    "test": {
+      "mse": 0.0025038374587893486,
+      "mae": 0.03678028658032417,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06723501565866173,
+      "rel_score": -0.028797855050324284
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002026374451816082,
+      "mae": 0.031459733843803406,
+      "directional_accuracy": 0.4785528299301083,
+      "base_loss": 0.05794490519911052,
+      "abs_loss": 0.058109376975335185,
+      "rel_score": -0.0028384165209953682
+    },
+    "val": {
+      "mse": 0.0011462026741355658,
+      "mae": 0.02466859482228756,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.045183442332199765,
+      "rel_score": -0.003949009593117836
+    },
+    "test": {
+      "mse": 0.002407277934253216,
+      "mae": 0.03605613484978676,
+      "directional_accuracy": 0.4481236203090508,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06635728001128882,
+      "rel_score": -0.01536716655457293
+    }
+  }
+}
+
+>>> overnight_bds_return3d_sector_u16_w7_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u16_w7/threshold_backtest_non_overlap.csv
+{
+  "lstm": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 251,
+    "coverage": 0.13760964912280702,
+    "directional_accuracy": 0.5936254980079682,
+    "avg_actual_return": 0.008344508542629482,
+    "avg_strategy_return": 0.008344508542629482,
+    "cumulative_strategy_return": 2.0944716442,
+    "final_equity": 5.773310274190194,
+    "sampled_buy_hold_equity": 5.773310274190194
+  },
+  "linear_regression": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 223,
+    "coverage": 0.12225877192982457,
+    "directional_accuracy": 0.5560538116591929,
+    "avg_actual_return": 0.007594870065022421,
+    "avg_strategy_return": 0.007594870065022421,
+    "cumulative_strategy_return": 1.6936560244999999,
+    "final_equity": 4.174906175605412,
+    "sampled_buy_hold_equity": 4.174906175605412
+  },
+  "arima": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 338,
+    "coverage": 0.18530701754385964,
+    "directional_accuracy": 0.591715976331361,
+    "avg_actual_return": 0.0038090006647929,
+    "avg_strategy_return": 0.0038090006647929,
+    "cumulative_strategy_return": 1.2874422247000001,
+    "final_equity": 2.538946113733474,
+    "sampled_buy_hold_equity": 2.538946113733474
+  }
+}
+
+>>> overnight_bds_return3d_sector_u16_w7_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u16_w7
+
+>>> overnight_bds_return3d_sector_u32_w10_train
+Info: Detected single sector 'Bất động sản'. Using 10 optimized features.
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u32_w10
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0019681882113218307,
+      "mae": 0.03071521408855915,
+      "directional_accuracy": 0.5135153677277717,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.05724302097223699,
+      "rel_score": 0.010697354883818844
+    },
+    "val": {
+      "mse": 0.0011570757487788796,
+      "mae": 0.02445136569440365,
+      "directional_accuracy": 0.5073924731182796,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04447083545383064,
+      "rel_score": 0.011884688169615187
+    },
+    "test": {
+      "mse": 0.0024109315127134323,
+      "mae": 0.03599520027637482,
+      "directional_accuracy": 0.4762693156732892,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06682184305973352,
+      "rel_score": -0.02247568676674838
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.001974791521206498,
+      "mae": 0.03135014697909355,
+      "directional_accuracy": 0.48113336992316136,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.058314579888246953,
+      "rel_score": -0.007821864612312046
+    },
+    "val": {
+      "mse": 0.001183998421765864,
+      "mae": 0.025006460025906563,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04626716030761598,
+      "rel_score": -0.028028573520499478
+    },
+    "test": {
+      "mse": 0.002545850118622184,
+      "mae": 0.03710898756980896,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06770987212657928,
+      "rel_score": -0.03606388021391638
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002023514360189438,
+      "mae": 0.03143841400742531,
+      "directional_accuracy": 0.47756586169045007,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.05802862474229187,
+      "rel_score": -0.002879844127139597
+    },
+    "val": {
+      "mse": 0.0011458136141300201,
+      "mae": 0.02466266043484211,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04518014962086453,
+      "rel_score": -0.003875847520613984
+    },
+    "test": {
+      "mse": 0.002407038351520896,
+      "mae": 0.0360519140958786,
+      "directional_accuracy": 0.45253863134657835,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06631220842245966,
+      "rel_score": -0.014677502791474284
+    }
+  }
+}
+
+>>> overnight_bds_return3d_sector_u32_w10_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u32_w10/threshold_backtest_non_overlap.csv
+{
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 129,
+    "coverage": 0.07072368421052631,
+    "directional_accuracy": 0.5658914728682171,
+    "avg_actual_return": 0.009924122833333335,
+    "avg_strategy_return": 0.009924122833333335,
+    "cumulative_strategy_return": 1.2802118455000002,
+    "final_equity": 3.084020960990185,
+    "sampled_buy_hold_equity": 3.084020960990185
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 437,
+    "coverage": 0.23958333333333334,
+    "directional_accuracy": 0.5125858123569794,
+    "avg_actual_return": 0.003603210455377574,
+    "avg_strategy_return": 0.003603210455377574,
+    "cumulative_strategy_return": 1.5746029689999999,
+    "final_equity": 2.8613408617114873,
+    "sampled_buy_hold_equity": 2.8613408617114873
+  },
+  "arima": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 336,
+    "coverage": 0.18421052631578946,
+    "directional_accuracy": 0.5922619047619048,
+    "avg_actual_return": 0.003863523930654762,
+    "avg_strategy_return": 0.003863523930654762,
+    "cumulative_strategy_return": 1.2981440407,
+    "final_equity": 2.5670455835715047,
+    "sampled_buy_hold_equity": 2.5670455835715047
+  }
+}
+
+>>> overnight_bds_return3d_sector_u32_w10_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u32_w10
+
+>>> overnight_bds_return3d_sector_u48_w12_train
+Info: Detected single sector 'Bất động sản'. Using 10 optimized features.
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u48_w12
+{
+  "lstm": {
+    "train": {
+      "mse": 0.002003977308049798,
+      "mae": 0.031027039512991905,
+      "directional_accuracy": 0.5007552870090635,
+      "base_loss": 0.05784558095037938,
+      "abs_loss": 0.057646613096585496,
+      "rel_score": 0.0034396379209080674
+    },
+    "val": {
+      "mse": 0.0011385512771084905,
+      "mae": 0.02428450435400009,
+      "directional_accuracy": 0.4932795698924731,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04469738255720585,
+      "rel_score": 0.006850947305262145
+    },
+    "test": {
+      "mse": 0.002384291961789131,
+      "mae": 0.03575839847326279,
+      "directional_accuracy": 0.4828918322295806,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.0657426281599328,
+      "rel_score": -0.0059620597053664515
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.001962655456736684,
+      "mae": 0.03131479024887085,
+      "directional_accuracy": 0.48496292227410054,
+      "base_loss": 0.05784558095037938,
+      "abs_loss": 0.05829316074959934,
+      "rel_score": -0.007737493372292237
+    },
+    "val": {
+      "mse": 0.0011913819471374154,
+      "mae": 0.025111587718129158,
+      "directional_accuracy": 0.4489247311827957,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.0471255300566554,
+      "rel_score": -0.047101034911930295
+    },
+    "test": {
+      "mse": 0.0025450028479099274,
+      "mae": 0.03715374693274498,
+      "directional_accuracy": 0.46799116997792495,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.067449947912246,
+      "rel_score": -0.032086644965853006
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002017331076785922,
+      "mae": 0.03139941021800041,
+      "directional_accuracy": 0.4778906893710519,
+      "base_loss": 0.05784558095037938,
+      "abs_loss": 0.057988361275056376,
+      "rel_score": -0.002468301334884515
+    },
+    "val": {
+      "mse": 0.00114548415876925,
+      "mae": 0.024657880887389183,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.045186911057680836,
+      "rel_score": -0.004026082594454694
+    },
+    "test": {
+      "mse": 0.002406927291303873,
+      "mae": 0.03604898229241371,
+      "directional_accuracy": 0.45253863134657835,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06632607971550897,
+      "rel_score": -0.014889754642627873
+    }
+  }
+}
+
+>>> overnight_bds_return3d_sector_u48_w12_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u48_w12/threshold_backtest_non_overlap.csv
+{
+  "linear_regression": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 240,
+    "coverage": 0.13157894736842105,
+    "directional_accuracy": 0.5625,
+    "avg_actual_return": 0.006473678620416665,
+    "avg_strategy_return": 0.006473678620416665,
+    "cumulative_strategy_return": 1.5536828688999997,
+    "final_equity": 3.5443162948857916,
+    "sampled_buy_hold_equity": 3.5443162948857916
+  },
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 85,
+    "coverage": 0.046600877192982455,
+    "directional_accuracy": 0.6470588235294118,
+    "avg_actual_return": 0.013280524952941178,
+    "avg_strategy_return": 0.013280524952941178,
+    "cumulative_strategy_return": 1.128844621,
+    "final_equity": 2.8192036895591692,
+    "sampled_buy_hold_equity": 2.8192036895591692
+  },
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 514,
+    "coverage": 0.2817982456140351,
+    "directional_accuracy": 0.5603112840466926,
+    "avg_actual_return": 0.0028334233488326852,
+    "avg_strategy_return": 0.0028334233488326852,
+    "cumulative_strategy_return": 1.4563796013,
+    "final_equity": 2.523223000757336,
+    "sampled_buy_hold_equity": 2.523223000757336
+  }
+}
+
+>>> overnight_bds_return3d_sector_u48_w12_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u48_w12
+
+>>> overnight_bds_return3d_sector_stack48_24_w10_train
+Info: Detected single sector 'Bất động sản'. Using 10 optimized features.
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_stack48_24_w10
+{
+  "lstm": {
+    "train": {
+      "mse": 0.002028251998126507,
+      "mae": 0.03125743195414543,
+      "directional_accuracy": 0.4851125137211855,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.05773956287885085,
+      "rel_score": 0.0021158682103190607
+    },
+    "val": {
+      "mse": 0.001130781602114439,
+      "mae": 0.024204617366194725,
+      "directional_accuracy": 0.521505376344086,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04465313956607133,
+      "rel_score": 0.007834000052867496
+    },
+    "test": {
+      "mse": 0.002387183252722025,
+      "mae": 0.035789988934993744,
+      "directional_accuracy": 0.47516556291390727,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06531963222660125,
+      "rel_score": 0.0005104205141045481
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.001974791521206498,
+      "mae": 0.03135014697909355,
+      "directional_accuracy": 0.48113336992316136,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.058314579888246953,
+      "rel_score": -0.007821864612312046
+    },
+    "val": {
+      "mse": 0.001183998421765864,
+      "mae": 0.025006460025906563,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04626716030761598,
+      "rel_score": -0.028028573520499478
+    },
+    "test": {
+      "mse": 0.002545850118622184,
+      "mae": 0.03710898756980896,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06770987212657928,
+      "rel_score": -0.03606388021391638
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002023514360189438,
+      "mae": 0.03143841400742531,
+      "directional_accuracy": 0.47756586169045007,
+      "base_loss": 0.057861991226673126,
+      "abs_loss": 0.05802862474229187,
+      "rel_score": -0.002879844127139597
+    },
+    "val": {
+      "mse": 0.0011458136141300201,
+      "mae": 0.02466266043484211,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04518014962086453,
+      "rel_score": -0.003875847520613984
+    },
+    "test": {
+      "mse": 0.002407038351520896,
+      "mae": 0.0360519140958786,
+      "directional_accuracy": 0.45253863134657835,
+      "base_loss": 0.06535298973321915,
+      "abs_loss": 0.06631220842245966,
+      "rel_score": -0.014677502791474284
+    }
+  }
+}
+
+>>> overnight_bds_return3d_sector_stack48_24_w10_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_stack48_24_w10/threshold_backtest_non_overlap.csv
+{
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 437,
+    "coverage": 0.23958333333333334,
+    "directional_accuracy": 0.5125858123569794,
+    "avg_actual_return": 0.003603210455377574,
+    "avg_strategy_return": 0.003603210455377574,
+    "cumulative_strategy_return": 1.5746029689999999,
+    "final_equity": 2.8613408617114873,
+    "sampled_buy_hold_equity": 2.8613408617114873
+  },
+  "arima": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 336,
+    "coverage": 0.18421052631578946,
+    "directional_accuracy": 0.5922619047619048,
+    "avg_actual_return": 0.003863523930654762,
+    "avg_strategy_return": 0.003863523930654762,
+    "cumulative_strategy_return": 1.2981440407,
+    "final_equity": 2.5670455835715047,
+    "sampled_buy_hold_equity": 2.5670455835715047
+  },
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 7,
+    "coverage": 0.003837719298245614,
+    "directional_accuracy": 1.0,
+    "avg_actual_return": 0.06246026157142857,
+    "avg_strategy_return": 0.06246026157142857,
+    "cumulative_strategy_return": 0.43722183099999995,
+    "final_equity": 1.5224194074844903,
+    "sampled_buy_hold_equity": 1.5224194074844903
+  }
+}
+
+>>> overnight_bds_return3d_sector_stack48_24_w10_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_stack48_24_w10
+
+>>> overnight_bds_return3d_allfeat_u16_w7_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u16_w7
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0018963804468512535,
+      "mae": 0.03017657995223999,
+      "directional_accuracy": 0.5366433566433566,
+      "base_loss": 0.05770384650677444,
+      "abs_loss": 0.056865694548469035,
+      "rel_score": 0.014525062176002468
+    },
+    "val": {
+      "mse": 0.0011870196321979165,
+      "mae": 0.024715667590498924,
+      "directional_accuracy": 0.4637096774193548,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04515493317740038,
+      "rel_score": -0.003315553259385151
+    },
+    "test": {
+      "mse": 0.002383359707891941,
+      "mae": 0.035720884799957275,
+      "directional_accuracy": 0.4936708860759494,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.065203217160888,
+      "rel_score": 0.0018068437077398691
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0019074147567152977,
+      "mae": 0.03097435273230076,
+      "directional_accuracy": 0.49272727272727274,
+      "base_loss": 0.05770384650677444,
+      "abs_loss": 0.05804776721633971,
+      "rel_score": -0.00596010024262239
+    },
+    "val": {
+      "mse": 0.0012114126002416015,
+      "mae": 0.025118790566921234,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04567076412495226,
+      "rel_score": -0.014777007769749773
+    },
+    "test": {
+      "mse": 0.0024987973738461733,
+      "mae": 0.03685396537184715,
+      "directional_accuracy": 0.4861910241657077,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.066939655598253,
+      "rel_score": -0.02477621522666329
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0019762697629630566,
+      "mae": 0.031247876584529877,
+      "directional_accuracy": 0.4815384615384615,
+      "base_loss": 0.05770384650677444,
+      "abs_loss": 0.0577680142596364,
+      "rel_score": -0.0011120186390769504
+    },
+    "val": {
+      "mse": 0.0011474168859422207,
+      "mae": 0.024678517132997513,
+      "directional_accuracy": 0.4549731182795699,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04528929615626111,
+      "rel_score": -0.006301018124178714
+    },
+    "test": {
+      "mse": 0.0024203278589993715,
+      "mae": 0.03608386591076851,
+      "directional_accuracy": 0.4562715765247411,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.06644516171072609,
+      "rel_score": -0.01720603025956624
+    }
+  }
+}
+
+>>> overnight_bds_return3d_allfeat_u16_w7_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u16_w7/threshold_backtest_non_overlap.csv
+{
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 406,
+    "coverage": 0.232,
+    "directional_accuracy": 0.5591133004926109,
+    "avg_actual_return": 0.004763892054433498,
+    "avg_strategy_return": 0.004763892054433498,
+    "cumulative_strategy_return": 1.9341401741000002,
+    "final_equity": 4.2795139347000495,
+    "sampled_buy_hold_equity": 4.2795139347000495
+  },
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 192,
+    "coverage": 0.10971428571428571,
+    "directional_accuracy": 0.6041666666666666,
+    "avg_actual_return": 0.008512098503645834,
+    "avg_strategy_return": 0.008512098503645834,
+    "cumulative_strategy_return": 1.6343229127,
+    "final_equity": 3.980744984850219,
+    "sampled_buy_hold_equity": 3.980744984850219
+  },
+  "arima": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 8,
+    "coverage": 0.004571428571428572,
+    "directional_accuracy": 0.625,
+    "avg_actual_return": 0.0297890543125,
+    "avg_strategy_return": 0.0297890543125,
+    "cumulative_strategy_return": 0.2383124345,
+    "final_equity": 1.2531297214375405,
+    "sampled_buy_hold_equity": 1.2531297214375405
+  }
+}
+
+>>> overnight_bds_return3d_allfeat_u16_w7_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u16_w7
+
+>>> overnight_bds_return3d_allfeat_u32_w10_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u32_w10
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0018390296027064323,
+      "mae": 0.02966967038810253,
+      "directional_accuracy": 0.5439714325724688,
+      "base_loss": 0.057642375491559504,
+      "abs_loss": 0.05594714130857028,
+      "rel_score": 0.029409512854609132
+    },
+    "val": {
+      "mse": 0.0012151168193668127,
+      "mae": 0.02492515742778778,
+      "directional_accuracy": 0.4650537634408602,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04519240728113799,
+      "rel_score": -0.004148205385714032
+    },
+    "test": {
+      "mse": 0.002405742648988962,
+      "mae": 0.0359070859849453,
+      "directional_accuracy": 0.47928653624856155,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.06714343526400626,
+      "rel_score": -0.02789586908123476
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0018848938634619117,
+      "mae": 0.030892683193087578,
+      "directional_accuracy": 0.49880969051953505,
+      "base_loss": 0.057642375491559504,
+      "abs_loss": 0.058095537265762685,
+      "rel_score": -0.007861608241137352
+    },
+    "val": {
+      "mse": 0.0012081741588190198,
+      "mae": 0.0252367053180933,
+      "directional_accuracy": 0.4442204301075269,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.04657346573658287,
+      "rel_score": -0.034834496579291274
+    },
+    "test": {
+      "mse": 0.0025129711721092463,
+      "mae": 0.03698522225022316,
+      "directional_accuracy": 0.47295742232451093,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.06640536084305496,
+      "rel_score": -0.016596720543669896
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0019712464418262243,
+      "mae": 0.031208761036396027,
+      "directional_accuracy": 0.48116510292676096,
+      "base_loss": 0.057642375491559504,
+      "abs_loss": 0.057645407051313664,
+      "rel_score": -5.2592554146357884e-05
+    },
+    "val": {
+      "mse": 0.0011471305042505264,
+      "mae": 0.0246744304895401,
+      "directional_accuracy": 0.4549731182795699,
+      "base_loss": 0.04500571433454752,
+      "abs_loss": 0.045293552533257744,
+      "rel_score": -0.006395592270141526
+    },
+    "test": {
+      "mse": 0.002420151839032769,
+      "mae": 0.03608079254627228,
+      "directional_accuracy": 0.45857307249712315,
+      "base_loss": 0.06532124243676662,
+      "abs_loss": 0.06646414113929494,
+      "rel_score": -0.017496585488781635
+    }
+  }
+}
+
+>>> overnight_bds_return3d_allfeat_u32_w10_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u32_w10/threshold_backtest_non_overlap.csv
+{
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 207,
+    "coverage": 0.11828571428571429,
+    "directional_accuracy": 0.6473429951690821,
+    "avg_actual_return": 0.011456509658454107,
+    "avg_strategy_return": 0.011456509658454107,
+    "cumulative_strategy_return": 2.3714974993,
+    "final_equity": 7.892262717497051,
+    "sampled_buy_hold_equity": 7.892262717497051
+  },
+  "linear_regression": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 447,
+    "coverage": 0.25542857142857145,
+    "directional_accuracy": 0.5324384787472036,
+    "avg_actual_return": 0.005235641102908278,
+    "avg_strategy_return": 0.005235641102908278,
+    "cumulative_strategy_return": 2.3403315730000003,
+    "final_equity": 6.22166507723042,
+    "sampled_buy_hold_equity": 6.22166507723042
+  },
+  "arima": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 8,
+    "coverage": 0.004571428571428572,
+    "directional_accuracy": 0.625,
+    "avg_actual_return": 0.0297890543125,
+    "avg_strategy_return": 0.0297890543125,
+    "cumulative_strategy_return": 0.2383124345,
+    "final_equity": 1.2531297214375405,
+    "sampled_buy_hold_equity": 1.2531297214375405
+  }
+}
+
+>>> overnight_bds_return3d_allfeat_u32_w10_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u32_w10
+
+>>> overnight_vhm_return3d_pairmacro_w5_u16_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w5_u16
+{
+  "lstm": {
+    "train": {
+      "mse": 0.001334487460553646,
+      "mae": 0.025616243481636047,
+      "directional_accuracy": 0.5310693641618497,
+      "base_loss": 0.04824295118451119,
+      "abs_loss": 0.04765050397982122,
+      "rel_score": 0.01228049259308539
+    },
+    "val": {
+      "mse": 0.0007620351971127093,
+      "mae": 0.01977073960006237,
+      "directional_accuracy": 0.4879032258064516,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.0365270953567233,
+      "rel_score": 0.013935424057142765
+    },
+    "test": {
+      "mse": 0.003860148601233959,
+      "mae": 0.0453871488571167,
+      "directional_accuracy": 0.5562913907284768,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.08620064952410761,
+      "rel_score": 0.011333114967029156
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0013253632932901382,
+      "mae": 0.02617889642715454,
+      "directional_accuracy": 0.5072254335260116,
+      "base_loss": 0.04824295118451119,
+      "abs_loss": 0.048184120572113895,
+      "rel_score": 0.0012194654545965022
+    },
+    "val": {
+      "mse": 0.0007395168649964035,
+      "mae": 0.019711937755346298,
+      "directional_accuracy": 0.5443548387096774,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.036774649936705844,
+      "rel_score": 0.007252582195525381
+    },
+    "test": {
+      "mse": 0.003818841651082039,
+      "mae": 0.04547950252890587,
+      "directional_accuracy": 0.4966887417218543,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.08427930262405434,
+      "rel_score": 0.03336974769811052
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0013694928493350744,
+      "mae": 0.025977378711104393,
+      "directional_accuracy": 0.4949421965317919,
+      "base_loss": 0.04824295118451119,
+      "abs_loss": 0.04803873896598816,
+      "rel_score": 0.00423299598198279
+    },
+    "val": {
+      "mse": 0.0007734749815426767,
+      "mae": 0.01997034065425396,
+      "directional_accuracy": 0.4637096774193548,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.036572417989373204,
+      "rel_score": 0.012711920186712078
+    },
+    "test": {
+      "mse": 0.0039291344583034515,
+      "mae": 0.04597243666648865,
+      "directional_accuracy": 0.4337748344370861,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.0875565324997297,
+      "rel_score": -0.004218004489473737
+    }
+  }
+}
+
+>>> overnight_vhm_return3d_pairmacro_w5_u16_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w5_u16/threshold_backtest_non_overlap.csv
+{
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 69,
+    "coverage": 0.22697368421052633,
+    "directional_accuracy": 0.6666666666666666,
+    "avg_actual_return": 0.01674910235362319,
+    "avg_strategy_return": 0.01674910235362319,
+    "cumulative_strategy_return": 1.1556880624,
+    "final_equity": 2.80771973480855,
+    "sampled_buy_hold_equity": 2.80771973480855
+  },
+  "linear_regression": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 66,
+    "coverage": 0.21710526315789475,
+    "directional_accuracy": 0.5757575757575758,
+    "avg_actual_return": 0.017083167153030307,
+    "avg_strategy_return": 0.017083167153030307,
+    "cumulative_strategy_return": 1.1274890321000002,
+    "final_equity": 2.7148678103432324,
+    "sampled_buy_hold_equity": 2.7148678103432324
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 50,
+    "coverage": 0.16447368421052633,
+    "directional_accuracy": 0.68,
+    "avg_actual_return": 0.009786420115999998,
+    "avg_strategy_return": 0.009786420115999998,
+    "cumulative_strategy_return": 0.48932100579999993,
+    "final_equity": 1.5020306500521228,
+    "sampled_buy_hold_equity": 1.5020306500521228
+  }
+}
+
+>>> overnight_vhm_return3d_pairmacro_w5_u16_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w5_u16
+
+>>> overnight_vhm_return3d_pairmacro_w3_u8_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w3_u8
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0013805385679006577,
+      "mae": 0.026176342740654945,
+      "directional_accuracy": 0.494949494949495,
+      "base_loss": 0.0481283962726593,
+      "abs_loss": 0.04817381640896201,
+      "rel_score": -0.0009437284393478684
+    },
+    "val": {
+      "mse": 0.0007517823833040893,
+      "mae": 0.01969204656779766,
+      "directional_accuracy": 0.5241935483870968,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.035507503896951675,
+      "rel_score": 0.041459731987902204
+    },
+    "test": {
+      "mse": 0.003933710511773825,
+      "mae": 0.04606565088033676,
+      "directional_accuracy": 0.5132450331125827,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.0885574886575342,
+      "rel_score": -0.01569833801427367
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0013421319890767336,
+      "mae": 0.026065047830343246,
+      "directional_accuracy": 0.5057720057720058,
+      "base_loss": 0.0481283962726593,
+      "abs_loss": 0.04809200967429206,
+      "rel_score": 0.0007560318062772575
+    },
+    "val": {
+      "mse": 0.0007688760524615645,
+      "mae": 0.01997876726090908,
+      "directional_accuracy": 0.49193548387096775,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.038307254482060675,
+      "rel_score": -0.03412073359497425
+    },
+    "test": {
+      "mse": 0.003918496426194906,
+      "mae": 0.046063750982284546,
+      "directional_accuracy": 0.49337748344370863,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.0876827212399803,
+      "rel_score": -0.005665309462679291
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0013676781672984362,
+      "mae": 0.025954458862543106,
+      "directional_accuracy": 0.494949494949495,
+      "base_loss": 0.0481283962726593,
+      "abs_loss": 0.0479764255869668,
+      "rel_score": 0.0031576095914676028
+    },
+    "val": {
+      "mse": 0.0007735170074738562,
+      "mae": 0.019969956949353218,
+      "directional_accuracy": 0.4637096774193548,
+      "base_loss": 0.037043309584259984,
+      "abs_loss": 0.036576465198595545,
+      "rel_score": 0.01260266404119581
+    },
+    "test": {
+      "mse": 0.0039296261966228485,
+      "mae": 0.04597491770982742,
+      "directional_accuracy": 0.4337748344370861,
+      "base_loss": 0.087188769876957,
+      "abs_loss": 0.08757783561886756,
+      "rel_score": -0.00446233778111127
+    }
+  }
+}
+
+>>> overnight_vhm_return3d_pairmacro_w3_u8_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w3_u8/threshold_backtest_non_overlap.csv
+{
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 69,
+    "coverage": 0.22697368421052633,
+    "directional_accuracy": 0.6521739130434783,
+    "avg_actual_return": 0.015103195205797103,
+    "avg_strategy_return": 0.015103195205797103,
+    "cumulative_strategy_return": 1.0421204692000001,
+    "final_equity": 2.520371964916697,
+    "sampled_buy_hold_equity": 2.520371964916697
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 48,
+    "coverage": 0.15789473684210525,
+    "directional_accuracy": 0.5833333333333334,
+    "avg_actual_return": 0.01504605765,
+    "avg_strategy_return": 0.01504605765,
+    "cumulative_strategy_return": 0.7222107672,
+    "final_equity": 1.8116938830934317,
+    "sampled_buy_hold_equity": 1.8116938830934317
+  },
+  "linear_regression": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 68,
+    "coverage": 0.2236842105263158,
+    "directional_accuracy": 0.5735294117647058,
+    "avg_actual_return": 0.008028844436764705,
+    "avg_strategy_return": 0.008028844436764705,
+    "cumulative_strategy_return": 0.5459614217,
+    "final_equity": 1.5296017226710974,
+    "sampled_buy_hold_equity": 1.5296017226710974
+  }
+}
+
+>>> overnight_vhm_return3d_pairmacro_w3_u8_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w3_u8
+
+>>> overnight_nlg_return3d_pairmacro_w5_u8_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u8
+{
+  "lstm": {
+    "train": {
+      "mse": 0.00146168889477849,
+      "mae": 0.026265589520335197,
+      "directional_accuracy": 0.45773584905660375,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.04844456680584699,
+      "rel_score": -0.022750975610496438
+    },
+    "val": {
+      "mse": 0.0009863941231742501,
+      "mae": 0.023716937750577927,
+      "directional_accuracy": 0.49193548387096775,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.0449647270841524,
+      "rel_score": 0.031714197581034886
+    },
+    "test": {
+      "mse": 0.0020280710887163877,
+      "mae": 0.03376837074756622,
+      "directional_accuracy": 0.46357615894039733,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.060053644340951014,
+      "rel_score": 0.007284381970825926
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0014087767340242863,
+      "mae": 0.0259865615516901,
+      "directional_accuracy": 0.48188679245283017,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.04800744683016091,
+      "rel_score": -0.013522595400523807
+    },
+    "val": {
+      "mse": 0.0010172913316637278,
+      "mae": 0.023807555437088013,
+      "directional_accuracy": 0.4838709677419355,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.04462861751089804,
+      "rel_score": 0.03895209601707372
+    },
+    "test": {
+      "mse": 0.0019959011115133762,
+      "mae": 0.03371281921863556,
+      "directional_accuracy": 0.4735099337748344,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.0613890294567682,
+      "rel_score": -0.014790176119755083
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0014316983288154006,
+      "mae": 0.02600957825779915,
+      "directional_accuracy": 0.47056603773584904,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.0471725016599521,
+      "rel_score": 0.004104582293823156
+    },
+    "val": {
+      "mse": 0.0009931109379976988,
+      "mae": 0.02341853827238083,
+      "directional_accuracy": 0.46774193548387094,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.046739235211862254,
+      "rel_score": -0.006498666985513157
+    },
+    "test": {
+      "mse": 0.0019991686567664146,
+      "mae": 0.03364688158035278,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.05955819663358852,
+      "rel_score": 0.015474370811854654
+    }
+  }
+}
+
+>>> overnight_nlg_return3d_pairmacro_w5_u8_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u8/threshold_backtest_non_overlap.csv
+{
+  "arima": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 61,
+    "coverage": 0.20065789473684212,
+    "directional_accuracy": 0.5737704918032787,
+    "avg_actual_return": 0.008740555232786886,
+    "avg_strategy_return": 0.008740555232786886,
+    "cumulative_strategy_return": 0.5331738692,
+    "final_equity": 1.600300887967516,
+    "sampled_buy_hold_equity": 1.600300887967516
+  },
+  "linear_regression": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 59,
+    "coverage": 0.19407894736842105,
+    "directional_accuracy": 0.5423728813559322,
+    "avg_actual_return": 0.008610232011864408,
+    "avg_strategy_return": 0.008610232011864408,
+    "cumulative_strategy_return": 0.5080036887,
+    "final_equity": 1.5659290438026936,
+    "sampled_buy_hold_equity": 1.5659290438026936
+  },
+  "lstm": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 35,
+    "coverage": 0.11513157894736842,
+    "directional_accuracy": 0.6285714285714286,
+    "avg_actual_return": 0.005859829934285713,
+    "avg_strategy_return": 0.005859829934285713,
+    "cumulative_strategy_return": 0.20509404769999995,
+    "final_equity": 1.1970669590901628,
+    "sampled_buy_hold_equity": 1.1970669590901628
+  }
+}
+
+>>> overnight_nlg_return3d_pairmacro_w5_u8_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u8
+
+>>> overnight_nlg_return3d_pairmacro_w5_u16_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u16
+{
+  "lstm": {
+    "train": {
+      "mse": 0.001425283495336771,
+      "mae": 0.025845086202025414,
+      "directional_accuracy": 0.49056603773584906,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.04689974604407325,
+      "rel_score": 0.009862938506633001
+    },
+    "val": {
+      "mse": 0.0010215346701443195,
+      "mae": 0.023860905319452286,
+      "directional_accuracy": 0.4112903225806452,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.0463279664516449,
+      "rel_score": 0.002357735072740841
+    },
+    "test": {
+      "mse": 0.0020587509498000145,
+      "mae": 0.034284792840480804,
+      "directional_accuracy": 0.4271523178807947,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.060612137708812956,
+      "rel_score": -0.0019477819540567598
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0014087767340242863,
+      "mae": 0.0259865615516901,
+      "directional_accuracy": 0.48188679245283017,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.04800744683016091,
+      "rel_score": -0.013522595400523807
+    },
+    "val": {
+      "mse": 0.0010172913316637278,
+      "mae": 0.023807555437088013,
+      "directional_accuracy": 0.4838709677419355,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.04462861751089804,
+      "rel_score": 0.03895209601707372
+    },
+    "test": {
+      "mse": 0.0019959011115133762,
+      "mae": 0.03371281921863556,
+      "directional_accuracy": 0.4735099337748344,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.0613890294567682,
+      "rel_score": -0.014790176119755083
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0014316983288154006,
+      "mae": 0.02600957825779915,
+      "directional_accuracy": 0.47056603773584904,
+      "base_loss": 0.047366923093795775,
+      "abs_loss": 0.0471725016599521,
+      "rel_score": 0.004104582293823156
+    },
+    "val": {
+      "mse": 0.0009931109379976988,
+      "mae": 0.02341853827238083,
+      "directional_accuracy": 0.46774193548387094,
+      "base_loss": 0.04643745366483927,
+      "abs_loss": 0.046739235211862254,
+      "rel_score": -0.006498666985513157
+    },
+    "test": {
+      "mse": 0.0019991686567664146,
+      "mae": 0.03364688158035278,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.060494307987391964,
+      "abs_loss": 0.05955819663358852,
+      "rel_score": 0.015474370811854654
+    }
+  }
+}
+
+>>> overnight_nlg_return3d_pairmacro_w5_u16_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u16/threshold_backtest_non_overlap.csv
+{
+  "arima": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 61,
+    "coverage": 0.20065789473684212,
+    "directional_accuracy": 0.5737704918032787,
+    "avg_actual_return": 0.008740555232786886,
+    "avg_strategy_return": 0.008740555232786886,
+    "cumulative_strategy_return": 0.5331738692,
+    "final_equity": 1.600300887967516,
+    "sampled_buy_hold_equity": 1.600300887967516
+  },
+  "linear_regression": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 59,
+    "coverage": 0.19407894736842105,
+    "directional_accuracy": 0.5423728813559322,
+    "avg_actual_return": 0.008610232011864408,
+    "avg_strategy_return": 0.008610232011864408,
+    "cumulative_strategy_return": 0.5080036887,
+    "final_equity": 1.5659290438026936,
+    "sampled_buy_hold_equity": 1.5659290438026936
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 73,
+    "coverage": 0.24013157894736842,
+    "directional_accuracy": 0.4794520547945205,
+    "avg_actual_return": -0.00024280840410958925,
+    "avg_strategy_return": -0.00024280840410958925,
+    "cumulative_strategy_return": -0.017725013500000015,
+    "final_equity": 0.9134394382775305,
+    "sampled_buy_hold_equity": 0.9134394382775305
+  }
+}
+
+>>> overnight_nlg_return3d_pairmacro_w5_u16_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u16
+
+>>> overnight_dig_return3d_pairmacro_w3_u8_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w3_u8
+{
+  "lstm": {
+    "train": {
+      "mse": 0.002982511417940259,
+      "mae": 0.03987826034426689,
+      "directional_accuracy": 0.48558682223747424,
+      "base_loss": 0.07215390354394915,
+      "abs_loss": 0.07346592826070264,
+      "rel_score": -0.01818369696317723
+    },
+    "val": {
+      "mse": 0.0013108322164043784,
+      "mae": 0.02745983935892582,
+      "directional_accuracy": 0.43548387096774194,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.04986054144101218,
+      "rel_score": -0.061352455444729115
+    },
+    "test": {
+      "mse": 0.002434187103062868,
+      "mae": 0.036914899945259094,
+      "directional_accuracy": 0.4503311258278146,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.0696863455697894,
+      "rel_score": 0.011104488236884369
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0029070174787193537,
+      "mae": 0.039591848850250244,
+      "directional_accuracy": 0.49245024021962935,
+      "base_loss": 0.07215390354394915,
+      "abs_loss": 0.07300338312052192,
+      "rel_score": -0.01177316173968812
+    },
+    "val": {
+      "mse": 0.0013604862615466118,
+      "mae": 0.02791103720664978,
+      "directional_accuracy": 0.4596774193548387,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.049672042904421704,
+      "rel_score": -0.05733999631620712
+    },
+    "test": {
+      "mse": 0.0024199148174375296,
+      "mae": 0.037201762199401855,
+      "directional_accuracy": 0.5,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.06974521046504378,
+      "rel_score": 0.010269156289980041
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002956247190013528,
+      "mae": 0.03978871926665306,
+      "directional_accuracy": 0.4766643788606726,
+      "base_loss": 0.07215390354394915,
+      "abs_loss": 0.07281189267523588,
+      "rel_score": -0.009119245099275197
+    },
+    "val": {
+      "mse": 0.0013079800410196185,
+      "mae": 0.027379009872674942,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.04753524358384312,
+      "rel_score": -0.011855187283963398
+    },
+    "test": {
+      "mse": 0.0024222845677286386,
+      "mae": 0.037364449352025986,
+      "directional_accuracy": 0.46357615894039733,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.06954587078071202,
+      "rel_score": 0.013097918761884153
+    }
+  }
+}
+
+>>> overnight_dig_return3d_pairmacro_w3_u8_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w3_u8/threshold_backtest_non_overlap.csv
+{
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 62,
+    "coverage": 0.20394736842105263,
+    "directional_accuracy": 0.5967741935483871,
+    "avg_actual_return": 0.006067853330645161,
+    "avg_strategy_return": 0.006067853330645161,
+    "cumulative_strategy_return": 0.3762069065,
+    "final_equity": 1.320417561342044,
+    "sampled_buy_hold_equity": 1.320417561342044
+  },
+  "linear_regression": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 65,
+    "coverage": 0.2138157894736842,
+    "directional_accuracy": 0.5846153846153846,
+    "avg_actual_return": 0.005032434047692308,
+    "avg_strategy_return": 0.005032434047692308,
+    "cumulative_strategy_return": 0.32710821310000004,
+    "final_equity": 1.2869915082470447,
+    "sampled_buy_hold_equity": 1.2869915082470447
+  },
+  "arima": {
+    "threshold": 0.02,
+    "holding_period": 3,
+    "trade_count": 2,
+    "coverage": 0.006578947368421052,
+    "directional_accuracy": 0.5,
+    "avg_actual_return": 0.0037042359999999996,
+    "avg_strategy_return": 0.0037042359999999996,
+    "cumulative_strategy_return": 0.007408471999999999,
+    "final_equity": 1.0069153585555515,
+    "sampled_buy_hold_equity": 1.0069153585555515
+  }
+}
+
+>>> overnight_dig_return3d_pairmacro_w3_u8_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w3_u8
+
+>>> overnight_dig_return3d_pairmacro_w5_u16_train
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w5_u16
+{
+  "lstm": {
+    "train": {
+      "mse": 0.002970682457089424,
+      "mae": 0.03966744244098663,
+      "directional_accuracy": 0.49244505494505497,
+      "base_loss": 0.07204974256455898,
+      "abs_loss": 0.0723746769828722,
+      "rel_score": -0.004509862308280432
+    },
+    "val": {
+      "mse": 0.0012799401301890612,
+      "mae": 0.026926856487989426,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.04748840185347945,
+      "rel_score": -0.010858094510761696
+    },
+    "test": {
+      "mse": 0.0022989853750914335,
+      "mae": 0.03608332574367523,
+      "directional_accuracy": 0.5364238410596026,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.06812045451952145,
+      "rel_score": 0.03332552191082305
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0028853046242147684,
+      "mae": 0.03960800543427467,
+      "directional_accuracy": 0.5037774725274725,
+      "base_loss": 0.07204974256455898,
+      "abs_loss": 0.072802540124394,
+      "rel_score": -0.010448303256052283
+    },
+    "val": {
+      "mse": 0.0014066052390262485,
+      "mae": 0.02833215706050396,
+      "directional_accuracy": 0.45161290322580644,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.051548388210358106,
+      "rel_score": -0.09728067165110721
+    },
+    "test": {
+      "mse": 0.0024535853881388903,
+      "mae": 0.037258341908454895,
+      "directional_accuracy": 0.5198675496688742,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.07137741558253766,
+      "rel_score": -0.012892918027003653
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.002954707480967045,
+      "mae": 0.03977487236261368,
+      "directional_accuracy": 0.47767857142857145,
+      "base_loss": 0.07204974256455898,
+      "abs_loss": 0.07270742237451486,
+      "rel_score": -0.009128135459562037
+    },
+    "val": {
+      "mse": 0.0013075927272439003,
+      "mae": 0.027373649179935455,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.04697830695658923,
+      "abs_loss": 0.04748625818174333,
+      "rel_score": -0.010812463412601891
+    },
+    "test": {
+      "mse": 0.002422113437205553,
+      "mae": 0.037362221628427505,
+      "directional_accuracy": 0.46688741721854304,
+      "base_loss": 0.07046886626631023,
+      "abs_loss": 0.0695659189426806,
+      "rel_score": 0.012813422032607713
+    }
+  }
+}
+
+>>> overnight_dig_return3d_pairmacro_w5_u16_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w5_u16/threshold_backtest_non_overlap.csv
+{
+  "lstm": {
+    "threshold": 0.005,
+    "holding_period": 3,
+    "trade_count": 40,
+    "coverage": 0.13157894736842105,
+    "directional_accuracy": 0.575,
+    "avg_actual_return": 0.013173912962500001,
+    "avg_strategy_return": 0.013173912962500001,
+    "cumulative_strategy_return": 0.5269565185,
+    "final_equity": 1.5947185681061264,
+    "sampled_buy_hold_equity": 1.5947185681061264
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 3,
+    "trade_count": 80,
+    "coverage": 0.2631578947368421,
+    "directional_accuracy": 0.55,
+    "avg_actual_return": 0.005665277915,
+    "avg_strategy_return": 0.005665277915,
+    "cumulative_strategy_return": 0.4532222332,
+    "final_equity": 1.4387637427336664,
+    "sampled_buy_hold_equity": 1.4387637427336664
+  },
+  "arima": {
+    "threshold": 0.02,
+    "holding_period": 3,
+    "trade_count": 2,
+    "coverage": 0.006578947368421052,
+    "directional_accuracy": 0.5,
+    "avg_actual_return": 0.0037042359999999996,
+    "avg_strategy_return": 0.0037042359999999996,
+    "cumulative_strategy_return": 0.007408471999999999,
+    "final_equity": 1.0069153585555515,
+    "sampled_buy_hold_equity": 1.0069153585555515
+  }
+}
+
+>>> overnight_dig_return3d_pairmacro_w5_u16_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w5_u16
+
+>>> overnight_summary
+                                    run_name  lstm_test_rel_score  lstm_test_directional_accuracy  linear_test_rel_score  arima_test_rel_score  lstm_backtest_final_equity  lstm_backtest_trade_count  lstm_backtest_threshold
+     overnight_dig_return3d_pairmacro_w5_u16             0.033326                        0.536424              -0.012893              0.012813                    1.594719                         40                    0.005
+     overnight_vhm_return3d_pairmacro_w5_u16             0.011333                        0.556291               0.033370             -0.004218                    1.502031                         50                    0.000
+      overnight_dig_return3d_pairmacro_w3_u8             0.011104                        0.450331               0.010269              0.013098                    1.320418                         62                    0.000
+      overnight_nlg_return3d_pairmacro_w5_u8             0.007284                        0.463576              -0.014790              0.015474                    1.197067                         35                    0.005
+       overnight_bds_return3d_allfeat_u16_w7             0.001807                        0.493671              -0.024776             -0.017206                    3.980745                        192                    0.010
+overnight_bds_return3d_sector_stack48_24_w10             0.000510                        0.475166              -0.036064             -0.014678                    1.522419                          7                    0.010
+     overnight_nlg_return3d_pairmacro_w5_u16            -0.001948                        0.427152              -0.014790              0.015474                    0.913439                         73                    0.000
+       overnight_bds_return3d_sector_u48_w12            -0.005962                        0.482892              -0.032087             -0.014890                    2.819204                         85                    0.010
+      overnight_vhm_return3d_pairmacro_w3_u8            -0.015698                        0.513245              -0.005665             -0.004462                    1.811694                         48                    0.000
+        overnight_bds_return3d_sector_u16_w7            -0.017421                        0.479581              -0.028798             -0.015367                    5.773310                        251                    0.005
+       overnight_bds_return3d_sector_u32_w10            -0.022476                        0.476269              -0.036064             -0.014678                    3.084021                        129                    0.010
+      overnight_bds_return3d_allfeat_u32_w10            -0.027896                        0.479287              -0.016597             -0.017497                    7.892263                        207                    0.010
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260407_031830/overnight_summary.csv
+
+>>> overnight_archive_candidates
+                                    run_name target_mode                      stocks                                                                                                                                                                                                                                                                                                                      feature_columns  window_size lstm_units  dropout     lr  epochs  patience  lstm_train_rel_score  lstm_val_rel_score  lstm_test_rel_score  lstm_test_directional_accuracy  linear_test_rel_score  arima_test_rel_score  lstm_backtest_final_equity  lstm_backtest_trade_count  lstm_backtest_threshold                                                                                               run_dir
+     overnight_dig_return3d_pairmacro_w5_u16   return_3d                         DIG                                                                                                                                                                                                                                                             gap_open,bb_position,vingroup_momentum,vnindex_return,rsi_14,day_of_week            5         16     0.05 0.0005      30         8             -0.004510           -0.010858             0.033326                        0.536424              -0.012893              0.012813                    1.594719                         40                    0.005      data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w5_u16
+     overnight_vhm_return3d_pairmacro_w5_u16   return_3d                         VHM                                                                                                                                                                                                                                                            upper_shadow,bb_width,vingroup_momentum,vnindex_return,rsi_14,day_of_week            5         16     0.05 0.0005      30         8              0.012280            0.013935             0.011333                        0.556291               0.033370             -0.004218                    1.502031                         50                    0.000      data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w5_u16
+      overnight_dig_return3d_pairmacro_w3_u8   return_3d                         DIG                                                                                                                                                                                                                                                             gap_open,bb_position,vingroup_momentum,vnindex_return,rsi_14,day_of_week            3          8     0.00 0.0003      30         8             -0.018184           -0.061352             0.011104                        0.450331               0.010269              0.013098                    1.320418                         62                    0.000       data/processed/assets/data_info_vn/history/training_runs/overnight_dig_return3d_pairmacro_w3_u8
+      overnight_nlg_return3d_pairmacro_w5_u8   return_3d                         NLG                                                                                                                                                                                                                                                         upper_shadow,momentum_20,vingroup_momentum,vnindex_return,rsi_14,day_of_week            5          8     0.00 0.0003      30         8             -0.022751            0.031714             0.007284                        0.463576              -0.014790              0.015474                    1.197067                         35                    0.005       data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u8
+       overnight_bds_return3d_allfeat_u16_w7   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL volume_ratio_20,volume_zscore_20,intraday_return,gap_open,close_position,upper_shadow,lower_shadow,momentum_5,momentum_20,atr_gap,volatility_20,ma_20_gap,ma_200_gap,rolling_max_20_gap,bb_width,bb_position,vwap_gap,obv_change,macd_hist,vingroup_momentum,vnindex_return,rsi_14,day_of_week,alpha_sector,vwap_gap_20,above_ma_200            7         16     0.05 0.0003      35         8              0.014525           -0.003316             0.001807                        0.493671              -0.024776             -0.017206                    3.980745                        192                    0.010        data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u16_w7
+overnight_bds_return3d_sector_stack48_24_w10   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL                                                                                                                                                                                                              alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,rsi_14,day_of_week,vingroup_momentum,vnindex_return           10   [48, 24]     0.05 0.0003      45        12              0.002116            0.007834             0.000510                        0.475166              -0.036064             -0.014678                    1.522419                          7                    0.010 data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_stack48_24_w10
+     overnight_nlg_return3d_pairmacro_w5_u16   return_3d                         NLG                                                                                                                                                                                                                                                         upper_shadow,momentum_20,vingroup_momentum,vnindex_return,rsi_14,day_of_week            5         16     0.05 0.0005      30         8              0.009863            0.002358            -0.001948                        0.427152              -0.014790              0.015474                    0.913439                         73                    0.000      data/processed/assets/data_info_vn/history/training_runs/overnight_nlg_return3d_pairmacro_w5_u16
+       overnight_bds_return3d_sector_u48_w12   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL                                                                                                                                                                                                              alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,rsi_14,day_of_week,vingroup_momentum,vnindex_return           12         48     0.05 0.0003      40        10              0.003440            0.006851            -0.005962                        0.482892              -0.032087             -0.014890                    2.819204                         85                    0.010        data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u48_w12
+      overnight_vhm_return3d_pairmacro_w3_u8   return_3d                         VHM                                                                                                                                                                                                                                                            upper_shadow,bb_width,vingroup_momentum,vnindex_return,rsi_14,day_of_week            3          8     0.00 0.0003      30         8             -0.000944            0.041460            -0.015698                        0.513245              -0.005665             -0.004462                    1.811694                         48                    0.000       data/processed/assets/data_info_vn/history/training_runs/overnight_vhm_return3d_pairmacro_w3_u8
+        overnight_bds_return3d_sector_u16_w7   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL                                                                                                                                                                                                              alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,rsi_14,day_of_week,vingroup_momentum,vnindex_return            7         16     0.05 0.0003      35         8              0.003614            0.018029            -0.017421                        0.479581              -0.028798             -0.015367                    5.773310                        251                    0.005         data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u16_w7
+       overnight_bds_return3d_sector_u32_w10   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL                                                                                                                                                                                                              alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,rsi_14,day_of_week,vingroup_momentum,vnindex_return           10         32     0.05 0.0003      40        10              0.010697            0.011885            -0.022476                        0.476269              -0.036064             -0.014678                    3.084021                        129                    0.010        data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_sector_u32_w10
+      overnight_bds_return3d_allfeat_u32_w10   return_3d VHM,KDH,NLG,DIG,DXG,PDR,NVL volume_ratio_20,volume_zscore_20,intraday_return,gap_open,close_position,upper_shadow,lower_shadow,momentum_5,momentum_20,atr_gap,volatility_20,ma_20_gap,ma_200_gap,rolling_max_20_gap,bb_width,bb_position,vwap_gap,obv_change,macd_hist,vingroup_momentum,vnindex_return,rsi_14,day_of_week,alpha_sector,vwap_gap_20,above_ma_200           10         32     0.05 0.0003      40        10              0.029410           -0.004148            -0.027896                        0.479287              -0.016597             -0.017497                    7.892263                        207                    0.010       data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return3d_allfeat_u32_w10
+Saved summary: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260407_031830/overnight_lstm_summary.csv
+Saved candidates: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260407_031830/overnight_lstm_candidates_ge_003.csv
+Archived candidates: data/processed/assets/data_info_vn/history/training_runs/representative_runs/lstm_relscore_ge_0_03
+
+===========================================
+HOAN TAT TOAN BO
+Bao cao va log da xuat tai: data/processed/assets/data_info_vn/history/training_runs
+Log chi tiet: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260407_031830
+===========================================

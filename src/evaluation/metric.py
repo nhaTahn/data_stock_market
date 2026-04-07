@@ -16,7 +16,22 @@ def loss_fn(values):
     return np.quantile(values, 0.5) + 0.5 * np.quantile(values, 0.9)
 
 
-def align_prediction_actual(predict, actual):
+def _iter_group_slices(group_ids):
+    group_ids = np.asarray(group_ids)
+    if group_ids.ndim != 1:
+        raise ValueError("`group_ids` must be a 1D array.")
+    if len(group_ids) == 0:
+        return
+
+    start = 0
+    for idx in range(1, len(group_ids)):
+        if group_ids[idx] != group_ids[idx - 1]:
+            yield start, idx
+            start = idx
+    yield start, len(group_ids)
+
+
+def _align_single_group(predict, actual):
     predict = np.asarray(predict, dtype=float)
     actual = np.asarray(actual, dtype=float)
 
@@ -36,12 +51,38 @@ def align_prediction_actual(predict, actual):
     return np.asarray(aligned_predict, dtype=float), np.asarray(aligned_actual, dtype=float)
 
 
-def directional_accuracy(predict, actual):
-    aligned_predict, aligned_actual = align_prediction_actual(predict, actual)
+def align_prediction_actual(predict, actual, group_ids=None):
+    if group_ids is None:
+        return _align_single_group(predict, actual)
+
+    predict = np.asarray(predict, dtype=float)
+    actual = np.asarray(actual, dtype=float)
+    if len(predict) != len(actual):
+        raise ValueError("`predict` and `actual` must have the same length.")
+    if len(group_ids) != len(actual):
+        raise ValueError("`group_ids` and `actual` must have the same length.")
+
+    aligned_predict_parts = []
+    aligned_actual_parts = []
+    for start, end in _iter_group_slices(group_ids):
+        if end - start < 3:
+            continue
+        group_predict, group_actual = _align_single_group(predict[start:end], actual[start:end])
+        aligned_predict_parts.append(group_predict)
+        aligned_actual_parts.append(group_actual)
+
+    if not aligned_predict_parts:
+        raise ValueError("Grouped inputs must contain at least one group with 3 elements.")
+
+    return np.concatenate(aligned_predict_parts), np.concatenate(aligned_actual_parts)
+
+
+def directional_accuracy(predict, actual, group_ids=None):
+    aligned_predict, aligned_actual = align_prediction_actual(predict, actual, group_ids=group_ids)
     return float(np.mean(np.sign(aligned_predict) == np.sign(aligned_actual)))
 
 
-def evaluate(predict, actual, dspl=False):
+def evaluate(predict, actual, dspl=False, group_ids=None):
     """
     Evaluate prediction quality based on the custom metric.
 
@@ -65,7 +106,7 @@ def evaluate(predict, actual, dspl=False):
         ValueError: If input length is too short.
         ZeroDivisionError: If base loss is zero.
     """
-    aligned_predict, base = align_prediction_actual(predict, actual)
+    aligned_predict, base = align_prediction_actual(predict, actual, group_ids=group_ids)
     error = base - aligned_predict
 
     base_loss = loss_fn(base)
@@ -87,5 +128,5 @@ def evaluate(predict, actual, dspl=False):
         "base_loss": base_loss,
         "abs_loss": abs_loss,
         "rel_score": rel_score,
-        "directional_accuracy": directional_accuracy(predict, actual),
+        "directional_accuracy": directional_accuracy(predict, actual, group_ids=group_ids),
     }

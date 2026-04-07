@@ -83,6 +83,34 @@ def add_momentum_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def add_oscillator_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    price_column = "adjust" if "adjust" in df.columns else "close" if "close" in df.columns else None
+    if price_column is None:
+        return df
+
+    by_code = df.groupby("code", group_keys=False)
+    if "rsi_14" not in df.columns:
+        price_delta = by_code[price_column].diff()
+        gain = price_delta.clip(lower=0.0)
+        loss = (-price_delta).clip(lower=0.0)
+        avg_gain = gain.groupby(df["code"]).transform(lambda s: s.rolling(14, min_periods=14).mean())
+        avg_loss = loss.groupby(df["code"]).transform(lambda s: s.rolling(14, min_periods=14).mean())
+        rs = avg_gain / avg_loss.replace(0, np.nan)
+        df["rsi_14"] = 100.0 - (100.0 / (1.0 + rs))
+    return df
+
+
+def add_calendar_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    if "Date" not in df.columns:
+        return df
+    date_series = pd.to_datetime(df["Date"])
+    if "day_of_week" not in df.columns:
+        df["day_of_week"] = date_series.dt.dayofweek.astype(float)
+    return df
+
+
 def add_volatility_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     by_code = df.groupby("code", group_keys=False)
@@ -278,11 +306,13 @@ def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = add_price_shape_features(df)
     df = add_volume_features(df)
     df = add_momentum_features(df)
+    df = add_oscillator_features(df)
     df = add_volatility_features(df)
     df = add_moving_average_gap_features(df)
     df = add_bollinger_features(df)
     df = add_macd_features(df)
     df = add_price_volume_features(df)
     df = add_cross_sectional_features(df)
+    df = add_calendar_features(df)
 
     return df.replace([np.inf, -np.inf], np.nan)

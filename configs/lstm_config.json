@@ -29,16 +29,16 @@
     "volatility_20",
     "ma_20_gap",
     "ma_200_gap",
-    "above_ma_200",
     "rolling_max_20_gap",
     "bb_width",
     "bb_position",
-    "bb_zscore",
     "vwap_gap",
     "obv_change",
-    "macd",
-    "macd_signal",
-    "macd_hist"
+    "macd_hist",
+    "vingroup_momentum",
+    "vnindex_return",
+    "rsi_14",
+    "day_of_week"
   ],
   "sector_features": {
     "Bất động sản": [
@@ -47,7 +47,9 @@
       "volatility_20",
       "gap_open",
       "ma_200_gap",
-      "bb_width"
+      "bb_width",
+      "rsi_14",
+      "day_of_week"
     ],
     "Ngân hàng": [
       "alpha_sector",
@@ -73,25 +75,28 @@
     ]
   },
   "hyperparameters": {
-    "window_size": 20,
-    "lstm_units": 16,
-    "dropout": 0.2,
-    "lr": 0.001,
-    "loss": "huber",
-    "huber_delta": 0.01,
-    "batch_size": 32,
-    "epochs": 10,
-    "patience": 3
-  },
-  "hyperparameters_2": {
-    "window_size": 20,
+    "window_size": 15,
     "lstm_units": 64,
-    "dropout": 0.2,
+    "dropout": 0.1,
     "lr": 0.0005,
     "loss": "huber",
     "huber_delta": 0.01,
     "batch_size": 32,
-    "epochs": 10,
-    "patience": 3
+    "epochs": 30,
+    "patience": 8
+  },
+  "hyperparameters_2": {
+    "window_size": 15,
+    "lstm_units": [
+      64,
+      32
+    ],
+    "dropout": 0.1,
+    "lr": 0.0003,
+    "loss": "huber",
+    "huber_delta": 0.01,
+    "batch_size": 32,
+    "epochs": 40,
+    "patience": 10
   }
 }

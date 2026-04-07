@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from src.evaluation.metric import directional_accuracy, evaluate
-from src.visualization.model_plots import save_actual_vs_prediction_plot
+from src.visualization.model_plots import save_actual_vs_prediction_plot, save_rel_score_hist_plot
 
 
 def parse_args() -> argparse.Namespace:
@@ -41,17 +41,24 @@ def update_run(run_dir: Path) -> None:
     for model_name in prediction_df["model"].unique():
         model_df = prediction_df[prediction_df["model"] == model_name]
         for split_name in prediction_df["split"].unique():
-            split_df = model_df[model_df["split"] == split_name].sort_values("Date")
+            split_df = model_df[model_df["split"] == split_name].copy()
             if split_df.empty:
                 continue
+            if {"code", "Date"}.issubset(split_df.columns):
+                split_df = split_df.sort_values(["code", "Date"], kind="stable")
             predict = split_df["prediction"].to_numpy()
             actual = split_df["actual"].to_numpy()
-            score = directional_accuracy(predict, actual)
-            result = evaluate(predict, actual)
+            group_ids = split_df["code"].to_numpy() if "code" in split_df.columns else None
+            score = directional_accuracy(predict, actual, group_ids=group_ids)
+            result = evaluate(predict, actual, group_ids=group_ids)
             metrics[model_name][split_name]["directional_accuracy"] = score
             metrics[model_name][split_name]["base_loss"] = float(result["base_loss"])
             metrics[model_name][split_name]["abs_loss"] = float(result["abs_loss"])
             metrics[model_name][split_name]["rel_score"] = float(result["rel_score"])
+            pd.DataFrame({"error": result["error"], "base": result["base"]}).to_csv(
+                run_dir / f"metric_series_{model_name}_{split_name}.csv",
+                index=False,
+            )
             metric_details[model_name][split_name] = {
                 "base_loss": float(result["base_loss"]),
                 "abs_loss": float(result["abs_loss"]),
@@ -61,6 +68,7 @@ def update_run(run_dir: Path) -> None:
                 "base_len": int(len(result["base"])),
             }
         save_actual_vs_prediction_plot(run_dir, prediction_df, model_name)
+        save_rel_score_hist_plot(run_dir, model_name)
 
     with metrics_path.open("w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)

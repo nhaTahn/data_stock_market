@@ -1,0 +1,38 @@
+{
+  "lstm": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 207,
+    "coverage": 0.11828571428571429,
+    "directional_accuracy": 0.6473429951690821,
+    "avg_actual_return": 0.011456509658454107,
+    "avg_strategy_return": 0.011456509658454107,
+    "cumulative_strategy_return": 2.3714974993,
+    "final_equity": 7.892262717497051,
+    "sampled_buy_hold_equity": 7.892262717497051
+  },
+  "linear_regression": {
+    "threshold": 0.0,
+    "holding_period": 3,
+    "trade_count": 447,
+    "coverage": 0.25542857142857145,
+    "directional_accuracy": 0.5324384787472036,
+    "avg_actual_return": 0.005235641102908278,
+    "avg_strategy_return": 0.005235641102908278,
+    "cumulative_strategy_return": 2.3403315730000003,
+    "final_equity": 6.22166507723042,
+    "sampled_buy_hold_equity": 6.22166507723042
+  },
+  "arima": {
+    "threshold": 0.01,
+    "holding_period": 3,
+    "trade_count": 8,
+    "coverage": 0.004571428571428572,
+    "directional_accuracy": 0.625,
+    "avg_actual_return": 0.0297890543125,
+    "avg_strategy_return": 0.0297890543125,
+    "cumulative_strategy_return": 0.2383124345,
+    "final_equity": 1.2531297214375405,
+    "sampled_buy_hold_equity": 1.2531297214375405
+  }
+}

@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
 
 from src.evaluation.metric import evaluate
 from src.models.baseline import fit_linear_regression, predict_linear_regression
-from src.models.config import FEATURE_COLUMNS, get_config
+from src.models.config import get_config
 from src.models.lstm import (
     apply_feature_scaler,
     build_sequence_dataset,
@@ -69,8 +69,8 @@ def build_run_dir(base_dir: Path, run_name: str | None, target_mode: str) -> Pat
     return run_dir
 
 
-def score_predictions(actual: np.ndarray, prediction: np.ndarray) -> dict[str, float]:
-    metric = evaluate(prediction, actual)
+def score_predictions(actual: np.ndarray, prediction: np.ndarray, group_ids: np.ndarray | None = None) -> dict[str, float]:
+    metric = evaluate(prediction, actual, group_ids=group_ids)
     return {
         "mse": float(np.mean((actual - prediction) ** 2)),
         "mae": float(np.mean(np.abs(actual - prediction))),
@@ -116,8 +116,9 @@ def run_feature_search(
                 config.window_size,
             )
             x_train, y_train, _ = splits["train"]
-            x_val, y_val, _ = splits["val"]
-            x_test, y_test, _ = splits["test"]
+            x_val, y_val, meta_val = splits["val"]
+            x_test, y_test, meta_test = splits["test"]
+            _, _, meta_train = splits["train"]
             if len(x_train) == 0 or len(x_val) == 0 or len(x_test) == 0:
                 continue
 
@@ -129,9 +130,9 @@ def run_feature_search(
             except LinAlgError:
                 continue
 
-            train_score = score_predictions(y_train, train_pred)
-            val_score = score_predictions(y_val, val_pred)
-            test_score = score_predictions(y_test, test_pred)
+            train_score = score_predictions(y_train, train_pred, group_ids=meta_train["code"].to_numpy())
+            val_score = score_predictions(y_val, val_pred, group_ids=meta_val["code"].to_numpy())
+            test_score = score_predictions(y_test, test_pred, group_ids=meta_test["code"].to_numpy())
 
             rows.append(
                 {
