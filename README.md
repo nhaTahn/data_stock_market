@@ -13,7 +13,7 @@ The active research direction is intentionally narrower than a full "advanced qu
 - optional experimental branch: `--enable-quantile-family` adds a minimal `q50/q90` head without rewriting the framework
 - current use of quantiles is primarily as a backtest sidecar via `q90 - q50`, not as the main model family
 
-If you are starting work in this repo, read [`docs/relscore_quantile_roadmap.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/relscore_quantile_roadmap.md) first. If you need help reading run names or model names in reports, also read [`docs/lstm_model_glossary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/lstm_model_glossary.md).
+If you are starting work in this repo, read [`docs/current_best_path.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/current_best_path.md) first. Then use [`docs/models_code_map.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/models_code_map.md) to navigate the code layout, [`docs/relscore_quantile_roadmap.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/relscore_quantile_roadmap.md) for medium-term direction, and [`docs/lstm_model_glossary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/lstm_model_glossary.md) to decode run/model names.
 
 ## Main Flow
 
@@ -34,14 +34,18 @@ If you are starting work in this repo, read [`docs/relscore_quantile_roadmap.md`
 - [`src/data_pipeline/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/data_pipeline): dataset build pipeline.
 - [`src/utils/features.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/utils/features.py): feature engineering.
 - [`src/models/config.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/config.py): default training configuration.
-- [`src/models/sequence_utils.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/sequence_utils.py): sequence building and scaling utilities.
-- [`src/models/trainer_wrapper.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/trainer_wrapper.py): model-family training wrappers.
-- [`src/models/dl_architectures/lstm_builder.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/dl_architectures/lstm_builder.py): LSTM, attention, sign-magnitude, and event-gated builders.
+- [`src/models/training/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/training): sequence prep, scalers, targets, seeds, and family fitters.
+- [`src/models/architectures/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/architectures): model builders split by family.
+- [`src/models/reporting/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/reporting): report layout helpers.
+- [`src/backtesting/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/backtesting): threshold and multi-strategy backtests plus performance summaries.
+- [`src/reporting/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/reporting): report rebuild entrypoints.
+- [`src/research/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/research): feature-search and run-comparison utilities.
+- [`src/models/sequence_utils.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/sequence_utils.py): legacy compatibility shim to the new training package.
+- [`src/models/trainer_wrapper.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/trainer_wrapper.py): legacy compatibility shim to the new training fitters.
+- [`src/models/dl_architectures/lstm_builder.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/dl_architectures/lstm_builder.py): legacy compatibility shim to the new architecture package.
 - [`src/models/components/losses.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/components/losses.py): `mse`, `huber`, `directional_huber`, and differentiable `rel_score` surrogate.
 - [`src/models/training_recipe.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/training_recipe.py): recipe builder from stock search summaries.
 - [`src/evaluation/metric.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/evaluation/metric.py): final evaluation metric.
-- [`src/models/backtest_threshold.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/backtest_threshold.py): threshold backtests.
-- [`src/models/update_run_reports.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/update_run_reports.py): rebuild report artifacts.
 - [`src/visualization/model_plots.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/visualization/model_plots.py): prediction and histogram plots.
 - [`data/processed/assets/data_info_vn/history/training_runs/`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs): saved experiments.
 
@@ -96,6 +100,13 @@ If your goal is to make progress without adding more complexity, focus on these 
 - `--sector` or `--stocks`
 - `--target-normalizer volatility_20`
 - `--lstm-seeds`
+
+Current best reading order:
+
+- first: [`docs/current_best_path.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/current_best_path.md)
+- second: [`docs/models_code_map.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/models_code_map.md)
+- third: [`data/processed/assets/data_info_vn/history/training_runs/README.md`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/README.md)
+- fourth: the shortlisted run folders named in that document
 
 Treat these as experimental or second-order for now:
 
@@ -170,21 +181,21 @@ venv/bin/python scripts/run_sector_mini_group_batch.py \
 ### Rebuild report artifacts for an existing run
 
 ```bash
-venv/bin/python src/models/update_run_reports.py \
+venv/bin/python src/reporting/update_run_reports.py \
   data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore
 ```
 
 ### Run threshold backtest
 
 ```bash
-venv/bin/python src/models/backtest_threshold.py \
+venv/bin/python src/backtesting/threshold_backtest.py \
   data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore
 ```
 
 ### Run threshold backtest with quantile sidecar
 
 ```bash
-venv/bin/python src/models/backtest_threshold.py \
+venv/bin/python src/backtesting/threshold_backtest.py \
   data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore \
   --models lstm_best_by_val \
   --uncertainty-model lstm_quantile_best_by_val \

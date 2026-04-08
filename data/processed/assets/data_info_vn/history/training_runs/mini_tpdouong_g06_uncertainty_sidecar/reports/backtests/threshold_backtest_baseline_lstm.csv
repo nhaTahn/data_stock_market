@@ -1,7 +1,0 @@
-model,threshold,holding_period,uncertainty_model,uncertainty_quantile,max_uncertainty,trade_count,coverage,directional_accuracy,avg_actual_return,avg_strategy_return,cumulative_strategy_return,final_equity,sampled_buy_hold_equity
-lstm_best_by_val,0.0,1,,,,164,0.13475760065735415,0.6951219512195121,0.003724795869512195,0.003724795869512195,0.6108665226,1.8022151988642823,1.8022151988642823
-lstm_best_by_val,0.0025,1,,,,0,0.0,,,,0.0,1.0,1.0
-lstm_best_by_val,0.005,1,,,,0,0.0,,,,0.0,1.0,1.0
-lstm_best_by_val,0.01,1,,,,0,0.0,,,,0.0,1.0,1.0
-lstm_best_by_val,0.015,1,,,,0,0.0,,,,0.0,1.0,1.0
-lstm_best_by_val,0.02,1,,,,0,0.0,,,,0.0,1.0,1.0

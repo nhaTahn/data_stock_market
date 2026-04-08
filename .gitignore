@@ -51,25 +51,35 @@ artifacts/
 *.pdf
 
 # Training run outputs
-data/assets/**/history/training_runs/active/
-data/assets/**/history/training_runs/search_runs/
-data/assets/**/history/training_runs/representative_runs/
-data/assets/**/history/training_runs/reports/plots/
-data/assets/**/history/training_runs/**/predictions.csv
-data/assets/**/history/training_runs/**/history.csv
-data/assets/**/history/training_runs/**/metric_details.json
-data/assets/**/history/training_runs/**/metric_series_*.csv
-data/assets/**/history/training_runs/**/threshold_backtest*.csv
-data/assets/**/history/training_runs/**/threshold_backtest*.json
-data/assets/**/history/training_runs/**/actual_vs_prediction_*.png
+# Real run artifacts live under data/processed/assets/.../history/training_runs/.
+# Keep lightweight summaries/configs, ignore generated heavy artifacts.
+data/**/history/training_runs/active/
+data/**/history/training_runs/search_runs/
+data/**/history/training_runs/representative_runs/
+data/**/history/training_runs/**/history*.csv
+data/**/history/training_runs/**/predictions.csv
+data/**/history/training_runs/**/metric_details.json
+data/**/history/training_runs/**/reports/metric_series/
+data/**/history/training_runs/**/reports/plots/
+data/**/history/training_runs/**/threshold_backtest*.csv
+data/**/history/training_runs/**/equity_curve*.csv
+data/**/history/training_runs/equity_compare_curves.csv
 
-# Keep only important summaries in training_runs root
-!data/assets/**/history/training_runs/
-!data/assets/**/history/training_runs/README.md
-!data/assets/**/history/training_runs/reports/
-!data/assets/**/history/training_runs/reports/*.csv
-!data/assets/**/history/training_runs/reports/*.json
-!data/assets/**/history/training_runs/reports/*.md
+# Keep only important summaries in training_runs
+!data/**/history/training_runs/
+!data/**/history/training_runs/README.md
+!data/**/history/training_runs/reports/
+!data/**/history/training_runs/reports/*.csv
+!data/**/history/training_runs/reports/*.json
+!data/**/history/training_runs/reports/*.md
+!data/**/history/training_runs/**/reports/core/config.json
+!data/**/history/training_runs/**/reports/core/metrics.json
+!data/**/history/training_runs/**/reports/core/family_selection_summary.json
+!data/**/history/training_runs/**/reports/backtests/threshold_backtest_summary*.json
+!data/**/history/training_runs/feature_correlation/**/feature_recommendation.json
+!data/**/history/training_runs/feature_correlation/**/redundant_pairs.csv
+!data/**/history/training_runs/feature_correlation/all_sectors_summary.csv
+!data/**/history/training_runs/equity_compare_summary.csv
 
 # Generated market datasets
 data/**/history/*_gold_recommended.csv

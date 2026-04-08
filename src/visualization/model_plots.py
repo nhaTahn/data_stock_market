@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from src.models.report_layout import report_plot_path
+from src.models.reporting import report_plot_path
 
 
 def _prepare_rel_score_histogram_stats(split_df: pd.DataFrame) -> dict[str, float | np.ndarray]:

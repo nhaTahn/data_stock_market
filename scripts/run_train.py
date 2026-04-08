@@ -34,7 +34,7 @@ from src.models.fischer_krauss import (
     resolve_price_column,
     split_fischer_krauss_sequences,
 )
-from src.models.report_layout import (
+from src.models.reporting import (
     cleanup_legacy_report_artifacts,
     cleanup_report_noise,
     mirror_run_artifacts,
@@ -42,21 +42,19 @@ from src.models.report_layout import (
     report_core_path,
     report_metric_series_path,
 )
-from src.models.training_recipe import (
-    DEFAULT_CONTEXT_FEATURES,
-    DEFAULT_SEARCH_SUMMARY_PATH,
-    TrainingRecipe,
-    build_training_recipe,
-)
-from src.utils.vn_sector import load_industry_reference
-from src.models.sequence_utils import (
+from src.models.training import (
     apply_feature_scaler,
     apply_local_target_normalizer,
     apply_target_scaler,
-    build_sequence_dataset,
     build_magnitude_sample_weights,
+    build_sequence_dataset,
+    fit_attention_model,
+    fit_event_gated_model,
     fit_feature_scaler,
     fit_local_target_normalizer,
+    fit_model,
+    fit_quantile_model,
+    fit_sign_magnitude_model,
     fit_target_scaler,
     inverse_local_target_normalizer,
     inverse_target_scaler_values,
@@ -65,13 +63,13 @@ from src.models.sequence_utils import (
     split_frame_by_date,
     split_sequence_dataset,
 )
-from src.models.trainer_wrapper import (
-    fit_attention_model,
-    fit_event_gated_model,
-    fit_model,
-    fit_quantile_model,
-    fit_sign_magnitude_model,
+from src.models.training_recipe import (
+    DEFAULT_CONTEXT_FEATURES,
+    DEFAULT_SEARCH_SUMMARY_PATH,
+    TrainingRecipe,
+    build_training_recipe,
 )
+from src.utils.vn_sector import load_industry_reference
 from src.visualization.model_plots import (
     save_actual_vs_prediction_plot,
     save_equity_curve_plot,

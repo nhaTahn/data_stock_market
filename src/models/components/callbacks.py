@@ -4,10 +4,10 @@ import numpy as np
 from tensorflow import keras
 
 from src.evaluation.metric import evaluate
-from src.models.sequence_utils import (
+from src.models.training.prediction import extract_prediction_array
+from src.models.training.scalers import (
     LocalTargetNormalizer,
     TargetScaler,
-    extract_prediction_array,
     inverse_local_target_normalizer,
     inverse_target_scaler_values,
 )

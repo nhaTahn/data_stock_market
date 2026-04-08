@@ -39,7 +39,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from src.models.config import ALL_FEATURE_COLUMNS, DEFAULT_DATA_PATH, DEFAULT_OUTPUT_DIR
-from src.models.sequence_utils import split_frame_by_date
+from src.models.training import split_frame_by_date
 from src.utils.features import ensure_columns
 from src.utils.vn_sector import build_vn_stock_sector_map
 

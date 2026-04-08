@@ -1,5 +1,33 @@
 `training_runs` stores saved experiments, comparisons, and batch logs for VN research.
 
+## Git Hygiene
+
+Only lightweight artifacts should be committed from `training_runs`:
+
+- keep: `config.json`, `metrics.json`, `family_selection_summary.json`, backtest summary JSON, feature-correlation summaries, top-level README/summary CSV files
+- keep local only: `predictions.csv`, `history*.csv`, `metric_details.json`, `reports/metric_series/*`, plots, and other generated debug artifacts
+
+The repo `.gitignore` is set up to keep the heavy files local and out of future pushes.
+
+## Open These First
+
+If you want the shortest path to the current best results, start with these run folders:
+
+- `mini_tpdouong_g06_uncertainty_sidecar`
+  Best current run where `best by val` and `best by test` line up on the same plain-LSTM seed.
+- `mini_bat_ong_san_g01_return_w20_pruned_v2`
+  Best BĐS ceiling by test, but validation selection is still unstable.
+- `mini_bat_ong_san_g01_return_w15_pruned_v1`
+  Good comparison point for a more stable BĐS selection.
+- `mini_ngan_hang_g02_return_w20_pruned_v2`
+  Current best bank mini-group.
+- `mini_thuc_pham_va_o_uong_g03_return_w20_pruned_v2`
+  Smaller F&B pruned run without the quantile sidecar.
+
+For the repo-level summary of why these are the current shortlist, read:
+
+- [`docs/current_best_path.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/current_best_path.md)
+
 ## Structure
 
 - `active/`

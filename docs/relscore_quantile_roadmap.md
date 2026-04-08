@@ -41,7 +41,7 @@ Status note:
 
 - Phase 2 now has a first implementation in repo via `--enable-quantile-family`.
 - It should still be treated as experimental until it beats the plain `lstm` baseline on repeatable VN runs.
-- Phase 3 now has a first practical backtest-side implementation in [`src/models/backtest_threshold.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/backtest_threshold.py).
+- Phase 3 now has a first practical backtest-side implementation in [`src/backtesting/threshold_backtest.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/backtesting/threshold_backtest.py).
 - On the current strongest VN mini-group run, `q90 - q50` worked better as a `high-spread` sidecar gate than as a `low-uncertainty` rejection filter.
 
 ### Phase 1: Stabilize The RelScore Baseline
@@ -161,7 +161,7 @@ When Phase 2 starts, the expected files to touch are:
 - [`src/models/trainer_wrapper.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/trainer_wrapper.py)
 - [`scripts/run_train.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_train.py)
 - [`src/evaluation/metric.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/evaluation/metric.py) only if evaluation needs an explicit quantile-aware adapter
-- [`src/models/backtest_threshold.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/backtest_threshold.py) if uncertainty filtering is added
+- [`src/backtesting/threshold_backtest.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/backtesting/threshold_backtest.py) if uncertainty filtering is added
 
 ## Decision Rule
 

@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-from src.models.report_layout import resolve_run_artifact
+from src.models.reporting import resolve_run_artifact
 from src.models.training_recipe import DEFAULT_SEARCH_SUMMARY_PATH
 
 
@@ -440,7 +440,7 @@ def main() -> None:
         run_and_log(
             [
                 str(ROOT / "venv" / "bin" / "python"),
-                "src/models/backtest_threshold.py",
+                "src/backtesting/threshold_backtest.py",
                 str(RUN_BASE / run_name),
                 "--non-overlap",
             ],
@@ -449,7 +449,7 @@ def main() -> None:
         run_and_log(
             [
                 str(ROOT / "venv" / "bin" / "python"),
-                "src/models/update_run_reports.py",
+                "src/reporting/update_run_reports.py",
                 str(RUN_BASE / run_name),
             ],
             log_dir / f"{run_name}_report.log",

@@ -1,4 +1,4 @@
-from src.models.reporting import (
+from src.models.reporting.layout import (
     cleanup_legacy_report_artifacts,
     cleanup_report_noise,
     clear_report_files,

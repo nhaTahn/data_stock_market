@@ -26,8 +26,8 @@ train_and_post() {
   local run_name="$1"
   shift
   run_step "${run_name}_train" venv/bin/python scripts/run_train.py "$@" --run-name "${run_name}"
-  run_step "${run_name}_backtest" venv/bin/python src/models/backtest_threshold.py "${RUN_BASE}/${run_name}" --non-overlap
-  run_step "${run_name}_report" venv/bin/python src/models/update_run_reports.py "${RUN_BASE}/${run_name}"
+  run_step "${run_name}_backtest" venv/bin/python src/backtesting/threshold_backtest.py "${RUN_BASE}/${run_name}" --non-overlap
+  run_step "${run_name}_report" venv/bin/python src/reporting/update_run_reports.py "${RUN_BASE}/${run_name}"
   RUN_NAMES+=("${run_name}")
 }
 
@@ -217,14 +217,14 @@ print(f"Saved: {out_path}")
 PY
 
 run_step "overnight_target_mode_compare" \
-  venv/bin/python src/models/compare_target_modes.py \
+  venv/bin/python src/research/compare_target_modes.py \
   --run-base "${RUN_BASE}" \
   --run-names "${RUN_NAMES[@]}" \
   --details-csv "${LOG_DIR}/target_mode_comparison_details.csv" \
   --summary-csv "${LOG_DIR}/target_mode_comparison_summary.csv"
 
 run_step "overnight_archive_candidates" \
-  venv/bin/python src/models/archive_lstm_candidates.py \
+  venv/bin/python src/research/archive_lstm_candidates.py \
   --run-base "${RUN_BASE}" \
   --run-names "${RUN_NAMES[@]}" \
   --threshold 0.03 \
