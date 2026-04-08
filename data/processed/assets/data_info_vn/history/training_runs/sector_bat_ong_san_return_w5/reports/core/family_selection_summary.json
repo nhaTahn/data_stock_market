@@ -1,0 +1,28 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_42",
+        "val_score": 0.012829182763053892,
+        "test_score": -0.011204799799660492
+      }
+    ],
+    "best_by_val": "lstm_seed_42",
+    "top2_by_val": [
+      "lstm_seed_42"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.010039930843543154,
+        "test_score": -0.0029805526861470533
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_42",
+    "top2_by_val": [
+      "lstm_signmag_seed_42"
+    ]
+  }
+}

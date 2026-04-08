@@ -1,0 +1,309 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "feature_columns": [
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "gap_open",
+    "ma_200_gap",
+    "obv_change",
+    "macd_hist",
+    "momentum_20",
+    "alpha_sector",
+    "vingroup_momentum",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "rsi_14"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 20,
+  "lstm_units": [
+    64,
+    32
+  ],
+  "dropout": 0.08,
+  "lr": 0.0003,
+  "loss": "rel_score",
+  "huber_delta": 0.01,
+  "batch_size": 32,
+  "epochs": 60,
+  "patience": 12,
+  "target_normalizer": "volatility_20",
+  "lstm_seeds": [
+    42,
+    52,
+    62,
+    99
+  ],
+  "signmag_signed_loss_weight": 1.5,
+  "signmag_sign_loss_weight": 0.15,
+  "signmag_magnitude_loss_weight": 0.35,
+  "signmag_log_magnitude": true,
+  "sample_weight_mode": "none",
+  "sample_weight_strength": 1.5,
+  "sample_weight_quantile": 0.75,
+  "sample_weight_clip": 3.0,
+  "attention_enabled": false,
+  "attention_heads": 2,
+  "attention_key_dim": 16,
+  "quantile_enabled": false,
+  "event_enabled": false,
+  "event_threshold": 0.75,
+  "event_signed_loss_weight": 2.0,
+  "event_prob_loss_weight": 0.4,
+  "event_sign_loss_weight": 0.1,
+  "event_magnitude_loss_weight": 0.3,
+  "event_log_magnitude": true,
+  "fk_benchmark_enabled": false,
+  "fk_window_size": 240,
+  "fk_hidden_units": 25,
+  "fk_dropout": 0.16,
+  "fk_learning_rate": 0.001,
+  "fk_batch_size": 32,
+  "fk_epochs": 1000,
+  "fk_patience": 10,
+  "fk_train_fraction": 0.8,
+  "fk_top_k": 10,
+  "monitor_metric": "val_rel_score",
+  "stocks": "CII,VGC,VCG,PC1,BMP,HT1",
+  "use_all_features": false,
+  "raw_rows_train": 15136,
+  "raw_rows_val": 1500,
+  "raw_rows_test": 1836,
+  "seq_rows_train": 13815,
+  "seq_rows_val": 1500,
+  "seq_rows_test": 1826,
+  "baseline_model": "linear_regression(flatten_sequence)",
+  "baseline_models": [
+    "linear_regression(flatten_sequence)",
+    "arima_proxy(ar1_fast)"
+  ],
+  "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+  "lstm_use_stock_identity": true,
+  "lstm_stock_identity_codes": [
+    "BMP",
+    "CII",
+    "HT1",
+    "PC1",
+    "VCG",
+    "VGC"
+  ],
+  "lstm_input_feature_count": 20,
+  "feature_selection_mode": "search_summary",
+  "recipe_sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+  "recipe_selected_stocks": [
+    "BMP",
+    "CII",
+    "HT1",
+    "PC1",
+    "VCG",
+    "VGC"
+  ],
+  "recipe_source": "data/processed/assets/data_info_vn/history/training_runs/stock_sector_search_summary.csv",
+  "recipe_feature_summary": [
+    {
+      "feature": "close_position",
+      "score": 0.104892063137798,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0528253922148274
+    },
+    {
+      "feature": "upper_shadow",
+      "score": 0.0585390002318462,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0353601990257688
+    },
+    {
+      "feature": "lower_shadow",
+      "score": 0.0571119883266097,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0353601990257688
+    },
+    {
+      "feature": "gap_open",
+      "score": 0.0528253922148274,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0528253922148274
+    },
+    {
+      "feature": "ma_200_gap",
+      "score": 0.0520666709229706,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0520666709229706
+    },
+    {
+      "feature": "obv_change",
+      "score": 0.033544908127933204,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0217517893008409
+    },
+    {
+      "feature": "macd_hist",
+      "score": 0.0231788012060774,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0231788012060774
+    },
+    {
+      "feature": "momentum_20",
+      "score": 0.0117931188270923,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0117931188270923
+    }
+  ],
+  "recipe_stock_summary": [
+    {
+      "stock": "BMP",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Nh\u1ef1a B\u00ecnh Minh",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "V\u1eadt li\u1ec7u x\u00e2y d\u1ef1ng & N\u1ed9i th\u1ea5t",
+      "com_type_code": "CT",
+      "run_name": "search_bmp_expanded",
+      "best_by_val": "momentum_20,obv_change",
+      "best_val_rel_score": 0.0117931188270923,
+      "best_by_test": "lower_shadow,vwap_gap",
+      "best_test_rel_score": 0.0304400871272199,
+      "best_test_val_rel_score": -0.0245785238691211
+    },
+    {
+      "stock": "CII",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n \u0110\u1ea7u t\u01b0 H\u1ea1 t\u1ea7ng K\u1ef9 thu\u1eadt Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "X\u00e2y d\u1ef1ng",
+      "com_type_code": "CT",
+      "run_name": "search_cii_expanded",
+      "best_by_val": "close_position,ma_200_gap",
+      "best_val_rel_score": 0.0520666709229706,
+      "best_by_test": "momentum_5,bb_position",
+      "best_test_rel_score": 0.0662071658776107,
+      "best_test_val_rel_score": 0.0306217756892672
+    },
+    {
+      "stock": "HT1",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Xi m\u0103ng VICEM H\u00e0 Ti\u00ean",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "V\u1eadt li\u1ec7u x\u00e2y d\u1ef1ng & N\u1ed9i th\u1ea5t",
+      "com_type_code": "CT",
+      "run_name": "search_ht1_expanded",
+      "best_by_val": "gap_open,close_position",
+      "best_val_rel_score": 0.0528253922148274,
+      "best_by_test": "ma_200_gap,bb_position",
+      "best_test_rel_score": 0.0381514278021625,
+      "best_test_val_rel_score": -0.0479694602919877
+    },
+    {
+      "stock": "PC1",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n T\u1eadp \u0111o\u00e0n PC1",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "X\u00e2y d\u1ef1ng",
+      "com_type_code": "CT",
+      "run_name": "search_pc1_expanded",
+      "best_by_val": "lower_shadow,obv_change",
+      "best_val_rel_score": 0.0217517893008409,
+      "best_by_test": "momentum_5,momentum_20",
+      "best_test_rel_score": 0.0367619286544812,
+      "best_test_val_rel_score": -0.0998883326748238
+    },
+    {
+      "stock": "VCG",
+      "company_name": "T\u1ed5ng C\u00f4ng ty C\u1ed5 ph\u1ea7n Xu\u1ea5t nh\u1eadp kh\u1ea9u v\u00e0 X\u00e2y d\u1ef1ng Vi\u1ec7t Nam",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "X\u00e2y d\u1ef1ng",
+      "com_type_code": "CT",
+      "run_name": "search_vcg_expanded",
+      "best_by_val": "upper_shadow,macd_hist",
+      "best_val_rel_score": 0.0231788012060774,
+      "best_by_test": "atr_gap,ma_200_gap",
+      "best_test_rel_score": 0.0358886806728223,
+      "best_test_val_rel_score": -0.0086428494150865
+    },
+    {
+      "stock": "VGC",
+      "company_name": "T\u1ed5ng C\u00f4ng ty Viglacera - C\u00f4ng ty C\u1ed5 ph\u1ea7n",
+      "sector": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "industry": "X\u00e2y d\u1ef1ng v\u00e0 V\u1eadt li\u1ec7u",
+      "sub_industry": "V\u1eadt li\u1ec7u x\u00e2y d\u1ef1ng & N\u1ed9i th\u1ea5t",
+      "com_type_code": "CT",
+      "run_name": "search_vgc_expanded",
+      "best_by_val": "upper_shadow,lower_shadow",
+      "best_val_rel_score": 0.0353601990257688,
+      "best_by_test": "volume_ratio_20,momentum_20",
+      "best_test_rel_score": 0.0525696163327372,
+      "best_test_val_rel_score": -0.0297262689762936
+    }
+  ],
+  "lstm_attention_enabled": false,
+  "lstm_quantile_enabled": false,
+  "lstm_event_enabled": false,
+  "lstm_signmag_enabled": true,
+  "fischer_krauss_benchmark": null,
+  "family_selection_summary": {
+    "lstm": {
+      "ranked_models": [
+        {
+          "model": "lstm_seed_52",
+          "val_score": 0.004002275186036797,
+          "test_score": -0.0056849984387374874
+        },
+        {
+          "model": "lstm_seed_42",
+          "val_score": 0.003933093548585287,
+          "test_score": 0.004417218759040331
+        },
+        {
+          "model": "lstm_seed_62",
+          "val_score": 0.002031353857702922,
+          "test_score": 0.008164203667072822
+        },
+        {
+          "model": "lstm_seed_99",
+          "val_score": -0.004135589193939859,
+          "test_score": 0.0113380350013228
+        }
+      ],
+      "best_by_val": "lstm_seed_52",
+      "top2_by_val": [
+        "lstm_seed_52",
+        "lstm_seed_42"
+      ]
+    },
+    "lstm_signmag": {
+      "ranked_models": [
+        {
+          "model": "lstm_signmag_seed_42",
+          "val_score": 0.0031899577488729847,
+          "test_score": -0.008530963617203513
+        },
+        {
+          "model": "lstm_signmag_seed_62",
+          "val_score": -0.002006708430581039,
+          "test_score": 0.0019193168288339502
+        },
+        {
+          "model": "lstm_signmag_seed_99",
+          "val_score": -0.0035558556709529565,
+          "test_score": 0.005819785805561306
+        },
+        {
+          "model": "lstm_signmag_seed_52",
+          "val_score": -0.00907196837064217,
+          "test_score": 0.005892220607123799
+        }
+      ],
+      "best_by_val": "lstm_signmag_seed_42",
+      "top2_by_val": [
+        "lstm_signmag_seed_42",
+        "lstm_signmag_seed_62"
+      ]
+    }
+  },
+  "target_normalizer_floor": 0.016088593751192093
+}

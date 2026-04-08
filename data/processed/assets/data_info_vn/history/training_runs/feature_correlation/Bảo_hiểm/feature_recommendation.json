@@ -1,0 +1,132 @@
+{
+  "sector": "Bảo hiểm",
+  "stocks_found": [
+    "BVH"
+  ],
+  "threshold": 0.75,
+  "total_features_available": 28,
+  "features_to_keep": [
+    "vwap_gap",
+    "bb_width",
+    "volatility_20",
+    "gap_open",
+    "intraday_return",
+    "close_position",
+    "obv_change",
+    "momentum_5",
+    "momentum_20",
+    "above_ma_200",
+    "lower_shadow",
+    "upper_shadow",
+    "ma_200_gap",
+    "volume_ratio_20",
+    "rsi_14",
+    "macd_hist",
+    "rolling_max_20_gap",
+    "wyckoff_phase_60d",
+    "effort_result_ratio",
+    "buying_pressure",
+    "selling_pressure",
+    "vwap_gap_20",
+    "alpha_sector",
+    "day_of_week"
+  ],
+  "features_to_drop": [
+    "atr_gap",
+    "ma_20_gap",
+    "volume_zscore_20",
+    "bb_position"
+  ],
+  "redundant_pairs_count": 9,
+  "semantic_group_analysis": {
+    "MA_price_gap": {
+      "features_present": [
+        "ma_20_gap",
+        "ma_200_gap"
+      ],
+      "max_internal_corr": 0.451
+    },
+    "Bollinger": {
+      "features_present": [
+        "bb_position",
+        "bb_width"
+      ],
+      "max_internal_corr": 0.04
+    },
+    "Momentum": {
+      "features_present": [
+        "momentum_5",
+        "momentum_20"
+      ],
+      "max_internal_corr": 0.481
+    },
+    "Volume_ratio": {
+      "features_present": [
+        "volume_ratio_20",
+        "volume_zscore_20"
+      ],
+      "max_internal_corr": 0.9
+    },
+    "Volatility": {
+      "features_present": [
+        "volatility_20",
+        "atr_gap"
+      ],
+      "max_internal_corr": 0.901
+    },
+    "Price_range": {
+      "features_present": [
+        "close_position",
+        "upper_shadow",
+        "lower_shadow"
+      ],
+      "max_internal_corr": 0.366
+    },
+    "VWAP": {
+      "features_present": [
+        "vwap_gap",
+        "vwap_gap_20"
+      ],
+      "max_internal_corr": 0.0
+    },
+    "Wyckoff": {
+      "features_present": [
+        "effort_result_ratio",
+        "buying_pressure",
+        "selling_pressure",
+        "wyckoff_phase_60d"
+      ],
+      "max_internal_corr": 0.287
+    }
+  },
+  "suggested_lstm_config_snippet": {
+    "sector_features": {
+      "Bảo hiểm": [
+        "vwap_gap",
+        "bb_width",
+        "volatility_20",
+        "gap_open",
+        "intraday_return",
+        "close_position",
+        "obv_change",
+        "momentum_5",
+        "momentum_20",
+        "above_ma_200",
+        "lower_shadow",
+        "upper_shadow",
+        "ma_200_gap",
+        "volume_ratio_20",
+        "rsi_14",
+        "macd_hist",
+        "rolling_max_20_gap",
+        "wyckoff_phase_60d",
+        "effort_result_ratio",
+        "buying_pressure",
+        "selling_pressure",
+        "vwap_gap_20",
+        "alpha_sector",
+        "day_of_week"
+      ]
+    }
+  }
+}

@@ -227,6 +227,25 @@ def probability_to_score(probabilities: np.ndarray) -> np.ndarray:
     return (2.0 * prob_class_1 - 1.0).astype(np.float32)
 
 
+def calibrate_probability_score_to_return_proxy(
+    probabilities: np.ndarray,
+    reference_returns: np.ndarray,
+) -> np.ndarray:
+    raw_score = probability_to_score(probabilities)
+    reference_abs = np.abs(np.asarray(reference_returns, dtype=np.float32).reshape(-1))
+    reference_abs = reference_abs[np.isfinite(reference_abs)]
+    if len(reference_abs) == 0:
+        scale = 1e-3
+    else:
+        q50, q90 = np.quantile(reference_abs, [0.5, 0.9])
+        scale = float(q50 + 0.5 * q90)
+        if not np.isfinite(scale) or scale <= 0.0:
+            scale = float(np.nanstd(reference_abs))
+        if not np.isfinite(scale) or scale <= 0.0:
+            scale = 1e-3
+    return (raw_score * scale).astype(np.float32)
+
+
 def compute_fischer_krauss_metrics(
     y_true: np.ndarray,
     probabilities: np.ndarray,

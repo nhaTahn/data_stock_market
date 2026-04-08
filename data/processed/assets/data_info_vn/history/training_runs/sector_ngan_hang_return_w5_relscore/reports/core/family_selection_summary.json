@@ -1,0 +1,50 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.00975056887702097,
+        "test_score": 0.0063091418160605706
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": 0.009510679197147098,
+        "test_score": 0.004495568063735855
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": 0.002060487273854661,
+        "test_score": -0.0010412367557079971
+      }
+    ],
+    "best_by_val": "lstm_seed_52",
+    "top2_by_val": [
+      "lstm_seed_52",
+      "lstm_seed_42"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.009079277973443656,
+        "test_score": 0.0020008082051091725
+      },
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": 0.006182145308639919,
+        "test_score": 0.001560904380688788
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": 0.004718821665169792,
+        "test_score": 0.0003280336707198739
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_42",
+    "top2_by_val": [
+      "lstm_signmag_seed_42",
+      "lstm_signmag_seed_52"
+    ]
+  }
+}

@@ -4,12 +4,18 @@ import argparse
 import json
 import os
 import shutil
+import sys
 from pathlib import Path
 
 import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
+from src.models.report_layout import resolve_run_artifact
+
 DEFAULT_RUN_BASE = ROOT / "data" / "processed" / "assets" / "data_info_vn" / "history" / "training_runs"
 
 
@@ -28,20 +34,27 @@ def resolve_run_dirs(run_base: Path, run_names: list[str] | None) -> list[Path]:
     if run_names:
         return [run_base / run_name for run_name in run_names if (run_base / run_name).exists()]
     return sorted(
-        [path for path in run_base.iterdir() if path.is_dir() and (path / "metrics.json").exists()],
+        [path for path in run_base.iterdir() if path.is_dir() and resolve_run_artifact(path, "metrics.json", "core").exists()],
         key=lambda path: path.stat().st_mtime,
         reverse=True,
     )
 
 
 def collect_row(run_dir: Path) -> dict[str, object] | None:
-    metrics_path = run_dir / "metrics.json"
+    metrics_path = resolve_run_artifact(run_dir, "metrics.json", "core")
     if not metrics_path.exists():
         return None
 
     metrics = json.loads(metrics_path.read_text())
-    config = json.loads((run_dir / "config.json").read_text()) if (run_dir / "config.json").exists() else {}
-    backtest_path = run_dir / "threshold_backtest_summary_non_overlap.json"
+    config_path = resolve_run_artifact(run_dir, "config.json", "core")
+    config = json.loads(config_path.read_text()) if config_path.exists() else {}
+    target_mode = config.get("target_mode")
+    if target_mode in {"return_3d", "return_5d"}:
+        backtest_path = resolve_run_artifact(run_dir, "threshold_backtest_summary_non_overlap.json", "backtests")
+        if not backtest_path.exists():
+            backtest_path = resolve_run_artifact(run_dir, "threshold_backtest_summary.json", "backtests")
+    else:
+        backtest_path = resolve_run_artifact(run_dir, "threshold_backtest_summary.json", "backtests")
     backtest = json.loads(backtest_path.read_text()) if backtest_path.exists() else {}
 
     lstm_models = [name for name in metrics if name.startswith("lstm")]

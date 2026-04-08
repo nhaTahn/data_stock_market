@@ -38,171 +38,101 @@ echo "==========================================="
 
 run_step "build_vn_dataset" venv/bin/python scripts/run_build_dataset.py --market VN
 
-COMMON_STOCKS="VHM,KDH,NLG,DIG,DXG,PDR,NVL"
-COMMON_FEATURES="alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio"
+COMMON_SECTOR="Bất động sản"
+COMMON_CONTEXT_FEATURES="alpha_sector,vingroup_momentum,vnindex_return,a_d_ratio,day_of_week,rsi_14"
 
 train_and_post \
-  "overnight_bds_return1d_stack48_24_w10_core" \
+  "overnight_bds_return1d_stack48_24_w5_core_fk" \
   --target-mode return \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
+  --sector "${COMMON_SECTOR}" \
+  --feature-selection-mode search_summary \
+  --feature-top-k 10 \
+  --min-stock-val-rel-score 0.03 \
+  --max-stocks 10 \
+  --extra-context-features "${COMMON_CONTEXT_FEATURES}" \
+  --window-size 5 \
   --lstm-units 48,24 \
   --dropout 0.05 \
   --lr 0.0002 \
-  --loss huber \
+  --loss rel_score \
   --huber-delta 0.01 \
   --batch-size 32 \
-  --epochs 20 \
+  --epochs 24 \
   --patience 6 \
   --target-normalizer volatility_20 \
   --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family \
   --enable-fk-benchmark
 
 train_and_post \
-  "overnight_bds_return1d_stack48_24_w5_core" \
+  "overnight_bds_return1d_stack48_24_w5_weighted" \
   --target-mode return \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
+  --sector "${COMMON_SECTOR}" \
+  --feature-selection-mode search_summary \
+  --feature-top-k 10 \
+  --min-stock-val-rel-score 0.03 \
+  --max-stocks 10 \
+  --extra-context-features "${COMMON_CONTEXT_FEATURES}" \
   --window-size 5 \
   --lstm-units 48,24 \
   --dropout 0.05 \
   --lr 0.0002 \
-  --loss huber \
+  --loss rel_score \
   --huber-delta 0.01 \
   --batch-size 32 \
-  --epochs 20 \
+  --epochs 24 \
   --patience 6 \
   --target-normalizer volatility_20 \
   --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family
-
-train_and_post \
-  "overnight_bds_return1d_u32_w10_core" \
-  --target-mode return \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
-  --lstm-units 32 \
-  --dropout 0.05 \
-  --lr 0.0002 \
-  --loss huber \
-  --huber-delta 0.01 \
-  --batch-size 32 \
-  --epochs 20 \
-  --patience 6 \
-  --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family
-
-train_and_post \
-  "overnight_bds_return1d_stack48_24_w10_weighted" \
-  --target-mode return \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
-  --lstm-units 48,24 \
-  --dropout 0.05 \
-  --lr 0.0002 \
-  --loss huber \
-  --huber-delta 0.01 \
-  --batch-size 32 \
-  --epochs 20 \
-  --patience 6 \
-  --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-attention-family \
   --sample-weight-mode magnitude \
   --sample-weight-strength 0.8 \
   --sample-weight-quantile 0.8 \
   --sample-weight-clip 2.5 \
   --signmag-signed-loss-weight 2.0 \
   --signmag-sign-loss-weight 0.10 \
-  --signmag-magnitude-loss-weight 0.25 \
-  --enable-event-family \
-  --event-threshold 0.5
+  --signmag-magnitude-loss-weight 0.25
 
 train_and_post \
-  "overnight_bds_return3d_stack48_24_w10_core" \
-  --target-mode return_3d \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
-  --lstm-units 48,24 \
-  --dropout 0.05 \
-  --lr 0.0002 \
-  --loss huber \
-  --huber-delta 0.01 \
-  --batch-size 32 \
-  --epochs 20 \
-  --patience 6 \
-  --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family
-
-train_and_post \
-  "overnight_bds_return3d_stack48_24_w5_core" \
-  --target-mode return_3d \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
+  "overnight_bds_return1d_stack48_24_w5_attention" \
+  --target-mode return \
+  --sector "${COMMON_SECTOR}" \
+  --feature-selection-mode search_summary \
+  --feature-top-k 10 \
+  --min-stock-val-rel-score 0.03 \
+  --max-stocks 10 \
+  --extra-context-features "${COMMON_CONTEXT_FEATURES}" \
   --window-size 5 \
   --lstm-units 48,24 \
   --dropout 0.05 \
   --lr 0.0002 \
-  --loss huber \
+  --loss rel_score \
   --huber-delta 0.01 \
   --batch-size 32 \
-  --epochs 20 \
+  --epochs 24 \
   --patience 6 \
   --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family
+  --lstm-seeds 42,52,82 \
+  --enable-attention-family
 
 train_and_post \
-  "overnight_bds_return3d_u32_w10_core" \
-  --target-mode return_3d \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
+  "overnight_bds_return1d_u32_w5_core" \
+  --target-mode return \
+  --sector "${COMMON_SECTOR}" \
+  --feature-selection-mode search_summary \
+  --feature-top-k 10 \
+  --min-stock-val-rel-score 0.03 \
+  --max-stocks 10 \
+  --extra-context-features "${COMMON_CONTEXT_FEATURES}" \
+  --window-size 5 \
   --lstm-units 32 \
   --dropout 0.05 \
   --lr 0.0002 \
-  --loss huber \
+  --loss rel_score \
   --huber-delta 0.01 \
   --batch-size 32 \
-  --epochs 20 \
+  --epochs 24 \
   --patience 6 \
   --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-event-family
-
-train_and_post \
-  "overnight_bds_return3d_stack48_24_w10_weighted" \
-  --target-mode return_3d \
-  --stocks "${COMMON_STOCKS}" \
-  --feature-columns "${COMMON_FEATURES}" \
-  --window-size 10 \
-  --lstm-units 48,24 \
-  --dropout 0.05 \
-  --lr 0.0002 \
-  --loss huber \
-  --huber-delta 0.01 \
-  --batch-size 32 \
-  --epochs 20 \
-  --patience 6 \
-  --target-normalizer volatility_20 \
-  --lstm-seeds 42,52,62,72,82 \
-  --enable-attention-family \
-  --sample-weight-mode magnitude \
-  --sample-weight-strength 0.8 \
-  --sample-weight-quantile 0.8 \
-  --sample-weight-clip 2.5 \
-  --signmag-signed-loss-weight 2.0 \
-  --signmag-sign-loss-weight 0.10 \
-  --signmag-magnitude-loss-weight 0.25 \
-  --enable-event-family \
-  --event-threshold 0.5
+  --lstm-seeds 42,52,62,72,82
 
 run_step "overnight_summary" venv/bin/python - "${RUN_BASE}" "${LOG_DIR}/overnight_summary.csv" "${RUN_NAMES[@]}" <<'PY'
 import json
@@ -215,16 +145,33 @@ run_base = Path(sys.argv[1])
 out_path = Path(sys.argv[2])
 run_names = sys.argv[3:]
 
+
+def resolve_artifact(run_dir: Path, filename: str, bucket: str) -> Path:
+    candidate = run_dir / "reports" / bucket / filename
+    if candidate.exists():
+        return candidate
+    return run_dir / filename
+
+
+def resolve_backtest_summary(run_dir: Path, target_mode: str) -> Path:
+    if target_mode in {"return_3d", "return_5d"}:
+        candidate = resolve_artifact(run_dir, "threshold_backtest_summary_non_overlap.json", "backtests")
+        if candidate.exists():
+            return candidate
+    return resolve_artifact(run_dir, "threshold_backtest_summary.json", "backtests")
+
 rows = []
 for run_name in run_names:
-    metrics_path = run_base / run_name / "metrics.json"
-    backtest_path = run_base / run_name / "threshold_backtest_summary_non_overlap.json"
-    config_path = run_base / run_name / "config.json"
+    run_dir = run_base / run_name
+    metrics_path = resolve_artifact(run_dir, "metrics.json", "core")
+    backtest_path = resolve_artifact(run_dir, "threshold_backtest_summary_non_overlap.json", "backtests")
+    config_path = resolve_artifact(run_dir, "config.json", "core")
     if not metrics_path.exists():
         continue
 
     metrics = json.loads(metrics_path.read_text())
     config = json.loads(config_path.read_text()) if config_path.exists() else {}
+    backtest_path = resolve_backtest_summary(run_dir, config.get("target_mode"))
     backtest = json.loads(backtest_path.read_text()) if backtest_path.exists() else {}
     lstm_test = metrics.get("lstm", {}).get("test", {})
     linear_test = metrics.get("linear_regression", {}).get("test", {})

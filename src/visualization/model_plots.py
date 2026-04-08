@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from src.models.report_layout import report_plot_path
+
 
 def _prepare_rel_score_histogram_stats(split_df: pd.DataFrame) -> dict[str, float | np.ndarray]:
     base_abs = np.abs(split_df["base"].to_numpy(dtype=float))
@@ -87,17 +89,59 @@ def save_actual_vs_prediction_plot(run_dir: Path, prediction_df: pd.DataFrame, m
             if split_df.empty:
                 ax.set_visible(False)
                 continue
-            ax.plot(split_df["Date"], split_df["actual"], label="actual", color="#1f77b4", linewidth=1.2)
-            ax.plot(split_df["Date"], split_df["prediction"], label="prediction", color="#ff7f0e", linewidth=1.2, alpha=0.9)
+            actual = split_df["actual"].to_numpy(dtype=float)
+            prediction = split_df["prediction"].to_numpy(dtype=float)
+            actual_std = float(np.nanstd(actual))
+            pred_std = float(np.nanstd(prediction))
+            amplitude_ratio = pred_std / max(actual_std, 1e-8)
+            scale_factor = min(12.0, max(1.0, actual_std / max(pred_std, 1e-8)))
+            rolling_window = max(3, min(15, len(split_df) // 20 if len(split_df) >= 20 else 5))
+            actual_roll = pd.Series(actual).rolling(rolling_window, min_periods=1).mean().to_numpy()
+            prediction_roll = pd.Series(prediction).rolling(rolling_window, min_periods=1).mean().to_numpy()
+
+            display_prediction = prediction_roll.copy()
+            prediction_label = f"prediction roll({rolling_window})"
+            if np.isfinite(scale_factor) and scale_factor > 1.5:
+                display_prediction = (prediction_roll - float(np.nanmean(prediction_roll))) * scale_factor
+                prediction_label = f"prediction x{scale_factor:.1f} roll({rolling_window})"
+
+            ax.plot(
+                split_df["Date"],
+                actual_roll,
+                label=f"actual roll({rolling_window})",
+                color="#1f4e79",
+                linewidth=1.8,
+                alpha=0.95,
+            )
+            ax.plot(
+                split_df["Date"],
+                display_prediction,
+                label=prediction_label,
+                color="#c55a11",
+                linewidth=1.7,
+                alpha=0.95,
+            )
             ax.axhline(0, color="black", linewidth=0.8, alpha=0.35)
             ax.set_title(f"{code} | {split_name}")
             ax.grid(True, alpha=0.2)
             if row_idx == 0 and col_idx == 0:
                 ax.legend(loc="upper right")
+            stats_text = f"pred_std={pred_std:.4f}\nactual_std={actual_std:.4f}\namp={amplitude_ratio:.2f}"
+            ax.text(
+                0.02,
+                0.98,
+                stats_text,
+                transform=ax.transAxes,
+                ha="left",
+                va="top",
+                fontsize=7,
+                bbox={"boxstyle": "round", "facecolor": "white", "alpha": 0.7, "edgecolor": "#cccccc"},
+            )
 
     fig.suptitle(f"Actual vs Prediction | {model_name}", fontsize=14)
     fig.tight_layout(rect=(0, 0, 1, 0.98))
-    fig.savefig(run_dir / f"actual_vs_prediction_{model_name}.png", dpi=200)
+    filename = f"actual_vs_prediction_{model_name}.png"
+    fig.savefig(report_plot_path(run_dir, filename), dpi=200)
     plt.close(fig)
 
 
@@ -209,7 +253,8 @@ def save_rel_score_hist_plot(run_dir: Path, model_name: str) -> None:
 
     fig.suptitle("Rel Score Histogram: Raw vs Stabilized Proxy", fontsize=14)
     fig.tight_layout(rect=(0, 0, 1, 0.98))
-    fig.savefig(run_dir / f"rel_score_hist_{model_name}.png", dpi=200)
+    filename = f"rel_score_hist_{model_name}.png"
+    fig.savefig(report_plot_path(run_dir, filename), dpi=200)
     plt.close(fig)
 
 
@@ -228,4 +273,6 @@ def save_equity_curve_plot(curve_df: pd.DataFrame, output_path: Path, title: str
     ax.legend(loc="upper left", fontsize=8)
     fig.tight_layout()
     fig.savefig(output_path, dpi=200)
+    if output_path.parent.name != "plots":
+        fig.savefig(report_plot_path(output_path.parent, output_path.name), dpi=200)
     plt.close(fig)

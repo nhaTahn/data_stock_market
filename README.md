@@ -1,36 +1,57 @@
 # Data Stock Market
 
-This repository manages stock-market data collection, feature engineering, LSTM training, baseline comparison, backtests, and run reporting for VN, US, and JP datasets.
+This repository manages stock-market data collection, feature engineering, LSTM-based forecasting, backtests, and run reporting for VN-focused research.
+
+## Current Direction
+
+The active research direction is intentionally narrower than a full "advanced quant framework":
+
+- primary target: next-return forecasting for VN equities
+- primary decision metric: `rel_score`
+- current training default: `--loss rel_score`
+- current research unit: sector-wide pools and mini-groups, not one universal market model
+- optional experimental branch: `--enable-quantile-family` adds a minimal `q50/q90` head without rewriting the framework
+- current use of quantiles is primarily as a backtest sidecar via `q90 - q50`, not as the main model family
+
+If you are starting work in this repo, read [`docs/relscore_quantile_roadmap.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/relscore_quantile_roadmap.md) first. If you need help reading run names or model names in reports, also read [`docs/lstm_model_glossary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/lstm_model_glossary.md).
 
 ## Main Flow
 
 1. Fetch raw market data.
 2. Build quality datasets by market.
-3. Generate technical and macro features.
-4. Train LSTM plus baseline models.
-5. Evaluate with `rel_score`, directional accuracy, and backtests.
-6. Save plots and summaries under `training_runs/`.
+3. Generate technical and context features.
+4. Train the LSTM family plus simple baselines.
+5. Evaluate with `rel_score`, directional accuracy, and threshold backtests.
+6. Mirror clean report artifacts under each run folder.
 
 ## Key Paths
 
-- `run_fetch.py`: data download entrypoint.
-- `scripts/run_train.py`: main training entrypoint.
-- `scripts/run_overnight.sh`: heavier batch jobs for overnight experiments.
-- `src/data_pipeline/`: dataset build pipeline.
-- `src/utils/features.py`: feature engineering.
-- `src/models/lstm.py`: LSTM model, scaling, and sequence utilities.
-- `src/models/baseline.py`: linear-regression and ARIMA-style baselines.
-- `src/evaluation/metric.py`: `rel_score` and directional evaluation.
-- `src/visualization/model_plots.py`: prediction, histogram, and equity plots.
-- `data/processed/assets/data_info_vn/history/training_runs/`: saved experiments.
+- [`run_fetch.py`](/Users/lap15111/Documents/research-paper/data_stock_market/run_fetch.py): data download entrypoint.
+- [`scripts/run_train.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_train.py): main training entrypoint.
+- [`scripts/run_sector_group_batch.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_sector_group_batch.py): sector-wide batch runner from search summary.
+- [`scripts/run_sector_mini_group_batch.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_sector_mini_group_batch.py): mini-group batch runner.
+- [`scripts/run_overnight.sh`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_overnight.sh): heavier overnight batch workflow.
+- [`src/data_pipeline/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/data_pipeline): dataset build pipeline.
+- [`src/utils/features.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/utils/features.py): feature engineering.
+- [`src/models/config.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/config.py): default training configuration.
+- [`src/models/sequence_utils.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/sequence_utils.py): sequence building and scaling utilities.
+- [`src/models/trainer_wrapper.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/trainer_wrapper.py): model-family training wrappers.
+- [`src/models/dl_architectures/lstm_builder.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/dl_architectures/lstm_builder.py): LSTM, attention, sign-magnitude, and event-gated builders.
+- [`src/models/components/losses.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/components/losses.py): `mse`, `huber`, `directional_huber`, and differentiable `rel_score` surrogate.
+- [`src/models/training_recipe.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/training_recipe.py): recipe builder from stock search summaries.
+- [`src/evaluation/metric.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/evaluation/metric.py): final evaluation metric.
+- [`src/models/backtest_threshold.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/backtest_threshold.py): threshold backtests.
+- [`src/models/update_run_reports.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/update_run_reports.py): rebuild report artifacts.
+- [`src/visualization/model_plots.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/visualization/model_plots.py): prediction and histogram plots.
+- [`data/processed/assets/data_info_vn/history/training_runs/`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs): saved experiments.
 
 ## Core Metric: `rel_score`
 
-The repository does not optimize only `mse` or `mae`. The main target is `rel_score`, which compares model error against the typical magnitude of the market move being predicted.
+For return targets, the repository evaluates models with a robust relative skill score.
 
 ### Step 1: Align prediction and target
 
-For each stock code, prediction and target are aligned one step forward before evaluation so the metric does not leak information across time or across tickers.
+Predictions and targets are aligned one step forward within each stock code so the metric does not leak information across time or across tickers.
 
 ### Step 2: Define base and error
 
@@ -45,14 +66,6 @@ error_i = base_i - prediction_i
 loss(x) = q50(|x|) + 0.5 * q90(|x|)
 ```
 
-where:
-
-- `q50` is the median
-- `q90` is the 90th percentile
-- `|x|` is absolute value
-
-This makes the metric more robust than plain mean absolute error.
-
 ### Step 4: Relative score
 
 ```text
@@ -63,99 +76,118 @@ rel_score = 1 - abs_loss / base_loss
 
 ### Interpretation
 
-- `rel_score > 0`: model error is smaller than the typical move scale. This is good.
+- `rel_score > 0`: model error is smaller than the typical move scale.
 - `rel_score = 0`: model error is about as large as the move scale.
 - `rel_score < 0`: model error is larger than the move scale.
-- Higher is better. A practical milestone used in this repo is `test rel_score > 0.03`.
+- A practical milestone used in this repo is `test rel_score > 0.03`.
 
-## Why The Histogram Can Show A Large `-3` Bar
+## Important Training Note
 
-Each run also saves `rel_score_hist_<model>.png`. This plot is not the metric itself. It is a per-row proxy used to inspect the distribution of local outcomes.
+The repo now supports `--loss rel_score` in training. This is a differentiable batch-level surrogate of the final evaluation metric, not a bit-for-bit copy of the evaluator in [`src/evaluation/metric.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/evaluation/metric.py). It is still much closer to the actual objective than training with `huber` and only selecting checkpoints by `rel_score`.
 
-The aggregate `rel_score` above is the main truth. The histogram is only a diagnostic view.
+## Recommended Scope Right Now
 
-### Raw Local Proxy
+If your goal is to make progress without adding more complexity, focus on these knobs first:
 
-```text
-raw_proxy_i = 1 - |error_i| / max(|base_i|, 1e-6)
-raw_proxy_i is clipped to [-3.0, 1.0]
-```
+- `--target-mode return`
+- `--loss rel_score`
+- `--window-size`
+- `--feature-selection-mode`
+- `--sector` or `--stocks`
+- `--target-normalizer volatility_20`
+- `--lstm-seeds`
 
-This proxy is very sensitive when `|base_i|` is close to `0`.
+Treat these as experimental or second-order for now:
 
-If `base_i` is tiny but `error_i` is ordinary, the ratio explodes and many rows get clipped to `-3`. That can create a large left-edge bar even when the model is not globally collapsing.
+- quantile family
+- attention family
+- event-gated family
+- Fischer-Krauss benchmark
+- aggressive sample weighting
+- text or sentiment inputs
+- one-model-for-the-whole-market designs
 
-### Stabilized Local Proxy
+## Quantile Sidecar Note
 
-To make the histogram easier to read, the plot also shows a stabilized version:
+The repo can now store these extra columns in [`predictions.csv`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs):
 
-```text
-proxy_floor = max(base_loss, 1e-4)
-stabilized_proxy_i = 1 - |error_i| / max(|base_i|, proxy_floor)
-stabilized_proxy_i is clipped to [-1.5, 1.0]
-```
+- `prediction_q50`
+- `prediction_q90`
+- `prediction_uncertainty`
 
-This keeps the proxy in the same scale family as the aggregate `rel_score` by using the robust split-level `base_loss` as the denominator floor.
+For the current VN mini-group winner, the useful interpretation was not "keep the smallest uncertainty". The better interpretation was:
 
-## How To Read `rel_score_hist_<model>.png`
+- use plain `lstm` predictions as the trading signal
+- use quantile `q90 - q50` as a sidecar spread score
+- test both `low` and `high` filters before assuming which direction is better
 
-Each split now shows two histograms side by side:
+The first strong result so far came from keeping `high` spread rows on top of the plain `lstm_best_by_val` signal, not from replacing the signal with the quantile model itself.
 
-- `Raw Proxy`: shows sensitivity to tiny-base rows and makes the old `-3` pile-up visible.
-- `Stabilized Proxy`: shows the bulk shape of the distribution without letting near-zero targets dominate the chart.
+## Run Outputs
 
-The plot also shows:
+Each run folder keeps both legacy top-level artifacts and mirrored report folders:
 
-- red line: mean local proxy
-- green dashed line: aggregate `rel_score`
-- `share(proxy>0)`: fraction of rows on the positive side
-- `near_zero_base`: fraction of rows where `|base|` is very small
+- `reports/core/`: `config.json`, `metrics.json`, `metric_details.json`, `predictions.csv`, histories
+- `reports/plots/`: actual-vs-prediction plots and `rel_score` histograms
+- `reports/metric_series/`: aligned error/base series used for diagnostics
+- `reports/backtests/`: threshold or strategy backtests
+- `reports/benchmark/`: Fischer-Krauss benchmark artifacts when enabled
 
-### Practical Reading Rule
-
-Use the following order:
-
-1. Read `metrics.json` first. `aggregate rel_score` is the main decision metric.
-2. Look at `Stabilized Proxy` to judge whether the distribution is mostly right of `0`.
-3. Look at `Raw Proxy` to check whether extreme left bars come from tiny-base rows.
-4. If `share(raw<=-2.9)` is high but `near_zero_base` is also high, the left edge is often a plotting artifact rather than proof of total model failure.
-
-## Training Outputs
-
-Each run folder typically contains:
-
-- `config.json`
-- `history.csv`
-- `metrics.json`
-- `metric_details.json`
-- `predictions.csv`
-- `metric_series_<model>_<split>.csv`
-- `actual_vs_prediction_<model>.png`
-- `rel_score_hist_<model>.png`
-- `threshold_backtest_summary_non_overlap.json`
+Open [`data/processed/assets/data_info_vn/history/training_runs/README.md`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/README.md) for a quick guide to reading saved runs.
 
 ## Example Commands
 
-### Train
+### Train a single sector run with the current recommended objective
 
 ```bash
 venv/bin/python scripts/run_train.py \
-  --target-mode return_3d \
-  --stocks VHM,KDH,NLG,DIG,DXG,PDR,NVL \
-  --run-name demo_return3d
+  --target-mode return \
+  --sector "Bất động sản" \
+  --feature-selection-mode search_summary \
+  --loss rel_score \
+  --target-normalizer volatility_20 \
+  --run-name demo_bds_relscore
 ```
 
-### Update plots and metric details
+### Run sector-wide batches
+
+```bash
+venv/bin/python scripts/run_sector_group_batch.py \
+  --target-mode return \
+  --loss rel_score \
+  --run-name-suffix relscore
+```
+
+### Run mini-group batches
+
+```bash
+venv/bin/python scripts/run_sector_mini_group_batch.py \
+  --target-mode return \
+  --loss rel_score \
+  --run-name-suffix relscore
+```
+
+### Rebuild report artifacts for an existing run
 
 ```bash
 venv/bin/python src/models/update_run_reports.py \
-  data/processed/assets/data_info_vn/history/training_runs/demo_return3d
+  data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore
 ```
 
-### Threshold backtest
+### Run threshold backtest
 
 ```bash
 venv/bin/python src/models/backtest_threshold.py \
-  data/processed/assets/data_info_vn/history/training_runs/demo_return3d \
-  --non-overlap
+  data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore
+```
+
+### Run threshold backtest with quantile sidecar
+
+```bash
+venv/bin/python src/models/backtest_threshold.py \
+  data/processed/assets/data_info_vn/history/training_runs/demo_bds_relscore \
+  --models lstm_best_by_val \
+  --uncertainty-model lstm_quantile_best_by_val \
+  --uncertainty-side high \
+  --uncertainty-quantiles 0.25,0.5,0.75
 ```

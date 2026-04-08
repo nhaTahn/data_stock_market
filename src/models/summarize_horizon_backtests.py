@@ -3,7 +3,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
+from src.models.report_layout import resolve_run_artifact
 
 
 def parse_args() -> argparse.Namespace:
@@ -15,10 +22,10 @@ def parse_args() -> argparse.Namespace:
 
 def pick_backtest_summary(run_dir: Path, target_mode: str) -> tuple[str, Path]:
     if target_mode in {"return_3d", "return_5d"}:
-        non_overlap = run_dir / "threshold_backtest_summary_non_overlap.json"
+        non_overlap = resolve_run_artifact(run_dir, "threshold_backtest_summary_non_overlap.json", "backtests")
         if non_overlap.exists():
             return "non_overlap", non_overlap
-    return "overlap", run_dir / "threshold_backtest_summary.json"
+    return "overlap", resolve_run_artifact(run_dir, "threshold_backtest_summary.json", "backtests")
 
 
 def main() -> None:
@@ -26,9 +33,9 @@ def main() -> None:
     rows: list[dict[str, str | float | int]] = []
 
     for run_dir in args.run_dirs:
-        with (run_dir / "config.json").open("r", encoding="utf-8") as f:
+        with resolve_run_artifact(run_dir, "config.json", "core").open("r", encoding="utf-8") as f:
             config = json.load(f)
-        with (run_dir / "metrics.json").open("r", encoding="utf-8") as f:
+        with resolve_run_artifact(run_dir, "metrics.json", "core").open("r", encoding="utf-8") as f:
             metrics = json.load(f)
 
         target_mode = config["target_mode"]

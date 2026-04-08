@@ -1,0 +1,277 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "feature_columns": [
+    "lower_shadow",
+    "volatility_20",
+    "volume_zscore_20",
+    "alpha_sector",
+    "vingroup_momentum",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "rsi_14"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 5,
+  "lstm_units": [
+    48,
+    24
+  ],
+  "dropout": 0.05,
+  "lr": 0.0002,
+  "loss": "rel_score",
+  "huber_delta": 0.01,
+  "batch_size": 32,
+  "epochs": 24,
+  "patience": 6,
+  "target_normalizer": "volatility_20",
+  "lstm_seeds": [
+    42,
+    52,
+    62
+  ],
+  "signmag_signed_loss_weight": 2.0,
+  "signmag_sign_loss_weight": 0.1,
+  "signmag_magnitude_loss_weight": 0.25,
+  "signmag_log_magnitude": true,
+  "sample_weight_mode": "magnitude",
+  "sample_weight_strength": 0.8,
+  "sample_weight_quantile": 0.8,
+  "sample_weight_clip": 2.5,
+  "attention_enabled": false,
+  "attention_heads": 2,
+  "attention_key_dim": 16,
+  "event_enabled": false,
+  "event_threshold": 0.75,
+  "event_signed_loss_weight": 2.0,
+  "event_prob_loss_weight": 0.4,
+  "event_sign_loss_weight": 0.1,
+  "event_magnitude_loss_weight": 0.3,
+  "event_log_magnitude": true,
+  "fk_benchmark_enabled": false,
+  "fk_window_size": 240,
+  "fk_hidden_units": 25,
+  "fk_dropout": 0.16,
+  "fk_learning_rate": 0.001,
+  "fk_batch_size": 32,
+  "fk_epochs": 1000,
+  "fk_patience": 10,
+  "fk_train_fraction": 0.8,
+  "fk_top_k": 10,
+  "monitor_metric": "val_rel_score",
+  "stocks": "VIX,FTS,HCM,CTS,VCI,EVF,SSI",
+  "use_all_features": false,
+  "raw_rows_train": 15659,
+  "raw_rows_val": 1748,
+  "raw_rows_test": 2136,
+  "seq_rows_train": 15209,
+  "seq_rows_val": 1748,
+  "seq_rows_test": 2136,
+  "baseline_model": "linear_regression(flatten_sequence)",
+  "baseline_models": [
+    "linear_regression(flatten_sequence)",
+    "arima_proxy(ar1_fast)"
+  ],
+  "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+  "lstm_use_stock_identity": true,
+  "lstm_stock_identity_codes": [
+    "CTS",
+    "EVF",
+    "FTS",
+    "HCM",
+    "SSI",
+    "VCI",
+    "VIX"
+  ],
+  "lstm_input_feature_count": 16,
+  "feature_selection_mode": "search_summary",
+  "recipe_sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+  "recipe_selected_stocks": [
+    "CTS",
+    "EVF",
+    "FTS",
+    "HCM",
+    "SSI",
+    "VCI",
+    "VIX"
+  ],
+  "recipe_source": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/stock_sector_search_summary.csv",
+  "recipe_feature_summary": [
+    {
+      "feature": "lower_shadow",
+      "score": 0.11785213251243051,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.067933367803905
+    },
+    {
+      "feature": "volatility_20",
+      "score": 0.0919900414063192,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0499187647085255
+    },
+    {
+      "feature": "volume_zscore_20",
+      "score": 0.067933367803905,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.067933367803905
+    }
+  ],
+  "recipe_stock_summary": [
+    {
+      "stock": "CTS",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n Ng\u00e2n h\u00e0ng C\u00f4ng th\u01b0\u01a1ng Vi\u1ec7t Nam",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_cts_expanded",
+      "best_by_val": "volume_ratio_5,volatility_ratio",
+      "best_val_rel_score": 0.0528134089179153,
+      "best_by_test": "volume_ratio_20,lower_shadow",
+      "best_test_rel_score": 0.0321271046814134,
+      "best_test_val_rel_score": -0.0153797257004941
+    },
+    {
+      "stock": "EVF",
+      "company_name": "C\u00f4ng ty T\u00e0i ch\u00ednh C\u1ed5 ph\u1ea7n \u0110i\u1ec7n L\u1ef1c",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "T\u00e0i ch\u00ednh c\u00e1 nh\u00e2n",
+      "com_type_code": "NH",
+      "run_name": "search_evf_expanded",
+      "best_by_val": "atr_14,volatility_ratio",
+      "best_val_rel_score": 0.0442479128210223,
+      "best_by_test": "close_low_gap,volatility_ratio",
+      "best_test_rel_score": 0.0354265705536046,
+      "best_test_val_rel_score": -0.02021510410525
+    },
+    {
+      "stock": "FTS",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n FPT",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_fts_expanded",
+      "best_by_val": "volume_zscore_20,lower_shadow",
+      "best_val_rel_score": 0.067933367803905,
+      "best_by_test": "volatility_20,volatility_ratio",
+      "best_test_rel_score": 0.0482099669123304,
+      "best_test_val_rel_score": -0.0176420502094851
+    },
+    {
+      "stock": "HCM",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_hcm_expanded",
+      "best_by_val": "close_return,high_close_gap",
+      "best_val_rel_score": 0.058358898979312,
+      "best_by_test": "volume_zscore_20,upper_shadow",
+      "best_test_rel_score": 0.0364491893171086,
+      "best_test_val_rel_score": -0.0227635111710244
+    },
+    {
+      "stock": "SSI",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n SSI",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_ssi_expanded",
+      "best_by_val": "range_pct,volatility_20",
+      "best_val_rel_score": 0.0420712766977937,
+      "best_by_test": "range_pct,rolling_min_20_gap",
+      "best_test_rel_score": 0.0194299936492635,
+      "best_test_val_rel_score": -0.0412924555025755
+    },
+    {
+      "stock": "VCI",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n Vietcap",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_vci_expanded",
+      "best_by_val": "lower_shadow,volatility_20",
+      "best_val_rel_score": 0.0499187647085255,
+      "best_by_test": "close_position,obv_change",
+      "best_test_rel_score": 0.0449173879190651,
+      "best_test_val_rel_score": -0.0098691534137671
+    },
+    {
+      "stock": "VIX",
+      "company_name": "C\u00f4ng ty C\u1ed5 ph\u1ea7n Ch\u1ee9ng kho\u00e1n VIX",
+      "sector": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "industry": "D\u1ecbch v\u1ee5 t\u00e0i ch\u00ednh",
+      "sub_industry": "M\u00f4i gi\u1edbi ch\u1ee9ng kho\u00e1n",
+      "com_type_code": "CK",
+      "run_name": "search_vix_expanded",
+      "best_by_val": "atr_14,volatility_10",
+      "best_val_rel_score": 0.0811237354585826,
+      "best_by_test": "volume_zscore_20,rolling_min_20_gap",
+      "best_test_rel_score": 0.0779392009136755,
+      "best_test_val_rel_score": 0.0256507158013894
+    }
+  ],
+  "lstm_attention_enabled": false,
+  "lstm_event_enabled": false,
+  "lstm_signmag_enabled": true,
+  "fischer_krauss_benchmark": null,
+  "family_selection_summary": {
+    "lstm": {
+      "ranked_models": [
+        {
+          "model": "lstm_seed_42",
+          "val_score": 0.009410196522742886,
+          "test_score": -0.010631374179813635
+        },
+        {
+          "model": "lstm_seed_62",
+          "val_score": 0.009234265290268051,
+          "test_score": -0.011378126746928174
+        },
+        {
+          "model": "lstm_seed_52",
+          "val_score": 0.0021811992797787783,
+          "test_score": -0.010409753685991507
+        }
+      ],
+      "best_by_val": "lstm_seed_42",
+      "top2_by_val": [
+        "lstm_seed_42",
+        "lstm_seed_62"
+      ]
+    },
+    "lstm_signmag": {
+      "ranked_models": [
+        {
+          "model": "lstm_signmag_seed_62",
+          "val_score": 0.014213787695753877,
+          "test_score": -0.013807915158590145
+        },
+        {
+          "model": "lstm_signmag_seed_42",
+          "val_score": 0.0056528058949473214,
+          "test_score": -0.006594577311557215
+        },
+        {
+          "model": "lstm_signmag_seed_52",
+          "val_score": 0.005351151352734895,
+          "test_score": -0.019522174889777144
+        }
+      ],
+      "best_by_val": "lstm_signmag_seed_62",
+      "top2_by_val": [
+        "lstm_signmag_seed_62",
+        "lstm_signmag_seed_42"
+      ]
+    }
+  },
+  "target_normalizer_floor": 0.017358774319291115
+}

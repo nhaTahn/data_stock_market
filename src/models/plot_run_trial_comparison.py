@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
+from src.models.report_layout import resolve_run_artifact
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Plot comparison charts for multiple training runs.")
@@ -28,11 +30,11 @@ def parse_args() -> argparse.Namespace:
 
 def load_backtest_summary(run_dir: Path, target_mode: str) -> tuple[str, dict[str, dict[str, float]]]:
     if target_mode in {"return_3d", "return_5d"}:
-        non_overlap = run_dir / "threshold_backtest_summary_non_overlap.json"
+        non_overlap = resolve_run_artifact(run_dir, "threshold_backtest_summary_non_overlap.json", "backtests")
         if non_overlap.exists():
             with non_overlap.open("r", encoding="utf-8") as f:
                 return "non_overlap", json.load(f)
-    with (run_dir / "threshold_backtest_summary.json").open("r", encoding="utf-8") as f:
+    with resolve_run_artifact(run_dir, "threshold_backtest_summary.json", "backtests").open("r", encoding="utf-8") as f:
         return "overlap", json.load(f)
 
 
@@ -49,7 +51,7 @@ def select_non_overlap_mask(model_df: pd.DataFrame, threshold: float, holding_pe
 
 
 def build_equity_frame(run_dir: Path, model_name: str, threshold: float, holding_period: int, non_overlap: bool) -> pd.DataFrame:
-    predictions = pd.read_csv(run_dir / "predictions.csv")
+    predictions = pd.read_csv(resolve_run_artifact(run_dir, "predictions.csv", "core"))
     predictions["Date"] = pd.to_datetime(predictions["Date"])
     model_df = predictions[(predictions["model"] == model_name) & (predictions["split"] == "test")].sort_values("Date").copy()
     if non_overlap and holding_period > 1:
@@ -69,9 +71,9 @@ def build_summary_rows(run_dirs: list[Path]) -> tuple[pd.DataFrame, list[pd.Data
     rows: list[dict[str, object]] = []
     curves: list[pd.DataFrame] = []
     for run_dir in run_dirs:
-        with (run_dir / "config.json").open("r", encoding="utf-8") as f:
+        with resolve_run_artifact(run_dir, "config.json", "core").open("r", encoding="utf-8") as f:
             config = json.load(f)
-        with (run_dir / "metrics.json").open("r", encoding="utf-8") as f:
+        with resolve_run_artifact(run_dir, "metrics.json", "core").open("r", encoding="utf-8") as f:
             metrics = json.load(f)
         backtest_mode, summary = load_backtest_summary(run_dir, config["target_mode"])
         for model_name, split_metrics in metrics.items():
@@ -150,7 +152,7 @@ def plot_equity_curves(curves: list[pd.DataFrame], output_path: Path) -> None:
 def plot_test_predictions(run_dirs: list[Path], output_path: Path) -> None:
     items: list[tuple[str, pd.DataFrame]] = []
     for run_dir in run_dirs:
-        predictions = pd.read_csv(run_dir / "predictions.csv")
+        predictions = pd.read_csv(resolve_run_artifact(run_dir, "predictions.csv", "core"))
         predictions["Date"] = pd.to_datetime(predictions["Date"])
         for model_name in sorted(predictions["model"].unique()):
             split_df = predictions[(predictions["split"] == "test") & (predictions["model"] == model_name)].sort_values("Date")

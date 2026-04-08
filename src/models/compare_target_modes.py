@@ -2,12 +2,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+
+from src.models.report_layout import resolve_run_artifact
+
 DEFAULT_RUN_BASE = ROOT / "data" / "processed" / "assets" / "data_info_vn" / "history" / "training_runs"
 
 
@@ -24,7 +30,7 @@ def resolve_run_dirs(run_base: Path, run_names: list[str] | None) -> list[Path]:
     if run_names:
         return [run_base / name for name in run_names if (run_base / name).exists()]
     return sorted(
-        [path for path in run_base.iterdir() if path.is_dir() and (path / "metrics.json").exists()],
+        [path for path in run_base.iterdir() if path.is_dir() and resolve_run_artifact(path, "metrics.json", "core").exists()],
         key=lambda path: path.stat().st_mtime,
         reverse=True,
     )
@@ -38,8 +44,8 @@ def collect_model_rel(metrics: dict[str, object], model_name: str, split: str) -
 
 
 def collect_row(run_dir: Path) -> dict[str, object] | None:
-    metrics_path = run_dir / "metrics.json"
-    config_path = run_dir / "config.json"
+    metrics_path = resolve_run_artifact(run_dir, "metrics.json", "core")
+    config_path = resolve_run_artifact(run_dir, "config.json", "core")
     if not metrics_path.exists() or not config_path.exists():
         return None
 

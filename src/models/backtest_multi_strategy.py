@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from src.visualization.model_plots import save_equity_curve_plot
+from src.models.report_layout import report_backtest_path, resolve_run_artifact
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,7 +28,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def infer_holding_period(run_dir: Path) -> int:
-    config_path = run_dir / "config.json"
+    config_path = resolve_run_artifact(run_dir, "config.json", bucket="core")
     if not config_path.exists():
         return 1
     with config_path.open("r", encoding="utf-8") as f:
@@ -138,7 +139,7 @@ def build_strategy_curve(
 def main() -> None:
     args = parse_args()
     run_dir = args.run_dir
-    predictions = pd.read_csv(run_dir / "predictions.csv")
+    predictions = pd.read_csv(resolve_run_artifact(run_dir, "predictions.csv", bucket="core"))
     predictions["Date"] = pd.to_datetime(predictions["Date"])
     holding_period = args.holding_period or infer_holding_period(run_dir)
     rebalance_step = args.rebalance_step or holding_period
@@ -180,10 +181,10 @@ def main() -> None:
             )
 
         combined_curve_df = pd.concat(curve_frames, ignore_index=True)
-        combined_curve_df.to_csv(run_dir / f"strategy_backtest_curves_{model_name}.csv", index=False)
+        combined_curve_df.to_csv(report_backtest_path(run_dir, f"strategy_backtest_curves_{model_name}.csv"), index=False)
         save_equity_curve_plot(
             combined_curve_df[["Date", "label", "equity"]],
-            run_dir / f"strategy_equity_{model_name}.png",
+            report_backtest_path(run_dir, f"strategy_equity_{model_name}.png"),
             f"Strategy Equity Curves - {model_name}",
         )
 
@@ -191,8 +192,9 @@ def main() -> None:
         ["model", "final_equity", "avg_strategy_return"],
         ascending=[True, False, False],
     )
-    summary_df.to_csv(run_dir / "strategy_backtest_summary.csv", index=False)
-    print(run_dir / "strategy_backtest_summary.csv")
+    summary_path = report_backtest_path(run_dir, "strategy_backtest_summary.csv")
+    summary_df.to_csv(summary_path, index=False)
+    print(summary_path)
 
 
 if __name__ == "__main__":

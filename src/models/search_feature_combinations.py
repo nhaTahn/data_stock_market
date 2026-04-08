@@ -17,9 +17,9 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from src.evaluation.metric import evaluate
-from src.models.baseline import fit_linear_regression, predict_linear_regression
+from src.models.baselines import fit_linear_regression, predict_linear_regression
 from src.models.config import get_config
-from src.models.lstm import (
+from src.models.sequence_utils import (
     apply_feature_scaler,
     build_sequence_dataset,
     fit_feature_scaler,

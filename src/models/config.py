@@ -74,6 +74,7 @@ class LSTMConfig:
     attention_enabled: bool = _cfg["hyperparameters"].get("attention_enabled", False)
     attention_heads: int = _cfg["hyperparameters"].get("attention_heads", 2)
     attention_key_dim: int = _cfg["hyperparameters"].get("attention_key_dim", 16)
+    quantile_enabled: bool = _cfg["hyperparameters"].get("quantile_enabled", False)
     event_enabled: bool = _cfg["hyperparameters"].get("event_enabled", False)
     event_threshold: float = _cfg["hyperparameters"].get("event_threshold", 0.75)
     event_signed_loss_weight: float = _cfg["hyperparameters"].get("event_signed_loss_weight", 2.0)

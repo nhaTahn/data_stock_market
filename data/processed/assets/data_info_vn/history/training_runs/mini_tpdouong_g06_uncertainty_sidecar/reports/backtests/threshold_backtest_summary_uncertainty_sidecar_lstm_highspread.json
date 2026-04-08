@@ -1,0 +1,18 @@
+{
+  "lstm_best_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "uncertainty_model": "lstm_quantile_best_by_val",
+    "uncertainty_quantile": 0.25,
+    "max_uncertainty": 0.012979557,
+    "uncertainty_side": "high",
+    "trade_count": 99,
+    "coverage": 0.08134757600657354,
+    "directional_accuracy": 0.7676767676767676,
+    "avg_actual_return": 0.007182264282828283,
+    "avg_strategy_return": 0.007182264282828283,
+    "cumulative_strategy_return": 0.711044164,
+    "final_equity": 1.9982782569656523,
+    "sampled_buy_hold_equity": 1.9982782569656523
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "feature_columns": [
+    "rolling_max_20_gap",
+    "momentum_20",
+    "bb_width",
+    "intraday_return",
+    "close_position",
+    "lower_shadow",
+    "alpha_sector",
+    "vingroup_momentum",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "rsi_14"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 15,
+  "lstm_units": [
+    64,
+    32
+  ],
+  "dropout": 0.1,
+  "lr": 0.0003,
+  "loss": "rel_score",
+  "huber_delta": 0.01,
+  "batch_size": 32,
+  "epochs": 40,
+  "patience": 10,
+  "target_normalizer": "volatility_20",
+  "lstm_seeds": [
+    42,
+    52,
+    62
+  ],
+  "signmag_signed_loss_weight": 2.0,
+  "signmag_sign_loss_weight": 0.1,
+  "signmag_magnitude_loss_weight": 0.25,
+  "signmag_log_magnitude": true,
+  "sample_weight_mode": "magnitude",
+  "sample_weight_strength": 0.8,
+  "sample_weight_quantile": 0.8,
+  "sample_weight_clip": 2.5,
+  "attention_enabled": false,
+  "attention_heads": 2,
+  "attention_key_dim": 16,
+  "quantile_enabled": false,
+  "event_enabled": false,
+  "event_threshold": 0.75,
+  "event_signed_loss_weight": 2.0,
+  "event_prob_loss_weight": 0.4,
+  "event_sign_loss_weight": 0.1,
+  "event_magnitude_loss_weight": 0.3,
+  "event_log_magnitude": true,
+  "fk_benchmark_enabled": false,
+  "fk_window_size": 240,
+  "fk_hidden_units": 25,
+  "fk_dropout": 0.16,
+  "fk_learning_rate": 0.001,
+  "fk_batch_size": 32,
+  "fk_epochs": 1000,
+  "fk_patience": 10,
+  "fk_train_fraction": 0.8,
+  "fk_top_k": 10,
+  "monitor_metric": "val_rel_score",
+  "stocks": "VCB,TCB,CTG,BID,ACB,MBB",
+  "use_all_features": false,
+  "raw_rows_train": 15609,
+  "raw_rows_val": 1500,
+  "raw_rows_test": 1836,
+  "seq_rows_train": 15311,
+  "seq_rows_val": 1500,
+  "seq_rows_test": 1829,
+  "baseline_model": "linear_regression(flatten_sequence)",
+  "baseline_models": [
+    "linear_regression(flatten_sequence)",
+    "arima_proxy(ar1_fast)"
+  ],
+  "sector": "Ng\u00e2n h\u00e0ng",
+  "lstm_use_stock_identity": true,
+  "lstm_stock_identity_codes": [
+    "ACB",
+    "BID",
+    "CTG",
+    "MBB",
+    "TCB",
+    "VCB"
+  ],
+  "lstm_input_feature_count": 18,
+  "feature_selection_mode": "search_summary",
+  "recipe_sector": "Ng\u00e2n h\u00e0ng",
+  "recipe_selected_stocks": [
+    "ACB",
+    "BID",
+    "CTG",
+    "MBB",
+    "TCB",
+    "VCB"
+  ],
+  "recipe_source": "data/processed/assets/data_info_vn/history/training_runs/stock_sector_search_summary.csv",
+  "recipe_feature_summary": [
+    {
+      "feature": "rolling_max_20_gap",
+      "score": 0.1569998790819505,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0850283734232605
+    },
+    {
+      "feature": "momentum_20",
+      "score": 0.1569998790819505,
+      "stocks_hit": 2,
+      "max_best_val_rel_score": 0.0850283734232605
+    },
+    {
+      "feature": "bb_width",
+      "score": 0.0624037684837248,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0624037684837248
+    },
+    {
+      "feature": "intraday_return",
+      "score": 0.0256609743258261,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0256609743258261
+    },
+    {
+      "feature": "close_position",
+      "score": 0.0256609743258261,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0256609743258261
+    },
+    {
+      "feature": "lower_shadow",
+      "score": 0.0190267737982534,
+      "stocks_hit": 1,
+      "max_best_val_rel_score": 0.0190267737982534
+    }
+  ],
+  "recipe_stock_summary": [
+    {
+      "stock": "ACB",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n \u00c1 Ch\u00e2u",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_acb_expanded",
+      "best_by_val": "intraday_return,close_position",
+      "best_val_rel_score": 0.0256609743258261,
+      "best_by_test": "momentum_20,ma_200_gap",
+      "best_test_rel_score": 0.0313784678973945,
+      "best_test_val_rel_score": -0.0170646140873176
+    },
+    {
+      "stock": "BID",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n \u0110\u1ea7u t\u01b0 v\u00e0 Ph\u00e1t tri\u1ec3n Vi\u1ec7t Nam",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_bid_expanded",
+      "best_by_val": "atr_gap,ma_20_gap",
+      "best_val_rel_score": 0.0310093495753674,
+      "best_by_test": "intraday_return,close_position",
+      "best_test_rel_score": 0.0601710856595871,
+      "best_test_val_rel_score": -0.0781601708959014
+    },
+    {
+      "stock": "CTG",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n C\u00f4ng th\u01b0\u01a1ng Vi\u1ec7t Nam",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_ctg_expanded",
+      "best_by_val": "atr_gap,bb_width",
+      "best_val_rel_score": 0.0624037684837248,
+      "best_by_test": "ma_200_gap,macd_signal",
+      "best_test_rel_score": 0.0453168099379618,
+      "best_test_val_rel_score": -0.0308567148224836
+    },
+    {
+      "stock": "MBB",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n Qu\u00e2n \u0111\u1ed9i",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_mbb_expanded",
+      "best_by_val": "lower_shadow,bb_position",
+      "best_val_rel_score": 0.0190267737982534,
+      "best_by_test": "intraday_return,momentum_5",
+      "best_test_rel_score": 0.050190114197595,
+      "best_test_val_rel_score": -0.0601199333720434
+    },
+    {
+      "stock": "TCB",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n K\u1ef9 th\u01b0\u01a1ng Vi\u1ec7t Nam",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_tcb_expanded",
+      "best_by_val": "momentum_20,rolling_max_20_gap",
+      "best_val_rel_score": 0.07197150565869,
+      "best_by_test": "above_ma_200,vwap_gap",
+      "best_test_rel_score": 0.0316234740575965,
+      "best_test_val_rel_score": 0.0562946459870656
+    },
+    {
+      "stock": "VCB",
+      "company_name": "Ng\u00e2n h\u00e0ng Th\u01b0\u01a1ng m\u1ea1i C\u1ed5 ph\u1ea7n Ngo\u1ea1i th\u01b0\u01a1ng Vi\u1ec7t Nam",
+      "sector": "Ng\u00e2n h\u00e0ng",
+      "industry": "Ng\u00e2n h\u00e0ng",
+      "sub_industry": "Ng\u00e2n h\u00e0ng",
+      "com_type_code": "NH",
+      "run_name": "search_vcb_expanded",
+      "best_by_val": "momentum_20,rolling_max_20_gap",
+      "best_val_rel_score": 0.0850283734232605,
+      "best_by_test": "gap_open,upper_shadow",
+      "best_test_rel_score": 0.0512017393629206,
+      "best_test_val_rel_score": -0.0288415418886271
+    }
+  ],
+  "lstm_attention_enabled": false,
+  "lstm_quantile_enabled": false,
+  "lstm_event_enabled": false,
+  "lstm_signmag_enabled": true,
+  "fischer_krauss_benchmark": null,
+  "family_selection_summary": {
+    "lstm": {
+      "ranked_models": [
+        {
+          "model": "lstm_seed_52",
+          "val_score": 0.008383053240351823,
+          "test_score": 0.016605909038589273
+        },
+        {
+          "model": "lstm_seed_62",
+          "val_score": 0.00015392623056698085,
+          "test_score": -0.0050065771995144726
+        },
+        {
+          "model": "lstm_seed_42",
+          "val_score": -0.005196019674519103,
+          "test_score": 0.019179848397984922
+        }
+      ],
+      "best_by_val": "lstm_seed_52",
+      "top2_by_val": [
+        "lstm_seed_52",
+        "lstm_seed_62"
+      ]
+    },
+    "lstm_signmag": {
+      "ranked_models": [
+        {
+          "model": "lstm_signmag_seed_62",
+          "val_score": 0.019473250923800145,
+          "test_score": 0.0048449098934923995
+        },
+        {
+          "model": "lstm_signmag_seed_52",
+          "val_score": 0.01558984007913522,
+          "test_score": 0.013706648168112068
+        },
+        {
+          "model": "lstm_signmag_seed_42",
+          "val_score": -0.001905571740666856,
+          "test_score": 0.008231207357300763
+        }
+      ],
+      "best_by_val": "lstm_signmag_seed_62",
+      "top2_by_val": [
+        "lstm_signmag_seed_62",
+        "lstm_signmag_seed_52"
+      ]
+    }
+  },
+  "target_normalizer_floor": 0.011863745748996735
+}

@@ -12,6 +12,7 @@ if str(ROOT) not in sys.path:
 import numpy as np
 import pandas as pd
 
+from src.models.report_layout import resolve_run_artifact
 from src.visualization.model_plots import save_equity_curve_plot
 
 
@@ -23,7 +24,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_best_threshold(run_dir: Path) -> dict[str, float]:
-    with (run_dir / "threshold_backtest_summary.json").open("r", encoding="utf-8") as f:
+    with resolve_run_artifact(run_dir, "threshold_backtest_summary.json", "backtests").open("r", encoding="utf-8") as f:
         summary = json.load(f)
     return {model_name: float(values["threshold"]) for model_name, values in summary.items()}
 
@@ -44,7 +45,7 @@ def main() -> None:
     all_curve_frames: list[pd.DataFrame] = []
 
     for run_dir in args.run_dirs:
-        predictions = pd.read_csv(run_dir / "predictions.csv")
+        predictions = pd.read_csv(resolve_run_artifact(run_dir, "predictions.csv", "core"))
         predictions["Date"] = pd.to_datetime(predictions["Date"])
         best_thresholds = load_best_threshold(run_dir)
 

@@ -1,0 +1,60 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_62",
+        "val_score": 0.012403778474225802,
+        "test_score": -0.04055164388845278
+      },
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.009716245853818584,
+        "test_score": -0.018417737241550824
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": 0.009104024543150957,
+        "test_score": -0.032681868099708966
+      },
+      {
+        "model": "lstm_seed_99",
+        "val_score": 0.007517721344086237,
+        "test_score": -0.009945641748139611
+      }
+    ],
+    "best_by_val": "lstm_seed_62",
+    "top2_by_val": [
+      "lstm_seed_62",
+      "lstm_seed_52"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.021833453799145697,
+        "test_score": -0.00190770931650186
+      },
+      {
+        "model": "lstm_signmag_seed_99",
+        "val_score": 0.006252622217876813,
+        "test_score": -0.03140844219501848
+      },
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": -0.0017334005538878205,
+        "test_score": -0.03493613174979293
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": -0.008111396440704466,
+        "test_score": -0.012665447377104622
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_42",
+    "top2_by_val": [
+      "lstm_signmag_seed_42",
+      "lstm_signmag_seed_99"
+    ]
+  }
+}

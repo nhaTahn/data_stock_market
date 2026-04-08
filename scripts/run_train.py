@@ -16,12 +16,13 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
 from src.evaluation.metric import directional_accuracy, evaluate
-from src.models.baseline import fit_arima, fit_linear_regression, predict_arima, predict_linear_regression
+from src.models.baselines import fit_arima, fit_linear_regression, predict_arima, predict_linear_regression
 from src.models.config import ALL_FEATURE_COLUMNS, get_config
 from src.models.fischer_krauss import (
     apply_fischer_krauss_scaler,
     build_fischer_krauss_sequences,
     build_long_short_portfolio_returns,
+    calibrate_probability_score_to_return_proxy,
     compute_fischer_krauss_metrics,
     fit_fischer_krauss_model,
     fit_fischer_krauss_scaler,
@@ -33,19 +34,29 @@ from src.models.fischer_krauss import (
     resolve_price_column,
     split_fischer_krauss_sequences,
 )
+from src.models.report_layout import (
+    cleanup_legacy_report_artifacts,
+    cleanup_report_noise,
+    mirror_run_artifacts,
+    report_benchmark_path,
+    report_core_path,
+    report_metric_series_path,
+)
+from src.models.training_recipe import (
+    DEFAULT_CONTEXT_FEATURES,
+    DEFAULT_SEARCH_SUMMARY_PATH,
+    TrainingRecipe,
+    build_training_recipe,
+)
 from src.utils.vn_sector import load_industry_reference
-from src.models.lstm import (
+from src.models.sequence_utils import (
     apply_feature_scaler,
     apply_local_target_normalizer,
     apply_target_scaler,
     build_sequence_dataset,
     build_magnitude_sample_weights,
-    fit_event_gated_model,
     fit_feature_scaler,
-    fit_attention_model,
     fit_local_target_normalizer,
-    fit_model,
-    fit_sign_magnitude_model,
     fit_target_scaler,
     inverse_local_target_normalizer,
     inverse_target_scaler_values,
@@ -54,7 +65,18 @@ from src.models.lstm import (
     split_frame_by_date,
     split_sequence_dataset,
 )
-from src.visualization.model_plots import save_actual_vs_prediction_plot, save_rel_score_hist_plot
+from src.models.trainer_wrapper import (
+    fit_attention_model,
+    fit_event_gated_model,
+    fit_model,
+    fit_quantile_model,
+    fit_sign_magnitude_model,
+)
+from src.visualization.model_plots import (
+    save_actual_vs_prediction_plot,
+    save_equity_curve_plot,
+    save_rel_score_hist_plot,
+)
 
 SPLIT_NAMES = ("train", "val", "test")
 
@@ -74,6 +96,12 @@ def parse_seed_list(value: str) -> list[int]:
     return [int(item) for item in items]
 
 
+def parse_csv_list(value: str | None) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    return tuple(item.strip() for item in value.split(",") if item.strip())
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train and evaluate LSTM for stock forecasting.")
     parser.add_argument("--data-path", type=Path, default=None)
@@ -84,14 +112,28 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lstm-units", type=parse_lstm_units, default=None)
     parser.add_argument("--dropout", type=float, default=None)
     parser.add_argument("--lr", type=float, default=None)
-    parser.add_argument("--loss", choices=["mse", "huber", "directional_huber"], default=None)
+    parser.add_argument("--loss", choices=["mse", "huber", "directional_huber", "rel_score"], default=None)
     parser.add_argument("--huber-delta", type=float, default=None)
     parser.add_argument("--batch-size", type=int, default=None)
     parser.add_argument("--epochs", type=int, default=None)
     parser.add_argument("--patience", type=int, default=None)
     parser.add_argument("--stocks", default=None)
+    parser.add_argument("--sector", default=None)
     parser.add_argument("--feature-columns", default=None)
     parser.add_argument("--use-all-features", action="store_true")
+    parser.add_argument(
+        "--feature-selection-mode",
+        choices=["auto", "sector_config", "search_summary"],
+        default="auto",
+    )
+    parser.add_argument("--stock-search-summary", type=Path, default=None)
+    parser.add_argument("--min-stock-val-rel-score", type=float, default=0.03)
+    parser.add_argument("--max-stocks", type=int, default=None)
+    parser.add_argument("--feature-top-k", type=int, default=10)
+    parser.add_argument(
+        "--extra-context-features",
+        default=",".join(DEFAULT_CONTEXT_FEATURES),
+    )
     parser.add_argument("--target-normalizer", default=None)
     parser.add_argument("--lstm-seeds", type=parse_seed_list, default=None)
     parser.add_argument("--signmag-signed-loss-weight", type=float, default=None)
@@ -105,6 +147,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--enable-attention-family", action="store_true")
     parser.add_argument("--attention-heads", type=int, default=None)
     parser.add_argument("--attention-key-dim", type=int, default=None)
+    parser.add_argument("--enable-quantile-family", action="store_true")
     parser.add_argument("--enable-event-family", action="store_true")
     parser.add_argument("--event-threshold", type=float, default=None)
     parser.add_argument("--event-signed-loss-weight", type=float, default=None)
@@ -182,6 +225,8 @@ def override_config(args: argparse.Namespace):
         config.attention_heads = args.attention_heads
     if args.attention_key_dim is not None:
         config.attention_key_dim = args.attention_key_dim
+    if args.enable_quantile_family:
+        config.quantile_enabled = True
     if args.enable_event_family:
         config.event_enabled = True
     if args.event_threshold is not None:
@@ -290,6 +335,17 @@ def load_frame(path: Path, stocks: str | None) -> pd.DataFrame:
     return df.sort_values(["code", "Date"]).reset_index(drop=True)
 
 
+def filter_frame_by_sector(df: pd.DataFrame, sector: str | None) -> pd.DataFrame:
+    if not sector:
+        return df
+    if "sector" not in df.columns:
+        raise ValueError("Dataset does not contain a 'sector' column for sector filtering.")
+    filtered = df[df["sector"] == sector].copy()
+    if filtered.empty:
+        raise ValueError(f"No rows found for sector '{sector}'.")
+    return filtered.sort_values(["code", "Date"]).reset_index(drop=True)
+
+
 def validate_columns(
     df: pd.DataFrame,
     feature_columns: tuple[str, ...],
@@ -310,6 +366,20 @@ def build_run_dir(base_dir: Path, run_name: str | None, target_mode: str) -> Pat
     run_dir = base_dir / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
     return run_dir
+
+
+def build_training_target_array(
+    target_values: np.ndarray,
+    loss_name: str,
+    local_scale_values: np.ndarray | None = None,
+) -> np.ndarray:
+    target_values = np.asarray(target_values, dtype=np.float32).reshape(-1, 1)
+    if loss_name != "rel_score":
+        return target_values.reshape(-1)
+    if local_scale_values is None:
+        return target_values
+    local_scale_values = np.asarray(local_scale_values, dtype=np.float32).reshape(-1, 1)
+    return np.concatenate([target_values, local_scale_values], axis=1).astype(np.float32)
 
 
 def save_scaler(run_dir: Path, scaler) -> None:
@@ -358,14 +428,58 @@ def compute_metric_details(
 
 
 def save_metric_series(run_dir: Path, model_name: str, split_name: str, details: dict[str, float | list[float]]) -> None:
-    pd.DataFrame({"error": details["error"], "base": details["base"]}).to_csv(
-        run_dir / f"metric_series_{model_name}_{split_name}.csv",
-        index=False,
-    )
+    metric_series_df = pd.DataFrame({"error": details["error"], "base": details["base"]})
+    filename = f"metric_series_{model_name}_{split_name}.csv"
+    metric_series_df.to_csv(run_dir / filename, index=False)
+    metric_series_df.to_csv(report_metric_series_path(run_dir, filename), index=False)
 
 
-def enrich_prediction_frame(meta: pd.DataFrame, split: str, model_name: str, prediction: np.ndarray, actual: np.ndarray) -> pd.DataFrame:
-    return meta.assign(split=split, model=model_name, prediction=prediction, actual=actual)
+def select_report_model_names(model_names: list[str]) -> list[str]:
+    available = set(model_names)
+    selected: list[str] = []
+
+    for baseline_name in ("linear_regression", "arima", "fischer_krauss"):
+        if baseline_name in available:
+            selected.append(baseline_name)
+
+    family_prefixes = ("lstm", "lstm_quantile", "lstm_signmag", "lstm_attention", "lstm_event")
+    for prefix in family_prefixes:
+        preferred = [f"{prefix}_best_by_val", f"{prefix}_ensemble", prefix]
+        added = False
+        for candidate in preferred:
+            if candidate in available:
+                selected.append(candidate)
+                added = True
+        if not added:
+            fallback = sorted(name for name in available if name.startswith(prefix) and "_seed_" not in name)
+            selected.extend(fallback[:1])
+
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for name in selected:
+        if name in available and name not in seen:
+            seen.add(name)
+            ordered.append(name)
+    return ordered
+
+
+def enrich_prediction_frame(
+    meta: pd.DataFrame,
+    split: str,
+    model_name: str,
+    prediction: np.ndarray,
+    actual: np.ndarray,
+    extra_columns: dict[str, np.ndarray] | None = None,
+) -> pd.DataFrame:
+    payload: dict[str, object] = {
+        "split": split,
+        "model": model_name,
+        "prediction": prediction,
+        "actual": actual,
+    }
+    if extra_columns:
+        payload.update(extra_columns)
+    return meta.assign(**payload)
 
 
 def build_prediction_map(model, split_arrays: dict[str, tuple[np.ndarray, np.ndarray, pd.DataFrame]], predictor) -> dict[str, np.ndarray]:
@@ -491,14 +605,76 @@ def build_family_selection_maps(
     return selection_maps, selection_summary
 
 
+def build_quantile_aux_maps(
+    family_name: str,
+    family_selection_summary: dict[str, object],
+    seed_maps: dict[str, dict[str, np.ndarray]],
+) -> dict[str, dict[str, np.ndarray]]:
+    if not seed_maps:
+        return {}
+
+    ordered_seed_keys = sorted(seed_maps.keys())
+    aux_maps: dict[str, dict[str, np.ndarray]] = {
+        family_name: seed_maps[ordered_seed_keys[0]],
+    }
+    if len(ordered_seed_keys) > 1:
+        aux_maps[f"{family_name}_ensemble"] = {
+            split_name: np.mean(
+                [seed_maps[model_name][split_name] for model_name in ordered_seed_keys],
+                axis=0,
+            ).astype(np.float32)
+            for split_name in SPLIT_NAMES
+        }
+
+    best_by_val = family_selection_summary.get("best_by_val")
+    if isinstance(best_by_val, str) and best_by_val in seed_maps:
+        aux_maps[f"{family_name}_best_by_val"] = seed_maps[best_by_val]
+
+    top2_by_val = family_selection_summary.get("top2_by_val")
+    if isinstance(top2_by_val, list) and len(top2_by_val) == 2 and all(name in seed_maps for name in top2_by_val):
+        aux_maps[f"{family_name}_top2_by_val"] = {
+            split_name: np.mean(
+                [seed_maps[model_name][split_name] for model_name in top2_by_val],
+                axis=0,
+            ).astype(np.float32)
+            for split_name in SPLIT_NAMES
+        }
+    return aux_maps
+
+
+def build_quantile_extra_prediction_maps(
+    q50_maps: dict[str, dict[str, np.ndarray]],
+    q90_maps: dict[str, dict[str, np.ndarray]],
+) -> dict[str, dict[str, dict[str, np.ndarray]]]:
+    extra_maps: dict[str, dict[str, dict[str, np.ndarray]]] = {}
+    for model_name, q50_map in q50_maps.items():
+        q90_map = q90_maps.get(model_name)
+        if q90_map is None:
+            continue
+        extra_maps[model_name] = {}
+        for split_name in SPLIT_NAMES:
+            q50 = np.asarray(q50_map[split_name], dtype=np.float32)
+            q90 = np.asarray(q90_map[split_name], dtype=np.float32)
+            extra_maps[model_name][split_name] = {
+                "prediction_q50": q50,
+                "prediction_q90": q90,
+                "prediction_uncertainty": (q90 - q50).astype(np.float32),
+            }
+    return extra_maps
+
+
 def build_prediction_frame(
     meta_map: dict[str, pd.DataFrame],
     target_map: dict[str, np.ndarray],
     prediction_maps: dict[str, dict[str, np.ndarray]],
+    extra_prediction_maps: dict[str, dict[str, dict[str, np.ndarray]]] | None = None,
 ) -> pd.DataFrame:
     frames = []
     for model_name, pred_map in prediction_maps.items():
         for split_name in SPLIT_NAMES:
+            extra_columns = None
+            if extra_prediction_maps is not None:
+                extra_columns = extra_prediction_maps.get(model_name, {}).get(split_name)
             frames.append(
                 enrich_prediction_frame(
                     meta_map[split_name],
@@ -506,6 +682,7 @@ def build_prediction_frame(
                     model_name,
                     pred_map[split_name],
                     target_map[split_name],
+                    extra_columns=extra_columns,
                 )
             )
     return pd.concat(frames, ignore_index=True)
@@ -514,6 +691,7 @@ def build_prediction_frame(
 def build_fischer_krauss_prediction_frame(
     split_map: dict[str, tuple[np.ndarray, np.ndarray, pd.DataFrame]],
     probability_map: dict[str, np.ndarray],
+    return_proxy_map: dict[str, np.ndarray],
 ) -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     for split_name, (_, y_split, meta_split) in split_map.items():
@@ -526,7 +704,11 @@ def build_fischer_krauss_prediction_frame(
         frame["predicted_class"] = (probabilities[:, 1] >= 0.5).astype(int)
         frame["prob_class_0"] = probabilities[:, 0]
         frame["prob_class_1"] = probabilities[:, 1]
-        frame["fk_score"] = probability_to_score(probabilities)
+        frame["fk_score_raw"] = probability_to_score(probabilities)
+        frame["fk_return_proxy"] = return_proxy_map[split_name]
+        frame["model"] = "fischer_krauss"
+        frame["prediction"] = frame["fk_return_proxy"].astype(np.float32)
+        frame["actual"] = frame["actual_return"].astype(np.float32)
         frames.append(frame)
     if not frames:
         return pd.DataFrame()
@@ -535,7 +717,7 @@ def build_fischer_krauss_prediction_frame(
 
 def save_fischer_krauss_scaler(run_dir: Path, mean: float, std: float) -> None:
     np.savez(
-        run_dir / "benchmark_fischer_krauss_scaler.npz",
+        report_benchmark_path(run_dir, "benchmark_fischer_krauss_scaler.npz"),
         mean=np.asarray([mean], dtype=np.float32),
         std=np.asarray([std], dtype=np.float32),
     )
@@ -582,6 +764,7 @@ def build_config_payload(
         "attention_enabled": bool(config.attention_enabled),
         "attention_heads": config.attention_heads,
         "attention_key_dim": config.attention_key_dim,
+        "quantile_enabled": bool(config.quantile_enabled),
         "event_enabled": bool(config.event_enabled),
         "event_threshold": config.event_threshold,
         "event_signed_loss_weight": config.event_signed_loss_weight,
@@ -638,16 +821,77 @@ def resolve_features_for_df(df: pd.DataFrame, config) -> tuple[str, ...]:
     return config.feature_columns
 
 
+def resolve_recipe_stocks(
+    args: argparse.Namespace,
+) -> tuple[str | None, TrainingRecipe | None]:
+    if args.stocks:
+        return args.stocks, None
+    if not args.sector:
+        return None, None
+
+    summary_path = args.stock_search_summary or DEFAULT_SEARCH_SUMMARY_PATH
+    recipe = build_training_recipe(
+        summary_path=summary_path,
+        sector=args.sector,
+        stocks=None,
+        min_best_val_rel_score=args.min_stock_val_rel_score,
+        max_stocks=args.max_stocks,
+        top_features=args.feature_top_k,
+        available_columns=None,
+        extra_features=parse_csv_list(args.extra_context_features),
+    )
+    selected_stocks = ",".join(recipe.selected_stocks)
+    print(
+        "Info: Selected stocks from search summary:",
+        selected_stocks,
+    )
+    return selected_stocks, recipe
+
+
 def main() -> None:
     args = parse_args()
     config = override_config(args)
     run_dir = build_run_dir(config.output_dir, args.run_name, config.target_mode)
 
-    df = load_frame(config.data_path, args.stocks)
+    selected_stocks_arg, stock_recipe = resolve_recipe_stocks(args)
+    stocks_arg = selected_stocks_arg if selected_stocks_arg is not None else args.stocks
+
+    df = load_frame(config.data_path, stocks_arg)
+    df = filter_frame_by_sector(df, args.sector)
     
+    feature_recipe = stock_recipe
+    search_summary_applied = False
     if not args.feature_columns and not args.use_all_features:
-        auto_features = resolve_features_for_df(df, config)
-        config.feature_columns = auto_features
+        if args.feature_selection_mode in {"auto", "search_summary"}:
+            try:
+                summary_path = args.stock_search_summary or DEFAULT_SEARCH_SUMMARY_PATH
+                feature_recipe = build_training_recipe(
+                    summary_path=summary_path,
+                    sector=args.sector,
+                    stocks=tuple(sorted(df["code"].astype(str).unique().tolist())),
+                    min_best_val_rel_score=args.min_stock_val_rel_score,
+                    max_stocks=args.max_stocks,
+                    top_features=args.feature_top_k,
+                    available_columns=set(df.columns),
+                    extra_features=parse_csv_list(args.extra_context_features),
+                )
+                config.feature_columns = feature_recipe.feature_columns
+                print(
+                    "Info: Using search-summary features:",
+                    ",".join(config.feature_columns),
+                )
+                search_summary_applied = True
+            except Exception as exc:
+                if args.feature_selection_mode == "search_summary":
+                    raise
+                print(f"Info: Search-summary feature selection unavailable: {exc}")
+
+        if args.feature_selection_mode == "sector_config" or not config.feature_columns:
+            auto_features = resolve_features_for_df(df, config)
+            config.feature_columns = auto_features
+        elif args.feature_selection_mode == "auto" and not search_summary_applied:
+            auto_features = resolve_features_for_df(df, config)
+            config.feature_columns = auto_features
 
     validate_columns(df, config.feature_columns, config.target_column, config.target_normalizer)
 
@@ -706,6 +950,26 @@ def main() -> None:
     target_scaler = fit_target_scaler(y_train_local)
     y_train_scaled = apply_target_scaler(y_train_local, target_scaler)
     y_val_scaled = apply_target_scaler(y_val_local, target_scaler)
+    y_train_model_target = build_training_target_array(
+        y_train_scaled,
+        config.loss,
+        local_scale_values=train_target_norm_values if local_target_normalizer is not None else None,
+    )
+    y_val_model_target = build_training_target_array(
+        y_val_scaled,
+        config.loss,
+        local_scale_values=val_target_norm_values if local_target_normalizer is not None else None,
+    )
+    y_train_signed_target = build_training_target_array(
+        y_train_local,
+        config.loss,
+        local_scale_values=train_target_norm_values if local_target_normalizer is not None else None,
+    )
+    y_val_signed_target = build_training_target_array(
+        y_val_local,
+        config.loss,
+        local_scale_values=val_target_norm_values if local_target_normalizer is not None else None,
+    )
     train_sample_weight = None
     val_sample_weight = None
     if config.sample_weight_mode == "magnitude":
@@ -741,6 +1005,11 @@ def main() -> None:
     meta_map = {split_name: split_arrays[split_name][2] for split_name in SPLIT_NAMES}
 
     monitor_metric = resolve_monitor_metric(config.target_mode)
+    if config.loss == "rel_score" and config.sample_weight_mode != "none":
+        print(
+            "Info: rel_score loss is batch-level; magnitude sample weights remain active for auxiliary heads "
+            "but have limited effect on the main signed/regression loss."
+        )
     seed_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
     first_model = None
     first_history_df = None
@@ -748,9 +1017,9 @@ def main() -> None:
         set_global_seed(seed)
         model, history = fit_model(
             x_train_lstm,
-            y_train_scaled,
+            y_train_model_target,
             x_val_lstm,
-            y_val_scaled,
+            y_val_model_target,
             window_size=config.window_size,
             num_features=x_train_lstm.shape[2],
             lstm_units=config.lstm_units,
@@ -789,8 +1058,82 @@ def main() -> None:
                     local_target_normalizer,
                 )
                 for split_name, pred_values in split_prediction_map.items()
-            }
+        }
         seed_prediction_maps[f"lstm_seed_{seed}"] = split_prediction_map
+
+    quantile_seed_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    quantile_seed_upper_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    first_quantile_model = None
+    first_quantile_history_df = None
+    if config.quantile_enabled:
+        for seed_idx, seed in enumerate(config.lstm_seeds):
+            set_global_seed(seed)
+            quantile_model, quantile_history = fit_quantile_model(
+                x_train_lstm,
+                y_train_scaled,
+                x_val_lstm,
+                y_val_scaled,
+                window_size=config.window_size,
+                num_features=x_train_lstm.shape[2],
+                lstm_units=config.lstm_units,
+                dropout=config.dropout,
+                lr=config.lr,
+                batch_size=config.batch_size,
+                epochs=config.epochs,
+                patience=config.patience,
+                monitor_metric=monitor_metric,
+                val_group_ids=meta_val["code"].to_numpy() if "code" in meta_val.columns else None,
+                target_scaler=target_scaler,
+                metric_y_val=y_val,
+                local_target_normalizer=local_target_normalizer,
+                local_target_scale_values=val_target_norm_values,
+            )
+            if seed_idx == 0:
+                first_quantile_model = quantile_model
+                first_quantile_history_df = pd.DataFrame(quantile_history.history)
+            quantile_model.save(run_dir / f"model_quantile_seed_{seed}.keras")
+            pd.DataFrame(quantile_history.history).to_csv(
+                run_dir / f"history_quantile_seed_{seed}.csv",
+                index=False,
+            )
+
+            split_prediction_map = build_prediction_map(
+                quantile_model,
+                lstm_split_arrays,
+                lambda model, x: predict(model, x, prediction_key=0),
+            )
+            split_upper_prediction_map = build_prediction_map(
+                quantile_model,
+                lstm_split_arrays,
+                lambda model, x: predict(model, x, prediction_key=1),
+            )
+            split_prediction_map = {
+                split_name: inverse_target_scaler_values(pred_values, target_scaler)
+                for split_name, pred_values in split_prediction_map.items()
+            }
+            split_upper_prediction_map = {
+                split_name: inverse_target_scaler_values(pred_values, target_scaler)
+                for split_name, pred_values in split_upper_prediction_map.items()
+            }
+            if local_target_normalizer is not None:
+                split_prediction_map = {
+                    split_name: inverse_local_target_normalizer(
+                        pred_values,
+                        local_scale_map[split_name],
+                        local_target_normalizer,
+                    )
+                    for split_name, pred_values in split_prediction_map.items()
+                }
+                split_upper_prediction_map = {
+                    split_name: inverse_local_target_normalizer(
+                        pred_values,
+                        local_scale_map[split_name],
+                        local_target_normalizer,
+                    )
+                    for split_name, pred_values in split_upper_prediction_map.items()
+                }
+            quantile_seed_prediction_maps[f"lstm_quantile_seed_{seed}"] = split_prediction_map
+            quantile_seed_upper_prediction_maps[f"lstm_quantile_seed_{seed}"] = split_upper_prediction_map
 
     signmag_seed_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
     first_signmag_model = None
@@ -801,9 +1144,9 @@ def main() -> None:
             set_global_seed(seed)
             signmag_model, signmag_history = fit_sign_magnitude_model(
                 x_train_lstm,
-                y_train_local,
+                y_train_signed_target,
                 x_val_lstm,
-                y_val_local,
+                y_val_signed_target,
                 window_size=config.window_size,
                 num_features=x_train_lstm.shape[2],
                 lstm_units=config.lstm_units,
@@ -855,9 +1198,9 @@ def main() -> None:
             set_global_seed(seed)
             attention_model, attention_history = fit_attention_model(
                 x_train_lstm,
-                y_train_scaled,
+                y_train_model_target,
                 x_val_lstm,
-                y_val_scaled,
+                y_val_model_target,
                 window_size=config.window_size,
                 num_features=x_train_lstm.shape[2],
                 lstm_units=config.lstm_units,
@@ -913,9 +1256,9 @@ def main() -> None:
             set_global_seed(seed)
             event_model, event_history = fit_event_gated_model(
                 x_train_lstm,
-                y_train_local,
+                y_train_signed_target,
                 x_val_lstm,
-                y_val_local,
+                y_val_signed_target,
                 window_size=config.window_size,
                 num_features=x_train_lstm.shape[2],
                 lstm_units=config.lstm_units,
@@ -995,6 +1338,27 @@ def main() -> None:
     )
     prediction_maps.update(lstm_selection_maps)
     family_selection_summary["lstm"] = lstm_selection_summary
+    if quantile_seed_prediction_maps:
+        quantile_seed_keys = sorted(quantile_seed_prediction_maps.keys())
+        prediction_maps["lstm_quantile"] = quantile_seed_prediction_maps[quantile_seed_keys[0]]
+        if len(quantile_seed_keys) > 1:
+            prediction_maps["lstm_quantile_ensemble"] = {
+                split_name: np.mean(
+                    [quantile_seed_prediction_maps[model_name][split_name] for model_name in quantile_seed_keys],
+                    axis=0,
+                ).astype(np.float32)
+                for split_name in SPLIT_NAMES
+            }
+        prediction_maps.update(quantile_seed_prediction_maps)
+        quantile_selection_maps, quantile_selection_summary = build_family_selection_maps(
+            "lstm_quantile",
+            quantile_seed_prediction_maps,
+            targets,
+            meta_map,
+            config.target_mode,
+        )
+        prediction_maps.update(quantile_selection_maps)
+        family_selection_summary["lstm_quantile"] = quantile_selection_summary
     if attention_seed_prediction_maps:
         attention_seed_keys = sorted(attention_seed_prediction_maps.keys())
         prediction_maps["lstm_attention"] = attention_seed_prediction_maps[attention_seed_keys[0]]
@@ -1058,17 +1422,40 @@ def main() -> None:
         )
         prediction_maps.update(signmag_selection_maps)
         family_selection_summary["lstm_signmag"] = signmag_selection_summary
+    quantile_extra_prediction_maps: dict[str, dict[str, dict[str, np.ndarray]]] = {}
+    if quantile_seed_prediction_maps:
+        quantile_aux_maps = build_quantile_aux_maps(
+            "lstm_quantile",
+            family_selection_summary["lstm_quantile"],
+            quantile_seed_upper_prediction_maps,
+        )
+        quantile_q50_all_maps = {**quantile_seed_prediction_maps}
+        quantile_q50_all_maps.update(
+            {
+                model_name: prediction_maps[model_name]
+                for model_name in prediction_maps
+                if model_name.startswith("lstm_quantile")
+            }
+        )
+        quantile_q90_all_maps = {**quantile_seed_upper_prediction_maps, **quantile_aux_maps}
+        quantile_extra_prediction_maps = build_quantile_extra_prediction_maps(
+            quantile_q50_all_maps,
+            quantile_q90_all_maps,
+        )
+
+    report_model_names = set(select_report_model_names(sorted(prediction_maps.keys()) + (["fischer_krauss"] if config.fk_benchmark_enabled else [])))
     metrics: dict[str, dict[str, dict[str, float]]] = {}
     metric_details: dict[str, dict[str, dict[str, float | list[float]]]] = {}
 
     for model_name, pred_map in prediction_maps.items():
         metrics[model_name], metric_details[model_name] = compute_metrics_bundle(pred_map, targets, config.target_mode, meta_map)
         if config.target_mode.startswith("return"):
-            for split_name, detail in metric_details[model_name].items():
-                save_metric_series(run_dir, model_name, split_name, detail)
+            if model_name in report_model_names:
+                for split_name, detail in metric_details[model_name].items():
+                    save_metric_series(run_dir, model_name, split_name, detail)
 
     history_df = first_history_df if first_history_df is not None else pd.DataFrame()
-    prediction_df = build_prediction_frame(meta_map, targets, prediction_maps)
+    prediction_df = build_prediction_frame(meta_map, targets, prediction_maps, extra_prediction_maps=quantile_extra_prediction_maps)
     fk_summary_payload: dict[str, object] | None = None
     if config.fk_benchmark_enabled:
         fk_price_column = resolve_price_column(df)
@@ -1118,22 +1505,95 @@ def main() -> None:
             split_name: compute_fischer_krauss_metrics(fk_splits[split_name][1], fk_probability_map[split_name])
             for split_name in SPLIT_NAMES
         }
-        fk_prediction_df = build_fischer_krauss_prediction_frame(fk_splits, fk_probability_map)
+        fk_return_proxy_map = {
+            split_name: calibrate_probability_score_to_return_proxy(
+                fk_probability_map[split_name],
+                fk_splits["train"][2]["actual_return"].to_numpy(dtype=np.float32),
+            )
+            for split_name in SPLIT_NAMES
+        }
+        fk_prediction_df = build_fischer_krauss_prediction_frame(
+            fk_splits,
+            fk_probability_map,
+            fk_return_proxy_map,
+        )
+        fk_rel_prediction_map = {
+            split_name: fk_return_proxy_map[split_name]
+            for split_name in SPLIT_NAMES
+        }
+        fk_rel_targets = {
+            split_name: fk_splits[split_name][2]["actual_return"].to_numpy(dtype=np.float32)
+            for split_name in SPLIT_NAMES
+        }
+        fk_rel_meta = {
+            split_name: fk_splits[split_name][2][["code", "Date"]].copy()
+            for split_name in SPLIT_NAMES
+        }
+        metrics["fischer_krauss"], metric_details["fischer_krauss"] = compute_metrics_bundle(
+            fk_rel_prediction_map,
+            fk_rel_targets,
+            "return",
+            fk_rel_meta,
+        )
+        for split_name in SPLIT_NAMES:
+            fk_metrics[split_name]["rel_score"] = metrics["fischer_krauss"][split_name]["rel_score"]
+            fk_metrics[split_name]["base_loss"] = metrics["fischer_krauss"][split_name]["base_loss"]
+            fk_metrics[split_name]["abs_loss"] = metrics["fischer_krauss"][split_name]["abs_loss"]
+            fk_metrics[split_name]["directional_accuracy"] = metrics["fischer_krauss"][split_name]["directional_accuracy"]
+        if "fischer_krauss" in report_model_names:
+            for split_name, detail in metric_details["fischer_krauss"].items():
+                save_metric_series(run_dir, "fischer_krauss", split_name, detail)
+        prediction_df = pd.concat(
+            [
+                prediction_df,
+                fk_prediction_df[
+                    [
+                        "code",
+                        "Date",
+                        "split",
+                        "model",
+                        "prediction",
+                        "actual",
+                        "actual_class",
+                        "predicted_class",
+                        "prob_class_0",
+                        "prob_class_1",
+                        "fk_score_raw",
+                        "fk_return_proxy",
+                    ]
+                ],
+            ],
+            ignore_index=True,
+        )
         fk_long_short_df = build_long_short_portfolio_returns(
             fk_meta_test,
             fk_probability_map["test"],
             top_k=config.fk_top_k,
         )
         fk_long_short_summary = summarize_long_short_portfolio(fk_long_short_df)
-        fk_model.save(run_dir / "benchmark_fischer_krauss_model.keras")
-        pd.DataFrame(fk_history.history).to_csv(run_dir / "benchmark_fischer_krauss_history.csv", index=False)
-        fk_prediction_df.to_csv(run_dir / "benchmark_fischer_krauss_predictions.csv", index=False)
-        fk_long_short_df.to_csv(run_dir / "benchmark_fischer_krauss_long_short_daily_returns.csv", index=False)
-        with (run_dir / "benchmark_fischer_krauss_metrics.json").open("w", encoding="utf-8") as f:
+        fk_model.save(report_benchmark_path(run_dir, "benchmark_fischer_krauss_model.keras"))
+        pd.DataFrame(fk_history.history).to_csv(
+            report_benchmark_path(run_dir, "benchmark_fischer_krauss_history.csv"),
+            index=False,
+        )
+        fk_prediction_df.to_csv(report_benchmark_path(run_dir, "benchmark_fischer_krauss_predictions.csv"), index=False)
+        fk_long_short_df.to_csv(
+            report_benchmark_path(run_dir, "benchmark_fischer_krauss_long_short_daily_returns.csv"),
+            index=False,
+        )
+        with report_benchmark_path(run_dir, "benchmark_fischer_krauss_metrics.json").open("w", encoding="utf-8") as f:
             json.dump(fk_metrics, f, indent=2)
-        with (run_dir / "benchmark_fischer_krauss_long_short_summary.json").open("w", encoding="utf-8") as f:
+        with report_benchmark_path(run_dir, "benchmark_fischer_krauss_long_short_summary.json").open("w", encoding="utf-8") as f:
             json.dump(fk_long_short_summary, f, indent=2)
         save_fischer_krauss_scaler(run_dir, fk_scaler.mean, fk_scaler.std)
+        if not fk_long_short_df.empty:
+            fk_equity_df = fk_long_short_df[["Date", "equity_curve"]].rename(columns={"equity_curve": "equity"})
+            fk_equity_df["label"] = "FK LongShort"
+            save_equity_curve_plot(
+                fk_equity_df[["Date", "label", "equity"]],
+                report_benchmark_path(run_dir, "benchmark_fischer_krauss_equity.png"),
+                "Benchmark Fischer-Krauss Long/Short Equity",
+            )
         fk_summary_payload = {
             "train_end_date": str(fk_train_end_date.date()),
             "validation_end_date": config.val_end_date,
@@ -1152,6 +1612,8 @@ def main() -> None:
 
     if first_model is not None:
         first_model.save(run_dir / "model.keras")
+    if first_quantile_model is not None:
+        first_quantile_model.save(run_dir / "model_quantile.keras")
     if first_attention_model is not None:
         first_attention_model.save(run_dir / "model_attention.keras")
     if first_event_model is not None:
@@ -1161,18 +1623,20 @@ def main() -> None:
     joblib.dump(linear_model, run_dir / "linear_regression.joblib")
     save_scaler(run_dir, scaler)
     save_target_scaler(run_dir, target_scaler)
-    history_df.to_csv(run_dir / "history.csv", index=False)
+    history_df.to_csv(report_core_path(run_dir, "history.csv"), index=False)
+    if first_quantile_history_df is not None:
+        first_quantile_history_df.to_csv(report_core_path(run_dir, "history_quantile.csv"), index=False)
     if first_attention_history_df is not None:
-        first_attention_history_df.to_csv(run_dir / "history_attention.csv", index=False)
+        first_attention_history_df.to_csv(report_core_path(run_dir, "history_attention.csv"), index=False)
     if first_event_history_df is not None:
-        first_event_history_df.to_csv(run_dir / "history_event.csv", index=False)
+        first_event_history_df.to_csv(report_core_path(run_dir, "history_event.csv"), index=False)
     if first_signmag_history_df is not None:
-        first_signmag_history_df.to_csv(run_dir / "history_signmag.csv", index=False)
-    prediction_df.to_csv(run_dir / "predictions.csv", index=False)
-    with (run_dir / "metrics.json").open("w", encoding="utf-8") as f:
+        first_signmag_history_df.to_csv(report_core_path(run_dir, "history_signmag.csv"), index=False)
+    prediction_df.to_csv(report_core_path(run_dir, "predictions.csv"), index=False)
+    with report_core_path(run_dir, "metrics.json").open("w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
     if config.target_mode.startswith("return"):
-        with (run_dir / "metric_details.json").open("w", encoding="utf-8") as f:
+        with report_core_path(run_dir, "metric_details.json").open("w", encoding="utf-8") as f:
             json.dump(
                 {
                     model_name: {
@@ -1191,12 +1655,21 @@ def main() -> None:
                 f,
                 indent=2,
             )
-    with (run_dir / "config.json").open("w", encoding="utf-8") as f:
+    with report_core_path(run_dir, "config.json").open("w", encoding="utf-8") as f:
         payload = build_config_payload(config, args, train_df, val_df, test_df, splits, monitor_metric)
+        payload["stocks"] = stocks_arg
+        payload["sector"] = args.sector
         payload["lstm_use_stock_identity"] = use_stock_identity
         payload["lstm_stock_identity_codes"] = list(stock_to_idx.keys()) if use_stock_identity else []
         payload["lstm_input_feature_count"] = int(x_train_lstm.shape[2])
+        payload["feature_selection_mode"] = args.feature_selection_mode
+        payload["recipe_sector"] = args.sector
+        payload["recipe_selected_stocks"] = sorted(df["code"].astype(str).unique().tolist())
+        payload["recipe_source"] = feature_recipe.source if feature_recipe is not None else None
+        payload["recipe_feature_summary"] = feature_recipe.feature_summary if feature_recipe is not None else []
+        payload["recipe_stock_summary"] = feature_recipe.stock_summary if feature_recipe is not None else []
         payload["lstm_attention_enabled"] = bool(config.attention_enabled)
+        payload["lstm_quantile_enabled"] = bool(config.quantile_enabled)
         payload["lstm_event_enabled"] = enable_event_family
         payload["lstm_signmag_enabled"] = enable_sign_magnitude
         payload["fischer_krauss_benchmark"] = fk_summary_payload
@@ -1206,15 +1679,19 @@ def main() -> None:
         json.dump(payload, f, indent=2)
 
     if family_selection_summary:
-        with (run_dir / "family_selection_summary.json").open("w", encoding="utf-8") as f:
+        with report_core_path(run_dir, "family_selection_summary.json").open("w", encoding="utf-8") as f:
             json.dump(family_selection_summary, f, indent=2)
 
-    for model_name in prediction_maps:
+    for model_name in select_report_model_names(sorted(prediction_df["model"].dropna().unique().tolist())):
         try:
             save_actual_vs_prediction_plot(run_dir, prediction_df, model_name)
             save_rel_score_hist_plot(run_dir, model_name)
         except Exception:
             pass
+
+    mirror_run_artifacts(run_dir)
+    cleanup_report_noise(run_dir)
+    cleanup_legacy_report_artifacts(run_dir)
 
     print("Saved run to:", run_dir)
     print(json.dumps(metrics, indent=2))

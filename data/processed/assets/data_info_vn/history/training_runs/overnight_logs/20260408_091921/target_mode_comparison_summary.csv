@@ -1,0 +1,2 @@
+target_mode,run_count,best_run_name,best_lstm_model,max_best_lstm_test_rel_score,median_best_lstm_test_rel_score,mean_best_lstm_test_rel_score,median_best_lstm_val_rel_score
+return,4,overnight_bds_return1d_stack48_24_w5_weighted,lstm,0.025334251123122042,0.024119608720004626,0.021660965158946888,-0.010528843100517493
