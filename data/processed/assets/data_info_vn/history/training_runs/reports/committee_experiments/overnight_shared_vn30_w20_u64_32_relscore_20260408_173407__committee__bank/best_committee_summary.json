@@ -1,0 +1,27 @@
+{
+  "expert_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/mini_ngan_hang_g02_return_w20_pruned_v2",
+  "market_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_shared_vn30_w20_u64_32_relscore_20260408_173407",
+  "best_committee": {
+    "expert_run": "mini_ngan_hang_g02_return_w20_pruned_v2",
+    "expert_model": "lstm_signmag_best_by_val",
+    "market_run": "overnight_shared_vn30_w20_u64_32_relscore_20260408_173407",
+    "market_model": "lstm_signmag_best_by_val",
+    "method": "avg",
+    "weight_expert": 0.9,
+    "agreement_rate": 0.5989243620551551,
+    "overlap_codes": "ACB,BID,CTG,MBB,TCB,VCB",
+    "code_count": 6,
+    "val_rows": 1500,
+    "test_rows": 1751,
+    "expert_val_rel_score_overlap": 0.018851012706166292,
+    "expert_test_rel_score_overlap": 0.0024695198029990317,
+    "market_val_rel_score_overlap": 0.010656700420836995,
+    "market_test_rel_score_overlap": 0.015382889107946385,
+    "committee_val_rel_score": 0.020002669113606153,
+    "committee_test_rel_score": 0.004223660906501281,
+    "committee_val_abs_loss": 0.01688947790098609,
+    "committee_test_abs_loss": 0.022474668850190938
+  },
+  "results_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/overnight_shared_vn30_w20_u64_32_relscore_20260408_173407__committee__bank/committee_grid_results.csv",
+  "best_predictions_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/overnight_shared_vn30_w20_u64_32_relscore_20260408_173407__committee__bank/best_committee_predictions.csv"
+}

@@ -1,0 +1,27 @@
+{
+  "expert_run": "data/processed/assets/data_info_vn/history/training_runs/mini_bat_ong_san_g01_return_w20_pruned_v2",
+  "market_run": "data/processed/assets/data_info_vn/history/training_runs/sector_bat_ong_san_return_w5_relscore",
+  "best_committee": {
+    "expert_run": "mini_bat_ong_san_g01_return_w20_pruned_v2",
+    "expert_model": "lstm_best_by_val",
+    "market_run": "sector_bat_ong_san_return_w5_relscore",
+    "market_model": "lstm_signmag_best_by_val",
+    "method": "agree_only",
+    "weight_expert": 0.05,
+    "agreement_rate": 0.6142972285944572,
+    "overlap_codes": "DIG,DXG,KOS,NLG,TCH,VHM",
+    "code_count": 6,
+    "val_rows": 1497,
+    "test_rows": 1725,
+    "expert_val_rel_score_overlap": 0.0038635971436931094,
+    "expert_test_rel_score_overlap": 0.008632531896472395,
+    "market_val_rel_score_overlap": 0.0008521678980355496,
+    "market_test_rel_score_overlap": 0.01889099047390419,
+    "committee_val_rel_score": 0.00852545088750123,
+    "committee_test_rel_score": 0.023809681872676847,
+    "committee_val_abs_loss": 0.023085133993299686,
+    "committee_test_abs_loss": 0.03549512809258885
+  },
+  "results_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/bds_sector_plus_mini/committee_grid_results.csv",
+  "best_predictions_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/bds_sector_plus_mini/best_committee_predictions.csv"
+}

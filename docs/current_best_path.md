@@ -133,3 +133,87 @@ Kết luận an toàn hơn là:
 - `rel_score` là objective đúng để bám
 - mini-group tốt hơn full sector trong nhiều case
 - BĐS và F&B hiện là hai nơi cho tín hiệu đáng đọc nhất
+
+## 7. Nhánh mở rộng đang thử
+
+Nếu muốn đi ra khỏi `mini-group` nhưng chưa muốn nhảy vào một giant model cho toàn thị trường, nhánh hợp lý nhất hiện tại là:
+
+- `shared market-context model`
+- `sector / mini-group expert`
+- `simple committee combiner`
+
+Repo hiện đã có runner đầu tiên cho nhánh này:
+
+- [`scripts/run_shared_vn30_committee.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_shared_vn30_committee.py)
+
+Ý nghĩa của nhánh này:
+
+- không thay `rel_score`
+- không thay pipeline train chính
+- chỉ thêm một tầng context chung `VN30` rồi xem khi ghép với expert thì `val-selected test rel_score` có vượt các mốc cũ không
+
+Đây là bước trung gian hợp lý hơn giữa:
+
+- `mini-group` quá cục bộ
+- và `1 model lớn cho cả VN100` quá sớm
+
+## 8. Baseline mới nên giữ
+
+Sau batch overnight shared-context, baseline mở rộng đáng giữ nhất hiện tại là:
+
+- `shared VN100`
+- `window_size=20`
+- expert: `F&B mini-group`
+- committee nên chọn theo `stable band`, không nên chọn single-point theo `best val`:
+  - expert model: `lstm_best_by_val`
+  - market model: `lstm_signmag_best_by_val`
+  - method: `agree_only`
+  - `weight_expert=0.15`
+  - overlap: `KDC,SAB,SBT,VNM`
+  - stable weight band: `0.15 -> 0.90`
+  - stable weight count: `5`
+  - chosen-point `committee_test_rel_score = 0.0493`
+  - stable-band `test rel_score` median khoảng `0.0516`
+
+Artifacts gốc:
+
+- [`best_committee_summary.json`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/confirm_vn100_fnb_committee_20260408_235445_r01__committee__fnb/best_committee_summary.json)
+- [`committee_rotation_active.csv`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/confirm_vn100_fnb_committee_20260408_235445_r01/reports/core/committee_rotation_active.csv)
+
+Điểm cần nhớ:
+
+- context model standalone vẫn yếu
+- giá trị hiện tại đến từ `shared VN100` đóng vai trò context cho expert F&B, không phải từ market model một mình
+- `rotation_active` đã được siết lại để chỉ giữ preset có:
+  - `code_count >= 3`
+  - `committee_val_rel_score >= 0.015`
+  - `stable_weight_count >= 2`
+  - `stable_test_rel_score_median >= 0`
+- nhánh `residual expert` đã thử và hiện chưa hiệu quả:
+  - [`residual_fnb_vn100_context_signmag_r01`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/residual_fnb_vn100_context_signmag_r01)
+  - [`residual_fnb_vn100_context_plain_r01`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/residual_fnb_vn100_context_plain_r01)
+
+Runner xác nhận baseline:
+
+- [`scripts/run_vn100_fnb_committee_confirmation.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_vn100_fnb_committee_confirmation.py)
+
+Ví dụ:
+
+```bash
+venv/bin/python scripts/run_vn100_fnb_committee_confirmation.py --repeats 1
+```
+
+## 9. Nếu muốn trả lời câu hỏi "LSTM có hợp cho cả thị trường không?"
+
+Không nên trả lời câu hỏi đó bằng một run duy nhất.
+
+Tài liệu nên đọc là:
+
+- [`whole_market_lstm_plan.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/whole_market_lstm_plan.md)
+
+Watchlist sector tiếp theo:
+
+- `Ngân hàng`
+- `Dịch vụ tài chính`
+- `Xây dựng và Vật liệu`
+- `Điện, nước & xăng dầu khí đốt`

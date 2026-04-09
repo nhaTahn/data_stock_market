@@ -1,0 +1,27 @@
+{
+  "expert_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/mini_tpdouong_g06_uncertainty_sidecar",
+  "market_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/shared_vn30_return_w20_relscore_20260408_170355",
+  "best_committee": {
+    "expert_run": "mini_tpdouong_g06_uncertainty_sidecar",
+    "expert_model": "lstm_ensemble",
+    "market_run": "shared_vn30_return_w20_relscore_20260408_170355",
+    "market_model": "lstm_ensemble",
+    "method": "avg",
+    "weight_expert": 0.25,
+    "agreement_rate": 0.6931988041853513,
+    "overlap_codes": "SAB,VNM",
+    "code_count": 2,
+    "val_rows": 500,
+    "test_rows": 585,
+    "expert_val_rel_score_overlap": -0.00027785079126441126,
+    "expert_test_rel_score_overlap": 0.014775198530114109,
+    "market_val_rel_score_overlap": 0.004715783275216712,
+    "market_test_rel_score_overlap": 0.004784128999163029,
+    "committee_val_rel_score": 0.010094064862497198,
+    "committee_test_rel_score": 0.004327262588399772,
+    "committee_val_abs_loss": 0.015144625373068266,
+    "committee_test_abs_loss": 0.020984050119295716
+  },
+  "results_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/shared_vn30_return_w20_relscore_20260408_170355__committee__fnb/committee_grid_results.csv",
+  "best_predictions_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/shared_vn30_return_w20_relscore_20260408_170355__committee__fnb/best_committee_predictions.csv"
+}

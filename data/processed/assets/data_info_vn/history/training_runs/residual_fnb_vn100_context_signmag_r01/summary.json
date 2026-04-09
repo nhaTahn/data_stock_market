@@ -1,0 +1,24 @@
+{
+  "expert_run": "data/processed/assets/data_info_vn/history/training_runs/mini_tpdouong_g06_uncertainty_sidecar",
+  "expert_model": "lstm_best_by_val",
+  "market_run": "data/processed/assets/data_info_vn/history/training_runs/confirm_vn100_fnb_committee_20260408_235445_r01",
+  "market_model": "lstm_signmag_best_by_val",
+  "best_residual_model": "residual_seed_52",
+  "best_combined_val_rel_score": 0.01129430531094,
+  "best_combined_test_rel_score": 0.003736414852461789,
+  "ensemble_combined_test_rel_score": 0.0032880210525405573,
+  "expert_test_rel_score": 0.05048465575862915,
+  "market_test_rel_score": 0.017204385786431353,
+  "stocks": "KDC,SAB,SBT,VNM",
+  "feature_columns": [
+    "volume_ratio_20",
+    "close_position",
+    "lower_shadow",
+    "alpha_sector",
+    "vingroup_momentum",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "rsi_14"
+  ]
+}

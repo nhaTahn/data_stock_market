@@ -10,6 +10,7 @@ The active research direction is intentionally narrower than a full "advanced qu
 - primary decision metric: `rel_score`
 - current training default: `--loss rel_score`
 - current research unit: sector-wide pools and mini-groups, not one universal market model
+- active expansion branch: `shared_vn30` context model combined with expert runs through a simple committee
 - optional experimental branch: `--enable-quantile-family` adds a minimal `q50/q90` head without rewriting the framework
 - current use of quantiles is primarily as a backtest sidecar via `q90 - q50`, not as the main model family
 
@@ -118,6 +119,8 @@ Treat these as experimental or second-order for now:
 - text or sentiment inputs
 - one-model-for-the-whole-market designs
 
+One controlled exception is the new `shared_vn30 + expert committee` branch: it is still experimental, but it is the preferred next step if you want a broader market-aware model without jumping straight into a single giant VN100 predictor.
+
 ## Quantile Sidecar Note
 
 The repo can now store these extra columns in [`predictions.csv`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs):
@@ -167,6 +170,12 @@ venv/bin/python scripts/run_sector_group_batch.py \
   --target-mode return \
   --loss rel_score \
   --run-name-suffix relscore
+```
+
+### Run the first shared market-context committee experiment
+
+```bash
+venv/bin/python scripts/run_shared_vn30_committee.py
 ```
 
 ### Run mini-group batches

@@ -1,0 +1,80 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_42",
+        "val_score": 0.008728192413692937,
+        "test_score": -0.012108034640072596
+      },
+      {
+        "model": "lstm_seed_72",
+        "val_score": 0.0075376128139929,
+        "test_score": -0.012922869225967304
+      },
+      {
+        "model": "lstm_seed_82",
+        "val_score": 0.007267462848092987,
+        "test_score": -0.010401823879641503
+      },
+      {
+        "model": "lstm_seed_92",
+        "val_score": 0.006479977208396104,
+        "test_score": -0.012219562788498894
+      },
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.0020148482575618187,
+        "test_score": -0.010729888143490296
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": -0.0015810406366068008,
+        "test_score": 0.001954163251892793
+      }
+    ],
+    "best_by_val": "lstm_seed_42",
+    "top2_by_val": [
+      "lstm_seed_42",
+      "lstm_seed_72"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": 0.015525162130169301,
+        "test_score": -0.016773508765151934
+      },
+      {
+        "model": "lstm_signmag_seed_92",
+        "val_score": 0.012668262502134153,
+        "test_score": -0.0027555697574843663
+      },
+      {
+        "model": "lstm_signmag_seed_72",
+        "val_score": 0.009599989463046077,
+        "test_score": -0.019560247002967657
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": 0.008311714986567131,
+        "test_score": 0.00355928830403085
+      },
+      {
+        "model": "lstm_signmag_seed_82",
+        "val_score": 0.008037600762779151,
+        "test_score": -0.007724572035361588
+      },
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.004509699963820002,
+        "test_score": 0.0027999363954004375
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_52",
+    "top2_by_val": [
+      "lstm_signmag_seed_52",
+      "lstm_signmag_seed_92"
+    ]
+  }
+}
