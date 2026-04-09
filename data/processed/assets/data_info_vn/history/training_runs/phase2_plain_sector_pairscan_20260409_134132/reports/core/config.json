@@ -1,8 +1,0 @@
-{
-  "source_run": "phase2_plain_sector_deepseeds_20260409_134132",
-  "phase2_pair_packaged": true,
-  "models": [
-    "lstm_pair_best_by_val",
-    "lstm_pair_best_by_score"
-  ]
-}

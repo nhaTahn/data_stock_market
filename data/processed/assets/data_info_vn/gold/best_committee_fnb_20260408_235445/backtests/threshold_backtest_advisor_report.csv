@@ -1,0 +1,7 @@
+model,threshold,holding_period,uncertainty_model,uncertainty_quantile,max_uncertainty,uncertainty_side,trade_count,coverage,directional_accuracy,avg_actual_return,avg_strategy_return,cumulative_strategy_return,final_equity,sampled_buy_hold_equity
+committee_best_by_val,0.0,1,,,,,152,0.13047210300429185,0.7039473684210527,0.003997725346710526,0.003997725346710526,0.6076542527,1.8022151950043466,1.8022151950043466
+committee_best_by_val,0.0025,1,,,,,3,0.002575107296137339,1.0,0.0207400345,0.0207400345,0.0622201035,1.0632574195177766,1.0632574195177766
+committee_best_by_val,0.005,1,,,,,0,0.0,,,,0.0,1.0,1.0
+committee_best_by_val,0.01,1,,,,,0,0.0,,,,0.0,1.0,1.0
+committee_best_by_val,0.015,1,,,,,0,0.0,,,,0.0,1.0,1.0
+committee_best_by_val,0.02,1,,,,,0,0.0,,,,0.0,1.0,1.0
