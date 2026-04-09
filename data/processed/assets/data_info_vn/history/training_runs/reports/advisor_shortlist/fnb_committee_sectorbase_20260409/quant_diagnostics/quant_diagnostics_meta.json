@@ -1,0 +1,38 @@
+{
+  "standalone_run": "data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_101741",
+  "standalone_model": "lstm_best_by_val",
+  "committee_dir": "data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert",
+  "standalone_eval": {
+    "base_loss": 0.01701232446357608,
+    "abs_loss": 0.016429609013721355,
+    "rel_score": 0.0342525473871802,
+    "directional_accuracy": 0.46236559139784944
+  },
+  "committee_eval": {
+    "base_loss": 0.016945387888699773,
+    "abs_loss": 0.016080907708965243,
+    "rel_score": 0.051015661925981615,
+    "directional_accuracy": 0.46240276577355227
+  },
+  "best_committee": {
+    "expert_run": "overnight_fnb_w5_mag_base_20260409_101741",
+    "expert_model": "lstm_best_by_val",
+    "market_run": "biaspush_signmag_sector_base_20260409_111710",
+    "market_model": "lstm_signmag_best_by_val",
+    "method": "avg",
+    "weight_expert": 0.9,
+    "agreement_rate": 0.5331878828564236,
+    "overlap_codes": "KDC,SAB,SBT,VNM",
+    "code_count": 4,
+    "val_rows": 997,
+    "test_rows": 1165,
+    "expert_val_rel_score_overlap": 0.021012648466806727,
+    "expert_test_rel_score_overlap": 0.05048465575862915,
+    "market_val_rel_score_overlap": 0.01998011112648701,
+    "market_test_rel_score_overlap": 0.02763443361112805,
+    "committee_val_rel_score": 0.023671497320104873,
+    "committee_test_rel_score": 0.051015661925981615,
+    "committee_val_abs_loss": 0.014789286539598835,
+    "committee_test_abs_loss": 0.016080907708965243
+  }
+}

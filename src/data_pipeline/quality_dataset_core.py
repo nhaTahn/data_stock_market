@@ -171,9 +171,12 @@ def build_clean_dataset(df: pd.DataFrame, ticker_summary: pd.DataFrame, config: 
 
     if config.drop_neighbors_around_events:
         by_code = clean.groupby("code")["event_row"]
-        clean["drop_event_buffer"] = clean["event_row"] | by_code.shift(1).eq(True) | by_code.shift(-1).eq(True)
+        # FIX: Removed shift(-1) — it was look-ahead bias (knowing tomorrow's event).
+        # Only buffer T-1 (cautious lag before a known event), not T+1 (future event).
+        clean["drop_event_buffer"] = clean["event_row"] | by_code.shift(1).eq(True)
     else:
         clean["drop_event_buffer"] = clean["event_row"]
+
 
     keep_mask = ~clean["has_hard_issue"] & ~clean["drop_event_buffer"]
     if config.drop_imputed_value_match:

@@ -1,0 +1,35 @@
+{
+  "source_run": "phase2_plain_sector_deepseeds_20260409_134132",
+  "packaged_seed_pairs": [
+    {
+      "label": "selected_val_142_62",
+      "packaged_model_name": "lstm_pair_selected_val_142_62",
+      "seed_a": "lstm_seed_142",
+      "seed_b": "lstm_seed_62",
+      "val_rel_score": 0.03036735952862102,
+      "test_rel_score": -0.000559200684274952,
+      "val_abs_loss": 0.014687858562683688,
+      "test_abs_loss": 0.01695486376120244
+    },
+    {
+      "label": "balanced_102_82",
+      "packaged_model_name": "lstm_pair_balanced_102_82",
+      "seed_a": "lstm_seed_102",
+      "seed_b": "lstm_seed_82",
+      "val_rel_score": 0.011452017338598575,
+      "test_rel_score": 0.02917556406531785,
+      "val_abs_loss": 0.01497438549995423,
+      "test_abs_loss": 0.01645099663874135
+    },
+    {
+      "label": "frontier_122_72",
+      "packaged_model_name": "lstm_pair_frontier_122_72",
+      "seed_a": "lstm_seed_122",
+      "seed_b": "lstm_seed_72",
+      "val_rel_score": 0.01893445506160163,
+      "test_rel_score": 0.03883391903338351,
+      "val_abs_loss": 0.01486104258801788,
+      "test_abs_loss": 0.016287332067440728
+    }
+  ]
+}

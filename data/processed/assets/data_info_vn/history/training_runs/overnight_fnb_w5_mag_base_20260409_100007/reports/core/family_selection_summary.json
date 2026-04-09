@@ -1,0 +1,100 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.021012648466806727,
+        "test_score": 0.0342525473871802
+      },
+      {
+        "model": "lstm_seed_112",
+        "val_score": 0.018497181502576177,
+        "test_score": 0.008734827524368605
+      },
+      {
+        "model": "lstm_seed_92",
+        "val_score": 0.009946224397413439,
+        "test_score": -0.0016623484416657952
+      },
+      {
+        "model": "lstm_seed_102",
+        "val_score": 0.0065467566217388695,
+        "test_score": 0.006695556125696167
+      },
+      {
+        "model": "lstm_seed_82",
+        "val_score": 0.0064918765235040254,
+        "test_score": 0.02100264842098376
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": 0.001422869500474766,
+        "test_score": -0.020053594865773183
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": -0.00886184377959931,
+        "test_score": 0.004212958118879895
+      },
+      {
+        "model": "lstm_seed_72",
+        "val_score": -0.022587486459637596,
+        "test_score": 0.010759945547901828
+      }
+    ],
+    "best_by_val": "lstm_seed_52",
+    "top2_by_val": [
+      "lstm_seed_52",
+      "lstm_seed_112"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_92",
+        "val_score": 0.01584390653233947,
+        "test_score": 0.006119653145117754
+      },
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": 0.007028213541908079,
+        "test_score": 0.014440147271359782
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": 0.0031464334759895296,
+        "test_score": -0.004532951471536428
+      },
+      {
+        "model": "lstm_signmag_seed_82",
+        "val_score": 0.002013237587382921,
+        "test_score": 0.012625521783475202
+      },
+      {
+        "model": "lstm_signmag_seed_102",
+        "val_score": -0.004428028387256644,
+        "test_score": 0.004185834544537026
+      },
+      {
+        "model": "lstm_signmag_seed_112",
+        "val_score": -0.0064241574203594,
+        "test_score": 0.0005639514901049081
+      },
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": -0.006822287423367435,
+        "test_score": 0.0069464707705423345
+      },
+      {
+        "model": "lstm_signmag_seed_72",
+        "val_score": -0.0164081637848692,
+        "test_score": 0.0013936823727261904
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_92",
+    "top2_by_val": [
+      "lstm_signmag_seed_92",
+      "lstm_signmag_seed_52"
+    ]
+  }
+}

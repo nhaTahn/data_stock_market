@@ -1,0 +1,31 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_52",
+        "val_score": -0.008888009803792007,
+        "test_score": -0.0038291973545636626
+      },
+      {
+        "model": "lstm_seed_99",
+        "val_score": -0.01932424674343669,
+        "test_score": -0.048182023278442676
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": -0.03408719836515606,
+        "test_score": -0.021700983876770774
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": -0.039072113787085305,
+        "test_score": -0.005267266367883883
+      }
+    ],
+    "best_by_val": "lstm_seed_52",
+    "top2_by_val": [
+      "lstm_seed_52",
+      "lstm_seed_99"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "advisor_packaged": true,
+  "source_type": "committee",
+  "source_committee_summary": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert/best_committee_summary.json",
+  "source_predictions": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert/best_committee_predictions.csv",
+  "expert_run": "data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_101741",
+  "market_run": "data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710",
+  "expert_model": "lstm_best_by_val",
+  "market_model": "lstm_signmag_best_by_val",
+  "selection_mode": "stable_band",
+  "committee_method": "avg",
+  "committee_weight_expert": 0.9,
+  "committee_code_count": 4,
+  "committee_overlap_codes": [
+    "KDC",
+    "SAB",
+    "SBT",
+    "VNM"
+  ],
+  "committee_agreement_rate": 0.5331878828564236,
+  "committee_test_rel_score": 0.051015661925981615,
+  "committee_val_rel_score": 0.023671497320104873,
+  "stable_weight_min": 0.85,
+  "stable_weight_max": 0.95,
+  "stable_weight_count": 3,
+  "stable_test_rel_score_median": 0.05089742390201135,
+  "stable_test_rel_score_mean": 0.049209545028677616
+}

@@ -1,0 +1,4 @@
+kind,run_name,label
+train,phase2_plain_sector_deepseeds_20260409_134132,phase2_plain_sector_deepseeds
+pair,phase2_plain_sector_pairscan_20260409_134132,phase2_pairscan
+committee,phase2_plain_sector_pairscan_20260409_134132__committee,phase2_pair_committee

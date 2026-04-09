@@ -1,0 +1,9 @@
+{
+  "committee_dir": "data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert",
+  "quant_dir": "data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/fnb_committee_sectorbase_20260409/quant_diagnostics",
+  "positive_regimes_from_committee_test": [
+    "down__low_vol",
+    "up__high_vol"
+  ],
+  "bucket_min": 9
+}

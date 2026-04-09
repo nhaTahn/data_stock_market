@@ -1,0 +1,59 @@
+{
+  "underfit_signals": [
+    "lstm_best_by_val amplitude_ratio=0.094",
+    "lstm_seed_52 amplitude_ratio=0.097",
+    "lstm_signmag_best_by_val amplitude_ratio=0.114",
+    "lstm_signmag_seed_52 amplitude_ratio=0.114"
+  ],
+  "selection_instability_signals": [],
+  "focus_models": [
+    {
+      "model": "lstm_seed_52",
+      "train_rel_score": 0.0013464380623968708,
+      "val_rel_score": -0.005077921547000264,
+      "test_rel_score": 0.015118847731132146,
+      "train_minus_val": 0.0064243596093971345,
+      "val_minus_test": -0.02019676927813241,
+      "train_minus_test": -0.013772409668735275,
+      "train_directional_accuracy": 0.4330655957161981,
+      "val_directional_accuracy": 0.4236602628918099,
+      "test_directional_accuracy": 0.45822994210090984
+    },
+    {
+      "model": "lstm_best_by_val",
+      "train_rel_score": 0.0003375712705904199,
+      "val_rel_score": 0.006122181427260731,
+      "test_rel_score": 0.014320616670499442,
+      "train_minus_val": -0.005784610156670311,
+      "val_minus_test": -0.008198435243238711,
+      "train_minus_test": -0.013983045399909022,
+      "train_directional_accuracy": 0.4413845859628992,
+      "val_directional_accuracy": 0.45096056622851366,
+      "test_directional_accuracy": 0.46153846153846156
+    },
+    {
+      "model": "lstm_signmag_seed_52",
+      "train_rel_score": 0.0003813646961635664,
+      "val_rel_score": 0.007980102484309581,
+      "test_rel_score": 0.019296562821950358,
+      "train_minus_val": -0.007598737788146015,
+      "val_minus_test": -0.011316460337640777,
+      "train_minus_test": -0.018915198125786792,
+      "train_directional_accuracy": 0.4440619621342513,
+      "val_directional_accuracy": 0.41354903943377147,
+      "test_directional_accuracy": 0.44168734491315137
+    },
+    {
+      "model": "lstm_signmag_best_by_val",
+      "train_rel_score": 0.0003813646961635664,
+      "val_rel_score": 0.007980102484309581,
+      "test_rel_score": 0.019296562821950358,
+      "train_minus_val": -0.007598737788146015,
+      "val_minus_test": -0.011316460337640777,
+      "train_minus_test": -0.018915198125786792,
+      "train_directional_accuracy": 0.4440619621342513,
+      "val_directional_accuracy": 0.41354903943377147,
+      "test_directional_accuracy": 0.44168734491315137
+    }
+  ]
+}

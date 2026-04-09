@@ -1,0 +1,29 @@
+{
+  "manifest": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260409_125108_fnb_phase1_restart/phase1_manifest.csv",
+  "train_rows": 9,
+  "committee_rows": 3,
+  "best_candidate": {
+    "candidate_kind": "committee",
+    "source_label": "committee_plain_narrow_highercap",
+    "run_name": "phase1_plain_narrow_highercap_20260409_125108 + biaspush_signmag_sector_base_20260409_111710",
+    "model_name": "lstm_top2_by_val + lstm_signmag_best_by_val",
+    "val_rel_score": 0.021098201277084727,
+    "test_rel_score": 0.022517747135325394,
+    "pred_pos_rate": NaN,
+    "actual_pos_rate": NaN,
+    "pos_rate_gap": NaN,
+    "pred_abs_over_actual_abs": NaN,
+    "test_corr": NaN,
+    "train_minus_val": NaN,
+    "val_minus_test": -0.0014195458582406673,
+    "trade_count": NaN,
+    "directional_accuracy": NaN,
+    "final_equity": NaN,
+    "selection_score": 0.06983114028939302,
+    "method": "avg",
+    "weight_expert": 0.2,
+    "code_count": 4.0,
+    "stable_weight_count": 4.0,
+    "stable_test_rel_score_median": 0.025057083877258857
+  }
+}

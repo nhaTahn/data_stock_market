@@ -57,10 +57,11 @@ def add_volume_features(df: pd.DataFrame) -> pd.DataFrame:
             df["volume_ma_20"] = by_code["volume_match"].rolling(20).mean().reset_index(level=0, drop=True)
     if "volume_change" not in df.columns and "volume_match" in df.columns:
         df["volume_change"] = by_code["volume_match"].pct_change()
+    # FIX: thêm .replace(0, np.nan) để tránh chia cho 0 khi MA = 0
     if "volume_ratio_5" not in df.columns and {"volume_match", "volume_ma_5"}.issubset(df.columns):
-        df["volume_ratio_5"] = df["volume_match"] / df["volume_ma_5"]
+        df["volume_ratio_5"] = df["volume_match"] / df["volume_ma_5"].replace(0, np.nan)
     if "volume_ratio_20" not in df.columns and {"volume_match", "volume_ma_20"}.issubset(df.columns):
-        df["volume_ratio_20"] = df["volume_match"] / df["volume_ma_20"]
+        df["volume_ratio_20"] = df["volume_match"] / df["volume_ma_20"].replace(0, np.nan)
     if "volume_zscore_20" not in df.columns and "volume_match" in df.columns:
         vol_mean = by_code["volume_match"].rolling(20).mean().reset_index(level=0, drop=True)
         vol_std = by_code["volume_match"].rolling(20).std().reset_index(level=0, drop=True).replace(0, np.nan)
@@ -272,6 +273,13 @@ def add_price_volume_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def add_wyckoff_vsa_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Wyckoff / VSA features.
+
+    Fixes applied vs original:
+    - spread=0 (Doji candles) now produces NaN instead of near-inf via epsilon trick.
+    - Volume is normalised by 20-day rolling max for cross-sectional comparability.
+    - wyckoff_phase_60d requires min_periods=20 (was 1) for statistical validity.
+    """
     df = df.copy()
     if not {"high", "low", "close"}.issubset(df.columns):
         return df
@@ -280,19 +288,34 @@ def add_wyckoff_vsa_features(df: pd.DataFrame) -> pd.DataFrame:
     if volume_column is None:
         return df
 
-    spread = (df["high"] - df["low"]).astype(float) + 1e-8
+    spread = (df["high"] - df["low"]).astype(float)
+    # FIX: replace(0, np.nan) preserves Doji signal; epsilon trick created extreme |inf| values
+    spread_safe = spread.replace(0, np.nan)
+
+    by_code = df.groupby("code", group_keys=False)
+    # FIX: normalise volume by rolling-20 max so features are comparable across stocks
+    vol_max_20 = (
+        by_code[volume_column]
+        .rolling(20, min_periods=1)
+        .max()
+        .reset_index(level=0, drop=True)
+    )
+    vol_norm = df[volume_column] / vol_max_20.replace(0, np.nan)
+
     if "effort_result_ratio" not in df.columns:
-        df["effort_result_ratio"] = df[volume_column] / spread
+        df["effort_result_ratio"] = vol_norm / spread_safe
     if "buying_pressure" not in df.columns:
-        df["buying_pressure"] = ((df["close"] - df["low"]) / spread) * df[volume_column]
+        df["buying_pressure"] = ((df["close"] - df["low"]) / spread_safe) * vol_norm
     if "selling_pressure" not in df.columns:
-        df["selling_pressure"] = ((df["high"] - df["close"]) / spread) * df[volume_column]
+        df["selling_pressure"] = ((df["high"] - df["close"]) / spread_safe) * vol_norm
     if "wyckoff_phase_60d" not in df.columns:
-        by_code = df.groupby("code", group_keys=False)
-        min_60d = by_code["low"].rolling(window=60, min_periods=1).min().reset_index(level=0, drop=True)
-        max_60d = by_code["high"].rolling(window=60, min_periods=1).max().reset_index(level=0, drop=True)
-        df["wyckoff_phase_60d"] = (df["close"] - min_60d) / (max_60d - min_60d + 1e-8)
+        # FIX: min_periods=20 (was 1) — phase has no meaning with fewer than ~20 days
+        min_60d = by_code["low"].rolling(window=60, min_periods=20).min().reset_index(level=0, drop=True)
+        max_60d = by_code["high"].rolling(window=60, min_periods=20).max().reset_index(level=0, drop=True)
+        range_safe = (max_60d - min_60d).replace(0, np.nan)
+        df["wyckoff_phase_60d"] = (df["close"] - min_60d) / range_safe
     return df
+
 
 
 # https://github.com/romanmichaelpaolucci/Quant-Guild-Library/blob/655c00f733382e177b0d7fe8f0db80f244f5e3ed/2025%20Video%20Lectures/6.%20How%20to%20Trade%20with%20the%20Black-Scholes%20Model/Black-ScholesTrading.ipynb
@@ -304,26 +327,35 @@ def black_scholes_call(S, K, sigma, r, t):
 
 
 def add_cross_sectional_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Cross-sectional alpha features.
+
+    FIX: Uses leave-one-out sector/market mean to prevent circular data leakage.
+    Original code included the stock's own return in the sector mean, causing
+    systematic alpha underestimation (especially severe for small sectors <=5 stocks).
+    """
     df = df.copy()
     if "adjust_return" not in df.columns:
         return df
-        
-    # Group by Date to get cross-sectional means
+
+    # Leave-one-out market mean: exclude self from the mean
     if "market_return" not in df.columns:
-        df["market_return"] = df.groupby("Date")["adjust_return"].transform(lambda x: x.mean())
-        
+        date_sum   = df.groupby("Date")["adjust_return"].transform("sum")
+        date_count = df.groupby("Date")["adjust_return"].transform("count")
+        # Subtract self, divide by (N-1); clip(1) avoids div/0 for 1-stock dates
+        df["market_return"] = (date_sum - df["adjust_return"]) / (date_count - 1).clip(lower=1)
+
     if "sector" in df.columns and "sector_return" not in df.columns:
-        df["sector_return"] = df.groupby(["Date", "sector"])["adjust_return"].transform(lambda x: x.mean())
-        
+        sec_sum   = df.groupby(["Date", "sector"])["adjust_return"].transform("sum")
+        sec_count = df.groupby(["Date", "sector"])["adjust_return"].transform("count")
+        df["sector_return"] = (sec_sum - df["adjust_return"]) / (sec_count - 1).clip(lower=1)
+
     if "alpha_market" not in df.columns:
         df["alpha_market"] = df["adjust_return"] - df["market_return"]
-        
+
     if "sector" in df.columns and "alpha_sector" not in df.columns:
         df["alpha_sector"] = df["adjust_return"] - df["sector_return"]
-        
+
     return df
-
-
 
 
 def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:

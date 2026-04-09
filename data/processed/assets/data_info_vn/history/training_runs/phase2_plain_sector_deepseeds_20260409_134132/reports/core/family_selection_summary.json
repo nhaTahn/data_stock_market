@@ -1,0 +1,140 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_142",
+        "val_score": 0.026833776937405962,
+        "test_score": 0.005155223736896253
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": 0.02349403291069352,
+        "test_score": -0.003028205537825457
+      },
+      {
+        "model": "lstm_seed_82",
+        "val_score": 0.01608706257573278,
+        "test_score": 0.014797644615187955
+      },
+      {
+        "model": "lstm_seed_122",
+        "val_score": 0.015550928112113782,
+        "test_score": 0.015563762871914855
+      },
+      {
+        "model": "lstm_seed_102",
+        "val_score": 0.0129332593141821,
+        "test_score": 0.013111195166079836
+      },
+      {
+        "model": "lstm_seed_72",
+        "val_score": 0.012506282089903564,
+        "test_score": 0.018178796823849597
+      },
+      {
+        "model": "lstm_seed_92",
+        "val_score": 0.010307734013205727,
+        "test_score": 0.019135773099333897
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": 0.002837517687946378,
+        "test_score": 0.021127989031167416
+      },
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.0014616491591596947,
+        "test_score": -0.00308967349891498
+      },
+      {
+        "model": "lstm_seed_152",
+        "val_score": -0.0007513023543510577,
+        "test_score": 0.00482491132426377
+      },
+      {
+        "model": "lstm_seed_132",
+        "val_score": -0.013365527087390028,
+        "test_score": 0.018426356634564156
+      },
+      {
+        "model": "lstm_seed_112",
+        "val_score": -0.021788150041754273,
+        "test_score": 0.03276610430919169
+      }
+    ],
+    "best_by_val": "lstm_seed_142",
+    "top2_by_val": [
+      "lstm_seed_142",
+      "lstm_seed_62"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_102",
+        "val_score": 0.02009540359750872,
+        "test_score": 0.02260527835830506
+      },
+      {
+        "model": "lstm_signmag_seed_122",
+        "val_score": 0.018751911171879132,
+        "test_score": 0.007227522233519079
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": 0.01779765901026875,
+        "test_score": 0.0005650183544251286
+      },
+      {
+        "model": "lstm_signmag_seed_72",
+        "val_score": 0.013874447676860302,
+        "test_score": 0.016922702880598495
+      },
+      {
+        "model": "lstm_signmag_seed_142",
+        "val_score": 0.011261822766852836,
+        "test_score": 0.01919646294366051
+      },
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.011046780578249149,
+        "test_score": 0.018699604174157503
+      },
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": 0.009997865156147534,
+        "test_score": 0.01542813027568346
+      },
+      {
+        "model": "lstm_signmag_seed_92",
+        "val_score": 0.006630842170692097,
+        "test_score": 0.012129975757258493
+      },
+      {
+        "model": "lstm_signmag_seed_152",
+        "val_score": 0.004894524016387902,
+        "test_score": 0.007348769330594251
+      },
+      {
+        "model": "lstm_signmag_seed_132",
+        "val_score": -0.0025367548140413643,
+        "test_score": 0.017512738577795672
+      },
+      {
+        "model": "lstm_signmag_seed_112",
+        "val_score": -0.004014870423530326,
+        "test_score": 0.027697973143865795
+      },
+      {
+        "model": "lstm_signmag_seed_82",
+        "val_score": -0.00952278066618062,
+        "test_score": 0.005296411095819686
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_102",
+    "top2_by_val": [
+      "lstm_signmag_seed_102",
+      "lstm_signmag_seed_122"
+    ]
+  }
+}

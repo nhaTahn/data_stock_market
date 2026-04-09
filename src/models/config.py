@@ -58,6 +58,13 @@ class LSTMConfig:
     lr: float = _cfg["hyperparameters"]["lr"]
     loss: str = _cfg["hyperparameters"]["loss"]
     huber_delta: float = _cfg["hyperparameters"]["huber_delta"]
+    rel_score_large_move_quantile: float = _cfg["hyperparameters"].get("rel_score_large_move_quantile", 0.8)
+    rel_score_directional_penalty: float = _cfg["hyperparameters"].get("rel_score_directional_penalty", 0.6)
+    rel_score_confidence_penalty: float = _cfg["hyperparameters"].get("rel_score_confidence_penalty", 0.35)
+    rel_score_confidence_ratio: float = _cfg["hyperparameters"].get("rel_score_confidence_ratio", 0.25)
+    rel_score_weighted_high_quantile: float = _cfg["hyperparameters"].get("rel_score_weighted_high_quantile", 0.8)
+    rel_score_weighted_high_weight: float = _cfg["hyperparameters"].get("rel_score_weighted_high_weight", 3.0)
+    rel_score_weighted_base_weight: float = _cfg["hyperparameters"].get("rel_score_weighted_base_weight", 1.0)
     batch_size: int = _cfg["hyperparameters"]["batch_size"]
     epochs: int = _cfg["hyperparameters"]["epochs"]
     patience: int = _cfg["hyperparameters"]["patience"]

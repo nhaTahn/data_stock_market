@@ -1,0 +1,4 @@
+kind,run_name,label
+package,phase3_pair_frontier_20260409_135338,phase3_packaged_pairs
+backtest,phase3_pair_frontier_20260409_135338,phase3_pair_backtest
+committee,phase3_pair_frontier_20260409_135338__committee,phase3_pair_committee

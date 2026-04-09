@@ -16,6 +16,13 @@ def build_model(
     dropout: float = 0.3,
     loss: str = "mse",
     huber_delta: float = 0.01,
+    rel_score_large_move_quantile: float = 0.8,
+    rel_score_directional_penalty: float = 0.6,
+    rel_score_confidence_penalty: float = 0.35,
+    rel_score_confidence_ratio: float = 0.25,
+    rel_score_weighted_high_quantile: float = 0.8,
+    rel_score_weighted_high_weight: float = 3.0,
+    rel_score_weighted_base_weight: float = 1.0,
     target_scaler: TargetScaler | None = None,
     local_target_normalizer: LocalTargetNormalizer | None = None,
 ) -> keras.Model:
@@ -36,6 +43,13 @@ def build_model(
             target_std=target_scaler.std if target_scaler is not None else 1.0,
             use_target_scaler=target_scaler is not None,
             local_scale_floor=local_target_normalizer.floor if local_target_normalizer is not None else 0.0,
+            large_move_quantile=rel_score_large_move_quantile,
+            directional_penalty_weight=rel_score_directional_penalty,
+            confidence_penalty_weight=rel_score_confidence_penalty,
+            confidence_ratio=rel_score_confidence_ratio,
+            weighted_high_quantile=rel_score_weighted_high_quantile,
+            weighted_high_weight=rel_score_weighted_high_weight,
+            weighted_base_weight=rel_score_weighted_base_weight,
         ),
     )
     return model

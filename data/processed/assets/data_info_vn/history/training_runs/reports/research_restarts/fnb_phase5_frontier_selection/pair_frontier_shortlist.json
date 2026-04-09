@@ -1,0 +1,51 @@
+{
+  "source_pair_grid": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/phase2_plain_sector_pairscan_20260409_134132/reports/core/pair_scan_grid.csv",
+  "val_max": {
+    "pair_name": "lstm_seed_142__lstm_seed_62",
+    "seed_a": "lstm_seed_142",
+    "seed_b": "lstm_seed_62",
+    "val_rel_score": 0.030367359528621,
+    "test_rel_score": -0.0005592006842749,
+    "val_abs_loss": 0.0146878585626836,
+    "test_abs_loss": 0.0169548637612024,
+    "val_pred_abs_over_actual_abs": 0.1160779434027608,
+    "val_pos_rate_gap": -0.197592778335005,
+    "val_corr": 0.0524808126001175,
+    "test_pred_abs_over_actual_abs": 0.1105667063098772,
+    "test_pos_rate_gap": -0.2206008583690986,
+    "test_corr": 0.0837367339223193,
+    "selection_score": 0.0238461727340414
+  },
+  "balanced": {
+    "pair_name": "lstm_seed_142__lstm_seed_72",
+    "seed_a": "lstm_seed_142",
+    "seed_b": "lstm_seed_72",
+    "val_rel_score": 0.0205137653507185,
+    "test_rel_score": 0.0229717216323014,
+    "val_abs_loss": 0.014837119418371,
+    "test_abs_loss": 0.0165561231551691,
+    "val_pred_abs_over_actual_abs": 0.1334778651676414,
+    "val_pos_rate_gap": -0.2708124373119357,
+    "val_corr": 0.0558990281464739,
+    "test_pred_abs_over_actual_abs": 0.1258912493535557,
+    "test_pos_rate_gap": -0.2506437768240342,
+    "test_corr": 0.0659249366809967,
+    "selection_score": 0.009526999579175
+  },
+  "frontier": {
+    "pair_name": "lstm_seed_122__lstm_seed_72",
+    "seed_a": "lstm_seed_122",
+    "seed_b": "lstm_seed_72",
+    "val_rel_score": 0.0189344550616016,
+    "test_rel_score": 0.0388339190333835,
+    "val_abs_loss": 0.0148610425880178,
+    "test_abs_loss": 0.0162873320674407,
+    "val_pred_abs_over_actual_abs": 0.1122546196181857,
+    "val_pos_rate_gap": -0.1965897693079237,
+    "val_corr": 0.0524405036043539,
+    "test_pred_abs_over_actual_abs": 0.1122304646245779,
+    "test_pos_rate_gap": -0.167381974248927,
+    "test_corr": 0.0717139407044356,
+    "selection_score": 0.0121876430864225
+  }
+}

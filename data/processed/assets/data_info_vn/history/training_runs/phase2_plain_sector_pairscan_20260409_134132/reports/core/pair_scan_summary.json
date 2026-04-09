@@ -1,0 +1,38 @@
+{
+  "source_run": "phase2_plain_sector_deepseeds_20260409_134132",
+  "seed_count": 12,
+  "best_pair_by_val": {
+    "pair_name": "lstm_seed_142__lstm_seed_62",
+    "seed_a": "lstm_seed_142",
+    "seed_b": "lstm_seed_62",
+    "val_rel_score": 0.03036735952862102,
+    "test_rel_score": -0.000559200684274952,
+    "val_abs_loss": 0.014687858562683688,
+    "test_abs_loss": 0.01695486376120244,
+    "val_pred_abs_over_actual_abs": 0.11607794340276081,
+    "val_pos_rate_gap": -0.197592778335005,
+    "val_corr": 0.052480812600117506,
+    "test_pred_abs_over_actual_abs": 0.11056670630987725,
+    "test_pos_rate_gap": -0.22060085836909868,
+    "test_corr": 0.08373673392231931,
+    "selection_score": 0.023846172734041483
+  },
+  "best_pair_by_score": {
+    "pair_name": "lstm_seed_142__lstm_seed_62",
+    "seed_a": "lstm_seed_142",
+    "seed_b": "lstm_seed_62",
+    "val_rel_score": 0.03036735952862102,
+    "test_rel_score": -0.000559200684274952,
+    "val_abs_loss": 0.014687858562683688,
+    "test_abs_loss": 0.01695486376120244,
+    "val_pred_abs_over_actual_abs": 0.11607794340276081,
+    "val_pos_rate_gap": -0.197592778335005,
+    "val_corr": 0.052480812600117506,
+    "test_pred_abs_over_actual_abs": 0.11056670630987725,
+    "test_pos_rate_gap": -0.22060085836909868,
+    "test_corr": 0.08373673392231931,
+    "selection_score": 0.023846172734041483
+  },
+  "pair_grid_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/phase2_plain_sector_pairscan_20260409_134132/reports/core/pair_scan_grid.csv",
+  "packaged_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/phase2_plain_sector_pairscan_20260409_134132"
+}

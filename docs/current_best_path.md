@@ -179,6 +179,9 @@ Artifacts gốc:
 
 - [`best_committee_summary.json`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/confirm_vn100_fnb_committee_20260408_235445_r01__committee__fnb/best_committee_summary.json)
 - [`committee_rotation_active.csv`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/confirm_vn100_fnb_committee_20260408_235445_r01/reports/core/committee_rotation_active.csv)
+- package báo cáo gọn cho giảng viên:
+  - [`advisor_summary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/fnb_committee_best_20260409/advisor_summary.md)
+  - [`manifest.json`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/fnb_committee_best_20260409/manifest.json)
 
 Điểm cần nhớ:
 
@@ -215,5 +218,28 @@ Watchlist sector tiếp theo:
 
 - `Ngân hàng`
 - `Dịch vụ tài chính`
+
+## 10. Nếu muốn reset lại hướng F&B để cải thiện thật sự
+
+Sau khi kiểm tra lại plot và bias, hướng nên đọc tiếp là:
+
+- [`fnb_research_restart_plan.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/fnb_research_restart_plan.md)
+
+Artifact tổng hợp candidate hiện tại:
+
+- [`candidate_matrix.csv`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/research_restarts/fnb_restart_20260409/candidate_matrix.csv)
+- [`candidate_matrix_summary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/research_restarts/fnb_restart_20260409/candidate_matrix_summary.md)
+
+Ý nghĩa:
+
+- không tiếp tục tune mù quanh mọi nhánh
+- giữ `sectorbase_committee_new` làm baseline decision layer
+- giữ `plain_fnb_baseline` làm main standalone expert
+- giữ `signmag_sector_base` làm auxiliary signal
+- archive các candidate còn lại
+
+Batch phase 1 hiện tại nên đọc tiếp ở:
+
+- [`relscore_vn_walkthrough_phase1.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/relscore_vn_walkthrough_phase1.md)
 - `Xây dựng và Vật liệu`
 - `Điện, nước & xăng dầu khí đốt`

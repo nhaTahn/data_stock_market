@@ -30,16 +30,43 @@ run_logged() {
   "$@" > "$LOG_DIR/$log_name.log" 2>&1
 }
 
+resolve_available_models() {
+  local run_dir="$1"
+  local requested_csv="$2"
+  python3 - "$run_dir" "$requested_csv" <<'PY'
+import sys
+from pathlib import Path
+
+import pandas as pd
+
+run_dir = Path(sys.argv[1])
+requested = [item.strip() for item in sys.argv[2].split(",") if item.strip()]
+predictions_path = run_dir / "reports" / "core" / "predictions.csv"
+if not predictions_path.exists():
+    raise SystemExit(f"Missing predictions.csv: {predictions_path}")
+df = pd.read_csv(predictions_path)
+available = set(df["model"].dropna().astype(str).unique().tolist())
+selected = [name for name in requested if name in available]
+if not selected:
+    raise SystemExit(f"No requested models found in {predictions_path}. Requested={requested}")
+print(",".join(selected))
+PY
+}
+
 run_internal_committee() {
   local run_name="$1"
   local label="$2"
   local output_name="${run_name}__committee__internal_bias_fix"
+  local expert_models
+  local market_models
+  expert_models="$(resolve_available_models "$RUN_BASE/$run_name" "lstm_best_by_val,lstm_ensemble")"
+  market_models="$(resolve_available_models "$RUN_BASE/$run_name" "lstm_signmag_best_by_val,lstm_signmag_top2_by_val,lstm_signmag_ensemble,lstm_quantile_best_by_val")"
   run_logged "committee_internal_${run_name}" \
     "$PYTHON_BIN" "$ROOT/src/research/committee_relscore_experiment.py" \
     --expert-run "$RUN_BASE/$run_name" \
-    --expert-models "lstm_best_by_val,lstm_ensemble" \
+    --expert-models "$expert_models" \
     --market-run "$RUN_BASE/$run_name" \
-    --market-models "lstm_signmag_best_by_val,lstm_signmag_top2_by_val,lstm_signmag_ensemble,lstm_quantile_best_by_val" \
+    --market-models "$market_models" \
     --methods "avg,agree_only" \
     --weight-step 0.05 \
     --stable-weight-tolerance 0.001 \
@@ -54,12 +81,16 @@ run_shared_committee() {
   local run_name="$1"
   local label="$2"
   local output_name="${run_name}__committee__shared_vn100"
+  local expert_models
+  local market_models
+  expert_models="$(resolve_available_models "$RUN_BASE/$run_name" "lstm_best_by_val,lstm_ensemble")"
+  market_models="$(resolve_available_models "$RUN_BASE/$SHARED_CONTEXT_RUN" "lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble")"
   run_logged "committee_shared_${run_name}" \
     "$PYTHON_BIN" "$ROOT/src/research/committee_relscore_experiment.py" \
     --expert-run "$RUN_BASE/$run_name" \
-    --expert-models "lstm_best_by_val,lstm_ensemble" \
+    --expert-models "$expert_models" \
     --market-run "$RUN_BASE/$SHARED_CONTEXT_RUN" \
-    --market-models "lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble" \
+    --market-models "$market_models" \
     --methods "avg,agree_only" \
     --weight-step 0.05 \
     --stable-weight-tolerance 0.001 \

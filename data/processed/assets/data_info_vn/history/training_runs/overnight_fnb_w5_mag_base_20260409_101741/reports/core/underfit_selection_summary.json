@@ -1,0 +1,65 @@
+{
+  "underfit_signals": [
+    "lstm_best_by_val amplitude_ratio=0.132",
+    "lstm_best_by_val pos_rate_gap=-0.281",
+    "lstm_seed_52 amplitude_ratio=0.132",
+    "lstm_seed_52 pos_rate_gap=-0.281",
+    "lstm_signmag_best_by_val amplitude_ratio=0.079",
+    "lstm_signmag_best_by_val pos_rate_gap=-0.342",
+    "lstm_signmag_seed_52 amplitude_ratio=0.067",
+    "lstm_signmag_seed_52 pos_rate_gap=-0.205"
+  ],
+  "selection_instability_signals": [
+    "lstm top2_test_gap=0.026"
+  ],
+  "focus_models": [
+    {
+      "model": "lstm_seed_52",
+      "train_rel_score": -0.006101109842138408,
+      "val_rel_score": 0.021012648466806727,
+      "test_rel_score": 0.0342525473871802,
+      "train_minus_val": -0.027113758308945135,
+      "val_minus_test": -0.013239898920373472,
+      "train_minus_test": -0.04035365722931861,
+      "train_directional_accuracy": 0.433872047432342,
+      "val_directional_accuracy": 0.4529828109201213,
+      "test_directional_accuracy": 0.46236559139784944
+    },
+    {
+      "model": "lstm_best_by_val",
+      "train_rel_score": -0.006101109842138408,
+      "val_rel_score": 0.021012648466806727,
+      "test_rel_score": 0.0342525473871802,
+      "train_minus_val": -0.027113758308945135,
+      "val_minus_test": -0.013239898920373472,
+      "train_minus_test": -0.04035365722931861,
+      "train_directional_accuracy": 0.433872047432342,
+      "val_directional_accuracy": 0.4529828109201213,
+      "test_directional_accuracy": 0.46236559139784944
+    },
+    {
+      "model": "lstm_signmag_seed_52",
+      "train_rel_score": -0.0003727248915508241,
+      "val_rel_score": 0.007028213541908079,
+      "test_rel_score": 0.014440147271359782,
+      "train_minus_val": -0.0074009384334589035,
+      "val_minus_test": -0.007411933729451703,
+      "train_minus_test": -0.014812872162910606,
+      "train_directional_accuracy": 0.43119441522425167,
+      "val_directional_accuracy": 0.44388270980788674,
+      "test_directional_accuracy": 0.4507857733664185
+    },
+    {
+      "model": "lstm_signmag_best_by_val",
+      "train_rel_score": -0.002817826984996996,
+      "val_rel_score": 0.01584390653233947,
+      "test_rel_score": 0.006119653145117754,
+      "train_minus_val": -0.018661733517336465,
+      "val_minus_test": 0.009724253387221715,
+      "train_minus_test": -0.00893748013011475,
+      "train_directional_accuracy": 0.43941857129195755,
+      "val_directional_accuracy": 0.4539939332659252,
+      "test_directional_accuracy": 0.44995864350703063
+    }
+  ]
+}

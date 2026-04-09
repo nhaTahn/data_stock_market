@@ -1,0 +1,61 @@
+{
+  "label": "F&B 10-stock expert",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/20260409_144422_fnb10",
+  "standalone_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144422_fnb10_expert",
+  "committee_source_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/overnight_shared_vn100_w20_u64_32_relscore_20260408_173407__committee__fnb10",
+  "committee_packaged_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/20260409_144422_fnb10/committee_packaged_run",
+  "standalone_model": "lstm_ensemble",
+  "committee_model": "committee_best_by_val",
+  "standalone_backtest_summary": {
+    "lstm_ensemble": {
+      "threshold": 0.0025,
+      "holding_period": 1,
+      "uncertainty_model": null,
+      "uncertainty_quantile": null,
+      "max_uncertainty": null,
+      "uncertainty_side": null,
+      "trade_count": 216,
+      "coverage": 0.07412491420727522,
+      "directional_accuracy": 0.625,
+      "avg_actual_return": 0.005829907113425925,
+      "avg_strategy_return": 0.005829907113425925,
+      "cumulative_strategy_return": 1.2592599365,
+      "final_equity": 3.1853179681235417,
+      "sampled_buy_hold_equity": 3.1853179681235417
+    }
+  },
+  "committee_backtest_summary": {
+    "committee_best_by_val": {
+      "threshold": 0.0025,
+      "holding_period": 1,
+      "uncertainty_model": null,
+      "uncertainty_quantile": null,
+      "max_uncertainty": null,
+      "uncertainty_side": null,
+      "trade_count": 173,
+      "coverage": 0.05936856554564173,
+      "directional_accuracy": 0.6358381502890174,
+      "avg_actual_return": 0.006597075206358382,
+      "avg_strategy_return": 0.006597075206358382,
+      "cumulative_strategy_return": 1.1412940107,
+      "final_equity": 2.862979538369784,
+      "sampled_buy_hold_equity": 2.862979538369784
+    }
+  },
+  "standalone_bias": {
+    "test_rows": 2914,
+    "pred_pos_rate": 0.4605353466026081,
+    "actual_pos_rate": 0.4478380233356211,
+    "pred_abs_mean": 0.0010774435306407002,
+    "actual_abs_mean": 0.01379585524526424,
+    "pred_abs_over_actual_abs": 0.0780990747935369
+  },
+  "committee_bias": {
+    "test_rows": 2914,
+    "pred_pos_rate": 0.4605353466026081,
+    "actual_pos_rate": 0.4478380233356211,
+    "pred_abs_mean": 0.0010417882768975978,
+    "actual_abs_mean": 0.01379585524526424,
+    "pred_abs_over_actual_abs": 0.07551458451662262
+  }
+}

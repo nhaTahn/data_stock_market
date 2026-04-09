@@ -1,0 +1,1016 @@
+{
+  "apply": true,
+  "target_count": 996,
+  "total_bytes": 5418002185,
+  "kept_runs": [
+    "20260409_144422_bank12_expert",
+    "20260409_144422_bds15_expert",
+    "20260409_144422_fnb10_expert"
+  ],
+  "kept_prefixes": [
+    "reports",
+    "reports"
+  ],
+  "rows": [
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_seed_42.csv",
+      "size_bytes": 945,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_seed_52.csv",
+      "size_bytes": 943,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_seed_62.csv",
+      "size_bytes": 1271,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_seed_72.csv",
+      "size_bytes": 1034,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_seed_82.csv",
+      "size_bytes": 2071,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_signmag_seed_42.csv",
+      "size_bytes": 2539,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/history_signmag_seed_52.csv",
+      "size_bytes": 2940,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_seed_42.keras",
+      "size_bytes": 320430,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_seed_52.keras",
+      "size_bytes": 320458,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_seed_62.keras",
+      "size_bytes": 320458,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_seed_72.keras",
+      "size_bytes": 320458,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_seed_82.keras",
+      "size_bytes": 320458,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_signmag_seed_42.keras",
+      "size_bytes": 334564,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144224_fnb10_expert/model_signmag_seed_52.keras",
+      "size_bytes": 334564,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_102.csv",
+      "size_bytes": 1194,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_112.csv",
+      "size_bytes": 1017,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_42.csv",
+      "size_bytes": 1276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_52.csv",
+      "size_bytes": 940,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_62.csv",
+      "size_bytes": 1112,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_72.csv",
+      "size_bytes": 1018,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_82.csv",
+      "size_bytes": 1764,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_seed_92.csv",
+      "size_bytes": 2083,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_102.csv",
+      "size_bytes": 2341,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_112.csv",
+      "size_bytes": 2351,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_42.csv",
+      "size_bytes": 2544,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_52.csv",
+      "size_bytes": 2348,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_62.csv",
+      "size_bytes": 2748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_72.csv",
+      "size_bytes": 2338,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_82.csv",
+      "size_bytes": 7527,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/history_signmag_seed_92.csv",
+      "size_bytes": 3122,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_102.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_112.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_42.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_52.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_62.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_72.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_82.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_seed_92.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag.keras",
+      "size_bytes": 279268,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_102.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_112.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_42.keras",
+      "size_bytes": 279268,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_52.keras",
+      "size_bytes": 279268,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_62.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_72.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_82.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/model_signmag_seed_92.keras",
+      "size_bytes": 279276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/core/history.csv",
+      "size_bytes": 1276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/core/history_signmag.csv",
+      "size_bytes": 2544,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/core/metric_details.json",
+      "size_bytes": 19531,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/core/predictions.csv",
+      "size_bytes": 32535763,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/metric_series",
+      "size_bytes": 4077955,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_base_20260409_111710/reports/plots",
+      "size_bytes": 12308615,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_102.csv",
+      "size_bytes": 1194,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_112.csv",
+      "size_bytes": 1017,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_42.csv",
+      "size_bytes": 1276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_52.csv",
+      "size_bytes": 940,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_62.csv",
+      "size_bytes": 1112,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_72.csv",
+      "size_bytes": 1018,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_82.csv",
+      "size_bytes": 1764,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_seed_92.csv",
+      "size_bytes": 2083,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_102.csv",
+      "size_bytes": 2349,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_112.csv",
+      "size_bytes": 2344,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_42.csv",
+      "size_bytes": 2557,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_52.csv",
+      "size_bytes": 3348,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_62.csv",
+      "size_bytes": 2545,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_72.csv",
+      "size_bytes": 2739,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_82.csv",
+      "size_bytes": 6909,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/history_signmag_seed_92.csv",
+      "size_bytes": 3735,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_102.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_112.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_42.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_52.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_62.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_72.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_82.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_seed_92.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_102.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_112.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_42.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_52.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_62.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_72.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_82.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/model_signmag_seed_92.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/core/history.csv",
+      "size_bytes": 1276,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/core/history_signmag.csv",
+      "size_bytes": 2557,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/core/metric_details.json",
+      "size_bytes": 19530,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/core/predictions.csv",
+      "size_bytes": 32541378,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/metric_series",
+      "size_bytes": 4077885,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/plots",
+      "size_bytes": 12310984,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_102.csv",
+      "size_bytes": 1439,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_112.csv",
+      "size_bytes": 1176,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_42.csv",
+      "size_bytes": 1273,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_52.csv",
+      "size_bytes": 947,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_62.csv",
+      "size_bytes": 946,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_72.csv",
+      "size_bytes": 942,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_82.csv",
+      "size_bytes": 2257,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_seed_92.csv",
+      "size_bytes": 1670,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_102.csv",
+      "size_bytes": 2351,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_112.csv",
+      "size_bytes": 2350,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_42.csv",
+      "size_bytes": 2352,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_52.csv",
+      "size_bytes": 2951,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_62.csv",
+      "size_bytes": 2949,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_72.csv",
+      "size_bytes": 2739,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_82.csv",
+      "size_bytes": 2545,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/history_signmag_seed_92.csv",
+      "size_bytes": 3939,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_102.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_112.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_42.keras",
+      "size_bytes": 265136,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_52.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_62.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_72.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_82.keras",
+      "size_bytes": 265164,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_seed_92.keras",
+      "size_bytes": 265170,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_102.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_112.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_42.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_52.keras",
+      "size_bytes": 279110,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_62.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_72.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_82.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/model_signmag_seed_92.keras",
+      "size_bytes": 279118,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/core/history.csv",
+      "size_bytes": 1273,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/core/history_signmag.csv",
+      "size_bytes": 2352,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/core/metric_details.json",
+      "size_bytes": 19534,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/core/predictions.csv",
+      "size_bytes": 32548974,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/metric_series",
+      "size_bytes": 4078600,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_nomagw_20260409_111710/reports/plots",
+      "size_bytes": 12254393,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_102.csv",
+      "size_bytes": 934,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_112.csv",
+      "size_bytes": 1106,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_42.csv",
+      "size_bytes": 943,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_52.csv",
+      "size_bytes": 942,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_62.csv",
+      "size_bytes": 947,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_72.csv",
+      "size_bytes": 1195,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_82.csv",
+      "size_bytes": 1681,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_seed_92.csv",
+      "size_bytes": 1026,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_102.csv",
+      "size_bytes": 5311,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_112.csv",
+      "size_bytes": 8083,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_42.csv",
+      "size_bytes": 2349,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_52.csv",
+      "size_bytes": 2538,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_62.csv",
+      "size_bytes": 2739,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_72.csv",
+      "size_bytes": 2536,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_82.csv",
+      "size_bytes": 2540,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/history_signmag_seed_92.csv",
+      "size_bytes": 2541,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model.keras",
+      "size_bytes": 306607,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_102.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_112.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_42.keras",
+      "size_bytes": 306607,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_52.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_62.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_72.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_82.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_seed_92.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag.keras",
+      "size_bytes": 320740,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_102.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_112.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_42.keras",
+      "size_bytes": 320740,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_52.keras",
+      "size_bytes": 320740,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_62.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_72.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_82.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/model_signmag_seed_92.keras",
+      "size_bytes": 320748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/core/history.csv",
+      "size_bytes": 943,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/core/history_signmag.csv",
+      "size_bytes": 2349,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/core/metric_details.json",
+      "size_bytes": 19518,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/core/predictions.csv",
+      "size_bytes": 30549347,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/metric_series",
+      "size_bytes": 3835169,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710/reports/plots",
+      "size_bytes": 11940484,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_102.csv",
+      "size_bytes": 934,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_112.csv",
+      "size_bytes": 1106,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_42.csv",
+      "size_bytes": 943,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_52.csv",
+      "size_bytes": 942,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_62.csv",
+      "size_bytes": 947,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_72.csv",
+      "size_bytes": 1195,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_82.csv",
+      "size_bytes": 1681,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_seed_92.csv",
+      "size_bytes": 1026,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_102.csv",
+      "size_bytes": 3142,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_112.csv",
+      "size_bytes": 3146,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_42.csv",
+      "size_bytes": 2348,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_52.csv",
+      "size_bytes": 2348,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_62.csv",
+      "size_bytes": 3128,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_72.csv",
+      "size_bytes": 2748,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_82.csv",
+      "size_bytes": 2544,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/history_signmag_seed_92.csv",
+      "size_bytes": 2346,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model.keras",
+      "size_bytes": 306607,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_102.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_112.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_42.keras",
+      "size_bytes": 306607,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_52.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_62.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_72.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_82.keras",
+      "size_bytes": 306635,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_seed_92.keras",
+      "size_bytes": 306641,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_rawmag_20260409_111710/model_signmag.keras",
+      "size_bytes": 320582,
+      "is_dir": false
+    }
+  ]
+}

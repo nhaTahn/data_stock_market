@@ -1,0 +1,18 @@
+{
+  "lstm_signmag_best_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "uncertainty_model": null,
+    "uncertainty_quantile": null,
+    "max_uncertainty": null,
+    "uncertainty_side": null,
+    "trade_count": 1788,
+    "coverage": 0.5104196403083071,
+    "directional_accuracy": 0.540268456375839,
+    "avg_actual_return": 0.0006075711753914986,
+    "avg_strategy_return": 0.0006075711753914986,
+    "cumulative_strategy_return": 1.0863372615999995,
+    "final_equity": 1.9207905095926523,
+    "sampled_buy_hold_equity": 1.9207905095926523
+  }
+}

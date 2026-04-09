@@ -9,6 +9,9 @@ venv/
 env/
 test_venv/
 .venv/
+.agents
+skills-lock.json
+scripts/
 
 # macOS system files
 .DS_Store

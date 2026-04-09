@@ -1,0 +1,30 @@
+{
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "advisor_packaged": true,
+  "source_type": "committee",
+  "source_committee_summary": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/phase4_frontier12272_only__committee/best_committee_summary.json",
+  "source_predictions": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/phase4_frontier12272_only__committee/best_committee_predictions.csv",
+  "expert_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/phase3_pair_frontier_20260409_135338",
+  "market_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710",
+  "expert_model": "lstm_pair_frontier_122_72",
+  "market_model": "lstm_signmag_ensemble",
+  "selection_mode": "stable_band",
+  "committee_method": "agree_only",
+  "committee_weight_expert": 0.9,
+  "committee_code_count": 4,
+  "committee_overlap_codes": [
+    "KDC",
+    "SAB",
+    "SBT",
+    "VNM"
+  ],
+  "committee_agreement_rate": 0.6705546697994462,
+  "committee_test_rel_score": 0.03926752363401598,
+  "committee_val_rel_score": 0.02062274654944196,
+  "stable_weight_min": 0.6,
+  "stable_weight_max": 0.95,
+  "stable_weight_count": 6,
+  "stable_test_rel_score_median": 0.03914634248922738,
+  "stable_test_rel_score_mean": 0.03900929065931619
+}

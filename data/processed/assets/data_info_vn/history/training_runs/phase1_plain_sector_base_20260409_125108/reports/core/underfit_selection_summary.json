@@ -1,0 +1,61 @@
+{
+  "underfit_signals": [
+    "lstm_best_by_val amplitude_ratio=0.126",
+    "lstm_seed_52 amplitude_ratio=0.162",
+    "lstm_signmag_best_by_val amplitude_ratio=0.100",
+    "lstm_signmag_seed_52 amplitude_ratio=0.069"
+  ],
+  "selection_instability_signals": [
+    "lstm_signmag top2_test_gap=0.022"
+  ],
+  "focus_models": [
+    {
+      "model": "lstm_seed_52",
+      "train_rel_score": -0.006476842168504193,
+      "val_rel_score": 0.0014616491591596947,
+      "test_rel_score": -0.00308967349891498,
+      "train_minus_val": -0.007938491327663888,
+      "val_minus_test": 0.004551322658074675,
+      "train_minus_test": -0.0033871686695892134,
+      "train_directional_accuracy": 0.43773081657775953,
+      "val_directional_accuracy": 0.39332659251769464,
+      "test_directional_accuracy": 0.45375972342264476
+    },
+    {
+      "model": "lstm_best_by_val",
+      "train_rel_score": 0.0008322574694493712,
+      "val_rel_score": 0.02349403291069352,
+      "test_rel_score": -0.003028205537825457,
+      "train_minus_val": -0.022661775441244147,
+      "val_minus_test": 0.026522238448518975,
+      "train_minus_test": 0.003860463007274828,
+      "train_directional_accuracy": 0.4452195322117357,
+      "val_directional_accuracy": 0.45601617795753285,
+      "test_directional_accuracy": 0.47450302506482284
+    },
+    {
+      "model": "lstm_signmag_seed_52",
+      "train_rel_score": -0.0017824526379850436,
+      "val_rel_score": 0.009997865156147534,
+      "test_rel_score": 0.01542813027568346,
+      "train_minus_val": -0.011780317794132578,
+      "val_minus_test": -0.005430265119535926,
+      "train_minus_test": -0.017210582913668504,
+      "train_directional_accuracy": 0.43137053754616334,
+      "val_directional_accuracy": 0.41354903943377147,
+      "test_directional_accuracy": 0.452895419187554
+    },
+    {
+      "model": "lstm_signmag_best_by_val",
+      "train_rel_score": 0.008350948800897817,
+      "val_rel_score": 0.02009540359750872,
+      "test_rel_score": 0.02260527835830506,
+      "train_minus_val": -0.011744454796610904,
+      "val_minus_test": -0.002509874760796338,
+      "train_minus_test": -0.014254329557407242,
+      "train_directional_accuracy": 0.45024620434961016,
+      "val_directional_accuracy": 0.43377148634984836,
+      "test_directional_accuracy": 0.44684528954191877
+    }
+  ]
+}

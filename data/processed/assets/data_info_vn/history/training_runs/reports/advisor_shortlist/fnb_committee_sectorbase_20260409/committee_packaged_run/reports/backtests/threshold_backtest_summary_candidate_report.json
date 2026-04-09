@@ -1,0 +1,18 @@
+{
+  "committee_best_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "uncertainty_model": null,
+    "uncertainty_quantile": null,
+    "max_uncertainty": null,
+    "uncertainty_side": null,
+    "trade_count": 152,
+    "coverage": 0.13047210300429185,
+    "directional_accuracy": 0.7105263157894737,
+    "avg_actual_return": 0.00430060800986842,
+    "avg_strategy_return": 0.00430060800986842,
+    "cumulative_strategy_return": 0.6536924175,
+    "final_equity": 1.886134972856358,
+    "sampled_buy_hold_equity": 1.886134972856358
+  }
+}

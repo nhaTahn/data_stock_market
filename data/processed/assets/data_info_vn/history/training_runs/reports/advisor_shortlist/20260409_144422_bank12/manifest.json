@@ -1,0 +1,61 @@
+{
+  "label": "Ng\u00e2n h\u00e0ng 12-stock expert",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/20260409_144422_bank12",
+  "standalone_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/20260409_144422_bank12_expert",
+  "committee_source_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/overnight_shared_vn100_w20_u64_32_relscore_20260408_173407__committee__bank12",
+  "committee_packaged_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/20260409_144422_bank12/committee_packaged_run",
+  "standalone_model": "lstm_signmag_best_by_val",
+  "committee_model": "committee_best_by_val",
+  "standalone_backtest_summary": {
+    "lstm_signmag_best_by_val": {
+      "threshold": 0.0,
+      "holding_period": 1,
+      "uncertainty_model": null,
+      "uncertainty_quantile": null,
+      "max_uncertainty": null,
+      "uncertainty_side": null,
+      "trade_count": 1788,
+      "coverage": 0.5104196403083071,
+      "directional_accuracy": 0.540268456375839,
+      "avg_actual_return": 0.0006075711753914986,
+      "avg_strategy_return": 0.0006075711753914986,
+      "cumulative_strategy_return": 1.0863372615999995,
+      "final_equity": 1.9207905095926523,
+      "sampled_buy_hold_equity": 1.9207905095926523
+    }
+  },
+  "committee_backtest_summary": {
+    "committee_best_by_val": {
+      "threshold": 0.0025,
+      "holding_period": 1,
+      "uncertainty_model": null,
+      "uncertainty_quantile": null,
+      "max_uncertainty": null,
+      "uncertainty_side": null,
+      "trade_count": 338,
+      "coverage": 0.09648872395089923,
+      "directional_accuracy": 0.5798816568047337,
+      "avg_actual_return": 0.003355970266863905,
+      "avg_strategy_return": 0.003355970266863905,
+      "cumulative_strategy_return": 1.1343179501999998,
+      "final_equity": 2.766884852268481,
+      "sampled_buy_hold_equity": 2.766884852268481
+    }
+  },
+  "standalone_bias": {
+    "test_rows": 3503,
+    "pred_pos_rate": 0.5104196403083071,
+    "actual_pos_rate": 0.47559234941478734,
+    "pred_abs_mean": 0.0012087888720165973,
+    "actual_abs_mean": 0.014277710868512705,
+    "pred_abs_over_actual_abs": 0.08466265237814805
+  },
+  "committee_bias": {
+    "test_rows": 3503,
+    "pred_pos_rate": 0.5104196403083071,
+    "actual_pos_rate": 0.47559234941478734,
+    "pred_abs_mean": 0.0011874066645291177,
+    "actual_abs_mean": 0.014277710868512705,
+    "pred_abs_over_actual_abs": 0.08316505884341449
+  }
+}

@@ -77,6 +77,7 @@ from src.visualization.model_plots import (
 )
 
 SPLIT_NAMES = ("train", "val", "test")
+REL_SCORE_LOSSES = {"rel_score", "rel_score_sharp"}
 
 
 def parse_lstm_units(value: str) -> int | list[int]:
@@ -110,8 +111,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lstm-units", type=parse_lstm_units, default=None)
     parser.add_argument("--dropout", type=float, default=None)
     parser.add_argument("--lr", type=float, default=None)
-    parser.add_argument("--loss", choices=["mse", "huber", "directional_huber", "rel_score"], default=None)
+    parser.add_argument("--loss", choices=["mse", "huber", "directional_huber", "rel_score", "rel_score_sharp", "rel_score_weighted"], default=None)
     parser.add_argument("--huber-delta", type=float, default=None)
+    parser.add_argument("--rel-score-large-move-quantile", type=float, default=None)
+    parser.add_argument("--rel-score-directional-penalty", type=float, default=None)
+    parser.add_argument("--rel-score-confidence-penalty", type=float, default=None)
+    parser.add_argument("--rel-score-confidence-ratio", type=float, default=None)
+    parser.add_argument("--rel-score-weighted-high-quantile", type=float, default=None)
+    parser.add_argument("--rel-score-weighted-high-weight", type=float, default=None)
+    parser.add_argument("--rel-score-weighted-base-weight", type=float, default=None)
     parser.add_argument("--batch-size", type=int, default=None)
     parser.add_argument("--epochs", type=int, default=None)
     parser.add_argument("--patience", type=int, default=None)
@@ -187,6 +195,20 @@ def override_config(args: argparse.Namespace):
         config.loss = args.loss
     if args.huber_delta is not None:
         config.huber_delta = args.huber_delta
+    if args.rel_score_large_move_quantile is not None:
+        config.rel_score_large_move_quantile = args.rel_score_large_move_quantile
+    if args.rel_score_directional_penalty is not None:
+        config.rel_score_directional_penalty = args.rel_score_directional_penalty
+    if args.rel_score_confidence_penalty is not None:
+        config.rel_score_confidence_penalty = args.rel_score_confidence_penalty
+    if args.rel_score_confidence_ratio is not None:
+        config.rel_score_confidence_ratio = args.rel_score_confidence_ratio
+    if args.rel_score_weighted_high_quantile is not None:
+        config.rel_score_weighted_high_quantile = args.rel_score_weighted_high_quantile
+    if args.rel_score_weighted_high_weight is not None:
+        config.rel_score_weighted_high_weight = args.rel_score_weighted_high_weight
+    if args.rel_score_weighted_base_weight is not None:
+        config.rel_score_weighted_base_weight = args.rel_score_weighted_base_weight
     if args.batch_size is not None:
         config.batch_size = args.batch_size
     if args.epochs is not None:
@@ -372,7 +394,7 @@ def build_training_target_array(
     local_scale_values: np.ndarray | None = None,
 ) -> np.ndarray:
     target_values = np.asarray(target_values, dtype=np.float32).reshape(-1, 1)
-    if loss_name != "rel_score":
+    if loss_name not in REL_SCORE_LOSSES:
         return target_values.reshape(-1)
     if local_scale_values is None:
         return target_values
@@ -746,6 +768,13 @@ def build_config_payload(
         "lr": config.lr,
         "loss": config.loss,
         "huber_delta": config.huber_delta,
+        "rel_score_large_move_quantile": config.rel_score_large_move_quantile,
+        "rel_score_directional_penalty": config.rel_score_directional_penalty,
+        "rel_score_confidence_penalty": config.rel_score_confidence_penalty,
+        "rel_score_confidence_ratio": config.rel_score_confidence_ratio,
+        "rel_score_weighted_high_quantile": config.rel_score_weighted_high_quantile,
+        "rel_score_weighted_high_weight": config.rel_score_weighted_high_weight,
+        "rel_score_weighted_base_weight": config.rel_score_weighted_base_weight,
         "batch_size": config.batch_size,
         "epochs": config.epochs,
         "patience": config.patience,
@@ -1025,6 +1054,13 @@ def main() -> None:
             lr=config.lr,
             loss=config.loss,
             huber_delta=config.huber_delta,
+            rel_score_large_move_quantile=config.rel_score_large_move_quantile,
+            rel_score_directional_penalty=config.rel_score_directional_penalty,
+            rel_score_confidence_penalty=config.rel_score_confidence_penalty,
+            rel_score_confidence_ratio=config.rel_score_confidence_ratio,
+            rel_score_weighted_high_quantile=config.rel_score_weighted_high_quantile,
+            rel_score_weighted_high_weight=config.rel_score_weighted_high_weight,
+            rel_score_weighted_base_weight=config.rel_score_weighted_base_weight,
             batch_size=config.batch_size,
             epochs=config.epochs,
             patience=config.patience,
@@ -1152,6 +1188,13 @@ def main() -> None:
                 lr=config.lr,
                 loss=config.loss,
                 huber_delta=config.huber_delta,
+                rel_score_large_move_quantile=config.rel_score_large_move_quantile,
+                rel_score_directional_penalty=config.rel_score_directional_penalty,
+                rel_score_confidence_penalty=config.rel_score_confidence_penalty,
+                rel_score_confidence_ratio=config.rel_score_confidence_ratio,
+                rel_score_weighted_high_quantile=config.rel_score_weighted_high_quantile,
+                rel_score_weighted_high_weight=config.rel_score_weighted_high_weight,
+                rel_score_weighted_base_weight=config.rel_score_weighted_base_weight,
                 batch_size=config.batch_size,
                 epochs=config.epochs,
                 patience=config.patience,
@@ -1206,6 +1249,13 @@ def main() -> None:
                 lr=config.lr,
                 loss=config.loss,
                 huber_delta=config.huber_delta,
+                rel_score_large_move_quantile=config.rel_score_large_move_quantile,
+                rel_score_directional_penalty=config.rel_score_directional_penalty,
+                rel_score_confidence_penalty=config.rel_score_confidence_penalty,
+                rel_score_confidence_ratio=config.rel_score_confidence_ratio,
+                rel_score_weighted_high_quantile=config.rel_score_weighted_high_quantile,
+                rel_score_weighted_high_weight=config.rel_score_weighted_high_weight,
+                rel_score_weighted_base_weight=config.rel_score_weighted_base_weight,
                 batch_size=config.batch_size,
                 epochs=config.epochs,
                 patience=config.patience,
@@ -1264,6 +1314,13 @@ def main() -> None:
                 lr=config.lr,
                 loss=config.loss,
                 huber_delta=config.huber_delta,
+                rel_score_large_move_quantile=config.rel_score_large_move_quantile,
+                rel_score_directional_penalty=config.rel_score_directional_penalty,
+                rel_score_confidence_penalty=config.rel_score_confidence_penalty,
+                rel_score_confidence_ratio=config.rel_score_confidence_ratio,
+                rel_score_weighted_high_quantile=config.rel_score_weighted_high_quantile,
+                rel_score_weighted_high_weight=config.rel_score_weighted_high_weight,
+                rel_score_weighted_base_weight=config.rel_score_weighted_base_weight,
                 batch_size=config.batch_size,
                 epochs=config.epochs,
                 patience=config.patience,
