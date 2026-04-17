@@ -39,22 +39,27 @@ class ExpertPreset:
 EXPERT_PRESETS: dict[str, ExpertPreset] = {
     "fnb": ExpertPreset(
         name="fnb",
-        expert_run_name="mini_tpdouong_g06_uncertainty_sidecar",
+        expert_run_name="vn30gold_expert_fnb_current",
         expert_models="lstm_best_by_val,lstm_ensemble",
     ),
     "bds": ExpertPreset(
         name="bds",
-        expert_run_name="mini_bat_ong_san_g01_return_w20_pruned_v2",
+        expert_run_name="vn30gold_expert_bds_current",
         expert_models="lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble",
     ),
     "bank": ExpertPreset(
         name="bank",
-        expert_run_name="mini_ngan_hang_g02_return_w20_pruned_v2",
+        expert_run_name="vn30gold_expert_bank_current",
+        expert_models="lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble",
+    ),
+    "finance": ExpertPreset(
+        name="finance",
+        expert_run_name="vn30gold_expert_finance_current",
         expert_models="lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble",
     ),
     "chung": ExpertPreset(
         name="chung",
-        expert_run_name="sector_dich_vu_tai_chinh_return_w5_relscore",
+        expert_run_name="vn30gold_expert_finance_current",
         expert_models="lstm_best_by_val,lstm_signmag_best_by_val,lstm_ensemble",
     ),
 }
@@ -93,6 +98,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rotation-min-val-rel-score", type=float, default=0.015)
     parser.add_argument("--rotation-min-stable-weight-count", type=int, default=2)
     parser.add_argument("--rotation-min-stable-test-median", type=float, default=0.0)
+    parser.add_argument("--skip-missing-experts", action="store_true")
     parser.add_argument("--log-base", type=Path, default=DEFAULT_LOG_BASE)
     return parser.parse_args()
 
@@ -370,6 +376,17 @@ def main() -> None:
     if not args.skip_committee:
         for preset in presets:
             if not preset.expert_run_dir.exists():
+                if args.skip_missing_experts:
+                    print(
+                        json.dumps(
+                            {
+                                "warning": "missing_expert_run",
+                                "preset": preset.name,
+                                "expert_run_dir": str(preset.expert_run_dir),
+                            }
+                        )
+                    )
+                    continue
                 raise FileNotFoundError(f"Expert run not found: {preset.expert_run_dir}")
             committee_cmd, output_name = build_committee_command(
                 args,

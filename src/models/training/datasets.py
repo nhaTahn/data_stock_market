@@ -23,6 +23,7 @@ def build_sequence_dataset(
     target_column: str,
     window_size: int,
     extra_meta_columns: tuple[str, ...] = (),
+    sequence_normalization: str = "none",
 ) -> tuple[np.ndarray, np.ndarray, pd.DataFrame]:
     x_list = []
     y_list = []
@@ -39,7 +40,13 @@ def build_sequence_dataset(
 
         for end_idx in range(window_size - 1, len(group)):
             start_idx = end_idx - window_size + 1
-            x_list.append(feature_values[start_idx : end_idx + 1])
+            window = feature_values[start_idx : end_idx + 1].copy()
+            if sequence_normalization == "instance_zscore":
+                mean = np.nanmean(window, axis=0, keepdims=True)
+                std = np.nanstd(window, axis=0, keepdims=True)
+                std = np.where(np.isfinite(std) & (std > 1e-6), std, 1.0)
+                window = (window - mean) / std
+            x_list.append(window)
             y_list.append(target_values[end_idx])
             meta_rows.append(
                 {

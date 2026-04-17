@@ -14,7 +14,7 @@ The active research direction is intentionally narrower than a full "advanced qu
 - optional experimental branch: `--enable-quantile-family` adds a minimal `q50/q90` head without rewriting the framework
 - current use of quantiles is primarily as a backtest sidecar via `q90 - q50`, not as the main model family
 
-If you are starting work in this repo, read [`docs/current_best_path.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/current_best_path.md) first. Then use [`docs/models_code_map.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/models_code_map.md) to navigate the code layout, [`docs/relscore_quantile_roadmap.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/relscore_quantile_roadmap.md) for medium-term direction, and [`docs/lstm_model_glossary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/lstm_model_glossary.md) to decode run/model names.
+If you are starting work in this repo, read [`docs/models_code_map.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/models_code_map.md) to navigate the code layout, [`docs/feature_correlation_report.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/feature_correlation_report.md) for the pruned feature baseline, [`docs/vn30_paper_phase1_20260412.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/vn30_paper_phase1_20260412.md) for the latest VN30 representation experiment, and [`docs/lstm_model_glossary.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/lstm_model_glossary.md) to decode run/model names.
 
 ## Main Flow
 
@@ -31,7 +31,6 @@ If you are starting work in this repo, read [`docs/current_best_path.md`](/Users
 - [`scripts/run_train.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_train.py): main training entrypoint.
 - [`scripts/run_sector_group_batch.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_sector_group_batch.py): sector-wide batch runner from search summary.
 - [`scripts/run_sector_mini_group_batch.py`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_sector_mini_group_batch.py): mini-group batch runner.
-- [`scripts/run_overnight.sh`](/Users/lap15111/Documents/research-paper/data_stock_market/scripts/run_overnight.sh): heavier overnight batch workflow.
 - [`src/data_pipeline/`](/Users/lap15111/Documents/research-paper/data_stock_market/src/data_pipeline): dataset build pipeline.
 - [`src/utils/features.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/utils/features.py): feature engineering.
 - [`src/models/config.py`](/Users/lap15111/Documents/research-paper/data_stock_market/src/models/config.py): default training configuration.
@@ -104,7 +103,7 @@ If your goal is to make progress without adding more complexity, focus on these 
 
 Current best reading order:
 
-- first: [`docs/current_best_path.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/current_best_path.md)
+- first: [`docs/feature_correlation_report.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/feature_correlation_report.md)
 - second: [`docs/models_code_map.md`](/Users/lap15111/Documents/research-paper/data_stock_market/docs/models_code_map.md)
 - third: [`data/processed/assets/data_info_vn/history/training_runs/README.md`](/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/README.md)
 - fourth: the shortlisted run folders named in that document

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
+from tensorflow import keras
 
 from src.models.architectures import (
     build_attention_model,
@@ -52,25 +53,30 @@ def fit_model(
     local_target_scale_values: np.ndarray | None = None,
     sample_weight: np.ndarray | None = None,
     val_sample_weight: np.ndarray | None = None,
+    initial_model_path: str | None = None,
 ):
-    model = build_model(
-        window_size=window_size,
-        num_features=num_features,
-        lstm_units=lstm_units,
-        lr=lr,
-        dropout=dropout,
-        loss=loss,
-        huber_delta=huber_delta,
-        rel_score_large_move_quantile=rel_score_large_move_quantile,
-        rel_score_directional_penalty=rel_score_directional_penalty,
-        rel_score_confidence_penalty=rel_score_confidence_penalty,
-        rel_score_confidence_ratio=rel_score_confidence_ratio,
-        rel_score_weighted_high_quantile=rel_score_weighted_high_quantile,
-        rel_score_weighted_high_weight=rel_score_weighted_high_weight,
-        rel_score_weighted_base_weight=rel_score_weighted_base_weight,
-        target_scaler=target_scaler,
-        local_target_normalizer=local_target_normalizer,
-    )
+    if initial_model_path:
+        model = keras.models.load_model(initial_model_path)
+        model.optimizer.learning_rate = lr
+    else:
+        model = build_model(
+            window_size=window_size,
+            num_features=num_features,
+            lstm_units=lstm_units,
+            lr=lr,
+            dropout=dropout,
+            loss=loss,
+            huber_delta=huber_delta,
+            rel_score_large_move_quantile=rel_score_large_move_quantile,
+            rel_score_directional_penalty=rel_score_directional_penalty,
+            rel_score_confidence_penalty=rel_score_confidence_penalty,
+            rel_score_confidence_ratio=rel_score_confidence_ratio,
+            rel_score_weighted_high_quantile=rel_score_weighted_high_quantile,
+            rel_score_weighted_high_weight=rel_score_weighted_high_weight,
+            rel_score_weighted_base_weight=rel_score_weighted_base_weight,
+            target_scaler=target_scaler,
+            local_target_normalizer=local_target_normalizer,
+        )
     callbacks = build_training_callbacks(
         x_val,
         y_val,

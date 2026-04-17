@@ -1,0 +1,28 @@
+{
+  "report_md": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/cluster_edge_report.md",
+  "primary_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/primary_fnb_committee",
+  "secondary_vn30_bds_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821",
+  "overview_plot": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/plots/cluster_edge_relscore_overview.png",
+  "secondary_bds_plots": {
+    "test_actual_vs_prediction_mean": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/secondary_vn30_bds/plots/test_actual_vs_prediction_mean.png",
+    "test_scatter": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/secondary_vn30_bds/plots/test_scatter.png",
+    "test_signal_bucket_actual_mean": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/secondary_vn30_bds/plots/test_signal_bucket_actual_mean.png",
+    "test_backtest_equity_curve": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/advisor_shortlist/cluster_edge_clean_20260410/secondary_vn30_bds/plots/test_backtest_equity_curve.png",
+    "bias": {
+      "test_rows": 1725,
+      "pred_pos_rate": 0.5368115942028986,
+      "actual_pos_rate": 0.4811594202898551,
+      "pred_abs_mean": 0.0028204190387513045,
+      "actual_abs_mean": 0.018126532227710143,
+      "pred_abs_over_actual_abs": 0.1555961726887679
+    }
+  },
+  "sources": {
+    "fnb_committee_summary": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert/best_committee_summary.json",
+    "fnb_standalone_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_100007",
+    "fnb_market_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710",
+    "vn30_bds_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821",
+    "vn30_broad_run": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30_paper_repr_20260412_paper_phase1",
+    "vn30_broad_note": "/Users/lap15111/Documents/research-paper/data_stock_market/docs/vn30_paper_phase1_20260412.md"
+  }
+}

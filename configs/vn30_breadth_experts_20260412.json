@@ -1,0 +1,12 @@
+[
+  {
+    "name": "bankfull",
+    "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30_bank_breadth_full11_w10_mag_20260412_dualbroad",
+    "model": "lstm_signmag_best_by_val"
+  },
+  {
+    "name": "consumer",
+    "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30_consumer_retail_mix7_w10_mag_20260412_dualbroad",
+    "model": "lstm_signmag_top2_by_val"
+  }
+]

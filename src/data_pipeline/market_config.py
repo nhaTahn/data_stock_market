@@ -19,12 +19,17 @@ class CleanConfig:
     recent_active_tolerance_days: int
     drop_imputed_value_match: bool
     drop_neighbors_around_events: bool
+    force_include_codes: tuple[str, ...] = ()
     max_close_return_abs: float | None = None
     max_adjust_return_abs: float | None = None
     exchange_limits: dict | None = None
 
 
-def get_market_config(market: str, train_start_date: str | None = None) -> CleanConfig:
+def get_market_config(
+    market: str,
+    train_start_date: str | None = None,
+    force_include_codes: tuple[str, ...] = (),
+) -> CleanConfig:
     market = market.upper()
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         config_data = json.load(f)
@@ -45,6 +50,7 @@ def get_market_config(market: str, train_start_date: str | None = None) -> Clean
         recent_active_tolerance_days=m_cfg["recent_active_tolerance_days"],
         drop_imputed_value_match=m_cfg["drop_imputed_value_match"],
         drop_neighbors_around_events=m_cfg["drop_neighbors_around_events"],
+        force_include_codes=force_include_codes,
         max_close_return_abs=m_cfg.get("max_close_return_abs"),
         max_adjust_return_abs=m_cfg.get("max_adjust_return_abs"),
         exchange_limits=m_cfg.get("exchange_limits"),

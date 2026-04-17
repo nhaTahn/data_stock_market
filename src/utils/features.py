@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+from scipy.signal import savgol_filter
 from scipy.stats import norm
 
 
@@ -356,6 +357,185 @@ def add_cross_sectional_features(df: pd.DataFrame) -> pd.DataFrame:
         df["alpha_sector"] = df["adjust_return"] - df["sector_return"]
 
     return df
+
+
+def _forward_fill_array(values: np.ndarray) -> np.ndarray:
+    series = pd.Series(values, dtype=float).replace([np.inf, -np.inf], np.nan)
+    series = series.ffill().bfill()
+    return series.to_numpy(dtype=float)
+
+
+def _causal_fft_last(values: np.ndarray, keep_ratio: float = 0.25, window: int = 32) -> np.ndarray:
+    clean = _forward_fill_array(values)
+    out = np.empty_like(clean, dtype=float)
+    for idx in range(len(clean)):
+        start_idx = max(0, idx - window + 1)
+        segment = clean[start_idx : idx + 1]
+        if len(segment) < 4:
+            out[idx] = segment[-1]
+            continue
+        coeffs = np.fft.rfft(segment)
+        keep_n = max(2, int(np.ceil(len(coeffs) * keep_ratio)))
+        coeffs[keep_n:] = 0.0
+        recon = np.fft.irfft(coeffs, n=len(segment))
+        out[idx] = float(recon[-1])
+    return out
+
+
+def _haar_dwt(signal: np.ndarray) -> tuple[np.ndarray, list[np.ndarray]]:
+    current = signal.astype(float)
+    details: list[np.ndarray] = []
+    while len(current) > 1:
+        if len(current) % 2 == 1:
+            current = np.append(current, current[-1])
+        avg = (current[0::2] + current[1::2]) / np.sqrt(2.0)
+        diff = (current[0::2] - current[1::2]) / np.sqrt(2.0)
+        details.append(diff)
+        current = avg
+    return current, details
+
+
+def _haar_idwt(approx: np.ndarray, details: list[np.ndarray]) -> np.ndarray:
+    current = approx.astype(float)
+    for diff in reversed(details):
+        restored = np.empty(diff.size * 2, dtype=float)
+        restored[0::2] = (current + diff) / np.sqrt(2.0)
+        restored[1::2] = (current - diff) / np.sqrt(2.0)
+        current = restored
+    return current
+
+
+def _soft_threshold(values: np.ndarray, threshold: float) -> np.ndarray:
+    return np.sign(values) * np.maximum(np.abs(values) - threshold, 0.0)
+
+
+def _causal_haar_last(values: np.ndarray, threshold_scale: float = 0.8, window: int = 32) -> np.ndarray:
+    clean = _forward_fill_array(values)
+    out = np.empty_like(clean, dtype=float)
+    for idx in range(len(clean)):
+        start_idx = max(0, idx - window + 1)
+        segment = clean[start_idx : idx + 1]
+        if len(segment) < 8:
+            out[idx] = segment[-1]
+            continue
+        target_len = 1 << int(np.ceil(np.log2(len(segment))))
+        padded = np.pad(segment, (0, target_len - len(segment)), mode="edge")
+        approx, details = _haar_dwt(padded)
+        finest = details[0]
+        sigma = np.median(np.abs(finest)) / 0.6745 if len(finest) else 0.0
+        threshold = threshold_scale * sigma * np.sqrt(2.0 * np.log(max(len(padded), 2)))
+        shrinked = [_soft_threshold(detail, threshold) for detail in details]
+        recon = _haar_idwt(approx, shrinked)[: len(segment)]
+        out[idx] = float(recon[-1])
+    return out
+
+
+def _causal_savgol_last(values: np.ndarray, window: int = 11, polyorder: int = 2) -> np.ndarray:
+    clean = _forward_fill_array(values)
+    out = np.empty_like(clean, dtype=float)
+    for idx in range(len(clean)):
+        start_idx = max(0, idx - window + 1)
+        segment = clean[start_idx : idx + 1]
+        if len(segment) < polyorder + 2:
+            out[idx] = segment[-1]
+            continue
+        local_window = min(window, len(segment))
+        if local_window % 2 == 0:
+            local_window -= 1
+        if local_window < polyorder + 2:
+            deg = min(polyorder, len(segment) - 1)
+            xs = np.arange(len(segment), dtype=float)
+            coeffs = np.polyfit(xs, segment, deg)
+            out[idx] = float(np.polyval(coeffs, xs[-1]))
+            continue
+        fitted = savgol_filter(segment, window_length=local_window, polyorder=min(polyorder, local_window - 1), mode="interp")
+        out[idx] = float(fitted[-1])
+    return out
+
+
+def _causal_kalman(values: np.ndarray, process_scale: float = 1e-3, measurement_scale: float = 5e-3) -> np.ndarray:
+    clean = _forward_fill_array(values)
+    out = np.empty_like(clean, dtype=float)
+    out[0] = clean[0]
+    diff_var = np.nanvar(np.diff(clean)) if len(clean) > 1 else 0.0
+    level_var = np.nanvar(clean)
+    q = max(diff_var * process_scale, 1e-8)
+    r = max(level_var * measurement_scale, q * 10.0, 1e-8)
+    state_cov = 1.0
+    for idx in range(1, len(clean)):
+        pred = out[idx - 1]
+        pred_cov = state_cov + q
+        gain = pred_cov / (pred_cov + r)
+        out[idx] = pred + gain * (clean[idx] - pred)
+        state_cov = (1.0 - gain) * pred_cov
+    return out
+
+
+def add_paper_price_delta_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    by_code = df.groupby("code", group_keys=False)
+    price_columns = [col for col in ("open", "high", "low", "close") if col in df.columns]
+    for column in price_columns:
+        level_name = f"{column}_level_20"
+        delta_name = f"{column}_delta_1"
+        if level_name not in df.columns:
+            rolling_mean = by_code[column].rolling(20, min_periods=5).mean().reset_index(level=0, drop=True)
+            df[level_name] = df[column] / rolling_mean.replace(0, np.nan) - 1.0
+        if delta_name not in df.columns:
+            df[delta_name] = by_code[column].pct_change()
+    volume_column = "volume_match" if "volume_match" in df.columns else "volume" if "volume" in df.columns else None
+    if volume_column is not None:
+        if "volume_level_20" not in df.columns:
+            volume_mean = by_code[volume_column].rolling(20, min_periods=5).mean().reset_index(level=0, drop=True)
+            df["volume_level_20"] = df[volume_column] / volume_mean.replace(0, np.nan) - 1.0
+        if "volume_delta_1" not in df.columns:
+            df["volume_delta_1"] = by_code[volume_column].pct_change()
+    return df
+
+
+def add_causal_denoise_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    price_column = "adjust" if "adjust" in df.columns else "close" if "close" in df.columns else None
+    if price_column is None:
+        return df
+
+    work_frames: list[pd.DataFrame] = []
+    for _, group in df.groupby("code", sort=False):
+        part = group.sort_values("Date", kind="stable").copy()
+        price = part[price_column].to_numpy(dtype=float)
+        fft_trend = _causal_fft_last(price)
+        wavelet_trend = _causal_haar_last(price)
+        savgol_trend = _causal_savgol_last(price)
+        kalman_trend = _causal_kalman(price)
+        denom = np.where(np.abs(price) > 1e-8, price, np.nan)
+
+        part["fft_trend_gap_32"] = fft_trend / denom - 1.0
+        part["wavelet_trend_gap_32"] = wavelet_trend / denom - 1.0
+        part["savgol_trend_gap_11"] = savgol_trend / denom - 1.0
+        part["kalman_trend_gap"] = kalman_trend / denom - 1.0
+
+        part["fft_noise_ratio_32"] = (price - fft_trend) / denom
+        part["wavelet_noise_ratio_32"] = (price - wavelet_trend) / denom
+        part["savgol_noise_ratio_11"] = (price - savgol_trend) / denom
+        part["kalman_noise_ratio"] = (price - kalman_trend) / denom
+
+        consensus_trend = (fft_trend + wavelet_trend + savgol_trend + kalman_trend) / 4.0
+        part["denoise_consensus_gap"] = consensus_trend / denom - 1.0
+        part["denoise_method_dispersion"] = np.nanstd(
+            np.vstack([fft_trend, wavelet_trend, savgol_trend, kalman_trend]),
+            axis=0,
+        ) / denom
+        work_frames.append(part)
+
+    out = pd.concat(work_frames, ignore_index=True)
+    return out.sort_values(["code", "Date"], kind="stable").reset_index(drop=True)
+
+
+def ensure_paper_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = ensure_columns(df)
+    df = add_paper_price_delta_features(df)
+    df = add_causal_denoise_features(df)
+    return df.replace([np.inf, -np.inf], np.nan)
 
 
 def ensure_columns(df: pd.DataFrame) -> pd.DataFrame:

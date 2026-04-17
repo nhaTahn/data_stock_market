@@ -1,5 +1,0 @@
-sector,stock,best_by_summary,best_val_rel_score,best_test_from_summary_run,best_by_test,best_test_rel_score,best_test_val_rel_score
-airline,VJC,"volume_ma_20,close_position",0.4914072625371594,0.17649045548955145,"volume_ma_5,volume_ma_20",0.2710588433706439,0.2285941409542621
-bank,ACB,"volume_ma_20,true_range",0.3425921783506194,0.08067311147314615,"volume_ma_20,volume_zscore_20",0.2347878087877718,0.1965628011134257
-bank,CTG,"momentum_5,signed_volume",0.1981091149718318,0.16794608775767628,"vwap_gap,signed_volume",0.1771527912778203,0.090392123521124
-retail_real_estate,VRE,"true_range,atr_gap",0.46967681478680434,0.041947367189297924,"volume_match,volume_change",0.0936358403696434,0.2398808754744303

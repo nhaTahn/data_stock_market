@@ -1,11 +1,11 @@
 {
-  "expert_run": "data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_101741",
-  "market_run": "data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710",
+  "expert_run": "data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_100007",
+  "market_run": "data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710",
   "selection_mode": "stable_band",
   "best_committee": {
-    "expert_run": "overnight_fnb_w5_mag_base_20260409_101741",
+    "expert_run": "overnight_fnb_w5_mag_base_20260409_100007",
     "expert_model": "lstm_best_by_val",
-    "market_run": "biaspush_signmag_sector_base_20260409_111710",
+    "market_run": "biaspush_signmag_narrow_rawmag_20260409_111710",
     "market_model": "lstm_signmag_best_by_val",
     "method": "avg",
     "weight_expert": 0.9,
@@ -26,9 +26,9 @@
   "results_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert/committee_grid_results.csv",
   "stability_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/committee_experiments/biaspush_sectorbase__committee__plain_expert/committee_stability_summary.csv",
   "best_committee_stability": {
-    "expert_run": "overnight_fnb_w5_mag_base_20260409_101741",
+    "expert_run": "overnight_fnb_w5_mag_base_20260409_100007",
     "expert_model": "lstm_best_by_val",
-    "market_run": "biaspush_signmag_sector_base_20260409_111710",
+    "market_run": "biaspush_signmag_narrow_rawmag_20260409_111710",
     "market_model": "lstm_signmag_best_by_val",
     "method": "avg",
     "code_count": 4,

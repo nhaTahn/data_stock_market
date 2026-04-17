@@ -166,6 +166,13 @@ def build_clean_dataset(df: pd.DataFrame, ticker_summary: pd.DataFrame, config: 
         & (ticker_summary["days_since_latest"] <= config.recent_active_tolerance_days)
     ]["code"]
 
+    if config.force_include_codes:
+        forced_codes = ticker_summary[
+            ticker_summary["code"].isin(config.force_include_codes)
+            & (ticker_summary["days_since_latest"] <= config.recent_active_tolerance_days)
+        ]["code"]
+        valid_tickers = pd.Index(valid_tickers).union(pd.Index(forced_codes))
+
     clean = df[df["code"].isin(valid_tickers)].copy()
     clean["event_row"] = _get_event_mask(clean, config)
 

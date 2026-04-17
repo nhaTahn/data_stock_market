@@ -226,4 +226,4 @@ data/processed/assets/data_info_vn/history/training_runs/feature_correlation/
 | [`src/utils/features.py`](src/utils/features.py) | Định nghĩa từng feature |
 | [`src/evaluation/metric.py`](src/evaluation/metric.py) | Định nghĩa rel_score |
 | [`docs/lstm_model_glossary.md`](docs/lstm_model_glossary.md) | Cách đọc tên model, seed, ensemble, best_by_val |
-| [`docs/relscore_quantile_roadmap.md`](docs/relscore_quantile_roadmap.md) | Roadmap tổng thể |
+| [`docs/vn30_paper_phase1_20260412.md`](docs/vn30_paper_phase1_20260412.md) | Ghi chú phase mới nhất cho VN30 |

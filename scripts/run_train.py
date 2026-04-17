@@ -69,6 +69,7 @@ from src.models.training_recipe import (
     TrainingRecipe,
     build_training_recipe,
 )
+from src.utils.features import ensure_paper_features
 from src.utils.vn_sector import load_industry_reference
 from src.visualization.model_plots import (
     save_actual_vs_prediction_plot,
@@ -104,6 +105,7 @@ def parse_csv_list(value: str | None) -> tuple[str, ...]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train and evaluate LSTM for stock forecasting.")
     parser.add_argument("--data-path", type=Path, default=None)
+    parser.add_argument("--start-date", default=None)
     parser.add_argument("--target-mode", choices=["price", "growth", "return", "return_3d", "return_5d"], default="return_3d")
     parser.add_argument("--train-end-date", default=None)
     parser.add_argument("--val-end-date", default=None)
@@ -141,6 +143,8 @@ def parse_args() -> argparse.Namespace:
         default=",".join(DEFAULT_CONTEXT_FEATURES),
     )
     parser.add_argument("--target-normalizer", default=None)
+    parser.add_argument("--sequence-normalization", choices=["none", "instance_zscore"], default=None)
+    parser.add_argument("--feature-phase", choices=["none", "paper_v1", "paper_denoise_v1"], default=None)
     parser.add_argument("--lstm-seeds", type=parse_seed_list, default=None)
     parser.add_argument("--signmag-signed-loss-weight", type=float, default=None)
     parser.add_argument("--signmag-sign-loss-weight", type=float, default=None)
@@ -172,6 +176,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--fk-train-fraction", type=float, default=None)
     parser.add_argument("--fk-top-k", type=int, default=None)
     parser.add_argument("--run-name", default=None)
+    parser.add_argument("--initial-model-path", type=Path, default=None)
     return parser.parse_args()
 
 
@@ -221,6 +226,10 @@ def override_config(args: argparse.Namespace):
         config.feature_columns = tuple(item.strip() for item in args.feature_columns.split(",") if item.strip())
     if args.target_normalizer is not None:
         config.target_normalizer = args.target_normalizer.strip() or None
+    if args.sequence_normalization is not None:
+        config.sequence_normalization = args.sequence_normalization
+    if args.feature_phase is not None:
+        config.feature_phase = args.feature_phase
     if args.lstm_seeds is not None:
         config.lstm_seeds = list(args.lstm_seeds)
     if args.signmag_signed_loss_weight is not None:
@@ -757,6 +766,7 @@ def build_config_payload(
     x_test, _, _ = splits["test"]
     return {
         "data_path": str(config.data_path),
+        "start_date": args.start_date,
         "target_mode": config.target_mode,
         "target_column": config.target_column,
         "feature_columns": list(config.feature_columns),
@@ -779,6 +789,8 @@ def build_config_payload(
         "epochs": config.epochs,
         "patience": config.patience,
         "target_normalizer": config.target_normalizer,
+        "sequence_normalization": config.sequence_normalization,
+        "feature_phase": config.feature_phase,
         "lstm_seeds": list(config.lstm_seeds),
         "signmag_signed_loss_weight": config.signmag_signed_loss_weight,
         "signmag_sign_loss_weight": config.signmag_sign_loss_weight,
@@ -811,6 +823,7 @@ def build_config_payload(
         "fk_top_k": config.fk_top_k,
         "monitor_metric": monitor_metric,
         "stocks": args.stocks,
+        "initial_model_path": str(args.initial_model_path) if args.initial_model_path is not None else None,
         "use_all_features": bool(args.use_all_features),
         "raw_rows_train": int(len(train_df)),
         "raw_rows_val": int(len(val_df)),
@@ -884,6 +897,11 @@ def main() -> None:
     stocks_arg = selected_stocks_arg if selected_stocks_arg is not None else args.stocks
 
     df = load_frame(config.data_path, stocks_arg)
+    if config.feature_phase in {"paper_v1", "paper_denoise_v1"}:
+        df = ensure_paper_features(df)
+    if args.start_date:
+        start_ts = pd.Timestamp(args.start_date)
+        df = df[df["Date"] >= start_ts].copy()
     df = filter_frame_by_sector(df, args.sector)
     
     feature_recipe = stock_recipe
@@ -939,6 +957,7 @@ def main() -> None:
         config.target_column,
         config.window_size,
         extra_meta_columns=extra_meta_columns,
+        sequence_normalization=config.sequence_normalization,
     )
     splits = split_sequence_dataset(x_all, y_all, meta_all, config.train_end_date, config.val_end_date)
     x_train, y_train, meta_train = splits["train"]
@@ -1072,6 +1091,7 @@ def main() -> None:
             local_target_scale_values=val_target_norm_values,
             sample_weight=train_sample_weight,
             val_sample_weight=val_sample_weight,
+            initial_model_path=str(args.initial_model_path) if args.initial_model_path is not None else None,
         )
         if seed_idx == 0:
             first_model = model

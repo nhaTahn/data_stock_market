@@ -69,6 +69,8 @@ class LSTMConfig:
     epochs: int = _cfg["hyperparameters"]["epochs"]
     patience: int = _cfg["hyperparameters"]["patience"]
     target_normalizer: str | None = _cfg["hyperparameters"].get("target_normalizer")
+    sequence_normalization: str = _cfg["hyperparameters"].get("sequence_normalization", "none")
+    feature_phase: str = _cfg["hyperparameters"].get("feature_phase", "none")
     lstm_seeds: list[int] = field(default_factory=lambda: list(_cfg["hyperparameters"].get("lstm_seeds", [42])))
     signmag_signed_loss_weight: float = _cfg["hyperparameters"].get("signmag_signed_loss_weight", 1.5)
     signmag_sign_loss_weight: float = _cfg["hyperparameters"].get("signmag_sign_loss_weight", 0.15)

@@ -1,6 +1,0 @@
-candidate_type,candidate_name,val_rel_score,test_rel_score,test_amp_ratio
-val_max,lstm_seed_142__lstm_seed_62,0.030367359528621,-0.0005592006842749,0.1105667063098772
-balanced,lstm_seed_142__lstm_seed_72,0.0205137653507185,0.0229717216323014,0.1258912493535557
-frontier,lstm_seed_122__lstm_seed_72,0.0189344550616016,0.0388339190333835,0.1122304646245779
-current_standalone_best,data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_101741:lstm_best_by_val,0.021012648466806727,0.0342525473871802,
-current_committee_best,data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_sector_base_20260409_111710:lstm_signmag_best_by_val,0.023671497320104873,0.051015661925981615,
