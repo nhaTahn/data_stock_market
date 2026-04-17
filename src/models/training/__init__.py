@@ -1,64 +1,49 @@
-from src.models.training.datasets import build_sequence_dataset, split_frame_by_date, split_sequence_dataset
-from src.models.training.fitters import (
-    fit_attention_model,
-    fit_event_gated_model,
-    fit_model,
-    fit_quantile_model,
-    fit_sign_magnitude_model,
-)
-from src.models.training.prediction import extract_prediction_array, predict
-from src.models.training.sample_weights import (
-    build_event_gated_sample_weights,
-    build_magnitude_sample_weights,
-    build_sign_magnitude_sample_weights,
-)
-from src.models.training.scalers import (
-    FeatureScaler,
-    LocalTargetNormalizer,
-    TargetScaler,
-    apply_feature_scaler,
-    apply_local_target_normalizer,
-    apply_target_scaler,
-    fit_feature_scaler,
-    fit_local_target_normalizer,
-    fit_target_scaler,
-    inverse_local_target_normalizer,
-    inverse_target_scaler_values,
-)
-from src.models.training.seeds import set_global_seed
-from src.models.training.targets import (
-    build_event_gated_targets,
-    build_sign_magnitude_targets,
-    primary_target_array,
-)
+from __future__ import annotations
 
-__all__ = [
-    "FeatureScaler",
-    "LocalTargetNormalizer",
-    "TargetScaler",
-    "apply_feature_scaler",
-    "apply_local_target_normalizer",
-    "apply_target_scaler",
-    "build_event_gated_sample_weights",
-    "build_event_gated_targets",
-    "build_magnitude_sample_weights",
-    "build_sequence_dataset",
-    "build_sign_magnitude_sample_weights",
-    "build_sign_magnitude_targets",
-    "extract_prediction_array",
-    "fit_attention_model",
-    "fit_event_gated_model",
-    "fit_feature_scaler",
-    "fit_local_target_normalizer",
-    "fit_model",
-    "fit_quantile_model",
-    "fit_sign_magnitude_model",
-    "fit_target_scaler",
-    "inverse_local_target_normalizer",
-    "inverse_target_scaler_values",
-    "predict",
-    "primary_target_array",
-    "set_global_seed",
-    "split_frame_by_date",
-    "split_sequence_dataset",
-]
+from importlib import import_module
+
+
+_EXPORTS = {
+    "FeatureScaler": ("src.models.training.scalers", "FeatureScaler"),
+    "LocalTargetNormalizer": ("src.models.training.scalers", "LocalTargetNormalizer"),
+    "TargetScaler": ("src.models.training.scalers", "TargetScaler"),
+    "apply_feature_scaler": ("src.models.training.scalers", "apply_feature_scaler"),
+    "apply_local_target_normalizer": ("src.models.training.scalers", "apply_local_target_normalizer"),
+    "apply_target_scaler": ("src.models.training.scalers", "apply_target_scaler"),
+    "build_event_gated_sample_weights": ("src.models.training.sample_weights", "build_event_gated_sample_weights"),
+    "build_event_gated_targets": ("src.models.training.targets", "build_event_gated_targets"),
+    "build_magnitude_sample_weights": ("src.models.training.sample_weights", "build_magnitude_sample_weights"),
+    "build_sequence_dataset": ("src.models.training.datasets", "build_sequence_dataset"),
+    "build_sign_magnitude_sample_weights": ("src.models.training.sample_weights", "build_sign_magnitude_sample_weights"),
+    "build_sign_magnitude_targets": ("src.models.training.targets", "build_sign_magnitude_targets"),
+    "extract_prediction_array": ("src.models.training.prediction", "extract_prediction_array"),
+    "fit_attention_model": ("src.models.training.fitters", "fit_attention_model"),
+    "fit_event_gated_model": ("src.models.training.fitters", "fit_event_gated_model"),
+    "fit_feature_scaler": ("src.models.training.scalers", "fit_feature_scaler"),
+    "fit_local_target_normalizer": ("src.models.training.scalers", "fit_local_target_normalizer"),
+    "fit_model": ("src.models.training.fitters", "fit_model"),
+    "fit_pcie_lite_model": ("src.models.training.fitters", "fit_pcie_lite_model"),
+    "fit_quantile_model": ("src.models.training.fitters", "fit_quantile_model"),
+    "fit_signal_attention_model": ("src.models.training.fitters", "fit_signal_attention_model"),
+    "fit_sign_magnitude_model": ("src.models.training.fitters", "fit_sign_magnitude_model"),
+    "fit_target_scaler": ("src.models.training.scalers", "fit_target_scaler"),
+    "inverse_local_target_normalizer": ("src.models.training.scalers", "inverse_local_target_normalizer"),
+    "inverse_target_scaler_values": ("src.models.training.scalers", "inverse_target_scaler_values"),
+    "predict": ("src.models.training.prediction", "predict"),
+    "primary_target_array": ("src.models.training.targets", "primary_target_array"),
+    "set_global_seed": ("src.models.training.seeds", "set_global_seed"),
+    "split_frame_by_date": ("src.models.training.datasets", "split_frame_by_date"),
+    "split_sequence_dataset": ("src.models.training.datasets", "split_sequence_dataset"),
+}
+
+__all__ = sorted(_EXPORTS.keys())
+
+
+def __getattr__(name: str):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    module_name, attr_name = _EXPORTS[name]
+    module = import_module(module_name)
+    value = getattr(module, attr_name)
+    globals()[name] = value
+    return value

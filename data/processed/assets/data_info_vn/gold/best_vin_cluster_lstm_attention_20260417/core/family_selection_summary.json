@@ -1,0 +1,98 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_52",
+        "val_score": 0.007382426852238888,
+        "test_score": 0.0041411203815375774
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": -0.008026050911809302,
+        "test_score": 0.01234541493968666
+      },
+      {
+        "model": "lstm_seed_42",
+        "val_score": -0.008911896317688184,
+        "test_score": 0.024533438178060862
+      }
+    ],
+    "best_by_val": "lstm_seed_52",
+    "top2_by_val": [
+      "lstm_seed_52",
+      "lstm_seed_62"
+    ]
+  },
+  "lstm_attention": {
+    "ranked_models": [
+      {
+        "model": "lstm_attention_seed_52",
+        "val_score": 0.0031420418676987305,
+        "test_score": 0.03215195519151526
+      },
+      {
+        "model": "lstm_attention_seed_42",
+        "val_score": -0.005660749642853569,
+        "test_score": 0.04340398409284807
+      },
+      {
+        "model": "lstm_attention_seed_62",
+        "val_score": -0.010352531491551575,
+        "test_score": 0.02534219495771517
+      }
+    ],
+    "best_by_val": "lstm_attention_seed_52",
+    "top2_by_val": [
+      "lstm_attention_seed_52",
+      "lstm_attention_seed_42"
+    ]
+  },
+  "lstm_signmag": {
+    "ranked_models": [
+      {
+        "model": "lstm_signmag_seed_42",
+        "val_score": 0.010187695759048765,
+        "test_score": 0.025275188090527645
+      },
+      {
+        "model": "lstm_signmag_seed_62",
+        "val_score": 0.009051061495267576,
+        "test_score": 0.008362449852231668
+      },
+      {
+        "model": "lstm_signmag_seed_52",
+        "val_score": 0.0038048079603103524,
+        "test_score": 0.030557320172505342
+      }
+    ],
+    "best_by_val": "lstm_signmag_seed_42",
+    "top2_by_val": [
+      "lstm_signmag_seed_42",
+      "lstm_signmag_seed_62"
+    ]
+  },
+  "lstm_pcie_lite": {
+    "ranked_models": [
+      {
+        "model": "lstm_pcie_lite_seed_62",
+        "val_score": -0.008302852971273644,
+        "test_score": 0.03644878842207444
+      },
+      {
+        "model": "lstm_pcie_lite_seed_52",
+        "val_score": -0.009268431011849598,
+        "test_score": 0.02105162279171191
+      },
+      {
+        "model": "lstm_pcie_lite_seed_42",
+        "val_score": -0.01938819843445505,
+        "test_score": 0.02036369544432637
+      }
+    ],
+    "best_by_val": "lstm_pcie_lite_seed_62",
+    "top2_by_val": [
+      "lstm_pcie_lite_seed_62",
+      "lstm_pcie_lite_seed_52"
+    ]
+  }
+}

@@ -97,6 +97,68 @@ def uses_rel_score_target(loss_name: str) -> bool:
 
 
 @keras.utils.register_keras_serializable(package="custom")
+class CustomPinballLoss(keras.losses.Loss):
+    def __init__(
+        self,
+        q50: float = 0.5,
+        q90: float = 0.9,
+        q90_weight: float = 0.5,
+        name: str = "custom_pinball_loss",
+    ):
+        super().__init__(name=name)
+        self.q50 = float(q50)
+        self.q90 = float(q90)
+        self.q90_weight = float(q90_weight)
+
+    @staticmethod
+    def _ensure_target_rank(y_true: tf.Tensor) -> tf.Tensor:
+        y_true = tf.cast(y_true, tf.float32)
+        if y_true.shape.rank is None:
+            y_true = tf.reshape(y_true, [tf.shape(y_true)[0], -1, 1])
+        elif y_true.shape.rank == 1:
+            y_true = tf.reshape(y_true, [-1, 1, 1])
+        elif y_true.shape.rank == 2:
+            y_true = y_true[..., tf.newaxis]
+        elif y_true.shape.rank >= 3:
+            y_true = y_true[..., :1]
+        return y_true
+
+    @staticmethod
+    def _ensure_prediction_rank(y_pred: tf.Tensor) -> tf.Tensor:
+        y_pred = tf.cast(y_pred, tf.float32)
+        if y_pred.shape.rank is None:
+            y_pred = tf.reshape(y_pred, [tf.shape(y_pred)[0], -1, 2])
+        elif y_pred.shape.rank == 1:
+            y_pred = tf.reshape(y_pred, [-1, 1, 1])
+        elif y_pred.shape.rank == 2:
+            y_pred = y_pred[:, tf.newaxis, :]
+        return y_pred
+
+    @staticmethod
+    def _pinball(target: tf.Tensor, prediction: tf.Tensor, tau: float) -> tf.Tensor:
+        error = target - prediction
+        return tf.maximum(tf.cast(tau, tf.float32) * error, (tf.cast(tau, tf.float32) - 1.0) * error)
+
+    def call(self, y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
+        target = self._ensure_target_rank(y_true)
+        prediction = self._ensure_prediction_rank(y_pred)
+
+        q50_pred = prediction[..., 0:1]
+        q90_pred = prediction[..., 1:2]
+        q50_loss = tf.reduce_mean(self._pinball(target, q50_pred, self.q50))
+        q90_loss = tf.reduce_mean(self._pinball(target, q90_pred, self.q90))
+        return q50_loss + tf.cast(self.q90_weight, tf.float32) * q90_loss
+
+    def get_config(self) -> dict[str, float | str]:
+        return {
+            "name": self.name,
+            "q50": self.q50,
+            "q90": self.q90,
+            "q90_weight": self.q90_weight,
+        }
+
+
+@keras.utils.register_keras_serializable(package="custom")
 class DirectionalHuberLoss(keras.losses.Loss):
     def __init__(self, delta: float = 0.01, penalty_weight: float = 20.0, name: str = "directional_huber_loss"):
         super().__init__(name=name)

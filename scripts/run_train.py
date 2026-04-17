@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
 from src.evaluation.metric import directional_accuracy, evaluate
 from src.models.baselines import fit_arima, fit_linear_regression, predict_arima, predict_linear_regression
 from src.models.config import ALL_FEATURE_COLUMNS, get_config
+from src.models.architectures.pcie_lite import DataPreprocessor
 from src.models.fischer_krauss import (
     apply_fischer_krauss_scaler,
     build_fischer_krauss_sequences,
@@ -53,7 +54,9 @@ from src.models.training import (
     fit_feature_scaler,
     fit_local_target_normalizer,
     fit_model,
+    fit_pcie_lite_model,
     fit_quantile_model,
+    fit_signal_attention_model,
     fit_sign_magnitude_model,
     fit_target_scaler,
     inverse_local_target_normalizer,
@@ -157,6 +160,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--enable-attention-family", action="store_true")
     parser.add_argument("--attention-heads", type=int, default=None)
     parser.add_argument("--attention-key-dim", type=int, default=None)
+    parser.add_argument("--enable-signal-family", action="store_true")
+    parser.add_argument("--signal-patch-length", type=int, default=None)
+    parser.add_argument("--signal-patch-stride", type=int, default=None)
+    parser.add_argument("--signal-patch-dim", type=int, default=None)
+    parser.add_argument("--signal-future-steps", type=int, default=None)
+    parser.add_argument("--signal-attention-heads", type=int, default=None)
+    parser.add_argument("--signal-attention-key-dim", type=int, default=None)
+    parser.add_argument("--signal-attention-ff-dim", type=int, default=None)
+    parser.add_argument("--enable-pcie-lite-family", action="store_true")
+    parser.add_argument("--pcie-lite-base-columns", default=None)
+    parser.add_argument("--pcie-lite-context-columns", default=None)
+    parser.add_argument("--pcie-lite-patch-length", type=int, default=None)
+    parser.add_argument("--pcie-lite-patch-stride", type=int, default=None)
+    parser.add_argument("--pcie-lite-patch-dim", type=int, default=None)
+    parser.add_argument("--pcie-lite-future-steps", type=int, default=None)
     parser.add_argument("--enable-quantile-family", action="store_true")
     parser.add_argument("--enable-event-family", action="store_true")
     parser.add_argument("--event-threshold", type=float, default=None)
@@ -254,6 +272,36 @@ def override_config(args: argparse.Namespace):
         config.attention_heads = args.attention_heads
     if args.attention_key_dim is not None:
         config.attention_key_dim = args.attention_key_dim
+    if args.enable_signal_family:
+        config.signal_enabled = True
+    if args.signal_patch_length is not None:
+        config.signal_patch_length = args.signal_patch_length
+    if args.signal_patch_stride is not None:
+        config.signal_patch_stride = args.signal_patch_stride
+    if args.signal_patch_dim is not None:
+        config.signal_patch_dim = args.signal_patch_dim
+    if args.signal_future_steps is not None:
+        config.signal_future_steps = args.signal_future_steps
+    if args.signal_attention_heads is not None:
+        config.signal_attention_heads = args.signal_attention_heads
+    if args.signal_attention_key_dim is not None:
+        config.signal_attention_key_dim = args.signal_attention_key_dim
+    if args.signal_attention_ff_dim is not None:
+        config.signal_attention_ff_dim = args.signal_attention_ff_dim
+    if args.enable_pcie_lite_family:
+        config.pcie_lite_enabled = True
+    if args.pcie_lite_base_columns is not None:
+        config.pcie_lite_base_columns = parse_csv_list(args.pcie_lite_base_columns)
+    if args.pcie_lite_context_columns is not None:
+        config.pcie_lite_context_columns = parse_csv_list(args.pcie_lite_context_columns)
+    if args.pcie_lite_patch_length is not None:
+        config.pcie_lite_patch_length = args.pcie_lite_patch_length
+    if args.pcie_lite_patch_stride is not None:
+        config.pcie_lite_patch_stride = args.pcie_lite_patch_stride
+    if args.pcie_lite_patch_dim is not None:
+        config.pcie_lite_patch_dim = args.pcie_lite_patch_dim
+    if args.pcie_lite_future_steps is not None:
+        config.pcie_lite_future_steps = args.pcie_lite_future_steps
     if args.enable_quantile_family:
         config.quantile_enabled = True
     if args.enable_event_family:
@@ -412,8 +460,12 @@ def build_training_target_array(
 
 
 def save_scaler(run_dir: Path, scaler) -> None:
+    save_scaler_artifact(run_dir / "feature_scaler.npz", scaler)
+
+
+def save_scaler_artifact(path: Path, scaler) -> None:
     np.savez(
-        run_dir / "feature_scaler.npz",
+        path,
         mean=scaler.mean,
         std=scaler.std,
         feature_columns=np.asarray(scaler.feature_columns, dtype=object),
@@ -471,7 +523,7 @@ def select_report_model_names(model_names: list[str]) -> list[str]:
         if baseline_name in available:
             selected.append(baseline_name)
 
-    family_prefixes = ("lstm", "lstm_quantile", "lstm_signmag", "lstm_attention", "lstm_event")
+    family_prefixes = ("lstm", "lstm_quantile", "lstm_signmag", "lstm_attention", "lstm_signal", "lstm_pcie_lite", "lstm_event")
     for prefix in family_prefixes:
         preferred = [f"{prefix}_best_by_val", f"{prefix}_ensemble", prefix]
         added = False
@@ -803,6 +855,21 @@ def build_config_payload(
         "attention_enabled": bool(config.attention_enabled),
         "attention_heads": config.attention_heads,
         "attention_key_dim": config.attention_key_dim,
+        "signal_enabled": bool(config.signal_enabled),
+        "signal_patch_length": config.signal_patch_length,
+        "signal_patch_stride": config.signal_patch_stride,
+        "signal_patch_dim": config.signal_patch_dim,
+        "signal_future_steps": config.signal_future_steps,
+        "signal_attention_heads": config.signal_attention_heads,
+        "signal_attention_key_dim": config.signal_attention_key_dim,
+        "signal_attention_ff_dim": config.signal_attention_ff_dim,
+        "pcie_lite_enabled": bool(config.pcie_lite_enabled),
+        "pcie_lite_base_columns": list(config.pcie_lite_base_columns),
+        "pcie_lite_context_columns": list(config.pcie_lite_context_columns),
+        "pcie_lite_patch_length": config.pcie_lite_patch_length,
+        "pcie_lite_patch_stride": config.pcie_lite_patch_stride,
+        "pcie_lite_patch_dim": config.pcie_lite_patch_dim,
+        "pcie_lite_future_steps": config.pcie_lite_future_steps,
         "quantile_enabled": bool(config.quantile_enabled),
         "event_enabled": bool(config.event_enabled),
         "event_threshold": config.event_threshold,
@@ -1384,6 +1451,369 @@ def main() -> None:
             }
             event_seed_prediction_maps[f"lstm_event_seed_{seed}"] = split_prediction_map
 
+    signal_seed_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    signal_seed_upper_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    signal_targets: dict[str, np.ndarray] = {}
+    signal_meta_map: dict[str, pd.DataFrame] = {}
+    signal_extra_prediction_maps: dict[str, dict[str, dict[str, np.ndarray]]] = {}
+    first_signal_model = None
+    first_signal_history_df = None
+    if config.signal_enabled:
+        x_signal_all, y_signal_all, meta_signal_all = build_sequence_dataset(
+            scaled_df,
+            config.feature_columns,
+            config.target_column,
+            config.window_size,
+            extra_meta_columns=extra_meta_columns,
+            sequence_normalization=config.sequence_normalization,
+            future_steps=config.signal_future_steps,
+        )
+        signal_splits = split_sequence_dataset(
+            x_signal_all,
+            y_signal_all,
+            meta_signal_all,
+            config.train_end_date,
+            config.val_end_date,
+        )
+        x_signal_train, y_signal_train, meta_signal_train = signal_splits["train"]
+        x_signal_val, y_signal_val, meta_signal_val = signal_splits["val"]
+        x_signal_test, y_signal_test, meta_signal_test = signal_splits["test"]
+        if y_signal_train.ndim == 1:
+            y_signal_train = y_signal_train[:, None]
+        if y_signal_val.ndim == 1:
+            y_signal_val = y_signal_val[:, None]
+        if y_signal_test.ndim == 1:
+            y_signal_test = y_signal_test[:, None]
+
+        if len(x_signal_train) == 0 or len(x_signal_val) == 0 or len(x_signal_test) == 0:
+            raise ValueError("Not enough signal-family sequences for train/val/test. Adjust date split or signal_future_steps.")
+
+        if use_stock_identity:
+            x_signal_train_lstm = augment_sequence_with_stock_identity(x_signal_train, meta_signal_train, stock_to_idx)
+            x_signal_val_lstm = augment_sequence_with_stock_identity(x_signal_val, meta_signal_val, stock_to_idx)
+            x_signal_test_lstm = augment_sequence_with_stock_identity(x_signal_test, meta_signal_test, stock_to_idx)
+        else:
+            x_signal_train_lstm = x_signal_train
+            x_signal_val_lstm = x_signal_val
+            x_signal_test_lstm = x_signal_test
+
+        signal_train_norm_values = None
+        signal_val_norm_values = None
+        signal_test_norm_values = None
+        signal_local_target_normalizer = None
+        if target_normalizer_alias is not None:
+            signal_train_norm_values = meta_signal_train[target_normalizer_alias].to_numpy(dtype=np.float32)
+            signal_val_norm_values = meta_signal_val[target_normalizer_alias].to_numpy(dtype=np.float32)
+            signal_test_norm_values = meta_signal_test[target_normalizer_alias].to_numpy(dtype=np.float32)
+            signal_local_target_normalizer = fit_local_target_normalizer(
+                signal_train_norm_values,
+                config.target_normalizer,
+            )
+
+        y_signal_train_local = apply_local_target_normalizer(
+            y_signal_train,
+            signal_train_norm_values,
+            signal_local_target_normalizer,
+        )
+        y_signal_val_local = apply_local_target_normalizer(
+            y_signal_val,
+            signal_val_norm_values,
+            signal_local_target_normalizer,
+        )
+        signal_target_scaler = fit_target_scaler(y_signal_train_local)
+        y_signal_train_scaled = apply_target_scaler(y_signal_train_local, signal_target_scaler)
+        y_signal_val_scaled = apply_target_scaler(y_signal_val_local, signal_target_scaler)
+
+        signal_train_sample_weight = None
+        signal_val_sample_weight = None
+        if config.sample_weight_mode == "magnitude":
+            signal_train_sample_weight = build_magnitude_sample_weights(
+                y_signal_train_local[:, 0],
+                strength=config.sample_weight_strength,
+                reference_quantile=config.sample_weight_quantile,
+                clip_multiple=config.sample_weight_clip,
+            )
+            signal_val_sample_weight = build_magnitude_sample_weights(
+                y_signal_val_local[:, 0],
+                strength=config.sample_weight_strength,
+                reference_quantile=config.sample_weight_quantile,
+                clip_multiple=config.sample_weight_clip,
+            )
+
+        signal_lstm_split_arrays = {
+            "train": (x_signal_train_lstm, y_signal_train[:, 0], meta_signal_train),
+            "val": (x_signal_val_lstm, y_signal_val[:, 0], meta_signal_val),
+            "test": (x_signal_test_lstm, y_signal_test[:, 0], meta_signal_test),
+        }
+        signal_targets = {
+            "train": y_signal_train[:, 0].astype(np.float32),
+            "val": y_signal_val[:, 0].astype(np.float32),
+            "test": y_signal_test[:, 0].astype(np.float32),
+        }
+        signal_meta_map = {
+            "train": meta_signal_train,
+            "val": meta_signal_val,
+            "test": meta_signal_test,
+        }
+        signal_local_scale_map = {
+            "train": signal_train_norm_values,
+            "val": signal_val_norm_values,
+            "test": signal_test_norm_values,
+        }
+
+        for seed_idx, seed in enumerate(config.lstm_seeds):
+            set_global_seed(seed)
+            signal_model, signal_history = fit_signal_attention_model(
+                x_signal_train_lstm,
+                y_signal_train_scaled,
+                x_signal_val_lstm,
+                y_signal_val_scaled,
+                window_size=config.window_size,
+                num_features=x_signal_train_lstm.shape[2],
+                lstm_units=config.lstm_units,
+                dropout=config.dropout,
+                lr=config.lr,
+                batch_size=config.batch_size,
+                epochs=config.epochs,
+                patience=config.patience,
+                monitor_metric=monitor_metric,
+                val_group_ids=meta_signal_val["code"].to_numpy() if "code" in meta_signal_val.columns else None,
+                target_scaler=signal_target_scaler,
+                metric_y_val=signal_targets["val"],
+                local_target_normalizer=signal_local_target_normalizer,
+                local_target_scale_values=signal_val_norm_values,
+                patch_length=config.signal_patch_length,
+                patch_stride=config.signal_patch_stride,
+                d_patch=config.signal_patch_dim,
+                future_steps=config.signal_future_steps,
+                attention_heads=config.signal_attention_heads,
+                attention_key_dim=config.signal_attention_key_dim,
+                attention_ff_dim=config.signal_attention_ff_dim,
+                sample_weight=signal_train_sample_weight,
+                val_sample_weight=signal_val_sample_weight,
+            )
+            if seed_idx == 0:
+                first_signal_model = signal_model
+                first_signal_history_df = pd.DataFrame(signal_history.history)
+            signal_model.save(run_dir / f"model_signal_seed_{seed}.keras")
+            pd.DataFrame(signal_history.history).to_csv(
+                run_dir / f"history_signal_seed_{seed}.csv",
+                index=False,
+            )
+
+            split_prediction_map = build_prediction_map(
+                signal_model,
+                signal_lstm_split_arrays,
+                lambda model, x: predict(model, x, prediction_key=(0, 0)),
+            )
+            split_upper_prediction_map = build_prediction_map(
+                signal_model,
+                signal_lstm_split_arrays,
+                lambda model, x: predict(model, x, prediction_key=(0, 1)),
+            )
+            split_prediction_map = {
+                split_name: inverse_target_scaler_values(pred_values, signal_target_scaler)
+                for split_name, pred_values in split_prediction_map.items()
+            }
+            split_upper_prediction_map = {
+                split_name: inverse_target_scaler_values(pred_values, signal_target_scaler)
+                for split_name, pred_values in split_upper_prediction_map.items()
+            }
+            if signal_local_target_normalizer is not None:
+                split_prediction_map = {
+                    split_name: inverse_local_target_normalizer(
+                        pred_values,
+                        signal_local_scale_map[split_name],
+                        signal_local_target_normalizer,
+                    )
+                    for split_name, pred_values in split_prediction_map.items()
+                }
+                split_upper_prediction_map = {
+                    split_name: inverse_local_target_normalizer(
+                        pred_values,
+                        signal_local_scale_map[split_name],
+                        signal_local_target_normalizer,
+                    )
+                    for split_name, pred_values in split_upper_prediction_map.items()
+                }
+            signal_seed_prediction_maps[f"lstm_signal_seed_{seed}"] = split_prediction_map
+            signal_seed_upper_prediction_maps[f"lstm_signal_seed_{seed}"] = split_upper_prediction_map
+
+    pcie_lite_seed_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    pcie_lite_targets: dict[str, np.ndarray] = {}
+    pcie_lite_meta_map: dict[str, pd.DataFrame] = {}
+    first_pcie_lite_model = None
+    first_pcie_lite_history_df = None
+    if config.pcie_lite_enabled:
+        pcie_preprocessor = DataPreprocessor(
+            base_columns=tuple(config.pcie_lite_base_columns),
+            context_columns=tuple(config.pcie_lite_context_columns),
+        )
+        pcie_df = pcie_preprocessor.transform_frame(df)
+        pcie_feature_columns = pcie_preprocessor.output_feature_columns(pcie_df)
+        validate_columns(pcie_df, pcie_feature_columns, config.target_column, config.target_normalizer)
+        pcie_train_df, _, _ = split_frame_by_date(pcie_df, config.train_end_date, config.val_end_date)
+        pcie_scaler = fit_feature_scaler(pcie_train_df.dropna(subset=pcie_feature_columns), pcie_feature_columns)
+        pcie_scaled_df = apply_feature_scaler(pcie_df, pcie_scaler)
+        x_pcie_all, y_pcie_all, meta_pcie_all = build_sequence_dataset(
+            pcie_scaled_df,
+            pcie_feature_columns,
+            config.target_column,
+            config.window_size,
+            extra_meta_columns=extra_meta_columns,
+            future_steps=config.pcie_lite_future_steps,
+        )
+        pcie_splits = split_sequence_dataset(
+            x_pcie_all,
+            y_pcie_all,
+            meta_pcie_all,
+            config.train_end_date,
+            config.val_end_date,
+        )
+        x_pcie_train, y_pcie_train, meta_pcie_train = pcie_splits["train"]
+        x_pcie_val, y_pcie_val, meta_pcie_val = pcie_splits["val"]
+        x_pcie_test, y_pcie_test, meta_pcie_test = pcie_splits["test"]
+        if y_pcie_train.ndim == 1:
+            y_pcie_train = y_pcie_train[:, None]
+        if y_pcie_val.ndim == 1:
+            y_pcie_val = y_pcie_val[:, None]
+        if y_pcie_test.ndim == 1:
+            y_pcie_test = y_pcie_test[:, None]
+
+        if len(x_pcie_train) == 0 or len(x_pcie_val) == 0 or len(x_pcie_test) == 0:
+            raise ValueError("Not enough PCIE-lite sequences for train/val/test. Adjust date split or pcie_lite_future_steps.")
+
+        if use_stock_identity:
+            x_pcie_train_lstm = augment_sequence_with_stock_identity(x_pcie_train, meta_pcie_train, stock_to_idx)
+            x_pcie_val_lstm = augment_sequence_with_stock_identity(x_pcie_val, meta_pcie_val, stock_to_idx)
+            x_pcie_test_lstm = augment_sequence_with_stock_identity(x_pcie_test, meta_pcie_test, stock_to_idx)
+        else:
+            x_pcie_train_lstm = x_pcie_train
+            x_pcie_val_lstm = x_pcie_val
+            x_pcie_test_lstm = x_pcie_test
+
+        pcie_train_norm_values = None
+        pcie_val_norm_values = None
+        pcie_test_norm_values = None
+        pcie_local_target_normalizer = None
+        if target_normalizer_alias is not None:
+            pcie_train_norm_values = meta_pcie_train[target_normalizer_alias].to_numpy(dtype=np.float32)
+            pcie_val_norm_values = meta_pcie_val[target_normalizer_alias].to_numpy(dtype=np.float32)
+            pcie_test_norm_values = meta_pcie_test[target_normalizer_alias].to_numpy(dtype=np.float32)
+            pcie_local_target_normalizer = fit_local_target_normalizer(
+                pcie_train_norm_values,
+                config.target_normalizer,
+            )
+
+        y_pcie_train_local = apply_local_target_normalizer(
+            y_pcie_train,
+            pcie_train_norm_values,
+            pcie_local_target_normalizer,
+        )
+        y_pcie_val_local = apply_local_target_normalizer(
+            y_pcie_val,
+            pcie_val_norm_values,
+            pcie_local_target_normalizer,
+        )
+        pcie_target_scaler = fit_target_scaler(y_pcie_train_local)
+        y_pcie_train_scaled = apply_target_scaler(y_pcie_train_local, pcie_target_scaler)
+        y_pcie_val_scaled = apply_target_scaler(y_pcie_val_local, pcie_target_scaler)
+
+        pcie_train_sample_weight = None
+        pcie_val_sample_weight = None
+        if config.sample_weight_mode == "magnitude":
+            pcie_train_sample_weight = build_magnitude_sample_weights(
+                y_pcie_train_local[:, 0],
+                strength=config.sample_weight_strength,
+                reference_quantile=config.sample_weight_quantile,
+                clip_multiple=config.sample_weight_clip,
+            )
+            pcie_val_sample_weight = build_magnitude_sample_weights(
+                y_pcie_val_local[:, 0],
+                strength=config.sample_weight_strength,
+                reference_quantile=config.sample_weight_quantile,
+                clip_multiple=config.sample_weight_clip,
+            )
+
+        pcie_lstm_split_arrays = {
+            "train": (x_pcie_train_lstm, y_pcie_train[:, 0], meta_pcie_train),
+            "val": (x_pcie_val_lstm, y_pcie_val[:, 0], meta_pcie_val),
+            "test": (x_pcie_test_lstm, y_pcie_test[:, 0], meta_pcie_test),
+        }
+        pcie_lite_targets = {
+            "train": y_pcie_train[:, 0].astype(np.float32),
+            "val": y_pcie_val[:, 0].astype(np.float32),
+            "test": y_pcie_test[:, 0].astype(np.float32),
+        }
+        pcie_lite_meta_map = {
+            "train": meta_pcie_train,
+            "val": meta_pcie_val,
+            "test": meta_pcie_test,
+        }
+        pcie_local_scale_map = {
+            "train": pcie_train_norm_values,
+            "val": pcie_val_norm_values,
+            "test": pcie_test_norm_values,
+        }
+
+        for seed_idx, seed in enumerate(config.lstm_seeds):
+            set_global_seed(seed)
+            pcie_lite_model, pcie_lite_history = fit_pcie_lite_model(
+                x_pcie_train_lstm,
+                y_pcie_train_scaled,
+                x_pcie_val_lstm,
+                y_pcie_val_scaled,
+                window_size=config.window_size,
+                num_features=x_pcie_train_lstm.shape[2],
+                lstm_units=config.lstm_units,
+                dropout=config.dropout,
+                lr=config.lr,
+                batch_size=config.batch_size,
+                epochs=config.epochs,
+                patience=config.patience,
+                monitor_metric=monitor_metric,
+                val_group_ids=meta_pcie_val["code"].to_numpy() if "code" in meta_pcie_val.columns else None,
+                target_scaler=pcie_target_scaler,
+                metric_y_val=pcie_lite_targets["val"],
+                local_target_normalizer=pcie_local_target_normalizer,
+                local_target_scale_values=pcie_val_norm_values,
+                patch_length=config.pcie_lite_patch_length,
+                patch_stride=config.pcie_lite_patch_stride,
+                d_patch=config.pcie_lite_patch_dim,
+                future_steps=config.pcie_lite_future_steps,
+                sample_weight=pcie_train_sample_weight,
+                val_sample_weight=pcie_val_sample_weight,
+            )
+            if seed_idx == 0:
+                first_pcie_lite_model = pcie_lite_model
+                first_pcie_lite_history_df = pd.DataFrame(pcie_lite_history.history)
+            pcie_lite_model.save(run_dir / f"model_pcie_lite_seed_{seed}.keras")
+            pd.DataFrame(pcie_lite_history.history).to_csv(
+                run_dir / f"history_pcie_lite_seed_{seed}.csv",
+                index=False,
+            )
+
+            split_prediction_map = build_prediction_map(
+                pcie_lite_model,
+                pcie_lstm_split_arrays,
+                lambda model, x: predict(model, x, prediction_key=0),
+            )
+            split_prediction_map = {
+                split_name: inverse_target_scaler_values(pred_values, pcie_target_scaler)
+                for split_name, pred_values in split_prediction_map.items()
+            }
+            if pcie_local_target_normalizer is not None:
+                split_prediction_map = {
+                    split_name: inverse_local_target_normalizer(
+                        pred_values,
+                        pcie_local_scale_map[split_name],
+                        pcie_local_target_normalizer,
+                    )
+                    for split_name, pred_values in split_prediction_map.items()
+                }
+            pcie_lite_seed_prediction_maps[f"lstm_pcie_lite_seed_{seed}"] = split_prediction_map
+        save_scaler_artifact(report_core_path(run_dir, "feature_scaler_pcie_lite.npz"), pcie_scaler)
+
     linear_model = fit_linear_regression(x_train, y_train)
     arima_model = fit_arima(x_train, y_train)
     family_selection_summary: dict[str, dict[str, object]] = {}
@@ -1497,6 +1927,69 @@ def main() -> None:
         )
         prediction_maps.update(signmag_selection_maps)
         family_selection_summary["lstm_signmag"] = signmag_selection_summary
+
+    signal_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    if signal_seed_prediction_maps:
+        signal_seed_keys = sorted(signal_seed_prediction_maps.keys())
+        signal_prediction_maps["lstm_signal"] = signal_seed_prediction_maps[signal_seed_keys[0]]
+        if len(signal_seed_keys) > 1:
+            signal_prediction_maps["lstm_signal_ensemble"] = {
+                split_name: np.mean(
+                    [signal_seed_prediction_maps[model_name][split_name] for model_name in signal_seed_keys],
+                    axis=0,
+                ).astype(np.float32)
+                for split_name in SPLIT_NAMES
+            }
+        signal_prediction_maps.update(signal_seed_prediction_maps)
+        signal_selection_maps, signal_selection_summary = build_family_selection_maps(
+            "lstm_signal",
+            signal_seed_prediction_maps,
+            signal_targets,
+            signal_meta_map,
+            config.target_mode,
+        )
+        signal_prediction_maps.update(signal_selection_maps)
+        family_selection_summary["lstm_signal"] = signal_selection_summary
+        signal_aux_maps = build_quantile_aux_maps(
+            "lstm_signal",
+            family_selection_summary["lstm_signal"],
+            signal_seed_upper_prediction_maps,
+        )
+        signal_q50_all_maps = {**signal_seed_prediction_maps}
+        signal_q50_all_maps.update(
+            {
+                model_name: signal_prediction_maps[model_name]
+                for model_name in signal_prediction_maps
+                if model_name.startswith("lstm_signal")
+            }
+        )
+        signal_q90_all_maps = {**signal_seed_upper_prediction_maps, **signal_aux_maps}
+        signal_extra_prediction_maps = build_quantile_extra_prediction_maps(
+            signal_q50_all_maps,
+            signal_q90_all_maps,
+        )
+    pcie_lite_prediction_maps: dict[str, dict[str, np.ndarray]] = {}
+    if pcie_lite_seed_prediction_maps:
+        pcie_lite_seed_keys = sorted(pcie_lite_seed_prediction_maps.keys())
+        pcie_lite_prediction_maps["lstm_pcie_lite"] = pcie_lite_seed_prediction_maps[pcie_lite_seed_keys[0]]
+        if len(pcie_lite_seed_keys) > 1:
+            pcie_lite_prediction_maps["lstm_pcie_lite_ensemble"] = {
+                split_name: np.mean(
+                    [pcie_lite_seed_prediction_maps[model_name][split_name] for model_name in pcie_lite_seed_keys],
+                    axis=0,
+                ).astype(np.float32)
+                for split_name in SPLIT_NAMES
+            }
+        pcie_lite_prediction_maps.update(pcie_lite_seed_prediction_maps)
+        pcie_lite_selection_maps, pcie_lite_selection_summary = build_family_selection_maps(
+            "lstm_pcie_lite",
+            pcie_lite_seed_prediction_maps,
+            pcie_lite_targets,
+            pcie_lite_meta_map,
+            config.target_mode,
+        )
+        pcie_lite_prediction_maps.update(pcie_lite_selection_maps)
+        family_selection_summary["lstm_pcie_lite"] = pcie_lite_selection_summary
     quantile_extra_prediction_maps: dict[str, dict[str, dict[str, np.ndarray]]] = {}
     if quantile_seed_prediction_maps:
         quantile_aux_maps = build_quantile_aux_maps(
@@ -1518,7 +2011,14 @@ def main() -> None:
             quantile_q90_all_maps,
         )
 
-    report_model_names = set(select_report_model_names(sorted(prediction_maps.keys()) + (["fischer_krauss"] if config.fk_benchmark_enabled else [])))
+    report_model_names = set(
+        select_report_model_names(
+            sorted(prediction_maps.keys())
+            + sorted(signal_prediction_maps.keys())
+            + sorted(pcie_lite_prediction_maps.keys())
+            + (["fischer_krauss"] if config.fk_benchmark_enabled else [])
+        )
+    )
     metrics: dict[str, dict[str, dict[str, float]]] = {}
     metric_details: dict[str, dict[str, dict[str, float | list[float]]]] = {}
 
@@ -1529,8 +2029,54 @@ def main() -> None:
                 for split_name, detail in metric_details[model_name].items():
                     save_metric_series(run_dir, model_name, split_name, detail)
 
+    for model_name, pred_map in signal_prediction_maps.items():
+        metrics[model_name], metric_details[model_name] = compute_metrics_bundle(
+            pred_map,
+            signal_targets,
+            config.target_mode,
+            signal_meta_map,
+        )
+        if config.target_mode.startswith("return") and model_name in report_model_names:
+            for split_name, detail in metric_details[model_name].items():
+                save_metric_series(run_dir, model_name, split_name, detail)
+    for model_name, pred_map in pcie_lite_prediction_maps.items():
+        metrics[model_name], metric_details[model_name] = compute_metrics_bundle(
+            pred_map,
+            pcie_lite_targets,
+            config.target_mode,
+            pcie_lite_meta_map,
+        )
+        if config.target_mode.startswith("return") and model_name in report_model_names:
+            for split_name, detail in metric_details[model_name].items():
+                save_metric_series(run_dir, model_name, split_name, detail)
+
     history_df = first_history_df if first_history_df is not None else pd.DataFrame()
     prediction_df = build_prediction_frame(meta_map, targets, prediction_maps, extra_prediction_maps=quantile_extra_prediction_maps)
+    if signal_prediction_maps:
+        prediction_df = pd.concat(
+            [
+                prediction_df,
+                build_prediction_frame(
+                    signal_meta_map,
+                    signal_targets,
+                    signal_prediction_maps,
+                    extra_prediction_maps=signal_extra_prediction_maps,
+                ),
+            ],
+            ignore_index=True,
+        )
+    if pcie_lite_prediction_maps:
+        prediction_df = pd.concat(
+            [
+                prediction_df,
+                build_prediction_frame(
+                    pcie_lite_meta_map,
+                    pcie_lite_targets,
+                    pcie_lite_prediction_maps,
+                ),
+            ],
+            ignore_index=True,
+        )
     fk_summary_payload: dict[str, object] | None = None
     if config.fk_benchmark_enabled:
         fk_price_column = resolve_price_column(df)
@@ -1691,6 +2237,10 @@ def main() -> None:
         first_quantile_model.save(run_dir / "model_quantile.keras")
     if first_attention_model is not None:
         first_attention_model.save(run_dir / "model_attention.keras")
+    if first_signal_model is not None:
+        first_signal_model.save(run_dir / "model_signal.keras")
+    if first_pcie_lite_model is not None:
+        first_pcie_lite_model.save(run_dir / "model_pcie_lite.keras")
     if first_event_model is not None:
         first_event_model.save(run_dir / "model_event.keras")
     if first_signmag_model is not None:
@@ -1703,6 +2253,10 @@ def main() -> None:
         first_quantile_history_df.to_csv(report_core_path(run_dir, "history_quantile.csv"), index=False)
     if first_attention_history_df is not None:
         first_attention_history_df.to_csv(report_core_path(run_dir, "history_attention.csv"), index=False)
+    if first_signal_history_df is not None:
+        first_signal_history_df.to_csv(report_core_path(run_dir, "history_signal.csv"), index=False)
+    if first_pcie_lite_history_df is not None:
+        first_pcie_lite_history_df.to_csv(report_core_path(run_dir, "history_pcie_lite.csv"), index=False)
     if first_event_history_df is not None:
         first_event_history_df.to_csv(report_core_path(run_dir, "history_event.csv"), index=False)
     if first_signmag_history_df is not None:
@@ -1744,6 +2298,21 @@ def main() -> None:
         payload["recipe_feature_summary"] = feature_recipe.feature_summary if feature_recipe is not None else []
         payload["recipe_stock_summary"] = feature_recipe.stock_summary if feature_recipe is not None else []
         payload["lstm_attention_enabled"] = bool(config.attention_enabled)
+        payload["lstm_signal_enabled"] = bool(config.signal_enabled)
+        payload["lstm_signal_patch_length"] = config.signal_patch_length
+        payload["lstm_signal_patch_stride"] = config.signal_patch_stride
+        payload["lstm_signal_patch_dim"] = config.signal_patch_dim
+        payload["lstm_signal_future_steps"] = config.signal_future_steps
+        payload["lstm_signal_attention_heads"] = config.signal_attention_heads
+        payload["lstm_signal_attention_key_dim"] = config.signal_attention_key_dim
+        payload["lstm_signal_attention_ff_dim"] = config.signal_attention_ff_dim
+        payload["lstm_pcie_lite_enabled"] = bool(config.pcie_lite_enabled)
+        payload["lstm_pcie_lite_base_columns"] = list(config.pcie_lite_base_columns)
+        payload["lstm_pcie_lite_context_columns"] = list(config.pcie_lite_context_columns)
+        payload["lstm_pcie_lite_patch_length"] = config.pcie_lite_patch_length
+        payload["lstm_pcie_lite_patch_stride"] = config.pcie_lite_patch_stride
+        payload["lstm_pcie_lite_patch_dim"] = config.pcie_lite_patch_dim
+        payload["lstm_pcie_lite_future_steps"] = config.pcie_lite_future_steps
         payload["lstm_quantile_enabled"] = bool(config.quantile_enabled)
         payload["lstm_event_enabled"] = enable_event_family
         payload["lstm_signmag_enabled"] = enable_sign_magnitude

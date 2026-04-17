@@ -24,7 +24,10 @@ def build_sequence_dataset(
     window_size: int,
     extra_meta_columns: tuple[str, ...] = (),
     sequence_normalization: str = "none",
+    future_steps: int = 1,
 ) -> tuple[np.ndarray, np.ndarray, pd.DataFrame]:
+    if future_steps <= 0:
+        raise ValueError("future_steps must be positive.")
     x_list = []
     y_list = []
     meta_rows = []
@@ -32,13 +35,13 @@ def build_sequence_dataset(
 
     for code, group in df.sort_values(["code", "Date"]).groupby("code"):
         group = group.dropna(subset=required_cols).reset_index(drop=True)
-        if len(group) < window_size:
+        if len(group) < window_size + future_steps - 1:
             continue
         feature_values = group.loc[:, feature_columns].to_numpy(dtype=float)
         target_values = group.loc[:, target_column].to_numpy(dtype=float)
         dates = pd.to_datetime(group["Date"])
 
-        for end_idx in range(window_size - 1, len(group)):
+        for end_idx in range(window_size - 1, len(group) - future_steps + 1):
             start_idx = end_idx - window_size + 1
             window = feature_values[start_idx : end_idx + 1].copy()
             if sequence_normalization == "instance_zscore":
@@ -47,7 +50,10 @@ def build_sequence_dataset(
                 std = np.where(np.isfinite(std) & (std > 1e-6), std, 1.0)
                 window = (window - mean) / std
             x_list.append(window)
-            y_list.append(target_values[end_idx])
+            if future_steps == 1:
+                y_list.append(target_values[end_idx])
+            else:
+                y_list.append(target_values[end_idx : end_idx + future_steps])
             meta_rows.append(
                 {
                     "code": code,

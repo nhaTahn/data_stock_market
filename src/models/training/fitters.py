@@ -3,13 +3,13 @@ from __future__ import annotations
 import numpy as np
 from tensorflow import keras
 
-from src.models.architectures import (
-    build_attention_model,
-    build_event_gated_attention_model,
-    build_model,
-    build_quantile_model,
-    build_sign_magnitude_model,
-)
+from src.models.architectures.attention import build_attention_model
+from src.models.architectures.event import build_event_gated_attention_model
+from src.models.architectures.pcie_lite import build_pcie_lite_model
+from src.models.architectures.plain import build_model
+from src.models.architectures.quantile import build_quantile_model
+from src.models.architectures.signal import build_signal_attention_lstm_model
+from src.models.architectures.signmag import build_sign_magnitude_model
 from src.models.components.callbacks import build_training_callbacks
 from src.models.training.sample_weights import (
     build_event_gated_sample_weights,
@@ -321,6 +321,154 @@ def fit_quantile_model(
         x_train,
         y_train,
         validation_data=(x_val, y_val),
+        epochs=epochs,
+        batch_size=batch_size,
+        callbacks=callbacks,
+        verbose=0,
+    )
+    return model, history
+
+
+def fit_signal_attention_model(
+    x_train,
+    y_train,
+    x_val,
+    y_val,
+    window_size: int,
+    num_features: int,
+    lstm_units: int | list[int] = 64,
+    dropout: float = 0.3,
+    lr: float = 1e-3,
+    batch_size: int = 32,
+    epochs: int = 10,
+    patience: int = 3,
+    monitor_metric: str = "val_loss",
+    val_group_ids: np.ndarray | None = None,
+    target_scaler: TargetScaler | None = None,
+    metric_y_val: np.ndarray | None = None,
+    local_target_normalizer: LocalTargetNormalizer | None = None,
+    local_target_scale_values: np.ndarray | None = None,
+    patch_length: int = 5,
+    patch_stride: int = 3,
+    d_patch: int = 16,
+    future_steps: int = 1,
+    attention_heads: int = 2,
+    attention_key_dim: int = 16,
+    attention_ff_dim: int | None = None,
+    sample_weight: np.ndarray | None = None,
+    val_sample_weight: np.ndarray | None = None,
+):
+    y_train = np.asarray(y_train, dtype=np.float32)
+    y_val = np.asarray(y_val, dtype=np.float32)
+    if y_train.ndim == 1:
+        y_train = y_train[:, None, None]
+    elif y_train.ndim == 2:
+        y_train = y_train[..., None]
+    if y_val.ndim == 1:
+        y_val = y_val[:, None, None]
+    elif y_val.ndim == 2:
+        y_val = y_val[..., None]
+
+    model = build_signal_attention_lstm_model(
+        window_size=window_size,
+        num_features=num_features,
+        lstm_units=lstm_units,
+        lr=lr,
+        patch_length=patch_length,
+        patch_stride=patch_stride,
+        d_patch=d_patch,
+        future_steps=future_steps,
+        attention_heads=attention_heads,
+        attention_key_dim=attention_key_dim,
+        attention_ff_dim=attention_ff_dim,
+        dropout=dropout,
+    )
+    callbacks = build_training_callbacks(
+        x_val,
+        y_val,
+        val_group_ids,
+        patience,
+        monitor_metric,
+        target_scaler=target_scaler,
+        metric_y_val=metric_y_val,
+        local_target_normalizer=local_target_normalizer,
+        local_target_scale_values=local_target_scale_values,
+        prediction_key=(0, 0),
+    )
+    history = model.fit(
+        x_train,
+        y_train,
+        sample_weight=sample_weight,
+        validation_data=(x_val, y_val, val_sample_weight) if val_sample_weight is not None else (x_val, y_val),
+        epochs=epochs,
+        batch_size=batch_size,
+        callbacks=callbacks,
+        verbose=0,
+    )
+    return model, history
+
+
+def fit_pcie_lite_model(
+    x_train,
+    y_train,
+    x_val,
+    y_val,
+    window_size: int,
+    num_features: int,
+    lstm_units: int | list[int] = 64,
+    dropout: float = 0.2,
+    lr: float = 1e-3,
+    batch_size: int = 32,
+    epochs: int = 10,
+    patience: int = 3,
+    monitor_metric: str = "val_loss",
+    val_group_ids: np.ndarray | None = None,
+    target_scaler: TargetScaler | None = None,
+    metric_y_val: np.ndarray | None = None,
+    local_target_normalizer: LocalTargetNormalizer | None = None,
+    local_target_scale_values: np.ndarray | None = None,
+    patch_length: int = 5,
+    patch_stride: int = 5,
+    d_patch: int = 16,
+    future_steps: int = 3,
+    sample_weight: np.ndarray | None = None,
+    val_sample_weight: np.ndarray | None = None,
+):
+    y_train = np.asarray(y_train, dtype=np.float32)
+    y_val = np.asarray(y_val, dtype=np.float32)
+    if y_train.ndim == 1:
+        y_train = y_train[:, None]
+    if y_val.ndim == 1:
+        y_val = y_val[:, None]
+
+    model = build_pcie_lite_model(
+        window_size=window_size,
+        num_features=num_features,
+        lstm_units=lstm_units,
+        lr=lr,
+        patch_length=patch_length,
+        patch_stride=patch_stride,
+        d_patch=d_patch,
+        future_steps=future_steps,
+        dropout=dropout,
+    )
+    callbacks = build_training_callbacks(
+        x_val,
+        y_val,
+        val_group_ids,
+        patience,
+        monitor_metric,
+        target_scaler=target_scaler,
+        metric_y_val=metric_y_val,
+        local_target_normalizer=local_target_normalizer,
+        local_target_scale_values=local_target_scale_values,
+        prediction_key=0,
+    )
+    history = model.fit(
+        x_train,
+        y_train,
+        sample_weight=sample_weight,
+        validation_data=(x_val, y_val, val_sample_weight) if val_sample_weight is not None else (x_val, y_val),
         epochs=epochs,
         batch_size=batch_size,
         callbacks=callbacks,

@@ -25,6 +25,13 @@ class LocalTargetNormalizer:
     floor: float
 
 
+def _broadcast_scale_values(scale_values: np.ndarray, target_ndim: int) -> np.ndarray:
+    scale_values = np.asarray(scale_values, dtype=np.float32)
+    while scale_values.ndim < target_ndim:
+        scale_values = scale_values[..., None]
+    return scale_values
+
+
 def fit_feature_scaler(df: pd.DataFrame, feature_columns: tuple[str, ...]) -> FeatureScaler:
     features = df.loc[:, feature_columns].astype(float)
     mean = features.mean(axis=0).to_numpy()
@@ -76,7 +83,7 @@ def apply_local_target_normalizer(
     y = np.asarray(y, dtype=np.float32)
     if normalizer is None or scale_values is None:
         return y
-    scale_values = np.asarray(scale_values, dtype=np.float32)
+    scale_values = _broadcast_scale_values(scale_values, y.ndim)
     scale_values = np.where(np.isfinite(scale_values), np.abs(scale_values), normalizer.floor)
     denom = np.maximum(scale_values, normalizer.floor)
     return (y / denom).astype(np.float32)
@@ -90,7 +97,7 @@ def inverse_local_target_normalizer(
     y = np.asarray(y, dtype=np.float32)
     if normalizer is None or scale_values is None:
         return y
-    scale_values = np.asarray(scale_values, dtype=np.float32)
+    scale_values = _broadcast_scale_values(scale_values, y.ndim)
     scale_values = np.where(np.isfinite(scale_values), np.abs(scale_values), normalizer.floor)
     denom = np.maximum(scale_values, normalizer.floor)
     return (y * denom).astype(np.float32)
