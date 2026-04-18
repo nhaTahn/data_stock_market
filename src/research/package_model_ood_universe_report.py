@@ -282,6 +282,7 @@ def build_price_frame(pred_df: pd.DataFrame) -> pd.DataFrame:
 
 def save_plot_by_code(
     df: pd.DataFrame,
+    code_metrics: pd.DataFrame,
     y_actual: str,
     y_pred: str,
     output_path: Path,
@@ -290,23 +291,109 @@ def save_plot_by_code(
     pred_label: str,
 ) -> None:
     codes = sorted(df["code"].astype(str).unique().tolist())
+    metric_map = code_metrics.set_index("code").to_dict(orient="index") if not code_metrics.empty else {}
     ncols = 4 if len(codes) > 40 else (3 if len(codes) > 12 else 2)
     nrows = ceil(len(codes) / ncols)
     fig, axes = plt.subplots(nrows, ncols, figsize=(6.0 * ncols, 3.0 * nrows), squeeze=False)
     axes_flat = axes.flatten()
     for ax, code in zip(axes_flat, codes):
         part = df[df["code"] == code].sort_values("Date")
+        metrics = metric_map.get(code, {})
         ax.plot(part["Date"], part[y_actual], color="#1f77b4", linewidth=1.1, label=actual_label)
         ax.plot(part["Date"], part[y_pred], color="#d62728", linewidth=0.95, alpha=0.9, label=pred_label)
         if y_actual == "actual":
             ax.axhline(0.0, color="#999999", linestyle="--", linewidth=0.8)
-        ax.set_title(code, fontsize=9)
+        ax.set_title(
+            (
+                f"{code} | "
+                f"rel={metrics.get('rel_score', float('nan')):.4f} | "
+                f"abs={metrics.get('abs_score', float('nan')):.4f} | "
+                f"err={metrics.get('error_mean', float('nan')):.4f}"
+            ),
+            fontsize=8.2,
+        )
         ax.grid(alpha=0.2)
         ax.tick_params(axis="x", labelrotation=30, labelsize=7)
         ax.tick_params(axis="y", labelsize=7)
         ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=3, maxticks=5))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
         ax.legend(fontsize=6, loc="best")
+        if metrics:
+            stats_text = (
+                f"base={metrics['base_score']:.4f}\n"
+                f"abs={metrics['abs_score']:.4f}\n"
+                f"err={metrics['error_mean']:.4f}"
+            )
+            ax.text(
+                0.02,
+                0.98,
+                stats_text,
+                transform=ax.transAxes,
+                ha="left",
+                va="top",
+                fontsize=6.5,
+                bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "#cccccc"},
+            )
+    for ax in axes_flat[len(codes):]:
+        ax.axis("off")
+    fig.suptitle(title, fontsize=14)
+    fig.tight_layout(rect=[0, 0, 1, 0.97])
+    fig.savefig(output_path, dpi=170)
+    plt.close(fig)
+
+
+def save_error_hist_by_code(
+    df: pd.DataFrame,
+    code_metrics: pd.DataFrame,
+    output_path: Path,
+    title: str,
+) -> None:
+    codes = sorted(df["code"].astype(str).unique().tolist())
+    metric_map = code_metrics.set_index("code").to_dict(orient="index") if not code_metrics.empty else {}
+    ncols = 4 if len(codes) > 40 else (3 if len(codes) > 12 else 2)
+    nrows = ceil(len(codes) / ncols)
+    fig, axes = plt.subplots(nrows, ncols, figsize=(6.0 * ncols, 3.0 * nrows), squeeze=False)
+    axes_flat = axes.flatten()
+    for ax, code in zip(axes_flat, codes):
+        part = df[df["code"] == code].sort_values("Date")
+        metrics = metric_map.get(code, {})
+        error = part["prediction"].to_numpy(dtype=np.float32) - part["actual"].to_numpy(dtype=np.float32)
+        ax.hist(error, bins=30, color="#d62728", alpha=0.78, edgecolor="white")
+        ax.axvline(0.0, color="#555555", linestyle="--", linewidth=0.9)
+        if metrics:
+            ax.axvline(metrics["error_q25"], color="#1f77b4", linestyle=":", linewidth=0.9)
+            ax.axvline(metrics["error_mean"], color="#2ca02c", linestyle="-", linewidth=0.9)
+            ax.axvline(metrics["error_q75"], color="#ff7f0e", linestyle=":", linewidth=0.9)
+        ax.set_title(
+            (
+                f"{code} | "
+                f"rel={metrics.get('rel_score', float('nan')):.4f} | "
+                f"abs={metrics.get('abs_score', float('nan')):.4f} | "
+                f"err={metrics.get('error_mean', float('nan')):.4f}"
+            ),
+            fontsize=8.2,
+        )
+        ax.grid(alpha=0.2)
+        ax.tick_params(axis="x", labelsize=7)
+        ax.tick_params(axis="y", labelsize=7)
+        if metrics:
+            stats_text = (
+                f"min={error.min():.4f}\n"
+                f"q25={metrics['error_q25']:.4f}\n"
+                f"mean={metrics['error_mean']:.4f}\n"
+                f"q75={metrics['error_q75']:.4f}\n"
+                f"max={error.max():.4f}"
+            )
+            ax.text(
+                0.98,
+                0.98,
+                stats_text,
+                transform=ax.transAxes,
+                ha="right",
+                va="top",
+                fontsize=6.5,
+                bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "#cccccc"},
+            )
     for ax in axes_flat[len(codes):]:
         ax.axis("off")
     fig.suptitle(title, fontsize=14)
@@ -417,6 +504,7 @@ def main() -> None:
 
     save_plot_by_code(
         pred_df,
+        code_metrics=code_metrics,
         y_actual="actual",
         y_pred="prediction",
         output_path=args.output_dir / "plots" / "test_actual_vs_predicted_return_by_code.png",
@@ -427,6 +515,7 @@ def main() -> None:
     if "actual_next_price" in pred_df.columns and "predicted_next_price" in pred_df.columns:
         save_plot_by_code(
             pred_df.dropna(subset=["actual_next_price", "predicted_next_price"]),
+            code_metrics=code_metrics,
             y_actual="actual_next_price",
             y_pred="predicted_next_price",
             output_path=args.output_dir / "plots" / "test_actual_vs_predicted_price_from_return_by_code.png",
@@ -434,6 +523,12 @@ def main() -> None:
             actual_label="actual_next_close",
             pred_label="predicted_next_close",
         )
+    save_error_hist_by_code(
+        pred_df,
+        code_metrics=code_metrics,
+        output_path=args.output_dir / "plots" / "test_return_error_hist_by_code.png",
+        title=f"{args.label}\nHistogram of Prediction Return - Actual Return by Code",
+    )
 
     readme = (
         f"# {args.label}\n\n"
