@@ -45,5 +45,7 @@
   "error_median": -0.00019262618,
   "error_q75": 0.009043712861,
   "error_max": 0.0876366037,
-  "notes": "This is the best retained broad-panel VN30 run. Test rel_score is positive but still small, so it should be presented as a weak broad-market result, not a strong tradable edge."
+  "notes": "This is the best retained broad-panel VN30 run. Test rel_score is positive but still small, so it should be presented as a weak broad-market result, not a strong tradable edge.",
+  "error_q20": -0.0136954164,
+  "error_q80": 0.0120530549
 }

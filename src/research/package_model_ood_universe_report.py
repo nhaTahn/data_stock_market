@@ -402,6 +402,71 @@ def save_error_hist_by_code(
     plt.close(fig)
 
 
+def save_aggregate_error_hist(
+    prediction: np.ndarray,
+    actual: np.ndarray,
+    group_ids: np.ndarray,
+    output_path: Path,
+    error_csv_path: Path,
+    title: str,
+) -> dict[str, float]:
+    metric = evaluate(prediction, actual, group_ids=group_ids)
+    e_values = -np.asarray(metric["error"], dtype=np.float32)
+    summary = {
+        "rel_score": float(metric["rel_score"]),
+        "base_score": float(metric["base_loss"]),
+        "abs_score": float(metric["abs_loss"]),
+        "error_mean": float(np.mean(e_values)),
+        "error_std": float(np.std(e_values)),
+        "error_min": float(np.min(e_values)),
+        "error_q20": float(np.quantile(e_values, 0.20)),
+        "error_q25": float(np.quantile(e_values, 0.25)),
+        "error_median": float(np.quantile(e_values, 0.5)),
+        "error_q75": float(np.quantile(e_values, 0.75)),
+        "error_q80": float(np.quantile(e_values, 0.80)),
+        "error_max": float(np.max(e_values)),
+        "aligned_rows": int(len(e_values)),
+    }
+
+    pd.DataFrame({"E_prediction_minus_actual": e_values}).to_csv(error_csv_path, index=False)
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.hist(e_values, bins=40, color="#1f77b4", alpha=0.82, edgecolor="white")
+    ax.axvline(0.0, color="black", linestyle="--", linewidth=1.2, label="E = 0")
+    ax.axvline(summary["error_mean"], color="#d62728", linestyle="-", linewidth=1.3, label=f"mean={summary['error_mean']:.5f}")
+    ax.axvline(summary["error_q20"], color="#17becf", linestyle=":", linewidth=1.1, label=f"q20={summary['error_q20']:.5f}")
+    ax.axvline(summary["error_q25"], color="#2ca02c", linestyle=":", linewidth=1.1, label=f"q25={summary['error_q25']:.5f}")
+    ax.axvline(summary["error_q75"], color="#9467bd", linestyle=":", linewidth=1.1, label=f"q75={summary['error_q75']:.5f}")
+    ax.axvline(summary["error_q80"], color="#bcbd22", linestyle=":", linewidth=1.1, label=f"q80={summary['error_q80']:.5f}")
+    ax.set_title(title)
+    ax.set_xlabel("E = prediction - actual")
+    ax.set_ylabel("Frequency")
+    stats_text = (
+        f"rel_score={summary['rel_score']:.5f}\n"
+        f"base_score={summary['base_score']:.5f}\n"
+        f"abs_score={summary['abs_score']:.5f}\n"
+        f"min={summary['error_min']:.5f}  max={summary['error_max']:.5f}\n"
+        f"q20={summary['error_q20']:.5f}  q25={summary['error_q25']:.5f}\n"
+        f"q75={summary['error_q75']:.5f}  q80={summary['error_q80']:.5f}\n"
+        f"mean={summary['error_mean']:.5f}"
+    )
+    ax.text(
+        0.98,
+        0.98,
+        stats_text,
+        transform=ax.transAxes,
+        ha="right",
+        va="top",
+        bbox={"boxstyle": "round", "facecolor": "white", "alpha": 0.9, "edgecolor": "#cccccc"},
+        fontsize=10,
+    )
+    ax.legend(loc="upper left")
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=180)
+    plt.close(fig)
+    return summary
+
+
 def build_code_metrics(df: pd.DataFrame) -> pd.DataFrame:
     rows: list[dict[str, float | str]] = []
     for code, part in df.groupby("code", sort=True):
@@ -499,6 +564,15 @@ def main() -> None:
 
     pred_df.to_csv(args.output_dir / "core" / "predictions_test.csv", index=False)
     code_metrics.to_csv(args.output_dir / "core" / "code_metrics.csv", index=False)
+    aggregate_error_summary = save_aggregate_error_hist(
+        pred_df["prediction"].to_numpy(dtype=np.float32),
+        pred_df["actual"].to_numpy(dtype=np.float32),
+        pred_df["code"].to_numpy(),
+        output_path=args.output_dir / "plots" / "error_histogram_E_prediction_minus_actual.png",
+        error_csv_path=args.output_dir / "core" / "error_distribution_E_prediction_minus_actual.csv",
+        title=f"{args.label}\nHistogram of E = prediction - actual (all available VN100 codes)",
+    )
+    summary.update(aggregate_error_summary)
     (args.output_dir / "core" / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
     shutil.copy2(args.package_dir / "core" / "source_config.json", args.output_dir / "core" / "source_config.json")
 

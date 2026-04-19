@@ -120,5 +120,8 @@
   "error_q75": 0.011163502465933561,
   "error_min": -0.08597034215927124,
   "error_max": 0.177073135972023,
-  "ood_note": "Models were trained with stock-identity one-hot. Codes outside the original training universe are inferred with all-zero identity, so this package is an OOD stress test, not a clean validation run."
+  "ood_note": "Models were trained with stock-identity one-hot. Codes outside the original training universe are inferred with all-zero identity, so this package is an OOD stress test, not a clean validation run.",
+  "aligned_error_rows": 28391,
+  "error_q20": -0.014002486,
+  "error_q80": 0.014409985
 }
