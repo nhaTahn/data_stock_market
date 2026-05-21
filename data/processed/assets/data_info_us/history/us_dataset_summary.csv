@@ -1,0 +1,10 @@
+metric,value
+market,US
+rows,361090
+tickers,89
+date_start,2010-01-04
+date_end,2026-03-30
+target_price_mean,121.19677925937373
+target_growth_pct_mean,0.06647753089341543
+target_return_mean,0.0006647753089341541
+target_return_std,0.017678205934892534

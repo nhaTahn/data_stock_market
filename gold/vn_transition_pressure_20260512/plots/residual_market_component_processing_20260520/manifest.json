@@ -1,0 +1,26 @@
+{
+  "source_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/residual_target_probe_20260519",
+  "data": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "seeds": [
+    43,
+    52,
+    71
+  ],
+  "market_features": [
+    "mkt_ret_lag1",
+    "mkt_ret_lag2",
+    "mkt_ret_lag3",
+    "mkt_ret_ewm3_lag1",
+    "mkt_ret_ewm5_lag1",
+    "mkt_abs_q90_lag1",
+    "mkt_abs_q90_ewm5_lag1",
+    "mkt_neg_ratio_lag1",
+    "mkt_neg_ratio_ewm5_lag1",
+    "mkt_dispersion_lag1",
+    "mkt_dispersion_ewm5_lag1",
+    "mkt_breadth_lag1",
+    "mkt_breadth_ewm5_lag1"
+  ],
+  "calibration_fraction": 0.25,
+  "holdout_test_used": false
+}

@@ -1,0 +1,57 @@
+{
+  "package_name": "best_portable_marketplus_signmag_top2_20260504",
+  "package_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/gold/best_portable_marketplus_signmag_top2_20260504",
+  "source_run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_20260504_r01",
+  "selected_prediction_model": "lstm_signmag_top2_by_val",
+  "top2_components": [
+    "lstm_signmag_seed_62",
+    "lstm_signmag_seed_52"
+  ],
+  "deployable_single_checkpoint": "lstm_signmag_seed_62",
+  "validation": {
+    "mse": 0.0005620554438792169,
+    "mae": 0.01650719717144966,
+    "directional_accuracy": 0.4981725738707538,
+    "base_loss": 0.03046331107616425,
+    "abs_loss": 0.030355199371751962,
+    "rel_score": 0.003548915091402427,
+    "rmse": 0.023707708358019507
+  },
+  "feature_columns": [
+    "open_level_20",
+    "high_level_20",
+    "low_level_20",
+    "close_level_20",
+    "volume_level_20",
+    "open_delta_1",
+    "high_delta_1",
+    "low_delta_1",
+    "close_delta_1",
+    "volume_delta_1",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "bb_width",
+    "volume_ratio_20",
+    "volatility_20",
+    "momentum_20",
+    "macd_hist",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "market_is_vn",
+    "market_is_jp",
+    "market_is_us",
+    "market_return_5",
+    "market_return_20",
+    "market_return_60",
+    "market_volatility_20",
+    "market_ad_ratio_20",
+    "breadth_20"
+  ],
+  "notes": [
+    "Selected by validation rel_score among portable multi-market experiments.",
+    "Top2 prediction model is an ensemble of signmag seed 62 and seed 52 predictions.",
+    "For single-checkpoint deployment use lstm_signmag_seed_62; for research/reporting use lstm_signmag_top2_by_val."
+  ]
+}

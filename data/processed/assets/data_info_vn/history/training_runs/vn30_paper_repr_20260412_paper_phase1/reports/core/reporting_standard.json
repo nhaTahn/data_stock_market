@@ -1,0 +1,60 @@
+{
+  "name": "derived_vn_report",
+  "market": "VN",
+  "target_mode": "return",
+  "split_aliases": {
+    "train": "train",
+    "val": "in_sample",
+    "test": "out_sample"
+  },
+  "time_windows": {
+    "train": {
+      "label": "train",
+      "start_date": null,
+      "end_date": "2023-12-31",
+      "display": "[..., 31/12/2023]"
+    },
+    "val": {
+      "label": "in_sample",
+      "start_date": "2024-01-01",
+      "end_date": "2024-12-31",
+      "display": "[01/01/2024, 31/12/2024]"
+    },
+    "test": {
+      "label": "out_sample",
+      "start_date": "2025-01-01",
+      "end_date": null,
+      "display": "[01/01/2025, now]"
+    }
+  },
+  "evaluation": {
+    "error_quantiles": [
+      0.2,
+      0.8
+    ],
+    "error_quantile_labels": [
+      "q2",
+      "q8"
+    ],
+    "large_error_quantile": 0.95,
+    "long_short_quantile": 0.25,
+    "default_report_splits": [
+      "train",
+      "val"
+    ],
+    "holdout_split": "test",
+    "required_metrics": [
+      "rel_score",
+      "rmse",
+      "directional_accuracy"
+    ]
+  },
+  "holdout_policy": {
+    "default_visible_splits": [
+      "train",
+      "val"
+    ],
+    "holdout_split": "test",
+    "out_sample_revealed": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "predictions": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/filter_signal/portable_lstm_filter_signal_20260512_r02_no_leader_seed43/filter_predictions.csv.gz",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/gold/vn_transition_pressure_20260512/plots/next_day_prediction_plots",
+  "signal_date": "2022-11-14",
+  "actual_date": "2022-11-15",
+  "codes": [
+    "VCB",
+    "FPT",
+    "HPG",
+    "SSI",
+    "VIC",
+    "VHM"
+  ],
+  "holdout_test_used": false
+}

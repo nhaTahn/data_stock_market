@@ -1,0 +1,16 @@
+seed,score,threshold,policy
+43,risk_hgb,0.10912569327999401,calibrated_p90_3p5
+43,risk_logistic,0.5028273487058564,calibrated_p90_3p5
+43,risk_hybrid,0.6812032325651003,calibrated_p90_3p5
+43,risk_input_noise,0.4954390993573276,calibrated_p90_3p5
+43,risk_disagreement,0.5000115119839753,calibrated_p90_3p5
+52,risk_hgb,0.1103217918070701,calibrated_p90_3p5
+52,risk_logistic,0.5031083935135418,calibrated_p90_3p5
+52,risk_hybrid,0.7280063546151544,calibrated_p90_3p5
+52,risk_input_noise,0.5237025619762701,calibrated_p90_3p5
+52,risk_disagreement,0.5500103607855779,calibrated_p90_3p5
+71,risk_hgb,0.11345410868137103,calibrated_p90_3p5
+71,risk_logistic,0.5489295202235759,calibrated_p90_3p5
+71,risk_hybrid,0.7282941542145374,calibrated_p90_3p5
+71,risk_input_noise,0.5007378413539686,calibrated_p90_3p5
+71,risk_disagreement,0.5500103607855779,calibrated_p90_3p5

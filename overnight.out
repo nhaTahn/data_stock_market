@@ -1,0 +1,3351 @@
+===========================================
+BAT DAU CHUOI NHIEM VU CHAY QUA DEM
+Log dir: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921
+===========================================
+
+>>> build_vn_dataset
+Building quality dataset for VN...
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv
+Saved: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_quality_dataset.csv
+
+>>> overnight_bds_return1d_stack48_24_w5_core_fk_train
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1775614790.430804 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775614795.567026 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614800.978306 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614806.482391 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614811.562924 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614817.011640 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614822.169597 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614827.259789 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614832.710222 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_17}}
+E0000 00:00:1775614837.925098 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614843.408344 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614848.538892 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614855.875442 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_17}}
+E0000 00:00:1775614860.932724 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775614871.543584 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775614958.937296 5806423 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_core_fk
+{
+  "lstm": {
+    "train": {
+      "mse": 0.000621541403234005,
+      "mae": 0.017138611525297165,
+      "directional_accuracy": 0.45590853074079146,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033262656982060435,
+      "rel_score": -0.0009372069546005335
+    },
+    "val": {
+      "mse": 0.0003825343446806073,
+      "mae": 0.013627390377223492,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02490211911717779,
+      "rel_score": -0.010197550669800215
+    },
+    "test": {
+      "mse": 0.0007688233163207769,
+      "mae": 0.020088106393814087,
+      "directional_accuracy": 0.47478070175438597,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03954349232371897,
+      "rel_score": 0.019040781148243147
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0006051340606063604,
+      "mae": 0.017268629744648933,
+      "directional_accuracy": 0.436259071614405,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03396526863798499,
+      "rel_score": -0.02208014057034169
+    },
+    "val": {
+      "mse": 0.00040548102697357535,
+      "mae": 0.014383264817297459,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.026569997082697222,
+      "rel_score": -0.07785790630682743
+    },
+    "test": {
+      "mse": 0.0008246484212577343,
+      "mae": 0.020955141633749008,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04212386123253964,
+      "rel_score": -0.04497067864960069
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0006197785260155797,
+      "mae": 0.01733538694679737,
+      "directional_accuracy": 0.426400109544023,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03369622354512103,
+      "rel_score": -0.013984057207508283
+    },
+    "val": {
+      "mse": 0.00038903168751858175,
+      "mae": 0.013879637233912945,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025185339763993397,
+      "rel_score": -0.021686886270756434
+    },
+    "test": {
+      "mse": 0.0007617064984515309,
+      "mae": 0.02011840231716633,
+      "directional_accuracy": 0.4369517543859649,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040448275597009344,
+      "rel_score": -0.0034042645682852424
+    }
+  },
+  "lstm_ensemble": {
+    "train": {
+      "mse": 0.0006205481477081776,
+      "mae": 0.01711968146264553,
+      "directional_accuracy": 0.4526222100506641,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03325749317809823,
+      "rel_score": -0.0007818181797958346
+    },
+    "val": {
+      "mse": 0.0003817733086179942,
+      "mae": 0.013615905307233334,
+      "directional_accuracy": 0.4522849462365591,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024994331373818568,
+      "rel_score": -0.013938300417318361
+    },
+    "test": {
+      "mse": 0.0007690140628255904,
+      "mae": 0.020097721368074417,
+      "directional_accuracy": 0.4643640350877193,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039549692589207555,
+      "rel_score": 0.01888697056569355
+    }
+  },
+  "lstm_seed_42": {
+    "train": {
+      "mse": 0.000621541403234005,
+      "mae": 0.017138611525297165,
+      "directional_accuracy": 0.45590853074079146,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033262656982060435,
+      "rel_score": -0.0009372069546005335
+    },
+    "val": {
+      "mse": 0.0003825343446806073,
+      "mae": 0.013627390377223492,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02490211911717779,
+      "rel_score": -0.010197550669800215
+    },
+    "test": {
+      "mse": 0.0007688233163207769,
+      "mae": 0.020088106393814087,
+      "directional_accuracy": 0.47478070175438597,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03954349232371897,
+      "rel_score": 0.019040781148243147
+    }
+  },
+  "lstm_seed_52": {
+    "train": {
+      "mse": 0.0006214717286638916,
+      "mae": 0.01714988425374031,
+      "directional_accuracy": 0.4498151444611803,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332711271912558,
+      "rel_score": -0.001192091810578999
+    },
+    "val": {
+      "mse": 0.00038270902587100863,
+      "mae": 0.013631576672196388,
+      "directional_accuracy": 0.4536290322580645,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024799508357466492,
+      "rel_score": -0.0060349676524691365
+    },
+    "test": {
+      "mse": 0.0007699330453760922,
+      "mae": 0.020153947174549103,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039363664602751675,
+      "rel_score": 0.02350178472485842
+    }
+  },
+  "lstm_seed_62": {
+    "train": {
+      "mse": 0.0006210410501807928,
+      "mae": 0.017148297280073166,
+      "directional_accuracy": 0.44735040394358483,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033198262804944534,
+      "rel_score": 0.0010005374601432804
+    },
+    "val": {
+      "mse": 0.0003821879217866808,
+      "mae": 0.013641427271068096,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024876864715406552,
+      "rel_score": -0.009173062163706058
+    },
+    "test": {
+      "mse": 0.0007750092772766948,
+      "mae": 0.020196830853819847,
+      "directional_accuracy": 0.4451754385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04032026682543802,
+      "rel_score": -0.0002287386552271009
+    }
+  },
+  "lstm_seed_72": {
+    "train": {
+      "mse": 0.0006210385472513735,
+      "mae": 0.0171247199177742,
+      "directional_accuracy": 0.4571409009995892,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03332975287048612,
+      "rel_score": -0.002956251049459402
+    },
+    "val": {
+      "mse": 0.00038221481372602284,
+      "mae": 0.013624997809529305,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025035842880606646,
+      "rel_score": -0.015622286518444994
+    },
+    "test": {
+      "mse": 0.0007684137672185898,
+      "mae": 0.02010270021855831,
+      "directional_accuracy": 0.4682017543859649,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039500858868996146,
+      "rel_score": 0.0200983933616381
+    }
+  },
+  "lstm_seed_82": {
+    "train": {
+      "mse": 0.0006200794596225023,
+      "mae": 0.01711449585855007,
+      "directional_accuracy": 0.4476927290154731,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033359069783728046,
+      "rel_score": -0.0038384532521495984
+    },
+    "val": {
+      "mse": 0.0003809637564700097,
+      "mae": 0.013610804453492165,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02509317347085016,
+      "rel_score": -0.017948001112047862
+    },
+    "test": {
+      "mse": 0.0007697485270909965,
+      "mae": 0.02009635418653488,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03979852532829682,
+      "rel_score": 0.012714152865033967
+    }
+  },
+  "lstm_best_by_val": {
+    "train": {
+      "mse": 0.0006214717286638916,
+      "mae": 0.01714988425374031,
+      "directional_accuracy": 0.4498151444611803,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332711271912558,
+      "rel_score": -0.001192091810578999
+    },
+    "val": {
+      "mse": 0.00038270902587100863,
+      "mae": 0.013631576672196388,
+      "directional_accuracy": 0.4536290322580645,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024799508357466492,
+      "rel_score": -0.0060349676524691365
+    },
+    "test": {
+      "mse": 0.0007699330453760922,
+      "mae": 0.020153947174549103,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039363664602751675,
+      "rel_score": 0.02350178472485842
+    }
+  },
+  "lstm_top2_by_val": {
+    "train": {
+      "mse": 0.0006208503036759794,
+      "mae": 0.017133237794041634,
+      "directional_accuracy": 0.45125290976311105,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03323245710635092,
+      "rel_score": -2.8434716130343318e-05
+    },
+    "val": {
+      "mse": 0.000382339145289734,
+      "mae": 0.013632621616125107,
+      "directional_accuracy": 0.4495967741935484,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02485608666029293,
+      "rel_score": -0.008330164405298657
+    },
+    "test": {
+      "mse": 0.0007711545331403613,
+      "mae": 0.020146554335951805,
+      "directional_accuracy": 0.47149122807017546,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04006380099981471,
+      "rel_score": 0.00613343375751918
+    }
+  },
+  "lstm_signmag": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_ensemble": {
+    "train": {
+      "mse": 0.0006198696210049093,
+      "mae": 0.017241571098566055,
+      "directional_accuracy": 0.43940846227577707,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03331322188023478,
+      "rel_score": -0.0024588018162459147
+    },
+    "val": {
+      "mse": 0.0003815848322119564,
+      "mae": 0.013654225505888462,
+      "directional_accuracy": 0.4361559139784946,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025045489564581656,
+      "rel_score": -0.016013620945759754
+    },
+    "test": {
+      "mse": 0.0007681154529564083,
+      "mae": 0.02010597288608551,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03977418710128404,
+      "rel_score": 0.013317913604304232
+    }
+  },
+  "lstm_signmag_seed_42": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_seed_52": {
+    "train": {
+      "mse": 0.0006204168312251568,
+      "mae": 0.017252067103981972,
+      "directional_accuracy": 0.4381760920169793,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03328634526405949,
+      "rel_score": -0.0016500328372255346
+    },
+    "val": {
+      "mse": 0.0003816989192273468,
+      "mae": 0.01366149540990591,
+      "directional_accuracy": 0.43481182795698925,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025007226155503298,
+      "rel_score": -0.014461399548482357
+    },
+    "test": {
+      "mse": 0.0007697537075728178,
+      "mae": 0.020136946812272072,
+      "directional_accuracy": 0.4758771929824561,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03964758926304057,
+      "rel_score": 0.01645843835854155
+    }
+  },
+  "lstm_signmag_seed_62": {
+    "train": {
+      "mse": 0.0006202259683050215,
+      "mae": 0.017250927165150642,
+      "directional_accuracy": 0.44023004244830893,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033277693117270246,
+      "rel_score": -0.0013896731297595721
+    },
+    "val": {
+      "mse": 0.0003820578276645392,
+      "mae": 0.013661624863743782,
+      "directional_accuracy": 0.43481182795698925,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024943650470231657,
+      "rel_score": -0.011882341869039026
+    },
+    "test": {
+      "mse": 0.0007700339192524552,
+      "mae": 0.020129676908254623,
+      "directional_accuracy": 0.4725877192982456,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04009355486778077,
+      "rel_score": 0.005395326692041347
+    }
+  },
+  "lstm_signmag_seed_72": {
+    "train": {
+      "mse": 0.000619024271145463,
+      "mae": 0.01723136194050312,
+      "directional_accuracy": 0.4396823223332877,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033254274720093235,
+      "rel_score": -0.0006849685995606869
+    },
+    "val": {
+      "mse": 0.00038165514706633985,
+      "mae": 0.013649296946823597,
+      "directional_accuracy": 0.4435483870967742,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02510660948901204,
+      "rel_score": -0.018493056437420607
+    },
+    "test": {
+      "mse": 0.0007669769111089408,
+      "mae": 0.0200904943048954,
+      "directional_accuracy": 0.4895833333333333,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039877189146318416,
+      "rel_score": 0.010762731962533745
+    }
+  },
+  "lstm_signmag_seed_82": {
+    "train": {
+      "mse": 0.000620782608166337,
+      "mae": 0.01724349334836006,
+      "directional_accuracy": 0.4377653019307134,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03331999387592077,
+      "rel_score": -0.0026625841674603468
+    },
+    "val": {
+      "mse": 0.0003808489709626883,
+      "mae": 0.013657788746058941,
+      "directional_accuracy": 0.4260752688172043,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025142827039235267,
+      "rel_score": -0.019962284030245137
+    },
+    "test": {
+      "mse": 0.0007682542782276869,
+      "mae": 0.02011837624013424,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03984510953887366,
+      "rel_score": 0.011558533871036558
+    }
+  },
+  "lstm_signmag_best_by_val": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_top2_by_val": {
+    "train": {
+      "mse": 0.0006198028568178415,
+      "mae": 0.01724296435713768,
+      "directional_accuracy": 0.4399561823907983,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03325113469327334,
+      "rel_score": -0.0005904791642590279
+    },
+    "val": {
+      "mse": 0.00038209930062294006,
+      "mae": 0.013659666292369366,
+      "directional_accuracy": 0.4442204301075269,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02494823751694639,
+      "rel_score": -0.012068423356089486
+    },
+    "test": {
+      "mse": 0.0007683164440095425,
+      "mae": 0.02010415680706501,
+      "directional_accuracy": 0.48081140350877194,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03991511745844037,
+      "rel_score": 0.009821840674355875
+    }
+  },
+  "fischer_krauss": {
+    "train": {
+      "mse": 0.0005451064789667726,
+      "mae": 0.01592780277132988,
+      "directional_accuracy": 0.43903247183565275,
+      "base_loss": 0.03052764851599931,
+      "abs_loss": 0.030438320568646298,
+      "rel_score": 0.002926132594398667
+    },
+    "val": {
+      "mse": 0.0007732677040621638,
+      "mae": 0.019585270434617996,
+      "directional_accuracy": 0.4540682414698163,
+      "base_loss": 0.03899270668625831,
+      "abs_loss": 0.03936138209828641,
+      "rel_score": -0.009454983851070464
+    },
+    "test": {
+      "mse": 0.0007698312983848155,
+      "mae": 0.020083045586943626,
+      "directional_accuracy": 0.48404840484048406,
+      "base_loss": 0.040300564654171464,
+      "abs_loss": 0.04005585956911091,
+      "rel_score": 0.006072001401479676
+    }
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_core_fk_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_core_fk/reports/backtests/threshold_backtest.csv
+{
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1374,
+    "coverage": 0.7483660130718954,
+    "directional_accuracy": 0.5567685589519651,
+    "avg_actual_return": 0.0016203308649927219,
+    "avg_strategy_return": 0.0016203308649927219,
+    "cumulative_strategy_return": 2.2263346084999998,
+    "final_equity": 6.0046188044027184,
+    "sampled_buy_hold_equity": 6.0046188044027184
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 788,
+    "coverage": 0.42919389978213507,
+    "directional_accuracy": 0.565989847715736,
+    "avg_actual_return": 0.002615713397030457,
+    "avg_strategy_return": 0.002615713397030457,
+    "cumulative_strategy_return": 2.06118215686,
+    "final_equity": 5.965041419231594,
+    "sampled_buy_hold_equity": 5.965041419231594
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1345,
+    "coverage": 0.7325708061002179,
+    "directional_accuracy": 0.5605947955390335,
+    "avg_actual_return": 0.0016633350340520445,
+    "avg_strategy_return": 0.0016633350340520445,
+    "cumulative_strategy_return": 2.2371856208,
+    "final_equity": 5.558674712706476,
+    "sampled_buy_hold_equity": 5.558674712706476
+  },
+  "lstm_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1345,
+    "coverage": 0.7325708061002179,
+    "directional_accuracy": 0.5605947955390335,
+    "avg_actual_return": 0.0016633350340520445,
+    "avg_strategy_return": 0.0016633350340520445,
+    "cumulative_strategy_return": 2.2371856208,
+    "final_equity": 5.558674712706476,
+    "sampled_buy_hold_equity": 5.558674712706476
+  },
+  "lstm_signmag": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_seed_42": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1593,
+    "coverage": 0.8676470588235294,
+    "directional_accuracy": 0.5561833019460138,
+    "avg_actual_return": 0.0011083903383553046,
+    "avg_strategy_return": 0.0011083903383553046,
+    "cumulative_strategy_return": 1.7656658090000001,
+    "final_equity": 3.1771893939373546,
+    "sampled_buy_hold_equity": 3.1771893939373546
+  },
+  "lstm_signmag_seed_72": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1507,
+    "coverage": 0.8208061002178649,
+    "directional_accuracy": 0.5527538155275381,
+    "avg_actual_return": 0.000945045425587259,
+    "avg_strategy_return": 0.000945045425587259,
+    "cumulative_strategy_return": 1.4241834563599993,
+    "final_equity": 2.300806486728232,
+    "sampled_buy_hold_equity": 2.300806486728232
+  },
+  "lstm_signmag_seed_62": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1551,
+    "coverage": 0.8447712418300654,
+    "directional_accuracy": 0.5519019987105094,
+    "avg_actual_return": 0.0009143232432624114,
+    "avg_strategy_return": 0.0009143232432624114,
+    "cumulative_strategy_return": 1.4181153503000001,
+    "final_equity": 2.300601605907395,
+    "sampled_buy_hold_equity": 2.300601605907395
+  },
+  "lstm_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1518,
+    "coverage": 0.826797385620915,
+    "directional_accuracy": 0.549407114624506,
+    "avg_actual_return": 0.000934943350237154,
+    "avg_strategy_return": 0.000934943350237154,
+    "cumulative_strategy_return": 1.4192440056599998,
+    "final_equity": 2.274002140154804,
+    "sampled_buy_hold_equity": 2.274002140154804
+  },
+  "lstm_signmag_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 196,
+    "coverage": 0.10675381263616558,
+    "directional_accuracy": 0.5969387755102041,
+    "avg_actual_return": 0.004546302983673469,
+    "avg_strategy_return": 0.004546302983673469,
+    "cumulative_strategy_return": 0.8910753847999999,
+    "final_equity": 2.2116417441087477,
+    "sampled_buy_hold_equity": 2.2116417441087477
+  },
+  "lstm_signmag_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1640,
+    "coverage": 0.8932461873638344,
+    "directional_accuracy": 0.552439024390244,
+    "avg_actual_return": 0.0008554812048536586,
+    "avg_strategy_return": 0.0008554812048536586,
+    "cumulative_strategy_return": 1.4029891759600002,
+    "final_equity": 2.1734463245380944,
+    "sampled_buy_hold_equity": 2.1734463245380944
+  },
+  "lstm_signmag_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 222,
+    "coverage": 0.12091503267973856,
+    "directional_accuracy": 0.5765765765765766,
+    "avg_actual_return": 0.003161577666666667,
+    "avg_strategy_return": 0.003161577666666667,
+    "cumulative_strategy_return": 0.701870242,
+    "final_equity": 1.8222473547026417,
+    "sampled_buy_hold_equity": 1.8222473547026417
+  },
+  "lstm_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 278,
+    "coverage": 0.1514161220043573,
+    "directional_accuracy": 0.5575539568345323,
+    "avg_actual_return": 0.0025980801057553958,
+    "avg_strategy_return": 0.0025980801057553958,
+    "cumulative_strategy_return": 0.7222662694,
+    "final_equity": 1.7917003673219747,
+    "sampled_buy_hold_equity": 1.7917003673219747
+  },
+  "lstm_seed_62": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1244,
+    "coverage": 0.6775599128540305,
+    "directional_accuracy": 0.5466237942122186,
+    "avg_actual_return": 0.0008079221290514468,
+    "avg_strategy_return": 0.0008079221290514468,
+    "cumulative_strategy_return": 1.0050551285399998,
+    "final_equity": 1.7848723335270156,
+    "sampled_buy_hold_equity": 1.7848723335270156
+  },
+  "lstm_seed_72": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1328,
+    "coverage": 0.7233115468409586,
+    "directional_accuracy": 0.545933734939759,
+    "avg_actual_return": 0.0008341447584789157,
+    "avg_strategy_return": 0.0008341447584789157,
+    "cumulative_strategy_return": 1.10774423926,
+    "final_equity": 1.7512868394260774,
+    "sampled_buy_hold_equity": 1.7512868394260774
+  },
+  "lstm_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 291,
+    "coverage": 0.15849673202614378,
+    "directional_accuracy": 0.5567010309278351,
+    "avg_actual_return": 0.0024043757594501714,
+    "avg_strategy_return": 0.0024043757594501714,
+    "cumulative_strategy_return": 0.6996733459999999,
+    "final_equity": 1.7449511340783772,
+    "sampled_buy_hold_equity": 1.7449511340783772
+  },
+  "lstm_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 291,
+    "coverage": 0.15849673202614378,
+    "directional_accuracy": 0.5567010309278351,
+    "avg_actual_return": 0.0024043757594501714,
+    "avg_strategy_return": 0.0024043757594501714,
+    "cumulative_strategy_return": 0.6996733459999999,
+    "final_equity": 1.7449511340783772,
+    "sampled_buy_hold_equity": 1.7449511340783772
+  },
+  "fischer_krauss": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 72,
+    "coverage": 0.03934426229508197,
+    "directional_accuracy": 0.6111111111111112,
+    "avg_actual_return": 0.002405610851388888,
+    "avg_strategy_return": 0.002405610851388888,
+    "cumulative_strategy_return": 0.17320398129999995,
+    "final_equity": 1.098543012779899,
+    "sampled_buy_hold_equity": 1.098543012779899
+  },
+  "lstm_top2_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 88,
+    "coverage": 0.04793028322440087,
+    "directional_accuracy": 0.5681818181818182,
+    "avg_actual_return": 0.001394127914772728,
+    "avg_strategy_return": 0.001394127914772728,
+    "cumulative_strategy_return": 0.12268325650000006,
+    "final_equity": 1.083392066405564,
+    "sampled_buy_hold_equity": 1.083392066405564
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_core_fk_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_core_fk
+
+>>> overnight_bds_return1d_stack48_24_w5_weighted_train
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1775615006.203013 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_16}}
+E0000 00:00:1775615011.273359 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615016.587650 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615021.925203 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615027.399759 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615032.720131 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615038.202582 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615043.322508 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615048.576431 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615053.670000 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615058.876250 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615064.777945 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_20}}
+E0000 00:00:1775615070.251377 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615077.364799 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_20}}
+E0000 00:00:1775615082.463739 5820806 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_weighted
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0006202584481798112,
+      "mae": 0.01713927835226059,
+      "directional_accuracy": 0.4491304943174038,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332980673451857,
+      "rel_score": -0.0020027727626166225
+    },
+    "val": {
+      "mse": 0.0003830872301477939,
+      "mae": 0.01365413423627615,
+      "directional_accuracy": 0.4469086021505376,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025050653969810807,
+      "rel_score": -0.016223123979963505
+    },
+    "test": {
+      "mse": 0.0007691041682846844,
+      "mae": 0.020101767033338547,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03928979598567821,
+      "rel_score": 0.025334250616055987
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0006051340606063604,
+      "mae": 0.017268629744648933,
+      "directional_accuracy": 0.436259071614405,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03396526863798499,
+      "rel_score": -0.02208014057034169
+    },
+    "val": {
+      "mse": 0.00040548102697357535,
+      "mae": 0.014383264817297459,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.026569997082697222,
+      "rel_score": -0.07785790630682743
+    },
+    "test": {
+      "mse": 0.0008246484212577343,
+      "mae": 0.020955141633749008,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04212386123253964,
+      "rel_score": -0.04497067864960069
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0006197785260155797,
+      "mae": 0.01733538694679737,
+      "directional_accuracy": 0.426400109544023,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03369622354512103,
+      "rel_score": -0.013984057207508283
+    },
+    "val": {
+      "mse": 0.00038903168751858175,
+      "mae": 0.013879637233912945,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025185339763993397,
+      "rel_score": -0.021686886270756434
+    },
+    "test": {
+      "mse": 0.0007617064984515309,
+      "mae": 0.02011840231716633,
+      "directional_accuracy": 0.4369517543859649,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040448275597009344,
+      "rel_score": -0.0034042645682852424
+    }
+  },
+  "lstm_ensemble": {
+    "train": {
+      "mse": 0.000616937642917037,
+      "mae": 0.017102893441915512,
+      "directional_accuracy": 0.4544707654388607,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033190063571964856,
+      "rel_score": 0.0012472681215656145
+    },
+    "val": {
+      "mse": 0.0003829300694633275,
+      "mae": 0.013637320138514042,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02507388988706225,
+      "rel_score": -0.01716572916888426
+    },
+    "test": {
+      "mse": 0.0007683509029448032,
+      "mae": 0.02010025829076767,
+      "directional_accuracy": 0.45778508771929827,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039442941511515534,
+      "rel_score": 0.021535154821324842
+    }
+  },
+  "lstm_seed_42": {
+    "train": {
+      "mse": 0.0006202584481798112,
+      "mae": 0.01713927835226059,
+      "directional_accuracy": 0.4491304943174038,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332980673451857,
+      "rel_score": -0.0020027727626166225
+    },
+    "val": {
+      "mse": 0.0003830872301477939,
+      "mae": 0.01365413423627615,
+      "directional_accuracy": 0.4469086021505376,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025050653969810807,
+      "rel_score": -0.016223123979963505
+    },
+    "test": {
+      "mse": 0.0007691041682846844,
+      "mae": 0.020101767033338547,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03928979598567821,
+      "rel_score": 0.025334250616055987
+    }
+  },
+  "lstm_seed_52": {
+    "train": {
+      "mse": 0.0006207632250152528,
+      "mae": 0.017162315547466278,
+      "directional_accuracy": 0.4450910584691223,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03323268793246825,
+      "rel_score": -3.5380717145816476e-05
+    },
+    "val": {
+      "mse": 0.00038367175147868693,
+      "mae": 0.013646142557263374,
+      "directional_accuracy": 0.44556451612903225,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024741120508406312,
+      "rel_score": -0.003666363525570482
+    },
+    "test": {
+      "mse": 0.0007706343894824386,
+      "mae": 0.020176544785499573,
+      "directional_accuracy": 0.46600877192982454,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03941155659849756,
+      "rel_score": 0.0223137233783407
+    }
+  },
+  "lstm_seed_62": {
+    "train": {
+      "mse": 0.0006190995336510241,
+      "mae": 0.01714254915714264,
+      "directional_accuracy": 0.4453649185266329,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03320197471475694,
+      "rel_score": 0.0008888389676836583
+    },
+    "val": {
+      "mse": 0.0003830627538263798,
+      "mae": 0.013661314733326435,
+      "directional_accuracy": 0.4375,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024970649684837552,
+      "rel_score": -0.012977611726858962
+    },
+    "test": {
+      "mse": 0.0007753982790745795,
+      "mae": 0.02020443044602871,
+      "directional_accuracy": 0.4731359649122807,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040020714484671774,
+      "rel_score": 0.00720228508434817
+    }
+  },
+  "lstm_seed_72": {
+    "train": {
+      "mse": 0.0006168382242321968,
+      "mae": 0.017099302262067795,
+      "directional_accuracy": 0.4596056415171847,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033226088315132074,
+      "rel_score": 0.00016321443858724471
+    },
+    "val": {
+      "mse": 0.00038409113767556846,
+      "mae": 0.013660799711942673,
+      "directional_accuracy": 0.4536290322580645,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02506139151666957,
+      "rel_score": -0.016658711147701455
+    },
+    "test": {
+      "mse": 0.0007692632498219609,
+      "mae": 0.02012481354176998,
+      "directional_accuracy": 0.4621710526315789,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03990471258221078,
+      "rel_score": 0.010079955440114752
+    }
+  },
+  "lstm_seed_82": {
+    "train": {
+      "mse": 0.0006131569971330464,
+      "mae": 0.017077267169952393,
+      "directional_accuracy": 0.4572778310283445,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03307127387961373,
+      "rel_score": 0.004821878019417802
+    },
+    "val": {
+      "mse": 0.0003841149155050516,
+      "mae": 0.013661829754710197,
+      "directional_accuracy": 0.45026881720430106,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025004971102498524,
+      "rel_score": -0.014369919421375998
+    },
+    "test": {
+      "mse": 0.0007690737838856876,
+      "mae": 0.020146489143371582,
+      "directional_accuracy": 0.46875,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039839576714439315,
+      "rel_score": 0.011695787179133998
+    }
+  },
+  "lstm_best_by_val": {
+    "train": {
+      "mse": 0.0006207632250152528,
+      "mae": 0.017162315547466278,
+      "directional_accuracy": 0.4450910584691223,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03323268793246825,
+      "rel_score": -3.5380717145816476e-05
+    },
+    "val": {
+      "mse": 0.00038367175147868693,
+      "mae": 0.013646142557263374,
+      "directional_accuracy": 0.44556451612903225,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024741120508406312,
+      "rel_score": -0.003666363525570482
+    },
+    "test": {
+      "mse": 0.0007706343894824386,
+      "mae": 0.020176544785499573,
+      "directional_accuracy": 0.46600877192982454,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03941155659849756,
+      "rel_score": 0.0223137233783407
+    }
+  },
+  "lstm_top2_by_val": {
+    "train": {
+      "mse": 0.0006192986038513482,
+      "mae": 0.017131635919213295,
+      "directional_accuracy": 0.4518690948925099,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332055513135856,
+      "rel_score": 0.0007812122424979417
+    },
+    "val": {
+      "mse": 0.0003832105721812695,
+      "mae": 0.01364913210272789,
+      "directional_accuracy": 0.44623655913978494,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024893167958362026,
+      "rel_score": -0.009834431424052825
+    },
+    "test": {
+      "mse": 0.0007712895749136806,
+      "mae": 0.020154863595962524,
+      "directional_accuracy": 0.4605263157894737,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03961180191399763,
+      "rel_score": 0.017346218569620264
+    }
+  },
+  "lstm_signmag": {
+    "train": {
+      "mse": 0.0006183174555189908,
+      "mae": 0.0172297153621912,
+      "directional_accuracy": 0.4407092975489525,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0333141687879106,
+      "rel_score": -0.0024872960861050952
+    },
+    "val": {
+      "mse": 0.00038283332833088934,
+      "mae": 0.013672107830643654,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025008184196121875,
+      "rel_score": -0.014500264123893603
+    },
+    "test": {
+      "mse": 0.0007663510623387992,
+      "mae": 0.020086510106921196,
+      "directional_accuracy": 0.48355263157894735,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03952408075565472,
+      "rel_score": 0.01952232578494617
+    }
+  },
+  "lstm_signmag_ensemble": {
+    "train": {
+      "mse": 0.0006136121810413897,
+      "mae": 0.01718153804540634,
+      "directional_accuracy": 0.44118855264959606,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329151700017974,
+      "rel_score": -0.001805660305894019
+    },
+    "val": {
+      "mse": 0.0003825040766969323,
+      "mae": 0.013668188825249672,
+      "directional_accuracy": 0.4442204301075269,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025107416918035592,
+      "rel_score": -0.018525811192873
+    },
+    "test": {
+      "mse": 0.0007645604782737792,
+      "mae": 0.020068973302841187,
+      "directional_accuracy": 0.4830043859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039704979127145636,
+      "rel_score": 0.015034762477776131
+    }
+  },
+  "lstm_signmag_seed_42": {
+    "train": {
+      "mse": 0.0006183174555189908,
+      "mae": 0.0172297153621912,
+      "directional_accuracy": 0.4407092975489525,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0333141687879106,
+      "rel_score": -0.0024872960861050952
+    },
+    "val": {
+      "mse": 0.00038283332833088934,
+      "mae": 0.013672107830643654,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025008184196121875,
+      "rel_score": -0.014500264123893603
+    },
+    "test": {
+      "mse": 0.0007663510623387992,
+      "mae": 0.020086510106921196,
+      "directional_accuracy": 0.48355263157894735,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03952408075565472,
+      "rel_score": 0.01952232578494617
+    }
+  },
+  "lstm_signmag_seed_52": {
+    "train": {
+      "mse": 0.0006206747493706644,
+      "mae": 0.017278991639614105,
+      "directional_accuracy": 0.43844995207448995,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03333698946516961,
+      "rel_score": -0.003174014076455789
+    },
+    "val": {
+      "mse": 0.0003823033475782722,
+      "mae": 0.013683266937732697,
+      "directional_accuracy": 0.4334677419354839,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025042495491652515,
+      "rel_score": -0.015892161196679133
+    },
+    "test": {
+      "mse": 0.0007702905568294227,
+      "mae": 0.020152993500232697,
+      "directional_accuracy": 0.4753289473684211,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03966326525551268,
+      "rel_score": 0.016069562504980706
+    }
+  },
+  "lstm_signmag_seed_62": {
+    "train": {
+      "mse": 0.0006206724792718887,
+      "mae": 0.017268549650907516,
+      "directional_accuracy": 0.43769683691633576,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033266238038777374,
+      "rel_score": -0.0010449678262030027
+    },
+    "val": {
+      "mse": 0.0003824115847237408,
+      "mae": 0.013675716705620289,
+      "directional_accuracy": 0.4327956989247312,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024929262482328338,
+      "rel_score": -0.011298668243890697
+    },
+    "test": {
+      "mse": 0.0007708768825978041,
+      "mae": 0.020150497555732727,
+      "directional_accuracy": 0.47149122807017546,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040070563845802105,
+      "rel_score": 0.0059656671864054545
+    }
+  },
+  "lstm_signmag_seed_72": {
+    "train": {
+      "mse": 0.0006058952421881258,
+      "mae": 0.017077067866921425,
+      "directional_accuracy": 0.4460495686704094,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033211300731636584,
+      "rel_score": 0.0006082012154874361
+    },
+    "val": {
+      "mse": 0.0003853375092148781,
+      "mae": 0.013708389364182949,
+      "directional_accuracy": 0.46102150537634407,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025061263458337632,
+      "rel_score": -0.016653516239884203
+    },
+    "test": {
+      "mse": 0.0007621938129886985,
+      "mae": 0.0200644638389349,
+      "directional_accuracy": 0.4769736842105263,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040252282028086485,
+      "rel_score": 0.001457766754001777
+    }
+  },
+  "lstm_signmag_seed_82": {
+    "train": {
+      "mse": 0.0006093340925872326,
+      "mae": 0.01710463874042034,
+      "directional_accuracy": 0.4444748733397234,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03319867463869741,
+      "rel_score": 0.000988144591871909
+    },
+    "val": {
+      "mse": 0.00038265649345703423,
+      "mae": 0.013671471737325191,
+      "directional_accuracy": 0.4388440860215054,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02513797883875667,
+      "rel_score": -0.019765608388883527
+    },
+    "test": {
+      "mse": 0.0007601366960443556,
+      "mae": 0.020011283457279205,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03955805870937183,
+      "rel_score": 0.01867943141781092
+    }
+  },
+  "lstm_signmag_best_by_val": {
+    "train": {
+      "mse": 0.0006206724792718887,
+      "mae": 0.017268549650907516,
+      "directional_accuracy": 0.43769683691633576,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033266238038777374,
+      "rel_score": -0.0010449678262030027
+    },
+    "val": {
+      "mse": 0.0003824115847237408,
+      "mae": 0.013675716705620289,
+      "directional_accuracy": 0.4327956989247312,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024929262482328338,
+      "rel_score": -0.011298668243890697
+    },
+    "test": {
+      "mse": 0.0007708768825978041,
+      "mae": 0.020150497555732727,
+      "directional_accuracy": 0.47149122807017546,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040070563845802105,
+      "rel_score": 0.0059656671864054545
+    }
+  },
+  "lstm_signmag_top2_by_val": {
+    "train": {
+      "mse": 0.0006193133303895593,
+      "mae": 0.017246637493371964,
+      "directional_accuracy": 0.43872381213200057,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03328553332539741,
+      "rel_score": -0.001625600044106168
+    },
+    "val": {
+      "mse": 0.000382472004275769,
+      "mae": 0.01367146335542202,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024954276304924857,
+      "rel_score": -0.012313397239483104
+    },
+    "test": {
+      "mse": 0.0007681699935346842,
+      "mae": 0.020110327750444412,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039879201859002934,
+      "rel_score": 0.010712802405310695
+    }
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_weighted_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_weighted/reports/backtests/threshold_backtest.csv
+{
+  "lstm_signmag_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1519,
+    "coverage": 0.8273420479302832,
+    "directional_accuracy": 0.5608953258722844,
+    "avg_actual_return": 0.0015701990937195523,
+    "avg_strategy_return": 0.0015701990937195523,
+    "cumulative_strategy_return": 2.38513242336,
+    "final_equity": 6.203733384597601,
+    "sampled_buy_hold_equity": 6.203733384597601
+  },
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1374,
+    "coverage": 0.7483660130718954,
+    "directional_accuracy": 0.5567685589519651,
+    "avg_actual_return": 0.0016203308649927219,
+    "avg_strategy_return": 0.0016203308649927219,
+    "cumulative_strategy_return": 2.2263346084999998,
+    "final_equity": 6.0046188044027184,
+    "sampled_buy_hold_equity": 6.0046188044027184
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 788,
+    "coverage": 0.42919389978213507,
+    "directional_accuracy": 0.565989847715736,
+    "avg_actual_return": 0.002615713397030457,
+    "avg_strategy_return": 0.002615713397030457,
+    "cumulative_strategy_return": 2.06118215686,
+    "final_equity": 5.965041419231594,
+    "sampled_buy_hold_equity": 5.965041419231594
+  },
+  "lstm_signmag_seed_72": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1299,
+    "coverage": 0.7075163398692811,
+    "directional_accuracy": 0.565050038491147,
+    "avg_actual_return": 0.00173343155308699,
+    "avg_strategy_return": 0.00173343155308699,
+    "cumulative_strategy_return": 2.25172758746,
+    "final_equity": 5.908784294639702,
+    "sampled_buy_hold_equity": 5.908784294639702
+  },
+  "lstm_signmag_seed_82": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1413,
+    "coverage": 0.7696078431372549,
+    "directional_accuracy": 0.5619249823071479,
+    "avg_actual_return": 0.001545312978740269,
+    "avg_strategy_return": 0.001545312978740269,
+    "cumulative_strategy_return": 2.18352723896,
+    "final_equity": 5.230123473237237,
+    "sampled_buy_hold_equity": 5.230123473237237
+  },
+  "lstm_seed_82": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1209,
+    "coverage": 0.6584967320261438,
+    "directional_accuracy": 0.5533498759305211,
+    "avg_actual_return": 0.0016627413644003306,
+    "avg_strategy_return": 0.0016627413644003306,
+    "cumulative_strategy_return": 2.0102543095599996,
+    "final_equity": 4.657673551721466,
+    "sampled_buy_hold_equity": 4.657673551721466
+  },
+  "lstm_signmag": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1568,
+    "coverage": 0.8540305010893247,
+    "directional_accuracy": 0.5567602040816326,
+    "avg_actual_return": 0.001337582719005102,
+    "avg_strategy_return": 0.001337582719005102,
+    "cumulative_strategy_return": 2.0973297034,
+    "final_equity": 4.4732073189724915,
+    "sampled_buy_hold_equity": 4.4732073189724915
+  },
+  "lstm_signmag_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1568,
+    "coverage": 0.8540305010893247,
+    "directional_accuracy": 0.5567602040816326,
+    "avg_actual_return": 0.001337582719005102,
+    "avg_strategy_return": 0.001337582719005102,
+    "cumulative_strategy_return": 2.0973297034,
+    "final_equity": 4.4732073189724915,
+    "sampled_buy_hold_equity": 4.4732073189724915
+  },
+  "lstm_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1429,
+    "coverage": 0.778322440087146,
+    "directional_accuracy": 0.5528341497550735,
+    "avg_actual_return": 0.0013585068023512943,
+    "avg_strategy_return": 0.0013585068023512943,
+    "cumulative_strategy_return": 1.9413062205599996,
+    "final_equity": 4.017670091308629,
+    "sampled_buy_hold_equity": 4.017670091308629
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1498,
+    "coverage": 0.8159041394335512,
+    "directional_accuracy": 0.5534045393858478,
+    "avg_actual_return": 0.0012340350512683577,
+    "avg_strategy_return": 0.0012340350512683577,
+    "cumulative_strategy_return": 1.8485845068,
+    "final_equity": 3.5794605834458015,
+    "sampled_buy_hold_equity": 3.5794605834458015
+  },
+  "lstm_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1498,
+    "coverage": 0.8159041394335512,
+    "directional_accuracy": 0.5534045393858478,
+    "avg_actual_return": 0.0012340350512683577,
+    "avg_strategy_return": 0.0012340350512683577,
+    "cumulative_strategy_return": 1.8485845068,
+    "final_equity": 3.5794605834458015,
+    "sampled_buy_hold_equity": 3.5794605834458015
+  },
+  "lstm_seed_72": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 441,
+    "coverage": 0.24019607843137256,
+    "directional_accuracy": 0.5736961451247166,
+    "avg_actual_return": 0.0033295302793650795,
+    "avg_strategy_return": 0.0033295302793650795,
+    "cumulative_strategy_return": 1.4683228532,
+    "final_equity": 3.5151681817583493,
+    "sampled_buy_hold_equity": 3.5151681817583493
+  },
+  "lstm_seed_62": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1309,
+    "coverage": 0.7129629629629629,
+    "directional_accuracy": 0.5523300229182582,
+    "avg_actual_return": 0.001266844182459893,
+    "avg_strategy_return": 0.001266844182459893,
+    "cumulative_strategy_return": 1.65829903484,
+    "final_equity": 3.3329742351631846,
+    "sampled_buy_hold_equity": 3.3329742351631846
+  },
+  "lstm_signmag_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1611,
+    "coverage": 0.8774509803921569,
+    "directional_accuracy": 0.5549348230912476,
+    "avg_actual_return": 0.001044138028926133,
+    "avg_strategy_return": 0.001044138028926133,
+    "cumulative_strategy_return": 1.6821063646,
+    "final_equity": 2.898615979002074,
+    "sampled_buy_hold_equity": 2.898615979002074
+  },
+  "lstm_signmag_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 286,
+    "coverage": 0.15577342047930284,
+    "directional_accuracy": 0.5944055944055944,
+    "avg_actual_return": 0.003875289780769231,
+    "avg_strategy_return": 0.003875289780769231,
+    "cumulative_strategy_return": 1.1083328773,
+    "final_equity": 2.6534311248998983,
+    "sampled_buy_hold_equity": 2.6534311248998983
+  },
+  "lstm_best_by_val": {
+    "threshold": 0.005,
+    "holding_period": 1,
+    "trade_count": 87,
+    "coverage": 0.04738562091503268,
+    "directional_accuracy": 0.6666666666666666,
+    "avg_actual_return": 0.010004911836781611,
+    "avg_strategy_return": 0.010004911836781611,
+    "cumulative_strategy_return": 0.8704273298000001,
+    "final_equity": 2.2854037477443456,
+    "sampled_buy_hold_equity": 2.2854037477443456
+  },
+  "lstm_seed_52": {
+    "threshold": 0.005,
+    "holding_period": 1,
+    "trade_count": 87,
+    "coverage": 0.04738562091503268,
+    "directional_accuracy": 0.6666666666666666,
+    "avg_actual_return": 0.010004911836781611,
+    "avg_strategy_return": 0.010004911836781611,
+    "cumulative_strategy_return": 0.8704273298000001,
+    "final_equity": 2.2854037477443456,
+    "sampled_buy_hold_equity": 2.2854037477443456
+  },
+  "lstm_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1441,
+    "coverage": 0.7848583877995643,
+    "directional_accuracy": 0.5447605829285218,
+    "avg_actual_return": 0.0008088879394864679,
+    "avg_strategy_return": 0.0008088879394864679,
+    "cumulative_strategy_return": 1.1656075208000003,
+    "final_equity": 1.8990230648987723,
+    "sampled_buy_hold_equity": 1.8990230648987723
+  },
+  "lstm_signmag_best_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1621,
+    "coverage": 0.8828976034858388,
+    "directional_accuracy": 0.5502776064157927,
+    "avg_actual_return": 0.0007618380120913016,
+    "avg_strategy_return": 0.0007618380120913016,
+    "cumulative_strategy_return": 1.2349394176,
+    "final_equity": 1.8721258375782908,
+    "sampled_buy_hold_equity": 1.8721258375782908
+  },
+  "lstm_signmag_seed_62": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1621,
+    "coverage": 0.8828976034858388,
+    "directional_accuracy": 0.5502776064157927,
+    "avg_actual_return": 0.0007618380120913016,
+    "avg_strategy_return": 0.0007618380120913016,
+    "cumulative_strategy_return": 1.2349394176,
+    "final_equity": 1.8721258375782908,
+    "sampled_buy_hold_equity": 1.8721258375782908
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_weighted_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_weighted
+
+>>> overnight_bds_return1d_stack48_24_w5_attention_train
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1775615114.949226 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775615120.374637 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615125.380970 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615130.841276 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615138.152890 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_17}}
+E0000 00:00:1775615143.502306 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615148.791456 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615153.997403 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_17}}
+E0000 00:00:1775615159.189439 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615164.648613 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615171.409463 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775615176.717207 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615182.101858 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615187.265507 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615193.461319 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615199.185319 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615204.301702 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615209.419191 5835186 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_attention
+{
+  "lstm": {
+    "train": {
+      "mse": 0.000621541403234005,
+      "mae": 0.017138611525297165,
+      "directional_accuracy": 0.45590853074079146,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033262656982060435,
+      "rel_score": -0.0009372069546005335
+    },
+    "val": {
+      "mse": 0.0003825343446806073,
+      "mae": 0.013627390377223492,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02490211911717779,
+      "rel_score": -0.010197550669800215
+    },
+    "test": {
+      "mse": 0.0007688233163207769,
+      "mae": 0.020088106393814087,
+      "directional_accuracy": 0.47478070175438597,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03954349232371897,
+      "rel_score": 0.019040781148243147
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0006051340606063604,
+      "mae": 0.017268629744648933,
+      "directional_accuracy": 0.436259071614405,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03396526863798499,
+      "rel_score": -0.02208014057034169
+    },
+    "val": {
+      "mse": 0.00040548102697357535,
+      "mae": 0.014383264817297459,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.026569997082697222,
+      "rel_score": -0.07785790630682743
+    },
+    "test": {
+      "mse": 0.0008246484212577343,
+      "mae": 0.020955141633749008,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04212386123253964,
+      "rel_score": -0.04497067864960069
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0006197785260155797,
+      "mae": 0.01733538694679737,
+      "directional_accuracy": 0.426400109544023,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03369622354512103,
+      "rel_score": -0.013984057207508283
+    },
+    "val": {
+      "mse": 0.00038903168751858175,
+      "mae": 0.013879637233912945,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025185339763993397,
+      "rel_score": -0.021686886270756434
+    },
+    "test": {
+      "mse": 0.0007617064984515309,
+      "mae": 0.02011840231716633,
+      "directional_accuracy": 0.4369517543859649,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040448275597009344,
+      "rel_score": -0.0034042645682852424
+    }
+  },
+  "lstm_ensemble": {
+    "train": {
+      "mse": 0.0006207108381204307,
+      "mae": 0.017126068472862244,
+      "directional_accuracy": 0.4506367246337122,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03328079157654429,
+      "rel_score": -0.0014829117178043472
+    },
+    "val": {
+      "mse": 0.00038180811679922044,
+      "mae": 0.013615305535495281,
+      "directional_accuracy": 0.45026881720430106,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024978138762526213,
+      "rel_score": -0.013281419121814464
+    },
+    "test": {
+      "mse": 0.0007687242468819022,
+      "mae": 0.020096110180020332,
+      "directional_accuracy": 0.46381578947368424,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.0393138542844099,
+      "rel_score": 0.024737434084588728
+    }
+  },
+  "lstm_seed_42": {
+    "train": {
+      "mse": 0.000621541403234005,
+      "mae": 0.017138611525297165,
+      "directional_accuracy": 0.45590853074079146,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033262656982060435,
+      "rel_score": -0.0009372069546005335
+    },
+    "val": {
+      "mse": 0.0003825343446806073,
+      "mae": 0.013627390377223492,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02490211911717779,
+      "rel_score": -0.010197550669800215
+    },
+    "test": {
+      "mse": 0.0007688233163207769,
+      "mae": 0.020088106393814087,
+      "directional_accuracy": 0.47478070175438597,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03954349232371897,
+      "rel_score": 0.019040781148243147
+    }
+  },
+  "lstm_seed_52": {
+    "train": {
+      "mse": 0.0006214717286638916,
+      "mae": 0.01714988425374031,
+      "directional_accuracy": 0.4498151444611803,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332711271912558,
+      "rel_score": -0.001192091810578999
+    },
+    "val": {
+      "mse": 0.00038270902587100863,
+      "mae": 0.013631576672196388,
+      "directional_accuracy": 0.4536290322580645,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024799508357466492,
+      "rel_score": -0.0060349676524691365
+    },
+    "test": {
+      "mse": 0.0007699330453760922,
+      "mae": 0.020153947174549103,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039363664602751675,
+      "rel_score": 0.02350178472485842
+    }
+  },
+  "lstm_seed_82": {
+    "train": {
+      "mse": 0.0006200794596225023,
+      "mae": 0.01711449585855007,
+      "directional_accuracy": 0.4476927290154731,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033359069783728046,
+      "rel_score": -0.0038384532521495984
+    },
+    "val": {
+      "mse": 0.0003809637564700097,
+      "mae": 0.013610804453492165,
+      "directional_accuracy": 0.4475806451612903,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02509317347085016,
+      "rel_score": -0.017948001112047862
+    },
+    "test": {
+      "mse": 0.0007697485270909965,
+      "mae": 0.02009635418653488,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03979852532829682,
+      "rel_score": 0.012714152865033967
+    }
+  },
+  "lstm_best_by_val": {
+    "train": {
+      "mse": 0.0006214717286638916,
+      "mae": 0.01714988425374031,
+      "directional_accuracy": 0.4498151444611803,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332711271912558,
+      "rel_score": -0.001192091810578999
+    },
+    "val": {
+      "mse": 0.00038270902587100863,
+      "mae": 0.013631576672196388,
+      "directional_accuracy": 0.4536290322580645,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024799508357466492,
+      "rel_score": -0.0060349676524691365
+    },
+    "test": {
+      "mse": 0.0007699330453760922,
+      "mae": 0.020153947174549103,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039363664602751675,
+      "rel_score": 0.02350178472485842
+    }
+  },
+  "lstm_top2_by_val": {
+    "train": {
+      "mse": 0.0006212589796632528,
+      "mae": 0.017136793583631516,
+      "directional_accuracy": 0.45399151033821716,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033265146470512263,
+      "rel_score": -0.0010121204414896834
+    },
+    "val": {
+      "mse": 0.0003824849263764918,
+      "mae": 0.01362373773008585,
+      "directional_accuracy": 0.459005376344086,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024852582091989463,
+      "rel_score": -0.008187995528037284
+    },
+    "test": {
+      "mse": 0.0007688407204113901,
+      "mae": 0.020108433440327644,
+      "directional_accuracy": 0.46600877192982454,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039320718463568494,
+      "rel_score": 0.024567153731747116
+    }
+  },
+  "lstm_attention": {
+    "train": {
+      "mse": 0.0006180269992910326,
+      "mae": 0.017155002802610397,
+      "directional_accuracy": 0.44776119402985076,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03324045520093932,
+      "rel_score": -0.0002691127372094204
+    },
+    "val": {
+      "mse": 0.0003871331864502281,
+      "mae": 0.013755661435425282,
+      "directional_accuracy": 0.44086021505376344,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02515233751910273,
+      "rel_score": -0.020348093102260156
+    },
+    "test": {
+      "mse": 0.000770299113355577,
+      "mae": 0.020134294405579567,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04037137227860513,
+      "rel_score": -0.001496516549184257
+    }
+  },
+  "lstm_attention_ensemble": {
+    "train": {
+      "mse": 0.0006155075971037149,
+      "mae": 0.017095139250159264,
+      "directional_accuracy": 0.45358072025195123,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033236924769880716,
+      "rel_score": -0.0001628752888582774
+    },
+    "val": {
+      "mse": 0.0003830018104054034,
+      "mae": 0.013636643998324871,
+      "directional_accuracy": 0.4469086021505376,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02497188631678,
+      "rel_score": -0.013027777841375654
+    },
+    "test": {
+      "mse": 0.0007666635792702436,
+      "mae": 0.020083393901586533,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03994927994208411,
+      "rel_score": 0.00897436865557577
+    }
+  },
+  "lstm_attention_seed_42": {
+    "train": {
+      "mse": 0.0006180269992910326,
+      "mae": 0.017155002802610397,
+      "directional_accuracy": 0.44776119402985076,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03324045520093932,
+      "rel_score": -0.0002691127372094204
+    },
+    "val": {
+      "mse": 0.0003871331864502281,
+      "mae": 0.013755661435425282,
+      "directional_accuracy": 0.44086021505376344,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02515233751910273,
+      "rel_score": -0.020348093102260156
+    },
+    "test": {
+      "mse": 0.000770299113355577,
+      "mae": 0.020134294405579567,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04037137227860513,
+      "rel_score": -0.001496516549184257
+    }
+  },
+  "lstm_attention_seed_52": {
+    "train": {
+      "mse": 0.0006179181509651244,
+      "mae": 0.017105815932154655,
+      "directional_accuracy": 0.4555662056689032,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329286607913673,
+      "rel_score": -0.0018462566817007975
+    },
+    "val": {
+      "mse": 0.0003834842937067151,
+      "mae": 0.01361852791160345,
+      "directional_accuracy": 0.4637096774193548,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02492217347025871,
+      "rel_score": -0.011011090203013607
+    },
+    "test": {
+      "mse": 0.0007654866203665733,
+      "mae": 0.0200858972966671,
+      "directional_accuracy": 0.48135964912280704,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03984206428722246,
+      "rel_score": 0.01163407772175451
+    }
+  },
+  "lstm_attention_seed_82": {
+    "train": {
+      "mse": 0.0006150878616608679,
+      "mae": 0.0170747023075819,
+      "directional_accuracy": 0.45474462549637135,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332692987867631,
+      "rel_score": -0.0011370716091834154
+    },
+    "val": {
+      "mse": 0.0003804068546742201,
+      "mae": 0.013586527667939663,
+      "directional_accuracy": 0.45564516129032256,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02502465112011123,
+      "rel_score": -0.015168273388600495
+    },
+    "test": {
+      "mse": 0.00076944415923208,
+      "mae": 0.020121343433856964,
+      "directional_accuracy": 0.47752192982456143,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03981253509118688,
+      "rel_score": 0.012366611329035493
+    }
+  },
+  "lstm_attention_best_by_val": {
+    "train": {
+      "mse": 0.0006179181509651244,
+      "mae": 0.017105815932154655,
+      "directional_accuracy": 0.4555662056689032,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329286607913673,
+      "rel_score": -0.0018462566817007975
+    },
+    "val": {
+      "mse": 0.0003834842937067151,
+      "mae": 0.01361852791160345,
+      "directional_accuracy": 0.4637096774193548,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02492217347025871,
+      "rel_score": -0.011011090203013607
+    },
+    "test": {
+      "mse": 0.0007654866203665733,
+      "mae": 0.0200858972966671,
+      "directional_accuracy": 0.48135964912280704,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03984206428722246,
+      "rel_score": 0.01163407772175451
+    }
+  },
+  "lstm_attention_top2_by_val": {
+    "train": {
+      "mse": 0.0006154600996524096,
+      "mae": 0.01708379201591015,
+      "directional_accuracy": 0.45460769546761604,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03326881267275894,
+      "rel_score": -0.0011224435055461335
+    },
+    "val": {
+      "mse": 0.0003817869001068175,
+      "mae": 0.013597872108221054,
+      "directional_accuracy": 0.46236559139784944,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02508311852798215,
+      "rel_score": -0.017540104956319302
+    },
+    "test": {
+      "mse": 0.0007669213810004294,
+      "mae": 0.02008846588432789,
+      "directional_accuracy": 0.47478070175438597,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039665172962122616,
+      "rel_score": 0.016022237843553055
+    }
+  },
+  "lstm_signmag": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_ensemble": {
+    "train": {
+      "mse": 0.0006201443611644208,
+      "mae": 0.017243482172489166,
+      "directional_accuracy": 0.43858688210324526,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329789931012783,
+      "rel_score": -0.0019977162651281244
+    },
+    "val": {
+      "mse": 0.0003815232194028795,
+      "mae": 0.013656944036483765,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02510915681486949,
+      "rel_score": -0.01859639311852157
+    },
+    "test": {
+      "mse": 0.0007681502611376345,
+      "mae": 0.02010870724916458,
+      "directional_accuracy": 0.4791666666666667,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03973773984471336,
+      "rel_score": 0.014222064204918117
+    }
+  },
+  "lstm_signmag_seed_42": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_seed_52": {
+    "train": {
+      "mse": 0.0006204168312251568,
+      "mae": 0.017252067103981972,
+      "directional_accuracy": 0.4381760920169793,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03328634526405949,
+      "rel_score": -0.0016500328372255346
+    },
+    "val": {
+      "mse": 0.0003816989192273468,
+      "mae": 0.01366149540990591,
+      "directional_accuracy": 0.43481182795698925,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025007226155503298,
+      "rel_score": -0.014461399548482357
+    },
+    "test": {
+      "mse": 0.0007697537075728178,
+      "mae": 0.020136946812272072,
+      "directional_accuracy": 0.4758771929824561,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03964758926304057,
+      "rel_score": 0.01645843835854155
+    }
+  },
+  "lstm_signmag_seed_82": {
+    "train": {
+      "mse": 0.000620782608166337,
+      "mae": 0.01724349334836006,
+      "directional_accuracy": 0.4377653019307134,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03331999387592077,
+      "rel_score": -0.0026625841674603468
+    },
+    "val": {
+      "mse": 0.0003808489709626883,
+      "mae": 0.013657788746058941,
+      "directional_accuracy": 0.4260752688172043,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025142827039235267,
+      "rel_score": -0.019962284030245137
+    },
+    "test": {
+      "mse": 0.0007682542782276869,
+      "mae": 0.02011837624013424,
+      "directional_accuracy": 0.47368421052631576,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03984510953887366,
+      "rel_score": 0.011558533871036558
+    }
+  },
+  "lstm_signmag_best_by_val": {
+    "train": {
+      "mse": 0.0006196008762344718,
+      "mae": 0.017237888649106026,
+      "directional_accuracy": 0.43933999726139944,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03329444912378676,
+      "rel_score": -0.0018938935343832952
+    },
+    "val": {
+      "mse": 0.0003823075967375189,
+      "mae": 0.013659822754561901,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02493745646152092,
+      "rel_score": -0.011631071188059172
+    },
+    "test": {
+      "mse": 0.0007670734194107354,
+      "mae": 0.020086845383048058,
+      "directional_accuracy": 0.4824561403508772,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03967635132139549,
+      "rel_score": 0.015744935209516697
+    }
+  },
+  "lstm_signmag_top2_by_val": {
+    "train": {
+      "mse": 0.0006199061754159629,
+      "mae": 0.0172441303730011,
+      "directional_accuracy": 0.43913460221826645,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332958169747144,
+      "rel_score": -0.0019350547948255858
+    },
+    "val": {
+      "mse": 0.0003819311095867306,
+      "mae": 0.013658829033374786,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02511619045972111,
+      "rel_score": -0.01888172509239716
+    },
+    "test": {
+      "mse": 0.0007682557334192097,
+      "mae": 0.020108407363295555,
+      "directional_accuracy": 0.4786184210526316,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03972412060247735,
+      "rel_score": 0.014559918057476806
+    }
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_attention_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_attention/reports/backtests/threshold_backtest.csv
+{
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1374,
+    "coverage": 0.7483660130718954,
+    "directional_accuracy": 0.5567685589519651,
+    "avg_actual_return": 0.0016203308649927219,
+    "avg_strategy_return": 0.0016203308649927219,
+    "cumulative_strategy_return": 2.2263346084999998,
+    "final_equity": 6.0046188044027184,
+    "sampled_buy_hold_equity": 6.0046188044027184
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 788,
+    "coverage": 0.42919389978213507,
+    "directional_accuracy": 0.565989847715736,
+    "avg_actual_return": 0.002615713397030457,
+    "avg_strategy_return": 0.002615713397030457,
+    "cumulative_strategy_return": 2.06118215686,
+    "final_equity": 5.965041419231594,
+    "sampled_buy_hold_equity": 5.965041419231594
+  },
+  "lstm_attention_best_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1025,
+    "coverage": 0.5582788671023965,
+    "directional_accuracy": 0.56,
+    "avg_actual_return": 0.0021079342168390243,
+    "avg_strategy_return": 0.0021079342168390243,
+    "cumulative_strategy_return": 2.16063257226,
+    "final_equity": 5.656809172834444,
+    "sampled_buy_hold_equity": 5.656809172834444
+  },
+  "lstm_attention_seed_52": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1025,
+    "coverage": 0.5582788671023965,
+    "directional_accuracy": 0.56,
+    "avg_actual_return": 0.0021079342168390243,
+    "avg_strategy_return": 0.0021079342168390243,
+    "cumulative_strategy_return": 2.16063257226,
+    "final_equity": 5.656809172834444,
+    "sampled_buy_hold_equity": 5.656809172834444
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1345,
+    "coverage": 0.7325708061002179,
+    "directional_accuracy": 0.5605947955390335,
+    "avg_actual_return": 0.0016633350340520445,
+    "avg_strategy_return": 0.0016633350340520445,
+    "cumulative_strategy_return": 2.2371856208,
+    "final_equity": 5.558674712706476,
+    "sampled_buy_hold_equity": 5.558674712706476
+  },
+  "lstm_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1345,
+    "coverage": 0.7325708061002179,
+    "directional_accuracy": 0.5605947955390335,
+    "avg_actual_return": 0.0016633350340520445,
+    "avg_strategy_return": 0.0016633350340520445,
+    "cumulative_strategy_return": 2.2371856208,
+    "final_equity": 5.558674712706476,
+    "sampled_buy_hold_equity": 5.558674712706476
+  },
+  "lstm_attention_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1026,
+    "coverage": 0.5588235294117647,
+    "directional_accuracy": 0.5623781676413255,
+    "avg_actual_return": 0.001947857193859649,
+    "avg_strategy_return": 0.001947857193859649,
+    "cumulative_strategy_return": 1.9985014809,
+    "final_equity": 4.963745115131693,
+    "sampled_buy_hold_equity": 4.963745115131693
+  },
+  "lstm_attention": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 981,
+    "coverage": 0.5343137254901961,
+    "directional_accuracy": 0.5739041794087666,
+    "avg_actual_return": 0.001808003753720693,
+    "avg_strategy_return": 0.001808003753720693,
+    "cumulative_strategy_return": 1.7736516823999997,
+    "final_equity": 4.068789585385516,
+    "sampled_buy_hold_equity": 4.068789585385516
+  },
+  "lstm_attention_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 981,
+    "coverage": 0.5343137254901961,
+    "directional_accuracy": 0.5739041794087666,
+    "avg_actual_return": 0.001808003753720693,
+    "avg_strategy_return": 0.001808003753720693,
+    "cumulative_strategy_return": 1.7736516823999997,
+    "final_equity": 4.068789585385516,
+    "sampled_buy_hold_equity": 4.068789585385516
+  },
+  "lstm_attention_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1074,
+    "coverage": 0.5849673202614379,
+    "directional_accuracy": 0.5540037243947858,
+    "avg_actual_return": 0.0015892027513594042,
+    "avg_strategy_return": 0.0015892027513594042,
+    "cumulative_strategy_return": 1.7068037549600001,
+    "final_equity": 3.610029723840722,
+    "sampled_buy_hold_equity": 3.610029723840722
+  },
+  "lstm_signmag": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_seed_42": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 298,
+    "coverage": 0.16230936819172112,
+    "directional_accuracy": 0.5805369127516778,
+    "avg_actual_return": 0.0045818106,
+    "avg_strategy_return": 0.0045818106,
+    "cumulative_strategy_return": 1.3653795588,
+    "final_equity": 3.368995203130611,
+    "sampled_buy_hold_equity": 3.368995203130611
+  },
+  "lstm_signmag_ensemble": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 237,
+    "coverage": 0.12908496732026145,
+    "directional_accuracy": 0.6033755274261603,
+    "avg_actual_return": 0.005516604758227849,
+    "avg_strategy_return": 0.005516604758227849,
+    "cumulative_strategy_return": 1.3074353277000001,
+    "final_equity": 3.272628983097648,
+    "sampled_buy_hold_equity": 3.272628983097648
+  },
+  "lstm_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1456,
+    "coverage": 0.7930283224400871,
+    "directional_accuracy": 0.5494505494505495,
+    "avg_actual_return": 0.0011461634767857142,
+    "avg_strategy_return": 0.0011461634767857142,
+    "cumulative_strategy_return": 1.6688140221999999,
+    "final_equity": 2.987252755409591,
+    "sampled_buy_hold_equity": 2.987252755409591
+  },
+  "lstm_attention_seed_82": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1093,
+    "coverage": 0.5953159041394336,
+    "directional_accuracy": 0.5535224153705398,
+    "avg_actual_return": 0.0013711061984446478,
+    "avg_strategy_return": 0.0013711061984446478,
+    "cumulative_strategy_return": 1.4986190749000001,
+    "final_equity": 2.9380649893964956,
+    "sampled_buy_hold_equity": 2.9380649893964956
+  },
+  "lstm_signmag_top2_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 256,
+    "coverage": 0.1394335511982571,
+    "directional_accuracy": 0.578125,
+    "avg_actual_return": 0.004217041516796875,
+    "avg_strategy_return": 0.004217041516796875,
+    "cumulative_strategy_return": 1.0795626283,
+    "final_equity": 2.5890485052598966,
+    "sampled_buy_hold_equity": 2.5890485052598966
+  },
+  "lstm_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1528,
+    "coverage": 0.8322440087145969,
+    "directional_accuracy": 0.5490837696335078,
+    "avg_actual_return": 0.0009997974837696335,
+    "avg_strategy_return": 0.0009997974837696335,
+    "cumulative_strategy_return": 1.5276905552,
+    "final_equity": 2.5248717413493997,
+    "sampled_buy_hold_equity": 2.5248717413493997
+  },
+  "lstm_signmag_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 196,
+    "coverage": 0.10675381263616558,
+    "directional_accuracy": 0.5969387755102041,
+    "avg_actual_return": 0.004546302983673469,
+    "avg_strategy_return": 0.004546302983673469,
+    "cumulative_strategy_return": 0.8910753847999999,
+    "final_equity": 2.2116417441087477,
+    "sampled_buy_hold_equity": 2.2116417441087477
+  },
+  "lstm_signmag_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 222,
+    "coverage": 0.12091503267973856,
+    "directional_accuracy": 0.5765765765765766,
+    "avg_actual_return": 0.003161577666666667,
+    "avg_strategy_return": 0.003161577666666667,
+    "cumulative_strategy_return": 0.701870242,
+    "final_equity": 1.8222473547026417,
+    "sampled_buy_hold_equity": 1.8222473547026417
+  },
+  "lstm_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 278,
+    "coverage": 0.1514161220043573,
+    "directional_accuracy": 0.5575539568345323,
+    "avg_actual_return": 0.0025980801057553958,
+    "avg_strategy_return": 0.0025980801057553958,
+    "cumulative_strategy_return": 0.7222662694,
+    "final_equity": 1.7917003673219747,
+    "sampled_buy_hold_equity": 1.7917003673219747
+  },
+  "lstm_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 291,
+    "coverage": 0.15849673202614378,
+    "directional_accuracy": 0.5567010309278351,
+    "avg_actual_return": 0.0024043757594501714,
+    "avg_strategy_return": 0.0024043757594501714,
+    "cumulative_strategy_return": 0.6996733459999999,
+    "final_equity": 1.7449511340783772,
+    "sampled_buy_hold_equity": 1.7449511340783772
+  },
+  "lstm_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 291,
+    "coverage": 0.15849673202614378,
+    "directional_accuracy": 0.5567010309278351,
+    "avg_actual_return": 0.0024043757594501714,
+    "avg_strategy_return": 0.0024043757594501714,
+    "cumulative_strategy_return": 0.6996733459999999,
+    "final_equity": 1.7449511340783772,
+    "sampled_buy_hold_equity": 1.7449511340783772
+  }
+}
+
+>>> overnight_bds_return1d_stack48_24_w5_attention_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_attention
+
+>>> overnight_bds_return1d_u32_w5_core_train
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1775615270.613026 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775615276.105306 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+E0000 00:00:1775615281.171184 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615286.237200 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615291.554060 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615296.634753 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615301.912394 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615307.395109 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615312.677063 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615317.751752 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+E0000 00:00:1775615322.757504 5852495 node_def_util.cc:682] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_14}}
+Saved run to: /Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_u32_w5_core
+{
+  "lstm": {
+    "train": {
+      "mse": 0.0006136908195912838,
+      "mae": 0.017059259116649628,
+      "directional_accuracy": 0.4513213747774887,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033292448624706594,
+      "rel_score": -0.001833694676459885
+    },
+    "val": {
+      "mse": 0.0003838703269138932,
+      "mae": 0.01365581527352333,
+      "directional_accuracy": 0.44623655913978494,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025421822242788036,
+      "rel_score": -0.031280207213867595
+    },
+    "test": {
+      "mse": 0.0007706491160206497,
+      "mae": 0.020103009417653084,
+      "directional_accuracy": 0.46765350877192985,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04019905459717847,
+      "rel_score": 0.0027781847539488647
+    }
+  },
+  "linear_regression": {
+    "train": {
+      "mse": 0.0006051340606063604,
+      "mae": 0.017268629744648933,
+      "directional_accuracy": 0.436259071614405,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03396526863798499,
+      "rel_score": -0.02208014057034169
+    },
+    "val": {
+      "mse": 0.00040548102697357535,
+      "mae": 0.014383264817297459,
+      "directional_accuracy": 0.43413978494623656,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.026569997082697222,
+      "rel_score": -0.07785790630682743
+    },
+    "test": {
+      "mse": 0.0008246484212577343,
+      "mae": 0.020955141633749008,
+      "directional_accuracy": 0.4517543859649123,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04212386123253964,
+      "rel_score": -0.04497067864960069
+    }
+  },
+  "arima": {
+    "train": {
+      "mse": 0.0006197785260155797,
+      "mae": 0.01733538694679737,
+      "directional_accuracy": 0.426400109544023,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03369622354512103,
+      "rel_score": -0.013984057207508283
+    },
+    "val": {
+      "mse": 0.00038903168751858175,
+      "mae": 0.013879637233912945,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025185339763993397,
+      "rel_score": -0.021686886270756434
+    },
+    "test": {
+      "mse": 0.0007617064984515309,
+      "mae": 0.02011840231716633,
+      "directional_accuracy": 0.4369517543859649,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040448275597009344,
+      "rel_score": -0.0034042645682852424
+    }
+  },
+  "lstm_ensemble": {
+    "train": {
+      "mse": 0.0006079786689952016,
+      "mae": 0.016980642452836037,
+      "directional_accuracy": 0.45974257154594,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033197137749084504,
+      "rel_score": 0.001034392550878005
+    },
+    "val": {
+      "mse": 0.00038459833012893796,
+      "mae": 0.013658251613378525,
+      "directional_accuracy": 0.4657258064516129,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02525892755948007,
+      "rel_score": -0.024672102525245654
+    },
+    "test": {
+      "mse": 0.0007757802377454937,
+      "mae": 0.02015826292335987,
+      "directional_accuracy": 0.4583333333333333,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040046263884869406,
+      "rel_score": 0.006568478655345267
+    }
+  },
+  "lstm_seed_42": {
+    "train": {
+      "mse": 0.0006136908195912838,
+      "mae": 0.017059259116649628,
+      "directional_accuracy": 0.4513213747774887,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033292448624706594,
+      "rel_score": -0.001833694676459885
+    },
+    "val": {
+      "mse": 0.0003838703269138932,
+      "mae": 0.01365581527352333,
+      "directional_accuracy": 0.44623655913978494,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025421822242788036,
+      "rel_score": -0.031280207213867595
+    },
+    "test": {
+      "mse": 0.0007706491160206497,
+      "mae": 0.020103009417653084,
+      "directional_accuracy": 0.46765350877192985,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04019905459717847,
+      "rel_score": 0.0027781847539488647
+    }
+  },
+  "lstm_seed_52": {
+    "train": {
+      "mse": 0.0006054101977497339,
+      "mae": 0.01694021187722683,
+      "directional_accuracy": 0.45577160071203615,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0330507869439316,
+      "rel_score": 0.005438369245352903
+    },
+    "val": {
+      "mse": 0.00038561256951652467,
+      "mae": 0.013675453141331673,
+      "directional_accuracy": 0.4724462365591398,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025060200806183274,
+      "rel_score": -0.016610407916512582
+    },
+    "test": {
+      "mse": 0.0007897145114839077,
+      "mae": 0.020333418622612953,
+      "directional_accuracy": 0.46381578947368424,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04000856678612763,
+      "rel_score": 0.007503634210954235
+    }
+  },
+  "lstm_seed_62": {
+    "train": {
+      "mse": 0.000604546454269439,
+      "mae": 0.016946302726864815,
+      "directional_accuracy": 0.4541284403669725,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.032977867260342464,
+      "rel_score": 0.007632662517327193
+    },
+    "val": {
+      "mse": 0.00038205739110708237,
+      "mae": 0.013630894012749195,
+      "directional_accuracy": 0.4543010752688172,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025094523227016902,
+      "rel_score": -0.018002756306464196
+    },
+    "test": {
+      "mse": 0.0007744882022961974,
+      "mae": 0.020158538594841957,
+      "directional_accuracy": 0.4791666666666667,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040270030626561495,
+      "rel_score": 0.0010174755639058564
+    }
+  },
+  "lstm_seed_72": {
+    "train": {
+      "mse": 0.0006136127631179988,
+      "mae": 0.017046838998794556,
+      "directional_accuracy": 0.45693550595645627,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332049728021957,
+      "rel_score": 0.0007986207608586815
+    },
+    "val": {
+      "mse": 0.00038508910802192986,
+      "mae": 0.01367170549929142,
+      "directional_accuracy": 0.46169354838709675,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025029082541004756,
+      "rel_score": -0.015348041644930976
+    },
+    "test": {
+      "mse": 0.0007794214761815965,
+      "mae": 0.020252564921975136,
+      "directional_accuracy": 0.47423245614035087,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04000879070372321,
+      "rel_score": 0.007498079465615981
+    }
+  },
+  "lstm_seed_82": {
+    "train": {
+      "mse": 0.0006126687512733042,
+      "mae": 0.017055155709385872,
+      "directional_accuracy": 0.4567301109133233,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03309387463377789,
+      "rel_score": 0.004141777937204272
+    },
+    "val": {
+      "mse": 0.00039168732473626733,
+      "mae": 0.013812744058668613,
+      "directional_accuracy": 0.4583333333333333,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025531550755840727,
+      "rel_score": -0.03573153421149655
+    },
+    "test": {
+      "mse": 0.0007838223245926201,
+      "mae": 0.02032538503408432,
+      "directional_accuracy": 0.46655701754385964,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.0405355307579157,
+      "rel_score": -0.005568811740365609
+    }
+  },
+  "lstm_best_by_val": {
+    "train": {
+      "mse": 0.0006136127631179988,
+      "mae": 0.017046838998794556,
+      "directional_accuracy": 0.45693550595645627,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0332049728021957,
+      "rel_score": 0.0007986207608586815
+    },
+    "val": {
+      "mse": 0.00038508910802192986,
+      "mae": 0.01367170549929142,
+      "directional_accuracy": 0.46169354838709675,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025029082541004756,
+      "rel_score": -0.015348041644930976
+    },
+    "test": {
+      "mse": 0.0007794214761815965,
+      "mae": 0.020252564921975136,
+      "directional_accuracy": 0.47423245614035087,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04000879070372321,
+      "rel_score": 0.007498079465615981
+    }
+  },
+  "lstm_top2_by_val": {
+    "train": {
+      "mse": 0.0006082578911446035,
+      "mae": 0.016974380239844322,
+      "directional_accuracy": 0.458167876215254,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.0331054403577582,
+      "rel_score": 0.0037937430985109932
+    },
+    "val": {
+      "mse": 0.000384827348170802,
+      "mae": 0.01365605928003788,
+      "directional_accuracy": 0.4603494623655914,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02518719405197771,
+      "rel_score": -0.021762108671355085
+    },
+    "test": {
+      "mse": 0.0007824729545973241,
+      "mae": 0.020252639427781105,
+      "directional_accuracy": 0.46710526315789475,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.040218738408293576,
+      "rel_score": 0.0022898865576888028
+    }
+  },
+  "lstm_signmag": {
+    "train": {
+      "mse": 0.0006165980012156069,
+      "mae": 0.01719389669597149,
+      "directional_accuracy": 0.44029850746268656,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03322471716091968,
+      "rel_score": 0.000204475101209467
+    },
+    "val": {
+      "mse": 0.00038133637281134725,
+      "mae": 0.013652768917381763,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025431330141145736,
+      "rel_score": -0.031665911562472004
+    },
+    "test": {
+      "mse": 0.0007685097516514361,
+      "mae": 0.020093979313969612,
+      "directional_accuracy": 0.46655701754385964,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04004616125021131,
+      "rel_score": 0.006571024723183938
+    }
+  },
+  "lstm_signmag_ensemble": {
+    "train": {
+      "mse": 0.0006188970291987062,
+      "mae": 0.01726515218615532,
+      "directional_accuracy": 0.43920306723264413,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033338682318571955,
+      "rel_score": -0.0032249552853087504
+    },
+    "val": {
+      "mse": 0.00038195415982045233,
+      "mae": 0.013689703308045864,
+      "directional_accuracy": 0.43010752688172044,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025179147470043968,
+      "rel_score": -0.021435685152036088
+    },
+    "test": {
+      "mse": 0.0007713738596066833,
+      "mae": 0.02015119232237339,
+      "directional_accuracy": 0.4692982456140351,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039925288126687525,
+      "rel_score": 0.009569535928552142
+    }
+  },
+  "lstm_signmag_seed_42": {
+    "train": {
+      "mse": 0.0006165980012156069,
+      "mae": 0.01719389669597149,
+      "directional_accuracy": 0.44029850746268656,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03322471716091968,
+      "rel_score": 0.000204475101209467
+    },
+    "val": {
+      "mse": 0.00038133637281134725,
+      "mae": 0.013652768917381763,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025431330141145736,
+      "rel_score": -0.031665911562472004
+    },
+    "test": {
+      "mse": 0.0007685097516514361,
+      "mae": 0.020093979313969612,
+      "directional_accuracy": 0.46655701754385964,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04004616125021131,
+      "rel_score": 0.006571024723183938
+    }
+  },
+  "lstm_signmag_seed_52": {
+    "train": {
+      "mse": 0.0006208522245287895,
+      "mae": 0.017303409054875374,
+      "directional_accuracy": 0.4372175818156922,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03346538119512843,
+      "rel_score": -0.007037567720121762
+    },
+    "val": {
+      "mse": 0.00038276982377283275,
+      "mae": 0.013726231642067432,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024842432774312327,
+      "rel_score": -0.007776270894877868
+    },
+    "test": {
+      "mse": 0.000775390537455678,
+      "mae": 0.02024846337735653,
+      "directional_accuracy": 0.46600877192982454,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039784164942102504,
+      "rel_score": 0.013070392347077298
+    }
+  },
+  "lstm_signmag_seed_62": {
+    "train": {
+      "mse": 0.0006199894705787301,
+      "mae": 0.0173046812415123,
+      "directional_accuracy": 0.4369437217581816,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033323291048873216,
+      "rel_score": -0.0027618024315829715
+    },
+    "val": {
+      "mse": 0.0003796348173636943,
+      "mae": 0.013669975101947784,
+      "directional_accuracy": 0.4334677419354839,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.0250373019312974,
+      "rel_score": -0.01568147543434284
+    },
+    "test": {
+      "mse": 0.0007706044125370681,
+      "mae": 0.020167749375104904,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03989036034035963,
+      "rel_score": 0.010435992884653578
+    }
+  },
+  "lstm_signmag_seed_72": {
+    "train": {
+      "mse": 0.0006185164675116539,
+      "mae": 0.017235582694411278,
+      "directional_accuracy": 0.4417362727646173,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033229900611331686,
+      "rel_score": 4.84951270126599e-05
+    },
+    "val": {
+      "mse": 0.0003819536359515041,
+      "mae": 0.013661900535225868,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025114958029007532,
+      "rel_score": -0.018831729407999154
+    },
+    "test": {
+      "mse": 0.0007700879359617829,
+      "mae": 0.020137803629040718,
+      "directional_accuracy": 0.4764254385964912,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04013515464612283,
+      "rel_score": 0.004363356988081879
+    }
+  },
+  "lstm_signmag_seed_82": {
+    "train": {
+      "mse": 0.0006221988587640226,
+      "mae": 0.01733338087797165,
+      "directional_accuracy": 0.436464466657538,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03336918925924692,
+      "rel_score": -0.00414296769809952
+    },
+    "val": {
+      "mse": 0.0003868892090395093,
+      "mae": 0.01381982397288084,
+      "directional_accuracy": 0.43951612903225806,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.025228878145571794,
+      "rel_score": -0.023453096054898204
+    },
+    "test": {
+      "mse": 0.0007808046066202223,
+      "mae": 0.020293528214097023,
+      "directional_accuracy": 0.45668859649122806,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.04038325577203068,
+      "rel_score": -0.0017913115139924773
+    }
+  },
+  "lstm_signmag_best_by_val": {
+    "train": {
+      "mse": 0.0006208522245287895,
+      "mae": 0.017303409054875374,
+      "directional_accuracy": 0.4372175818156922,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.03346538119512843,
+      "rel_score": -0.007037567720121762
+    },
+    "val": {
+      "mse": 0.00038276982377283275,
+      "mae": 0.013726231642067432,
+      "directional_accuracy": 0.4307795698924731,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.024842432774312327,
+      "rel_score": -0.007776270894877868
+    },
+    "test": {
+      "mse": 0.000775390537455678,
+      "mae": 0.02024846337735653,
+      "directional_accuracy": 0.46600877192982454,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.039784164942102504,
+      "rel_score": 0.013070392347077298
+    }
+  },
+  "lstm_signmag_top2_by_val": {
+    "train": {
+      "mse": 0.0006199951167218387,
+      "mae": 0.017299145460128784,
+      "directional_accuracy": 0.4369437217581816,
+      "base_loss": 0.03323151217773557,
+      "abs_loss": 0.033399209700291976,
+      "rel_score": -0.0050463404030336445
+    },
+    "val": {
+      "mse": 0.00038085199776105583,
+      "mae": 0.01368678454309702,
+      "directional_accuracy": 0.43010752688172044,
+      "base_loss": 0.024650741927325717,
+      "abs_loss": 0.02489154448849149,
+      "rel_score": -0.00976857255962904
+    },
+    "test": {
+      "mse": 0.0007718325941823423,
+      "mae": 0.020184937864542007,
+      "directional_accuracy": 0.4720394736842105,
+      "base_loss": 0.04031104613095522,
+      "abs_loss": 0.03985371281160042,
+      "rel_score": 0.011345111656718143
+    }
+  }
+}
+
+>>> overnight_bds_return1d_u32_w5_core_backtest
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_u32_w5_core/reports/backtests/threshold_backtest.csv
+{
+  "arima": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1374,
+    "coverage": 0.7483660130718954,
+    "directional_accuracy": 0.5567685589519651,
+    "avg_actual_return": 0.0016203308649927219,
+    "avg_strategy_return": 0.0016203308649927219,
+    "cumulative_strategy_return": 2.2263346084999998,
+    "final_equity": 6.0046188044027184,
+    "sampled_buy_hold_equity": 6.0046188044027184
+  },
+  "linear_regression": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 788,
+    "coverage": 0.42919389978213507,
+    "directional_accuracy": 0.565989847715736,
+    "avg_actual_return": 0.002615713397030457,
+    "avg_strategy_return": 0.002615713397030457,
+    "cumulative_strategy_return": 2.06118215686,
+    "final_equity": 5.965041419231594,
+    "sampled_buy_hold_equity": 5.965041419231594
+  },
+  "lstm_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 432,
+    "coverage": 0.23529411764705882,
+    "directional_accuracy": 0.5810185185185185,
+    "avg_actual_return": 0.004284342003703704,
+    "avg_strategy_return": 0.004284342003703704,
+    "cumulative_strategy_return": 1.8508357456000002,
+    "final_equity": 5.116192202906586,
+    "sampled_buy_hold_equity": 5.116192202906586
+  },
+  "lstm_ensemble": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1159,
+    "coverage": 0.6312636165577342,
+    "directional_accuracy": 0.5642795513373597,
+    "avg_actual_return": 0.001728894497290768,
+    "avg_strategy_return": 0.001728894497290768,
+    "cumulative_strategy_return": 2.00378872236,
+    "final_equity": 4.787341688526243,
+    "sampled_buy_hold_equity": 4.787341688526243
+  },
+  "lstm_seed_62": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1128,
+    "coverage": 0.6143790849673203,
+    "directional_accuracy": 0.5718085106382979,
+    "avg_actual_return": 0.001674187990744681,
+    "avg_strategy_return": 0.001674187990744681,
+    "cumulative_strategy_return": 1.88848405356,
+    "final_equity": 4.339383544311209,
+    "sampled_buy_hold_equity": 4.339383544311209
+  },
+  "lstm_seed_52": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1133,
+    "coverage": 0.6171023965141612,
+    "directional_accuracy": 0.5551632833186231,
+    "avg_actual_return": 0.0014998651823124446,
+    "avg_strategy_return": 0.0014998651823124446,
+    "cumulative_strategy_return": 1.6993472515599997,
+    "final_equity": 3.5984930668856965,
+    "sampled_buy_hold_equity": 3.5984930668856965
+  },
+  "lstm_top2_by_val": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1115,
+    "coverage": 0.6072984749455338,
+    "directional_accuracy": 0.5614349775784754,
+    "avg_actual_return": 0.0014383457657399102,
+    "avg_strategy_return": 0.0014383457657399102,
+    "cumulative_strategy_return": 1.6037555287999998,
+    "final_equity": 3.2797173687866947,
+    "sampled_buy_hold_equity": 3.2797173687866947
+  },
+  "lstm": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1252,
+    "coverage": 0.681917211328976,
+    "directional_accuracy": 0.5535143769968051,
+    "avg_actual_return": 0.0012909730756070288,
+    "avg_strategy_return": 0.0012909730756070288,
+    "cumulative_strategy_return": 1.61629829066,
+    "final_equity": 3.1199711690929637,
+    "sampled_buy_hold_equity": 3.1199711690929637
+  },
+  "lstm_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1252,
+    "coverage": 0.681917211328976,
+    "directional_accuracy": 0.5535143769968051,
+    "avg_actual_return": 0.0012909730756070288,
+    "avg_strategy_return": 0.0012909730756070288,
+    "cumulative_strategy_return": 1.61629829066,
+    "final_equity": 3.1199711690929637,
+    "sampled_buy_hold_equity": 3.1199711690929637
+  },
+  "lstm_signmag": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1509,
+    "coverage": 0.8218954248366013,
+    "directional_accuracy": 0.5533465871438038,
+    "avg_actual_return": 0.0011025016465606363,
+    "avg_strategy_return": 0.0011025016465606363,
+    "cumulative_strategy_return": 1.66367498466,
+    "final_equity": 3.050539784806208,
+    "sampled_buy_hold_equity": 3.050539784806208
+  },
+  "lstm_signmag_seed_42": {
+    "threshold": 0.0,
+    "holding_period": 1,
+    "trade_count": 1509,
+    "coverage": 0.8218954248366013,
+    "directional_accuracy": 0.5533465871438038,
+    "avg_actual_return": 0.0011025016465606363,
+    "avg_strategy_return": 0.0011025016465606363,
+    "cumulative_strategy_return": 1.66367498466,
+    "final_equity": 3.050539784806208,
+    "sampled_buy_hold_equity": 3.050539784806208
+  },
+  "lstm_signmag_seed_62": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 416,
+    "coverage": 0.22657952069716775,
+    "directional_accuracy": 0.5865384615384616,
+    "avg_actual_return": 0.002845835354326923,
+    "avg_strategy_return": 0.002845835354326923,
+    "cumulative_strategy_return": 1.1838675074,
+    "final_equity": 2.782227336439125,
+    "sampled_buy_hold_equity": 2.782227336439125
+  },
+  "lstm_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 459,
+    "coverage": 0.25,
+    "directional_accuracy": 0.5686274509803921,
+    "avg_actual_return": 0.002602247964270152,
+    "avg_strategy_return": 0.002602247964270152,
+    "cumulative_strategy_return": 1.1944318155999998,
+    "final_equity": 2.656936022700344,
+    "sampled_buy_hold_equity": 2.656936022700344
+  },
+  "lstm_seed_72": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 459,
+    "coverage": 0.25,
+    "directional_accuracy": 0.5686274509803921,
+    "avg_actual_return": 0.002602247964270152,
+    "avg_strategy_return": 0.002602247964270152,
+    "cumulative_strategy_return": 1.1944318155999998,
+    "final_equity": 2.656936022700344,
+    "sampled_buy_hold_equity": 2.656936022700344
+  },
+  "lstm_signmag_ensemble": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 300,
+    "coverage": 0.16339869281045752,
+    "directional_accuracy": 0.58,
+    "avg_actual_return": 0.0036392153566666666,
+    "avg_strategy_return": 0.0036392153566666666,
+    "cumulative_strategy_return": 1.091764607,
+    "final_equity": 2.618523575158156,
+    "sampled_buy_hold_equity": 2.618523575158156
+  },
+  "lstm_signmag_best_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 282,
+    "coverage": 0.15359477124183007,
+    "directional_accuracy": 0.574468085106383,
+    "avg_actual_return": 0.003638644882269504,
+    "avg_strategy_return": 0.003638644882269504,
+    "cumulative_strategy_return": 1.0260978568,
+    "final_equity": 2.520214903169575,
+    "sampled_buy_hold_equity": 2.520214903169575
+  },
+  "lstm_signmag_seed_52": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 282,
+    "coverage": 0.15359477124183007,
+    "directional_accuracy": 0.574468085106383,
+    "avg_actual_return": 0.003638644882269504,
+    "avg_strategy_return": 0.003638644882269504,
+    "cumulative_strategy_return": 1.0260978568,
+    "final_equity": 2.520214903169575,
+    "sampled_buy_hold_equity": 2.520214903169575
+  },
+  "lstm_signmag_top2_by_val": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 303,
+    "coverage": 0.1650326797385621,
+    "directional_accuracy": 0.5643564356435643,
+    "avg_actual_return": 0.0033522928514851482,
+    "avg_strategy_return": 0.0033522928514851482,
+    "cumulative_strategy_return": 1.0157447339999999,
+    "final_equity": 2.4584581083192365,
+    "sampled_buy_hold_equity": 2.4584581083192365
+  },
+  "lstm_signmag_seed_72": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 256,
+    "coverage": 0.1394335511982571,
+    "directional_accuracy": 0.57421875,
+    "avg_actual_return": 0.00355787648671875,
+    "avg_strategy_return": 0.00355787648671875,
+    "cumulative_strategy_return": 0.9108163806,
+    "final_equity": 2.2449934959254074,
+    "sampled_buy_hold_equity": 2.2449934959254074
+  },
+  "lstm_signmag_seed_82": {
+    "threshold": 0.0025,
+    "holding_period": 1,
+    "trade_count": 448,
+    "coverage": 0.2440087145969499,
+    "directional_accuracy": 0.546875,
+    "avg_actual_return": 0.0016587390089285712,
+    "avg_strategy_return": 0.0016587390089285712,
+    "cumulative_strategy_return": 0.7431150759999999,
+    "final_equity": 1.72200690834216,
+    "sampled_buy_hold_equity": 1.72200690834216
+  }
+}
+
+>>> overnight_bds_return1d_u32_w5_core_report
+Updated: data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_u32_w5_core
+
+>>> overnight_summary
+                                      run_name target_mode      best_lstm_model  best_lstm_val_rel_score  best_lstm_test_rel_score  lstm_test_rel_score  lstm_test_directional_accuracy  linear_test_rel_score  arima_test_rel_score  lstm_backtest_final_equity  lstm_backtest_trade_count  lstm_backtest_threshold
+ overnight_bds_return1d_stack48_24_w5_weighted      return                 lstm                -0.016223                  0.025334             0.025334                        0.476425              -0.044971             -0.003404                    3.579461                       1498                      0.0
+  overnight_bds_return1d_stack48_24_w5_core_fk      return         lstm_seed_52                -0.006035                  0.023502             0.019041                        0.474781              -0.044971             -0.003404                    5.558675                       1345                      0.0
+overnight_bds_return1d_stack48_24_w5_attention      return        lstm_ensemble                -0.013281                  0.024737             0.019041                        0.474781              -0.044971             -0.003404                    5.558675                       1345                      0.0
+            overnight_bds_return1d_u32_w5_core      return lstm_signmag_seed_52                -0.007776                  0.013070             0.002778                        0.467654              -0.044971             -0.003404                    3.119971                       1252                      0.0
+Saved: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921/overnight_summary.csv
+
+>>> overnight_target_mode_compare
+                                      run_name target_mode                      stocks                                                                                                                                                                                          feature_columns  window_size lstm_units      best_lstm_model  best_lstm_val_rel_score  best_lstm_test_rel_score  lstm_test_rel_score  lstm_ensemble_test_rel_score  lstm_signmag_ensemble_test_rel_score  lstm_attention_ensemble_test_rel_score                                                                                                 run_dir
+ overnight_bds_return1d_stack48_24_w5_weighted      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]                 lstm                -0.016223                  0.025334             0.025334                      0.021535                              0.015035                                     NaN  data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_weighted
+overnight_bds_return1d_stack48_24_w5_attention      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]        lstm_ensemble                -0.013281                  0.024737             0.019041                      0.024737                              0.014222                                0.008974 data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_attention
+  overnight_bds_return1d_stack48_24_w5_core_fk      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]         lstm_seed_52                -0.006035                  0.023502             0.019041                      0.018887                              0.013318                                     NaN   data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_core_fk
+            overnight_bds_return1d_u32_w5_core      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5         32 lstm_signmag_seed_52                -0.007776                  0.013070             0.002778                      0.006568                              0.009570                                     NaN             data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_u32_w5_core
+Saved details: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921/target_mode_comparison_details.csv
+target_mode  run_count                                 best_run_name best_lstm_model  max_best_lstm_test_rel_score  median_best_lstm_test_rel_score  mean_best_lstm_test_rel_score  median_best_lstm_val_rel_score
+     return          4 overnight_bds_return1d_stack48_24_w5_weighted            lstm                      0.025334                          0.02412                       0.021661                       -0.010529
+Saved summary: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921/target_mode_comparison_summary.csv
+
+>>> overnight_archive_candidates
+                                      run_name target_mode                      stocks                                                                                                                                                                                          feature_columns  window_size lstm_units  dropout     lr  epochs  patience      best_lstm_model  best_lstm_val_rel_score  best_lstm_test_rel_score  best_lstm_test_directional_accuracy  best_lstm_backtest_final_equity  best_lstm_backtest_trade_count  best_lstm_backtest_threshold  lstm_train_rel_score  lstm_val_rel_score  lstm_test_rel_score  lstm_test_directional_accuracy  linear_test_rel_score  arima_test_rel_score  lstm_backtest_final_equity  lstm_backtest_trade_count  lstm_backtest_threshold                                                                                                 run_dir
+ overnight_bds_return1d_stack48_24_w5_weighted      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]     0.05 0.0002      24         6                 lstm                -0.016223                  0.025334                             0.476425                         3.579461                            1498                        0.0000             -0.002003           -0.016223             0.025334                        0.476425              -0.044971             -0.003404                    3.579461                       1498                      0.0  data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_weighted
+overnight_bds_return1d_stack48_24_w5_attention      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]     0.05 0.0002      24         6        lstm_ensemble                -0.013281                  0.024737                             0.463816                         2.524872                            1528                        0.0000             -0.000937           -0.010198             0.019041                        0.474781              -0.044971             -0.003404                    5.558675                       1345                      0.0 data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_attention
+  overnight_bds_return1d_stack48_24_w5_core_fk      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5   [48, 24]     0.05 0.0002      24         6         lstm_seed_52                -0.006035                  0.023502                             0.473684                         1.744951                             291                        0.0025             -0.000937           -0.010198             0.019041                        0.474781              -0.044971             -0.003404                    5.558675                       1345                      0.0   data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_stack48_24_w5_core_fk
+            overnight_bds_return1d_u32_w5_core      return VHM,KDH,NLG,DIG,DXG,PDR,NVL alpha_sector,vwap_gap_20,volatility_20,gap_open,ma_200_gap,bb_width,effort_result_ratio,buying_pressure,selling_pressure,wyckoff_phase_60d,rsi_14,day_of_week,vingroup_momentum,vnindex_return,a_d_ratio            5         32     0.05 0.0002      24         6 lstm_signmag_seed_52                -0.007776                  0.013070                             0.466009                         2.520215                             282                        0.0025             -0.001834           -0.031280             0.002778                        0.467654              -0.044971             -0.003404                    3.119971                       1252                      0.0             data/processed/assets/data_info_vn/history/training_runs/overnight_bds_return1d_u32_w5_core
+Saved summary: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921/overnight_lstm_summary.csv
+Saved candidates: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921/overnight_lstm_candidates_ge_003.csv
+
+===========================================
+HOAN TAT TOAN BO
+Bao cao va log da xuat tai: data/processed/assets/data_info_vn/history/training_runs
+Log chi tiet: data/processed/assets/data_info_vn/history/training_runs/overnight_logs/20260408_091921
+===========================================

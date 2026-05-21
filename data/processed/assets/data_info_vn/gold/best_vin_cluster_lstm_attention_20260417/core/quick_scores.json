@@ -1,0 +1,21 @@
+{
+  "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vin_h3_p5_overnight_pcie_lite_phase1_20260417",
+  "model_name": "lstm_attention",
+  "stocks": [
+    "VHM",
+    "VIC",
+    "VRE"
+  ],
+  "raw_test_rows": 868,
+  "aligned_error_rows": 862,
+  "rel_score": 0.043403986415979645,
+  "base_score": 0.0474733096,
+  "abs_score": 0.045412778715000005,
+  "error_mean": 0.00014412259772262148,
+  "error_std": 0.03162805756340017,
+  "error_min": -0.078024762,
+  "error_q25": -0.015024247925000001,
+  "error_median": 0.0012450914499999998,
+  "error_q75": 0.014164784199999999,
+  "error_max": 0.08449168900000001
+}

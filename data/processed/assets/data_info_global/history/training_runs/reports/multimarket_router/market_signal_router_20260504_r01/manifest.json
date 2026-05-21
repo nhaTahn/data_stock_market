@@ -1,0 +1,40 @@
+{
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/reports/multimarket_router/market_signal_router_20260504_r01",
+  "candidates": [
+    {
+      "label": "marketplus_signmag_top2",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_20260504_r01",
+      "model": "lstm_signmag_top2_by_val"
+    },
+    {
+      "label": "marketplus_signmag_ensemble",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_20260504_r01",
+      "model": "lstm_signmag_ensemble"
+    },
+    {
+      "label": "compact_lstm_top2",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_compact_signal_20260504_compactfix_r01",
+      "model": "lstm_top2_by_val"
+    },
+    {
+      "label": "compact_signmag_top2",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_compact_signal_20260504_compactfix_r01",
+      "model": "lstm_signmag_top2_by_val"
+    },
+    {
+      "label": "signal_lstm_top2",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_signal_focus_20260504_signalfocus_r01",
+      "model": "lstm_top2_by_val"
+    },
+    {
+      "label": "signal_signmag_top2",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_signal_focus_20260504_signalfocus_r01",
+      "model": "lstm_signmag_top2_by_val"
+    },
+    {
+      "label": "signal_signmag_ensemble",
+      "run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/multimarket_portable_marketplus_signal_focus_20260504_signalfocus_r01",
+      "model": "lstm_signmag_ensemble"
+    }
+  ]
+}

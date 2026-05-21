@@ -1,0 +1,33 @@
+{
+  "seeds": [
+    43,
+    52,
+    71
+  ],
+  "target_error": 0.03,
+  "min_daily_n": 20,
+  "calibration_fraction": 0.25,
+  "base_prediction": "stressaux_w20",
+  "risk_features": [
+    "abs_prediction",
+    "prediction_disagreement",
+    "tailstress_gap",
+    "base_gap",
+    "input_noise_score",
+    "volatility_20",
+    "bb_width",
+    "volume_ratio_20",
+    "abs_intraday_return",
+    "abs_gap_open",
+    "abs_momentum_20",
+    "abs_macd_hist",
+    "abs_alpha_sector",
+    "sector_momentum_rank",
+    "daily_abs_prediction_q90",
+    "daily_disagreement_q90",
+    "daily_input_noise_q90",
+    "daily_volatility_q90",
+    "daily_bb_width_q90"
+  ],
+  "holdout_test_used": false
+}

@@ -1,0 +1,7 @@
+{
+  "members": [
+    "gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_probe/daily_lstm_high_error_scores.csv",
+    "gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_probe_w20_seed52/daily_lstm_high_error_scores.csv"
+  ],
+  "method": "mean_probability"
+}

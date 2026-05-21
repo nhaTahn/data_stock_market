@@ -1,0 +1,17 @@
+{
+  "source_output_dir": "data/processed/assets/data_info_vn/history/training_runs/reports/tail_aware_lstm_probe_20260519",
+  "variants": [
+    "plain_global_rel",
+    "plain_global_weighted_mild",
+    "plain_global_weighted",
+    "plain_global_instance_rel",
+    "plain_global_instance_weighted_mild",
+    "plain_multimarket_rel",
+    "plain_multimarket_weighted_mild",
+    "tailaware_multimarket_weighted"
+  ],
+  "epochs": 6,
+  "patience": 2,
+  "seed": 52,
+  "holdout_test_used": false
+}

@@ -1,0 +1,71 @@
+{
+  "freeze_name": "vn_transition_pressure_20260512",
+  "freeze_date": "2026-05-12",
+  "scope": "VN validation only",
+  "holdout_test_used": false,
+  "base_run": "broad_signmag_portable_no_identity_20260428_allvn_r01",
+  "base_model": "lstm_seed_52",
+  "base_checkpoint": "model_seed_52.keras",
+  "frozen_policy": "vn_legacy_acc_all_else_transition_pressure_nonneg",
+  "advisor_variant": {
+    "min_positions": 6,
+    "cost_bps": 15.0,
+    "validation_protocol": {
+      "source_split": "val",
+      "train_days": 126,
+      "test_days": 21,
+      "step_days": 21,
+      "strict_non_overlap": true
+    },
+    "risk_screen": {
+      "max_worst_drawdown": 0.25,
+      "max_avg_turnover": 0.20
+    }
+  },
+  "policy_rule": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates if pressure_delta_20 >= 0 else cash"
+  },
+  "transition_pressure": {
+    "name": "pressure_delta_20",
+    "formula": "MA20(mean(buying_pressure - selling_pressure))",
+    "threshold": 0.0,
+    "trade_when": "pressure_delta_20 >= 0"
+  },
+  "four_artifact_result": {
+    "policy": "vn_legacy_acc_all_else_transition_pressure_nonneg",
+    "artifacts": 4,
+    "positive_artifacts": 4,
+    "min_net_equity": 1.1864950032661794,
+    "mean_net_equity": 1.4597818741355064,
+    "min_net_sharpe": 0.5511603878674934,
+    "mean_net_sharpe": 0.9808577611534122,
+    "worst_max_drawdown": -0.2172594505337014,
+    "max_avg_turnover": 0.1793343062392982,
+    "passes_risk_controls": true
+  },
+  "stress_artifact": {
+    "run": "portable_lstm_filter_signal_20260512_r02_no_leader_seed43",
+    "excluded_filter_features": [
+      "market_leader_return"
+    ],
+    "seed": 43,
+    "min_positions_6": {
+      "net_equity": 1.1864950032661794,
+      "net_sharpe": 0.5511603878674934,
+      "max_drawdown": -0.2172594505337014,
+      "avg_turnover": 0.1257682926829268
+    }
+  },
+  "do_not_change_before_holdout": [
+    "policy name",
+    "pressure_delta_20 threshold",
+    "min_positions",
+    "cost_bps",
+    "validation protocol",
+    "candidate selection rules"
+  ]
+}

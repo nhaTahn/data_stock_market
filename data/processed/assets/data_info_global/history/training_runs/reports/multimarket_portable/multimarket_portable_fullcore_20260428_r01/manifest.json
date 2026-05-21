@@ -1,0 +1,79 @@
+{
+  "batch_name": "multimarket_portable_fullcore_20260428_r01",
+  "batch_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs/reports/multimarket_portable/multimarket_portable_fullcore_20260428_r01",
+  "source_run_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/broad_signmag_portable_no_identity_20260428_allvn_r01",
+  "source_run_name": "broad_signmag_portable_no_identity_20260428_allvn_r01",
+  "source_config_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/broad_signmag_portable_no_identity_20260428_allvn_r01/reports/core/config.json",
+  "python_bin": "/opt/homebrew/Cellar/python@3.11/3.11.14/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+  "market": "GLOBAL",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/training_runs",
+  "train_end_date": "2020-03-31",
+  "val_end_date": "2022-11-15",
+  "override_epochs": null,
+  "override_patience": null,
+  "override_seeds": null,
+  "dataset": {
+    "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_global/history/multimarket_vn_jp_us_portable_fullcore_20260428_r01.csv",
+    "rows": 741805,
+    "panel_codes": 208,
+    "native_codes": 208,
+    "markets": [
+      {
+        "market": "VN",
+        "rows": 277096,
+        "codes": 93,
+        "start_date": "2012-03-19",
+        "end_date": "2026-03-31"
+      },
+      {
+        "market": "JP",
+        "rows": 103619,
+        "codes": 26,
+        "start_date": "2010-01-04",
+        "end_date": "2026-03-30"
+      },
+      {
+        "market": "US",
+        "rows": 361090,
+        "codes": 89,
+        "start_date": "2010-01-04",
+        "end_date": "2026-03-30"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "multimarket_portable_core",
+      "notes": "Portable shared model with no stock identity, no sector context, and market one-hot flags.",
+      "feature_columns": [
+        "open_level_20",
+        "high_level_20",
+        "low_level_20",
+        "close_level_20",
+        "volume_level_20",
+        "open_delta_1",
+        "high_delta_1",
+        "low_delta_1",
+        "close_delta_1",
+        "volume_delta_1",
+        "intraday_return",
+        "gap_open",
+        "close_position",
+        "bb_width",
+        "volume_ratio_20",
+        "volatility_20",
+        "momentum_20",
+        "macd_hist",
+        "vnindex_return",
+        "a_d_ratio",
+        "day_of_week",
+        "market_is_vn",
+        "market_is_jp",
+        "market_is_us"
+      ],
+      "feature_count": 24,
+      "disable_stock_identity": true,
+      "config_overrides": {}
+    }
+  ]
+}

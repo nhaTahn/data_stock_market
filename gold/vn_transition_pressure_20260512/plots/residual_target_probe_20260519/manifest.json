@@ -1,0 +1,42 @@
+{
+  "data": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "feature_columns": [
+    "volume_ratio_20",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "upper_shadow",
+    "lower_shadow",
+    "momentum_5",
+    "momentum_20",
+    "volatility_20",
+    "ma_200_gap",
+    "rolling_max_20_gap",
+    "bb_width",
+    "vwap_gap",
+    "obv_change",
+    "macd_hist",
+    "effort_result_ratio",
+    "buying_pressure",
+    "selling_pressure",
+    "wyckoff_phase_60d",
+    "a_d_ratio",
+    "market_leader_return",
+    "vnindex_return",
+    "rsi_14",
+    "day_of_week",
+    "sector_momentum_rank",
+    "is_top_2_sector"
+  ],
+  "variants": [
+    "raw_baseline",
+    "residual_oracle",
+    "residual_lagged_ar1"
+  ],
+  "seeds": [
+    43,
+    52,
+    71
+  ],
+  "holdout_test_used": false
+}

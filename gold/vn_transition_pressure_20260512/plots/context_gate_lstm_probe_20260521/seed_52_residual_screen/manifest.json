@@ -1,0 +1,57 @@
+{
+  "data": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "feature_columns": [
+    "open_level_20",
+    "high_level_20",
+    "low_level_20",
+    "close_level_20",
+    "volume_level_20",
+    "open_delta_1",
+    "high_delta_1",
+    "low_delta_1",
+    "close_delta_1",
+    "volume_delta_1",
+    "intraday_return",
+    "gap_open",
+    "close_position",
+    "bb_width",
+    "volume_ratio_20",
+    "volatility_20",
+    "momentum_20",
+    "macd_hist",
+    "vnindex_return",
+    "sector_momentum_rank",
+    "sector_momentum_rank_pct",
+    "sector_momentum_20",
+    "relative_sector_momentum_20",
+    "sector_return",
+    "alpha_sector",
+    "sector_positive_ratio",
+    "sector_ad_ratio",
+    "a_d_ratio",
+    "day_of_week"
+  ],
+  "variants": [
+    "plain_global_weighted_mild_tail35_contextresid_w20"
+  ],
+  "holdout_test_used": false,
+  "references": [
+    "Deep Imbalanced Regression / LDS-FDS",
+    "DeepAR probabilistic RNN forecasting",
+    "Tail-aware auxiliary supervision",
+    "Target scale normalization with lagged market tail volatility"
+  ],
+  "plain_global_weighted_mild_tail35_contextresid_w20_input_features": 29,
+  "plain_global_weighted_mild_tail35_contextresid_w20_target_scale_mode": "stock_vol",
+  "plain_global_weighted_mild_tail35_contextresid_w20_target_scale_floor_quantile": 0.25,
+  "plain_global_weighted_mild_tail35_contextresid_w20_input_feature_dropout_rate": 0.0,
+  "plain_global_weighted_mild_tail35_contextresid_w20_input_feature_dropout_columns": [],
+  "plain_global_weighted_mild_tail35_contextresid_w20_context_gate_columns": [
+    "vnindex_return",
+    "market_leader_return",
+    "a_d_ratio",
+    "sector_momentum_rank",
+    "is_top_2_sector"
+  ],
+  "plain_global_weighted_mild_tail35_contextresid_w20_context_gate_units": 12
+}

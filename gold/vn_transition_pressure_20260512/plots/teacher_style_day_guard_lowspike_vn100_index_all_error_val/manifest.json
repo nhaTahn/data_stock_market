@@ -1,0 +1,9 @@
+{
+  "source_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/day_guard_error_control_20260520",
+  "policy": "risk_input_noise_q30__day_guard_selected_score_q90_q40",
+  "min_stocks_per_seed_day": 5,
+  "seeds": [
+    71
+  ],
+  "holdout_test_used": false
+}

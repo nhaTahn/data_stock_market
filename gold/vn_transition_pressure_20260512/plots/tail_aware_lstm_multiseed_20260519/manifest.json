@@ -1,0 +1,16 @@
+{
+  "seeds": [
+    43,
+    52,
+    71
+  ],
+  "variants": [
+    "plain_global_rel",
+    "plain_global_weighted_mild",
+    "plain_global_instance_rel"
+  ],
+  "epochs": 18,
+  "patience": 5,
+  "holdout_test_used": false,
+  "source_output_dir": "data/processed/assets/data_info_vn/history/training_runs/reports/tail_aware_lstm_multiseed_20260519"
+}

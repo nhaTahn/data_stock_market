@@ -2,12 +2,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
+AGENTS.md
 
 # Virtual environments
 venv/
 env/
 test_venv/
 .venv/
+.agents
+skills-lock.json
+scripts/
 
 # macOS system files
 .DS_Store
@@ -35,4 +39,92 @@ logs/
 .pytest_cache/
 .mypy_cache/
 
-# (Lưu ý: Thư mục data/ KHÔNG bị ignore vì cần được push lên GitHub qua GitHub Actions)
+# ML / training artifacts
+*.keras
+*.h5
+*.joblib
+*.npz
+
+# Generated plots / reports
+artifacts/
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.png
+
+# Exception: keep gold report plots (needed for advisor report on GitHub)
+!gold/
+!gold/**
+!gold/**/*.png
+
+# Training run outputs
+# Real run artifacts live under data/processed/assets/.../history/training_runs/.
+# Keep lightweight summaries/configs, ignore generated heavy artifacts.
+data/**/history/training_runs/active/
+data/**/history/training_runs/search_runs/
+data/**/history/training_runs/representative_runs/
+data/**/history/training_runs/**/history*.csv
+data/**/history/training_runs/**/predictions.csv
+data/**/history/training_runs/**/holdout_private/
+data/**/history/training_runs/**/predictions_full.csv
+data/**/history/training_runs/**/metric_details.json
+data/**/history/training_runs/**/reports/metric_series/
+data/**/history/training_runs/**/reports/plots/
+data/**/history/training_runs/**/threshold_backtest*.csv
+data/**/history/training_runs/**/equity_curve*.csv
+data/**/history/training_runs/equity_compare_curves.csv
+
+# Keep only important summaries in training_runs
+!data/**/history/training_runs/
+!data/**/history/training_runs/README.md
+!data/**/history/training_runs/reports/
+!data/**/history/training_runs/reports/*.csv
+!data/**/history/training_runs/reports/*.json
+!data/**/history/training_runs/reports/*.md
+!data/**/history/training_runs/**/reports/core/config.json
+!data/**/history/training_runs/**/reports/core/metrics.json
+!data/**/history/training_runs/**/reports/core/family_selection_summary.json
+!data/**/history/training_runs/**/reports/backtests/threshold_backtest_summary*.json
+!data/**/history/training_runs/feature_correlation/**/feature_recommendation.json
+!data/**/history/training_runs/feature_correlation/**/redundant_pairs.csv
+!data/**/history/training_runs/feature_correlation/all_sectors_summary.csv
+!data/**/history/training_runs/equity_compare_summary.csv
+
+# Generated market datasets
+data/**/history/*_gold_recommended.csv
+data/**/history/*_quality_dataset.csv
+
+# Keep lightweight summaries / maps
+!data/assets/**/history/*_dataset_summary.csv
+!data/assets/**/history/*_ticker_quality_summary.csv
+!data/assets/**/history/*_stock_sector_map.csv
+
+# Repo cleanup policy:
+# prefer docs and compact aggregate summaries over committing individual run folders.
+# keep per-run artifacts local unless they are intentionally curated by hand.
+data/**/history/training_runs/*/
+!data/**/history/training_runs/README.md
+!data/**/history/training_runs/reports/
+!data/**/history/training_runs/reports/*/
+!data/**/history/training_runs/reports/*/*/
+data/**/history/training_runs/reports/*/*/**
+!data/**/history/training_runs/reports/info/**
+!data/**/history/training_runs/reports/*/*/README.md
+!data/**/history/training_runs/reports/*/*/summary.md
+!data/**/history/training_runs/reports/*/*/summary.csv
+!data/**/history/training_runs/reports/*/*/summary.json
+!data/**/history/training_runs/reports/*/*/manifest.json
+
+# Gold reports follow the same rule: keep compact summaries, leave plots/local dumps untracked.
+data/**/gold/reports/*/**
+!data/**/gold/reports/*/README.md
+!data/**/gold/reports/*/core/
+!data/**/gold/reports/*/core/manifest.json
+!data/**/gold/reports/*/core/*summary.csv
+!data/**/gold/reports/*/core/*summary.json
+
+
+# Large files that exceed GitHub 100MB limit
+data/processed/assets/data_info_global/history/multimarket_vn_jp_us_portable_20260504_r01.csv
+data/processed/assets/data_info_global/gold/best_portable_marketplus_signmag_top2_20260504/core/predictions.csv

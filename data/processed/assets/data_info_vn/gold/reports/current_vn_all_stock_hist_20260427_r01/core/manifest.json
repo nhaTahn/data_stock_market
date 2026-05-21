@@ -1,0 +1,20 @@
+{
+  "router_report": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/router_analysis/anchor_sector19_router_20260425_r01",
+  "rank_router_report": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/rank_router_train_selected/anchor_sector19_rank_router_20260427_r01",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01",
+  "candidates": [
+    "anchor",
+    "sector19_down_up_anchor_else",
+    "train_rank_regime_ic_weight"
+  ],
+  "summary_csv": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/core/all_stock_hist_summary.csv",
+  "summary_json": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/core/all_stock_hist_summary.json",
+  "by_code_csv": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/core/all_stock_hist_by_code.csv",
+  "plots": {
+    "anchor": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/plots/anchor__all_stock_hist.png",
+    "sector19_down_up_anchor_else": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/plots/sector19_down_up_anchor_else__all_stock_hist.png",
+    "train_rank_regime_ic_weight": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/plots/train_rank_regime_ic_weight__all_stock_hist.png"
+  },
+  "overlay_plot": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_vn_all_stock_hist_20260427_r01/plots/candidate_overlay_val_relscore_error_band.png",
+  "uses_out_sample": false
+}

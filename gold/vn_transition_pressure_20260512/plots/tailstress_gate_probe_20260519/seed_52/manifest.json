@@ -1,0 +1,7 @@
+{
+  "seed": 52,
+  "tail_penalty": 1.0,
+  "grid_step": 0.1,
+  "holdout_test_used": false,
+  "report_root": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports"
+}

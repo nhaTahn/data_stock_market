@@ -1,0 +1,217 @@
+{
+  "data_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/vn_gold_recommended.csv",
+  "target_mode": "return",
+  "target_column": "target_next_return",
+  "feature_columns": [
+    "volume_ratio_20",
+    "close_position",
+    "lower_shadow",
+    "alpha_sector",
+    "vingroup_momentum",
+    "vnindex_return",
+    "a_d_ratio",
+    "day_of_week",
+    "rsi_14"
+  ],
+  "train_end_date": "2023-12-31",
+  "val_end_date": "2024-12-31",
+  "window_size": 5,
+  "lstm_units": [
+    48,
+    24
+  ],
+  "dropout": 0.05,
+  "lr": 0.0002,
+  "loss": "rel_score",
+  "huber_delta": 0.01,
+  "rel_score_large_move_quantile": 0.8,
+  "rel_score_directional_penalty": 0.6,
+  "rel_score_confidence_penalty": 0.35,
+  "rel_score_confidence_ratio": 0.25,
+  "rel_score_weighted_high_quantile": 0.8,
+  "rel_score_weighted_high_weight": 3.0,
+  "rel_score_weighted_base_weight": 1.0,
+  "batch_size": 32,
+  "epochs": 40,
+  "patience": 10,
+  "target_normalizer": "volatility_20",
+  "lstm_seeds": [
+    42,
+    52,
+    62,
+    72,
+    82,
+    92,
+    102,
+    112
+  ],
+  "signmag_signed_loss_weight": 1.4,
+  "signmag_sign_loss_weight": 0.12,
+  "signmag_magnitude_loss_weight": 0.8,
+  "signmag_log_magnitude": false,
+  "sample_weight_mode": "magnitude",
+  "sample_weight_strength": 0.8,
+  "sample_weight_quantile": 0.8,
+  "sample_weight_clip": 2.5,
+  "attention_enabled": false,
+  "attention_heads": 2,
+  "attention_key_dim": 16,
+  "quantile_enabled": false,
+  "event_enabled": false,
+  "event_threshold": 0.75,
+  "event_signed_loss_weight": 2.0,
+  "event_prob_loss_weight": 0.4,
+  "event_sign_loss_weight": 0.1,
+  "event_magnitude_loss_weight": 0.3,
+  "event_log_magnitude": true,
+  "fk_benchmark_enabled": false,
+  "fk_window_size": 240,
+  "fk_hidden_units": 25,
+  "fk_dropout": 0.16,
+  "fk_learning_rate": 0.001,
+  "fk_batch_size": 32,
+  "fk_epochs": 1000,
+  "fk_patience": 10,
+  "fk_train_fraction": 0.8,
+  "fk_top_k": 10,
+  "monitor_metric": "val_rel_score",
+  "stocks": "KDC,SAB,SBT,VNM",
+  "use_all_features": false,
+  "raw_rows_train": 10592,
+  "raw_rows_val": 1000,
+  "raw_rows_test": 1224,
+  "seq_rows_train": 10465,
+  "seq_rows_val": 997,
+  "seq_rows_test": 1217,
+  "baseline_model": "linear_regression(flatten_sequence)",
+  "baseline_models": [
+    "linear_regression(flatten_sequence)",
+    "arima_proxy(ar1_fast)"
+  ],
+  "sector": null,
+  "lstm_use_stock_identity": true,
+  "lstm_stock_identity_codes": [
+    "KDC",
+    "SAB",
+    "SBT",
+    "VNM"
+  ],
+  "lstm_input_feature_count": 13,
+  "feature_selection_mode": "auto",
+  "recipe_sector": null,
+  "recipe_selected_stocks": [
+    "KDC",
+    "SAB",
+    "SBT",
+    "VNM"
+  ],
+  "recipe_source": null,
+  "recipe_feature_summary": [],
+  "recipe_stock_summary": [],
+  "lstm_attention_enabled": false,
+  "lstm_quantile_enabled": false,
+  "lstm_event_enabled": false,
+  "lstm_signmag_enabled": true,
+  "fischer_krauss_benchmark": null,
+  "family_selection_summary": {
+    "lstm": {
+      "ranked_models": [
+        {
+          "model": "lstm_seed_52",
+          "val_score": 0.021012648466806727,
+          "test_score": 0.0342525473871802
+        },
+        {
+          "model": "lstm_seed_112",
+          "val_score": 0.018497181502576177,
+          "test_score": 0.008734827524368605
+        },
+        {
+          "model": "lstm_seed_92",
+          "val_score": 0.009946224397413439,
+          "test_score": -0.0016623484416657952
+        },
+        {
+          "model": "lstm_seed_102",
+          "val_score": 0.0065467566217388695,
+          "test_score": 0.006695556125696167
+        },
+        {
+          "model": "lstm_seed_82",
+          "val_score": 0.0064918765235040254,
+          "test_score": 0.02100264842098376
+        },
+        {
+          "model": "lstm_seed_62",
+          "val_score": 0.001422869500474766,
+          "test_score": -0.020053594865773183
+        },
+        {
+          "model": "lstm_seed_42",
+          "val_score": -0.00886184377959931,
+          "test_score": 0.004212958118879895
+        },
+        {
+          "model": "lstm_seed_72",
+          "val_score": -0.022587486459637596,
+          "test_score": 0.010759945547901828
+        }
+      ],
+      "best_by_val": "lstm_seed_52",
+      "top2_by_val": [
+        "lstm_seed_52",
+        "lstm_seed_112"
+      ]
+    },
+    "lstm_signmag": {
+      "ranked_models": [
+        {
+          "model": "lstm_signmag_seed_92",
+          "val_score": 0.022349024096216086,
+          "test_score": 0.009511984927590755
+        },
+        {
+          "model": "lstm_signmag_seed_52",
+          "val_score": 0.01105497749053308,
+          "test_score": 0.016580265744778666
+        },
+        {
+          "model": "lstm_signmag_seed_62",
+          "val_score": 0.006537726290420154,
+          "test_score": 0.0002013525127598781
+        },
+        {
+          "model": "lstm_signmag_seed_112",
+          "val_score": -0.001007362535281553,
+          "test_score": 0.0033358922143787995
+        },
+        {
+          "model": "lstm_signmag_seed_82",
+          "val_score": -0.003720394193048815,
+          "test_score": 0.013143790437710634
+        },
+        {
+          "model": "lstm_signmag_seed_72",
+          "val_score": -0.0049038371174516815,
+          "test_score": 0.013610963101601481
+        },
+        {
+          "model": "lstm_signmag_seed_42",
+          "val_score": -0.005113558892664516,
+          "test_score": 0.005203886666948709
+        },
+        {
+          "model": "lstm_signmag_seed_102",
+          "val_score": -0.0055606644042554,
+          "test_score": 0.015041599722632415
+        }
+      ],
+      "best_by_val": "lstm_signmag_seed_92",
+      "top2_by_val": [
+        "lstm_signmag_seed_92",
+        "lstm_signmag_seed_52"
+      ]
+    }
+  },
+  "target_normalizer_floor": 0.011010050773620605
+}

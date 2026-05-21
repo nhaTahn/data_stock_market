@@ -1,0 +1,17 @@
+{
+  "current_best_overall": "best_vin_cluster_lstm_attention_20260417",
+  "current_best_vn30_cluster": "best_vin_cluster_lstm_attention_20260417",
+  "current_best_vn30_broad": "best_vn30_broad_lstm_signmag_seed_52_20260412",
+  "current_best_vn100_cluster": "best_committee_fnb_20260408_235445",
+  "notes": [
+    "VN30 cluster edge is currently stronger than broad VN30 forecasting.",
+    "A retained broad VN100 package is not available in training history after cleanup; the best VN100-related edge currently kept is the F&B committee cluster package."
+  ],
+  "scores": {
+    "vn30_cluster_rel_score": 0.043403986415979645,
+    "vn30_broad_rel_score": 0.0013355464498344682,
+    "vn100_cluster_rel_score": 0.04932071562386653
+  },
+  "current_best_portable_multimarket": "../data_info_global/gold/best_portable_marketplus_signmag_top2_20260504",
+  "current_best_portable_multimarket_report": "reports/current_portable_multimarket_20260504"
+}

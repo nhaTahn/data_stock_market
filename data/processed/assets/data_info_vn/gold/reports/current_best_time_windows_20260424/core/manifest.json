@@ -1,0 +1,51 @@
+{
+  "gold_root": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold",
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424",
+  "include_out_sample": false,
+  "time_windows": [
+    {
+      "key": "train",
+      "label": "Train",
+      "start": null,
+      "end": "2020-03-31"
+    },
+    {
+      "key": "in_sample",
+      "label": "In-sample",
+      "start": "2020-04-01",
+      "end": "2022-11-15"
+    }
+  ],
+  "packages": [
+    {
+      "package_name": "best_committee_fnb_20260408_235445",
+      "package_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/best_committee_fnb_20260408_235445",
+      "model_name": "committee_best_by_val",
+      "roles": [
+        "current_best_vn100_cluster"
+      ],
+      "plot_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424/plots/best_committee_fnb_20260408_235445__committee_best_by_val__time_hist.png"
+    },
+    {
+      "package_name": "best_vin_cluster_lstm_attention_20260417",
+      "package_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/best_vin_cluster_lstm_attention_20260417",
+      "model_name": "lstm_attention",
+      "roles": [
+        "current_best_overall",
+        "current_best_vn30_cluster"
+      ],
+      "plot_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424/plots/best_vin_cluster_lstm_attention_20260417__lstm_attention__time_hist.png"
+    },
+    {
+      "package_name": "best_vn30_broad_lstm_signmag_seed_52_20260412",
+      "package_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/best_vn30_broad_lstm_signmag_seed_52_20260412",
+      "model_name": "lstm_signmag_seed_52",
+      "roles": [
+        "current_best_vn30_broad"
+      ],
+      "plot_path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424/plots/best_vn30_broad_lstm_signmag_seed_52_20260412__lstm_signmag_seed_52__time_hist.png"
+    }
+  ],
+  "summary_csv": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424/core/current_best_time_window_summary.csv",
+  "summary_json": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/gold/reports/current_best_time_windows_20260424/core/current_best_time_window_summary.json"
+}

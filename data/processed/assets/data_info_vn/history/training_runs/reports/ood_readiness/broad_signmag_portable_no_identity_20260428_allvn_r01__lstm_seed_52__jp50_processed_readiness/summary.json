@@ -1,0 +1,32 @@
+{
+  "run_name": "broad_signmag_portable_no_identity_20260428_allvn_r01",
+  "model_name": "lstm_seed_52",
+  "market": "JP",
+  "codes_path": "market_lists/jp50.txt",
+  "requested_codes": 50,
+  "accepted_codes": 26,
+  "sector_count": 1,
+  "unknown_sector_share": 1.0,
+  "test_rows": 21366,
+  "test_codes": 26,
+  "stock_identity_enabled": false,
+  "known_code_share": 0.0,
+  "known_row_share": 0.0,
+  "rel_score": -0.0026798817941786623,
+  "directional_accuracy": 0.4932438772637703,
+  "error_q2": -0.013623402640223502,
+  "error_q8": 0.011915321834385397,
+  "error_mean": -0.0006863566813990474,
+  "error_std": 0.02068966068327427,
+  "filled_feature_columns": [
+    "sector_momentum_rank_pct"
+  ],
+  "days": 823,
+  "mean_spearman_ic": 0.015126288800369316,
+  "ic_t_stat": 1.622335321394085,
+  "positive_ic_days": 0.5273390036452005,
+  "mean_top_bottom_return": 0.0004180365619069997,
+  "quartile_equity": 1.3159717100856538,
+  "quartile_hit_rate": 0.5103280680437424,
+  "quartile_max_drawdown": -0.21764821552941127
+}

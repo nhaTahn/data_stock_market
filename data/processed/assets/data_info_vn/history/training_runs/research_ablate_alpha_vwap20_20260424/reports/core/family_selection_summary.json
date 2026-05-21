@@ -1,0 +1,27 @@
+{
+  "lstm": {
+    "ranked_models": [
+      {
+        "model": "lstm_seed_42",
+        "val_score": -0.004556526201638933
+      },
+      {
+        "model": "lstm_seed_99",
+        "val_score": -0.005690269656130509
+      },
+      {
+        "model": "lstm_seed_52",
+        "val_score": -0.005995116606187345
+      },
+      {
+        "model": "lstm_seed_62",
+        "val_score": -0.009789643277294369
+      }
+    ],
+    "best_by_val": "lstm_seed_42",
+    "top2_by_val": [
+      "lstm_seed_42",
+      "lstm_seed_99"
+    ]
+  }
+}

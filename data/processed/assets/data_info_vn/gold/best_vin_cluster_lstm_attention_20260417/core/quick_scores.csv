@@ -1,0 +1,2 @@
+run_dir,model_name,stocks,raw_test_rows,aligned_error_rows,rel_score,base_score,abs_score,error_mean,error_std,error_min,error_q25,error_median,error_q75,error_max
+/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vin_h3_p5_overnight_pcie_lite_phase1_20260417,lstm_attention,"['VHM', 'VIC', 'VRE']",868,862,0.043403986415979645,0.0474733096,0.045412778715000005,0.00014412259772262148,0.03162805756340017,-0.078024762,-0.015024247925000001,0.0012450914499999998,0.014164784199999999,0.08449168900000001

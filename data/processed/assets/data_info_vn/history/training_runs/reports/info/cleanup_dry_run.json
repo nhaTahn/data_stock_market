@@ -1,0 +1,163 @@
+{
+  "apply": false,
+  "target_count": 28,
+  "total_bytes": 52487788,
+  "kept_runs": [
+    "bank_h1_20260424_attn_paper_v1",
+    "bds_h1_20260424_attn_paper_v1",
+    "research_ablate_alpha_20260424",
+    "research_ablate_alpha_vwap20_20260424",
+    "research_ablate_alpha_vwap20_ma200_20260424",
+    "research_ablate_vwap20_20260424",
+    "research_hidden_signal_sidecar_20260423_full",
+    "vin_h1_20260424_attn_paper_v1",
+    "vin_h3_p5_overnight_pcie_lite_phase1_20260417",
+    "vn30_paper_repr_20260412_paper_phase1",
+    "vn_standard_return_hidden_holdout_20260423"
+  ],
+  "kept_prefixes": [
+    "reports"
+  ],
+  "rows": [
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/metric_series",
+      "size_bytes": 0,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/biaspush_signmag_narrow_rawmag_20260409_111710/reports/plots",
+      "size_bytes": 0,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_100007/reports/metric_series",
+      "size_bytes": 0,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/overnight_fnb_w5_mag_base_20260409_100007/reports/plots",
+      "size_bytes": 0,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_seed_42.csv",
+      "size_bytes": 857,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_seed_52.csv",
+      "size_bytes": 775,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_seed_62.csv",
+      "size_bytes": 1421,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_seed_82.csv",
+      "size_bytes": 935,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_signmag_seed_42.csv",
+      "size_bytes": 2738,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_signmag_seed_52.csv",
+      "size_bytes": 3329,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_signmag_seed_62.csv",
+      "size_bytes": 2143,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/history_signmag_seed_82.csv",
+      "size_bytes": 2931,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model.keras",
+      "size_bytes": 488341,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_seed_42.keras",
+      "size_bytes": 488341,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_seed_52.keras",
+      "size_bytes": 488369,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_seed_62.keras",
+      "size_bytes": 488368,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_seed_82.keras",
+      "size_bytes": 488369,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_signmag.keras",
+      "size_bytes": 502563,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_signmag_seed_42.keras",
+      "size_bytes": 502563,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_signmag_seed_52.keras",
+      "size_bytes": 502570,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_signmag_seed_62.keras",
+      "size_bytes": 502570,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/model_signmag_seed_82.keras",
+      "size_bytes": 502569,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/core/history.csv",
+      "size_bytes": 857,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/core/history_signmag.csv",
+      "size_bytes": 2738,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/core/metric_details.json",
+      "size_bytes": 13540,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/core/predictions.csv",
+      "size_bytes": 26836955,
+      "is_dir": false
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/metric_series",
+      "size_bytes": 4914805,
+      "is_dir": true
+    },
+    {
+      "path": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/vn30gold_expert_bds_20260410_105821/reports/plots",
+      "size_bytes": 15749141,
+      "is_dir": true
+    }
+  ]
+}

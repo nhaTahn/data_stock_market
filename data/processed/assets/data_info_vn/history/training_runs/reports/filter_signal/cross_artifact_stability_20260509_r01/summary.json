@@ -1,0 +1,10 @@
+{
+  "output_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/filter_signal/cross_artifact_stability_20260509_r01",
+  "runs": [
+    "portable_lstm_filter_signal_20260509_r06_selector_module",
+    "portable_lstm_filter_signal_20260508_r05_signmag"
+  ],
+  "committee_output": "committee_hypothesis_grid_val_split_t025_dd15",
+  "gate_output": "wyckoff_phase_gate_execution_vn_grid",
+  "stable_non_oracle_policies": 2
+}

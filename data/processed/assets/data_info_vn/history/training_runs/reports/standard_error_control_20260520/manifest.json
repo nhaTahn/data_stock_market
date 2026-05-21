@@ -1,0 +1,34 @@
+{
+  "source_dir": "/Users/lap15111/Documents/research-paper/data_stock_market/data/processed/assets/data_info_vn/history/training_runs/reports/selective_error_control_target3p0_20260520",
+  "seeds": [
+    43,
+    52,
+    71
+  ],
+  "policies": [
+    {
+      "score": "risk_logistic",
+      "policy": "coverage_q40",
+      "label": "risk_logistic_coverage_q40"
+    },
+    {
+      "score": "risk_hgb",
+      "policy": "coverage_q40",
+      "label": "risk_hgb_coverage_q40"
+    },
+    {
+      "score": "risk_input_noise",
+      "policy": "coverage_q30",
+      "label": "risk_input_noise_coverage_q30"
+    },
+    {
+      "score": "risk_input_noise",
+      "policy": "calibrated_p90_3p5",
+      "label": "risk_input_noise_calibrated_p90_3p5"
+    }
+  ],
+  "base_prediction": "stressaux_w20",
+  "target_error": 0.035,
+  "min_daily_n": 20,
+  "holdout_test_used": false
+}

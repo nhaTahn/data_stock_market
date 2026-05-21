@@ -1,38 +1,58 @@
 # Data Stock Market
 
-This repository contains daily historical stock market data for various markets (VN, US, JP) automatically crawled and updated via GitHub Actions.
+VN-focused research repo for market-data build, feature engineering, sequence models, evaluation, backtests, and report packaging.
 
-## Repository Structure
+## Start Here
 
-- `data/` : Contains the historical stock market data, separated by market (`VN/`, `US/`, `JP/`). The data is stored in CSV format.
-- `market_lists/` : Contains text files with lists of stock tickers (e.g., VN30, US100) used by the data crawler.
-- `src/data_pipeline/fetch_data.py` : The core data pipeline script for downloading and formatting data from `vnstock` and `yfinance`.
-- `run_fetch.py` : The entrypoint script to run the data collection.
+If you want the current research direction:
 
-## Data Schema
+1. [`docs/current_best_path.md`](docs/current_best_path.md)
+2. [`docs/current_research_status.md`](docs/current_research_status.md)
+3. [`docs/downtrend_expert_findings.md`](docs/downtrend_expert_findings.md)
 
-The CSV data files in the `data/` directory have the following structure:
-- `Date`: The trading date (YYYY-MM-DD).
-- `code`: The stock ticker symbol.
-- `open`, `high`, `low`, `close`: The OHLVC daily prices.
-- `adjust`: Adjusted close price.
-- `volume_match`: The matched trading volume.
-- `value_match`: The value matched (close * volume).
+If you want the shortest repo map:
 
-*Note: For international markets, the schema is formatted to match the VN format for consistency.*
+1. [`docs/README.md`](docs/README.md)
+2. [`docs/models_code_map.md`](docs/models_code_map.md)
 
-## How to Run Locally
+If you want saved results instead of code:
 
-1. Create a virtual environment and install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Run the crawler:
-   ```bash
-   python run_fetch.py --market ALL
-   ```
-   You can also specify `--market VN`, `--market US`, or `--market JP`. To only fetch custom tickers from `watchlist.txt`, add the `--watchlist-only` flag.
+1. [`data/processed/assets/data_info_vn/history/training_runs/README.md`](data/processed/assets/data_info_vn/history/training_runs/README.md)
+2. `data/.../history/training_runs/reports/*/summary.md`
+3. [`data/processed/assets/data_info_vn/gold/README.md`](data/processed/assets/data_info_vn/gold/README.md)
 
-## Automated Crawling
+## Repo Layout
 
-This repository uses GitHub Actions to run the `run_fetch.py` script daily at `17:00 UTC`. The updated CSV files are then automatically committed and pushed to the repository.
+- [`configs/`](configs/): runtime defaults such as `lstm_config.json`
+- [`docs/`](docs/): active research notes and reading maps
+- [`experiments/`](experiments/): batch runners, offline analyses, and packaging scripts
+- [`src/`](src/): reusable pipeline, model, evaluation, reporting, and visualization code
+- [`data/`](data/): raw data, processed datasets, saved runs, and compact reports
+- [`notebooks/`](notebooks/): exploratory inspection only
+
+## Code Entry Points
+
+- [`main.py`](main.py): main CLI entrypoint
+- [`src/models/training/pipeline.py`](src/models/training/pipeline.py): end-to-end training orchestration
+- [`src/models/components/losses.py`](src/models/components/losses.py): training objectives
+- [`src/models/architectures/`](src/models/architectures/): model families
+- [`src/evaluation/metric.py`](src/evaluation/metric.py): final `rel_score` evaluator
+
+## Current Scope
+
+The active path is intentionally narrow:
+
+- target mode: `return`
+- main evaluation metric: `rel_score`
+- trusted standalone anchor: `general_sector_full`
+- current improvement direction: cross-sectional ranking and regime-aware routing
+- avoid expanding architecture complexity until the simpler rank/router path stalls
+
+## Git Hygiene
+
+The repo should prefer compact summaries over raw run dumps:
+
+- commit: docs, curated config/code changes, compact report summaries
+- keep local: raw predictions, histories, plots, diagnostics, and most per-run artifacts
+
+`.gitignore` is biased toward keeping `training_runs/reports/*/summary.*` and similar compact outputs while leaving heavy generated files untracked.

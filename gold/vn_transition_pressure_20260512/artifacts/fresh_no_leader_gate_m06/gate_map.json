@@ -1,0 +1,226 @@
+{
+  "train_phase_best": {
+    "accumulation": "h1_tradeability_filter",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h3_rank_committee",
+    "markdown": "h1_tradeability_filter",
+    "transition": "h0_forecast_abs"
+  },
+  "conservative_prior": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates"
+  },
+  "aggressive_prior": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "h1_tradeability_filter",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "h1_tradeability_filter"
+  },
+  "oracle_eval_phase_best": {
+    "accumulation": "h1_tradeability_filter",
+    "markup": "h1_tradeability_filter",
+    "distribution": "legacy_filter_shortlist",
+    "markdown": "all_committee_candidates",
+    "transition": "h0_forecast_abs"
+  },
+  "baseline_h1": {
+    "accumulation": "h1_tradeability_filter",
+    "markup": "h1_tradeability_filter",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "h1_tradeability_filter",
+    "transition": "h1_tradeability_filter"
+  },
+  "baseline_all_committee": {
+    "accumulation": "all_committee_candidates",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates"
+  },
+  "baseline_legacy": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "legacy_filter_shortlist",
+    "markdown": "legacy_filter_shortlist",
+    "transition": "legacy_filter_shortlist"
+  },
+  "train_phase_regularized_m10_dd20_t25": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h3_rank_committee",
+    "markdown": "h1_tradeability_filter",
+    "transition": "h0_forecast_abs"
+  },
+  "train_phase_robust_abstain_m10_dd20_t25_ts050_pf60": {
+    "accumulation": "__cash__",
+    "markup": "__cash__",
+    "distribution": "__cash__",
+    "markdown": "h0_forecast_abs",
+    "transition": "__cash__"
+  },
+  "train_phase_regularized_m15_dd20_t25": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h3_rank_committee",
+    "markdown": "h1_tradeability_filter",
+    "transition": "h0_forecast_abs"
+  },
+  "train_phase_robust_abstain_m15_dd20_t25_ts050_pf60": {
+    "accumulation": "__cash__",
+    "markup": "__cash__",
+    "distribution": "__cash__",
+    "markdown": "h0_forecast_abs",
+    "transition": "__cash__"
+  },
+  "vn_legacy_acc_all_else": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates"
+  },
+  "vn_legacy_acc_markup_all_else": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates"
+  },
+  "vn_h1_distribution_only": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates"
+  },
+  "vn_h1_transition_only": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "h1_tradeability_filter"
+  },
+  "vn_h1_distribution_transition": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "h1_tradeability_filter"
+  },
+  "vn_h1_markup_distribution_transition": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "h1_tradeability_filter",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "h1_tradeability_filter"
+  },
+  "conservative_prior_transition_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_pressure_delta_20_gte_0"
+  },
+  "conservative_prior_transition_mr20_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_gte_0"
+  },
+  "conservative_prior_transition_mr20_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_and_pressure_delta_20_gte_0"
+  },
+  "baseline_all_committee_transition_pressure_nonneg": {
+    "accumulation": "all_committee_candidates",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_pressure_delta_20_gte_0"
+  },
+  "baseline_all_committee_transition_mr20_nonneg": {
+    "accumulation": "all_committee_candidates",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_gte_0"
+  },
+  "baseline_all_committee_transition_mr20_pressure_nonneg": {
+    "accumulation": "all_committee_candidates",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_and_pressure_delta_20_gte_0"
+  },
+  "vn_legacy_acc_all_else_transition_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_pressure_delta_20_gte_0"
+  },
+  "vn_legacy_acc_all_else_transition_mr20_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_gte_0"
+  },
+  "vn_legacy_acc_all_else_transition_mr20_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "all_committee_candidates",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_and_pressure_delta_20_gte_0"
+  },
+  "vn_legacy_acc_markup_all_else_transition_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_pressure_delta_20_gte_0"
+  },
+  "vn_legacy_acc_markup_all_else_transition_mr20_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_gte_0"
+  },
+  "vn_legacy_acc_markup_all_else_transition_mr20_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "all_committee_candidates",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_and_pressure_delta_20_gte_0"
+  },
+  "vn_h1_distribution_only_transition_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_pressure_delta_20_gte_0"
+  },
+  "vn_h1_distribution_only_transition_mr20_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_gte_0"
+  },
+  "vn_h1_distribution_only_transition_mr20_pressure_nonneg": {
+    "accumulation": "legacy_filter_shortlist",
+    "markup": "legacy_filter_shortlist",
+    "distribution": "h1_tradeability_filter",
+    "markdown": "all_committee_candidates",
+    "transition": "all_committee_candidates_if_market_return_20_and_pressure_delta_20_gte_0"
+  }
+}

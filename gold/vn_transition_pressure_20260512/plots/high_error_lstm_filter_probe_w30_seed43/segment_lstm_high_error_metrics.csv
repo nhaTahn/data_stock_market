@@ -1,0 +1,2 @@
+model,split,n_days,spike_rate,auc,average_precision,top20_days,top20_spike_rate,rest_spike_rate,top20_median_q90_abs_error,rest_median_q90_abs_error
+daily_lstm,segment_2017_d200_250,50,0.4,0.635,0.5818458823793717,10,0.6,0.35,0.03667445902137839,0.031706031525391164

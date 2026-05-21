@@ -1,0 +1,60 @@
+{
+  "name": "vn_standard_report_v1",
+  "market": "VN",
+  "target_mode": "return",
+  "split_aliases": {
+    "train": "train",
+    "val": "in_sample",
+    "test": "out_sample"
+  },
+  "time_windows": {
+    "train": {
+      "label": "train",
+      "start_date": null,
+      "end_date": "2020-03-31",
+      "display": "[..., 31/03/2020]"
+    },
+    "val": {
+      "label": "in_sample",
+      "start_date": "2020-04-01",
+      "end_date": "2022-11-15",
+      "display": "[01/04/2020, 15/11/2022]"
+    },
+    "test": {
+      "label": "out_sample",
+      "start_date": "2022-11-16",
+      "end_date": null,
+      "display": "[16/11/2022, now]"
+    }
+  },
+  "evaluation": {
+    "error_quantiles": [
+      0.2,
+      0.8
+    ],
+    "error_quantile_labels": [
+      "q2",
+      "q8"
+    ],
+    "large_error_quantile": 0.95,
+    "long_short_quantile": 0.25,
+    "default_report_splits": [
+      "train",
+      "val"
+    ],
+    "holdout_split": "test",
+    "required_metrics": [
+      "rel_score",
+      "rmse",
+      "directional_accuracy"
+    ]
+  },
+  "holdout_policy": {
+    "default_visible_splits": [
+      "train",
+      "val"
+    ],
+    "holdout_split": "test",
+    "out_sample_revealed": false
+  }
+}
