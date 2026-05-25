@@ -57,6 +57,18 @@ DEFAULT_OUTPUT = (
     / "training_runs" / "reports" / "hetero_nll_probe_20260521"
 )
 DEFAULT_GOLD = ROOT / "gold" / "vn_transition_pressure_20260512" / "plots" / "hetero_nll_probe_20260521"
+MARKET_CONTEXT_FEATURES = (
+    "market_close_return",
+    "market_return_5",
+    "market_return_20",
+    "market_volatility_20",
+    "market_breadth_pos_ratio",
+    "market_abs_return",
+    "cs_momentum_20_rank",
+    "cs_volatility_20_rank",
+    "cs_ma_20_gap_rank",
+    "cs_volume_change_rank",
+)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -91,6 +103,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Save train/validation mu/sigma/y/meta arrays for downstream ensemble analysis.",
     )
+    parser.add_argument(
+        "--add-market-context-features",
+        action="store_true",
+        help="Generate market-level and cross-sectional context adapter features before training.",
+    )
     return parser.parse_args(argv)
 
 
@@ -108,6 +125,26 @@ def parse_features(value: str | None) -> tuple[str, ...]:
     if not features:
         raise ValueError("--feature-columns was provided but no columns were parsed.")
     return features
+
+def add_market_context_features(frame: pd.DataFrame) -> pd.DataFrame:
+    """Add portable market context and cross-sectional adapter features."""
+    out = frame.copy()
+    out["Date"] = pd.to_datetime(out["Date"])
+    daily = out.groupby("Date").agg(
+        market_close_return=("close_return", "mean"),
+        market_breadth_pos_ratio=("close_return", lambda series: float((series > 0).mean())),
+    ).sort_index()
+    daily["market_return_5"] = daily["market_close_return"].rolling(5, min_periods=2).mean()
+    daily["market_return_20"] = daily["market_close_return"].rolling(20, min_periods=5).mean()
+    daily["market_volatility_20"] = daily["market_close_return"].rolling(20, min_periods=5).std()
+    daily["market_abs_return"] = daily["market_close_return"].abs()
+    for column in daily.columns:
+        out[column] = out["Date"].map(daily[column])
+    out["cs_momentum_20_rank"] = out.groupby("Date")["momentum_20"].rank(pct=True)
+    out["cs_volatility_20_rank"] = out.groupby("Date")["volatility_20"].rank(pct=True)
+    out["cs_ma_20_gap_rank"] = out.groupby("Date")["ma_20_gap"].rank(pct=True)
+    out["cs_volume_change_rank"] = out.groupby("Date")["volume_change"].rank(pct=True)
+    return out
 
 
 def robust_loss(values: np.ndarray) -> float:
@@ -199,6 +236,8 @@ class PreparedData:
 def load_and_prepare(args: argparse.Namespace) -> PreparedData:
     feature_columns = parse_features(args.feature_columns)
     frame = load_training_frame(args.data, stocks=None)
+    if args.add_market_context_features:
+        frame = add_market_context_features(frame)
     required = {"Date", "code", args.target_column, args.target_normalizer, *feature_columns}
     missing = sorted(required - set(frame.columns))
     if missing:

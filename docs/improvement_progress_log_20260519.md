@@ -1379,3 +1379,41 @@ Build a market-context adapter LSTM experiment:
 - report both raw rel_score and alpha_rel_score,
 - do not replace VN-specific anchor unless it beats `0.04478`,
 - keep holdout closed.
+
+---
+
+## Step 22: US Context Hetero LSTM Smoke — ✅ Done
+
+**Change**:
+- `run_hetero_nll_probe.py` now supports `--add-market-context-features`.
+
+**Artifacts**:
+- `data/processed/assets/data_info_us/history/training_runs/reports/context_hetero_smoke_20260525_us/`
+- `gold/vn_transition_pressure_20260512/plots/context_hetero_smoke_20260525_us/context_alpha_readout.md`
+
+### Protocol
+
+- Market: US
+- Features: portable OHLCV + market context adapter
+- Model: `hetero_combined`
+- Seeds: `43,52,62`
+- Epochs=12, patience=4
+- Train: `<= 2020-03-31`
+- Validation: `2020-04-01 -> 2022-11-15`
+- Holdout/test: not used
+
+### Result
+
+| Variant | raw rel_score mean | alpha_rel_score mean | DA mean | Read |
+| --- | ---: | ---: | ---: | --- |
+| portable hetero_combined | 0.00229 | -0.00510 | 51.38% | better raw rel_score |
+| context hetero_combined | 0.00080 | -0.00247 | 51.75% | better alpha, worse raw |
+
+### Decision
+
+- Do **not** replace portable/raw US model with context-appended raw loss.
+- Context features are useful for alpha/selection, not direct raw-return rel_score.
+- Next architecture should use either:
+  1. alpha/demeaned auxiliary loss,
+  2. two-head raw-return + alpha-return model,
+  3. context/ranking selection head.
