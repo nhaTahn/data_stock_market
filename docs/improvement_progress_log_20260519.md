@@ -1417,3 +1417,43 @@ Build a market-context adapter LSTM experiment:
   1. alpha/demeaned auxiliary loss,
   2. two-head raw-return + alpha-return model,
   3. context/ranking selection head.
+
+---
+
+## Step 23: US Alpha-Auxiliary Hetero Probe — ✅ Done
+
+**File**:
+- `experiments/training/run_alpha_auxiliary_probe.py`
+
+**Artifacts**:
+- `data/processed/assets/data_info_us/history/training_runs/reports/alpha_aux_smoke_20260526_us/`
+- `gold/vn_transition_pressure_20260512/plots/alpha_aux_smoke_20260526_us/`
+
+### Protocol
+
+- Market: US
+- Features: portable OHLCV + market context adapter
+- Target: date-demeaned return (`alpha`)
+- Model: heteroscedastic combined loss reused from current framework
+- Seeds: `43,52,62`
+- Epochs=12, patience=4
+- Train: `<= 2020-03-31`
+- Validation: `2020-04-01 -> 2022-11-15`
+- Holdout/test: not used
+
+### Result
+
+| Variant | raw rel_score mean | alpha_rel_score mean | alpha DA mean | Read |
+| --- | ---: | ---: | ---: | --- |
+| portable hetero_combined | 0.00229 | -0.00510 | n/a | better raw |
+| context hetero_combined | 0.00080 | -0.00247 | n/a | better alpha than portable |
+| alpha-aux target | 0.00024 | **-0.00030** | **50.90%** | best alpha, weak raw |
+
+### Decision
+
+- Alpha auxiliary improves the stock-selection/alpha metric but does not improve raw rel_score.
+- This supports the framework direction: raw-return prediction and stock-selection alpha should be separate heads/objectives.
+- Next architecture should be a **two-head model** rather than replacing raw target with alpha target:
+  - head 1: raw return (`mu_raw`, `sigma_raw`) optimized for raw rel_score/NLL,
+  - head 2: alpha return (`mu_alpha`) optimized for alpha_rel_score/auxiliary loss,
+  - evaluation reports both raw rel_score and alpha_rel_score.
