@@ -34,7 +34,7 @@ OUTPUT   = ROOT / "data/processed/assets/data_info_vn/history/training_runs/repo
 GOLD     = ROOT / "gold/vn_transition_pressure_20260512/plots/regime_calibration_20260527"
 SEEDS    = (43, 52, 62, 71, 82)
 N_DECILES_1D = 10
-N_DECILES_2D = 5
+N_DECILES_2D = 6
 CONFORMAL_ALPHA = 0.10
 
 
@@ -115,7 +115,10 @@ def build_market_features(dates_train: pd.Series, dates_val: pd.Series,
     raw["Date"] = pd.to_datetime(raw["Date"])
     dm = raw.groupby("Date").agg(mkt_ret=("target_next_return", "mean"),
                                   mkt_std=("target_next_return", "std")).sort_index()
+    dm["mkt_q90"] = raw.groupby("Date")["target_next_return"].apply(lambda x: np.quantile(np.abs(x), .9))
     dm["rv_lag5"]         = dm["mkt_std"].shift(5).rolling(5, min_periods=2).mean()
+    dm["vol10"]           = dm["mkt_std"].shift(1).rolling(10, min_periods=3).mean()
+    dm["q905"]            = dm["mkt_q90"].shift(1).rolling(5, min_periods=3).mean()
     dm["mkt_abs_lag3"]    = dm["mkt_ret"].abs().shift(3).rolling(3, min_periods=2).mean()
     dm = dm.fillna(dm.median())
 
@@ -123,16 +126,19 @@ def build_market_features(dates_train: pd.Series, dates_val: pd.Series,
         df = pd.DataFrame({"Date": dates}).merge(dm.reset_index()[["Date", col]], on="Date", how="left")
         return df[col].fillna(dm[col].median()).to_numpy(dtype=np.float32)
 
-    rv_lag5_corr = float(
-        pd.DataFrame({"date": dates_val, "ae": np.abs(y_val - y_val * 0), "rv": lookup(dates_val, "rv_lag5")})
-        .groupby("date").agg(rv=("rv", "first"), ae=("ae", "mean"))["rv"]
-        .corr(pd.DataFrame({"date": dates_val, "ae": np.abs(y_val - y_val * 0), "rv": lookup(dates_val, "rv_lag5")})
-              .groupby("date").agg(ae=("ae", "mean"))["ae"])
-    )  # not used; kept for reference
-
     return {
-        "train": {"rv_lag5": lookup(dates_train, "rv_lag5"), "mkt_abs_lag3": lookup(dates_train, "mkt_abs_lag3")},
-        "val":   {"rv_lag5": lookup(dates_val,   "rv_lag5"), "mkt_abs_lag3": lookup(dates_val,   "mkt_abs_lag3")},
+        "train": {
+            "rv_lag5": lookup(dates_train, "rv_lag5"),
+            "mkt_abs_lag3": lookup(dates_train, "mkt_abs_lag3"),
+            "vol10": lookup(dates_train, "vol10"),
+            "q905": lookup(dates_train, "q905"),
+        },
+        "val": {
+            "rv_lag5": lookup(dates_val, "rv_lag5"),
+            "mkt_abs_lag3": lookup(dates_val, "mkt_abs_lag3"),
+            "vol10": lookup(dates_val, "vol10"),
+            "q905": lookup(dates_val, "q905"),
+        },
     }
 
 
@@ -179,11 +185,18 @@ def fit_2d_scales(y, p, rv, mk, n=N_DECILES_2D):
             mask = ((rv >= rv_lo) & (rv < rv_hi if i < n-1 else rv <= rv_hi) &
                     (mk >= mk_lo) & (mk < mk_hi if j < n-1 else mk <= mk_hi))
             ys, ps = y[mask], p[mask]
-            if mask.sum() < 30:
+            if mask.sum() < 300:
                 grid[(i,j)] = 1.0; continue
-            best_s, best_r = 1.0, rel_score(ys, ps)
-            for st in np.linspace(0.3, 1.5, 49):
-                r = rel_score(ys, ps * st)
+            def objective(pred: np.ndarray) -> float:
+                err = ys - pred
+                return (
+                    rel_score(ys, pred)
+                    - 0.8 * float(np.quantile(np.abs(err), 0.9))
+                    - 0.25 * float((np.abs(err) > 0.05).mean())
+                )
+            best_s, best_r = 1.0, objective(ps)
+            for st in np.linspace(0.4, 1.6, 49):
+                r = objective(ps * st)
                 if r > best_r:
                     best_r, best_s = r, st
             grid[(i,j)] = float(best_s)
@@ -365,7 +378,7 @@ def main():
     print("Building market features …")
     mf = build_market_features(dates_train, dates_val, y_train, y_val)
     rv_train = mf["train"]["rv_lag5"];  rv_val = mf["val"]["rv_lag5"]
-    mk_train = mf["train"]["mkt_abs_lag3"]; mk_val = mf["val"]["mkt_abs_lag3"]
+    mk_train = mf["train"]["q905"]; mk_val = mf["val"]["q905"]
 
     # rv-error correlation (informational)
     daily = pd.DataFrame({"date": dates_val, "ae": np.abs(y_val - mu_val), "rv": rv_val})
@@ -381,9 +394,10 @@ def main():
 
     # ── 2D regime ──────────────────────────────────────────────────────────
     print("Fitting 2D regime …")
-    rv_e2, mk_e2, grid_2d = fit_2d_scales(y_train, mu_train, rv_train, mk_train)
-    mu_2d_val   = apply_2d_scales(mu_val,   rv_val,   mk_val,   rv_e2, mk_e2, grid_2d)
-    mu_2d_train = apply_2d_scales(mu_train, rv_train, mk_train, rv_e2, mk_e2, grid_2d)
+    rv2_train = mf["train"]["vol10"]; rv2_val = mf["val"]["vol10"]
+    rv_e2, mk_e2, grid_2d = fit_2d_scales(y_train, mu_train, rv2_train, mk_train)
+    mu_2d_val   = apply_2d_scales(mu_val,   rv2_val,   mk_val,   rv_e2, mk_e2, grid_2d)
+    mu_2d_train = apply_2d_scales(mu_train, rv2_train, mk_train, rv_e2, mk_e2, grid_2d)
 
     # ── conformal intervals ────────────────────────────────────────────────
     print("Building conformal intervals …")
