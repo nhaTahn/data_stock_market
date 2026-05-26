@@ -68,6 +68,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--target-normalizer", default="volatility_20")
     p.add_argument("--dropout", type=float, default=0.05)
     p.add_argument("--lr", type=float, default=5e-4)
+    p.add_argument("--w-rel", type=float, default=0.7, dest="w_rel")
+    p.add_argument("--w-nll", type=float, default=0.3, dest="w_nll")
     p.add_argument(
         "--variants",
         default="baseline,rich_feat",
@@ -154,6 +156,8 @@ def build_hetero_model(
     args: argparse.Namespace,
     lstm_units: list[int],
     use_layer_norm: bool = False,
+    w_rel: float | None = None,
+    w_nll: float | None = None,
 ) -> keras.Model:
     inputs, encoded = build_lstm_backbone(
         window_size=data.x_train.shape[1],
@@ -176,7 +180,7 @@ def build_hetero_model(
     model = keras.Model(inputs=inputs, outputs=output)
     model.compile(
         optimizer=keras.optimizers.Adam(learning_rate=args.lr, clipnorm=1.0),
-        loss=CombinedRelScoreNLLLoss(rel_loss, w_rel=0.7, w_nll=0.3),
+        loss=CombinedRelScoreNLLLoss(rel_loss, w_rel=args.w_rel, w_nll=args.w_nll),
     )
     return model
 
@@ -219,6 +223,24 @@ def build_variants(default_feats: tuple[str, ...]) -> dict[str, dict]:
             "use_layer_norm": True,
             "description": "DEFAULT + rich feats, [96,64,32]+LN, w=15",
         },
+        "rich_rel_only": {
+            "feature_columns": rich,
+            "lstm_units": [64, 32],
+            "window_size": 15,
+            "use_layer_norm": False,
+            "w_rel": 1.0,
+            "w_nll": 0.0,
+            "description": "DEFAULT + rich feats, [64,32], w=15, rel_only_loss",
+        },
+        "rich_wrel085": {
+            "feature_columns": rich,
+            "lstm_units": [64, 32],
+            "window_size": 15,
+            "use_layer_norm": False,
+            "w_rel": 0.85,
+            "w_nll": 0.15,
+            "description": "DEFAULT + rich feats, [64,32], w=15, w_rel=0.85",
+        },
     }
 
 
@@ -245,7 +267,7 @@ def main(argv: list[str] | None = None) -> None:
             pred_dir.mkdir(parents=True, exist_ok=True)
             gold_pred_dir.mkdir(parents=True, exist_ok=True)
         for seed in seeds:
-            model = build_hetero_model(data, args, cfg["lstm_units"], cfg["use_layer_norm"])
+            model = build_hetero_model(data, args, cfg["lstm_units"], cfg["use_layer_norm"], w_rel=cfg.get("w_rel"), w_nll=cfg.get("w_nll"))
             train_model(model, data, args, seed)
             mu_val, sigma_val = predict_raw(model, data, data.x_val, data.val_scale)
             result = evaluate_predictions(data.y_val_raw, mu_val, sigma_val, data.meta_val)

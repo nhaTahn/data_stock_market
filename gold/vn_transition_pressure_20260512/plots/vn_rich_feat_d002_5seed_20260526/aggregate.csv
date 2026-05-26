@@ -1,0 +1,2 @@
+variant,rel_score_mean,rel_score_std,DA_mean,n_seeds,description
+rich_feat,0.022257511855902634,0.00661950122630155,0.5044685251054678,5,"DEFAULT + vwap_gap_20/above_ma_200/alpha_sector/cs_ranks, [64,32], w=15"

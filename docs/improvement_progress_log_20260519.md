@@ -1596,3 +1596,51 @@ Build a market-context adapter LSTM experiment:
   1. Reduce dropout (0.05 → 0.02) to reduce under-confidence
   2. Add more seeds (7-9 seeds) to strengthen ensemble
   3. Try slight LR increase or different w_rel/w_nll ratio
+
+---
+
+## Step 28: VN Rich-Feat Dropout/Loss/Blend Follow-up — ✅ Done
+
+**Artifacts**:
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_feat_d002_5seed_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_loss_ablation_5seed_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_loss_ablation_calibration_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_anchor_rich_blend_20260526/`
+
+### Protocol
+
+- Market: VN only
+- Holdout/test: not used
+- Variants tested:
+  - rich_feat dropout 0.02
+  - rich_feat rel_only loss
+  - rich_feat w_rel=0.85/w_nll=0.15
+  - old anchor + rich_feat blend grid
+
+### Results
+
+| Variant | Result |
+| --- | ---: |
+| rich_feat dropout 0.05 (previous) | 0.0299 per-seed mean |
+| rich_feat dropout 0.02 | 0.0223 per-seed mean |
+| rich_rel_only | 0.0276 per-seed mean |
+| rich_wrel085 | 0.0290 per-seed mean |
+| loss-ablation calibrated upper bound | ~0.0417 |
+| anchor + rich blend train-selected (w=0.30) | 0.0442 |
+| anchor + rich blend val-diagnostic (w=0.25) | 0.04575 |
+| frozen anchor | **0.04478** |
+
+### Decision
+
+- Do **not** replace the frozen VN anchor.
+- Dropout reduction hurts; keep dropout 0.05.
+- Rel-only and w_rel=0.85 do not beat the original 0.7/0.3 combined loss.
+- Blend has diagnostic upside but train-selected blend does not beat anchor, so it is not promotable.
+- Current best remains `hetero_combined_full5 -> ensemble_mean_cal_each_traincal_clip` with rel_score `0.04478`.
+
+### Next Research Direction
+
+The only promising path left without opening holdout is not another small architecture tweak, but a stronger train-selected calibration/router:
+1. Learn calibration scale/clip from rolling train folds instead of one global train grid.
+2. Add rich_feat as a sidecar only when rolling-train blend weight is selected robustly.
+3. Keep anchor as fallback when blend does not pass train-fold stability.
