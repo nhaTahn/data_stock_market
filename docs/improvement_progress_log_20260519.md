@@ -1644,3 +1644,48 @@ The only promising path left without opening holdout is not another small archit
 1. Learn calibration scale/clip from rolling train folds instead of one global train grid.
 2. Add rich_feat as a sidecar only when rolling-train blend weight is selected robustly.
 3. Keep anchor as fallback when blend does not pass train-fold stability.
+
+---
+
+## Step 29: Train-Selected Blend Router + Extra Anchor Seeds — ✅ Done
+
+**Files**:
+- `experiments/training/evaluate_vn_train_selected_blend_router.py`
+
+**Artifacts**:
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_train_selected_blend_router_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_combined_extra4_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_combined_9seed_ensemble_20260526/`
+
+### Protocol
+
+- Holdout/test not used.
+- Blend router selection uses train-period 21-day folds only.
+- Candidates: old anchor + rich_feat train-calibrated blend weights 0.00..0.80.
+- Extra anchor seeds: 91,101,111,121 with same hetero_combined full-feature recipe.
+
+### Result
+
+| Candidate | rel_score | DA | Decision |
+| --- | ---: | ---: | --- |
+| old5 anchor | **0.04478** | 0.5183 | keep |
+| train-selected blend fallback | **0.04478** | 0.5183 | selected old anchor |
+| best train-selected nonzero blend (w=0.25) | 0.04474 | 0.5195 | not promote |
+| diagnostic val-search blend | 0.04575 | 0.5196 | not valid for promotion |
+| new4-only ensemble | 0.03994 | 0.5189 | not promote |
+| all9 ensemble | 0.04318 | **0.5202** | improves DA, lowers rel_score |
+| old5+91+101 | 0.04407 | **0.5200** | improves DA, lowers rel_score |
+
+### Decision
+
+- The frozen old5 anchor remains the best valid rel_score candidate.
+- Extra seeds improve directional accuracy but dilute robust-error rel_score.
+- Rich sidecar has diagnostic complementarity but train-selected routing correctly falls back to old anchor.
+- Current best remains `hetero_combined_full5 -> ensemble_mean_cal_each_traincal_clip`: rel_score `0.04478`.
+
+### Next Research Direction
+
+If continuing without opening holdout, the best remaining options are:
+1. Treat rel_score anchor as fixed and improve portfolio overlay only.
+2. Build a secondary objective candidate optimized for DA/equity, not rel_score.
+3. For paper, report extra seeds/blends as negative ablations that support the frozen anchor's robustness.
