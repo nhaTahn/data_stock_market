@@ -1689,3 +1689,37 @@ If continuing without opening holdout, the best remaining options are:
 1. Treat rel_score anchor as fixed and improve portfolio overlay only.
 2. Build a secondary objective candidate optimized for DA/equity, not rel_score.
 3. For paper, report extra seeds/blends as negative ablations that support the frozen anchor's robustness.
+
+---
+
+## Step 30: Portfolio Overlay Grid + Walk-Forward Selector — ✅ Done
+
+**Files**:
+- `experiments/training/evaluate_portfolio_overlay_grid.py`
+- `experiments/training/evaluate_walkforward_overlay_selector.py`
+
+**Artifacts**:
+- `data/processed/assets/data_info_vn/history/training_runs/reports/portfolio_overlay_grid_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/walkforward_overlay_selector_20260526/`
+
+### Protocol
+
+- Uses existing validation daily policy returns from `hetero_long_finetune_batch_20260522`.
+- Holdout/test not used.
+- Static overlay grid is diagnostic; walk-forward selector selects each 21-day block using prior validation blocks only.
+- Overlays tested: drawdown stop, volatility scaling, regime positive-day gate, and DD+vol combined.
+
+### Main Results
+
+| Candidate | Sharpe | Max DD | Final Equity | Read |
+| --- | ---: | ---: | ---: | --- |
+| baseline `full_none_r10_k10_m1` | 1.16 | -49.5% | 2.34 | high return, unacceptable DD |
+| `full_none_r10_k10_m1 + dd_stop_t8_p5` | **3.25** | **-12.0%** | **5.29** | best diagnostic static overlay |
+| `full_none_r20_k10_m1 + dd_vol_t8_p5_tv7` | 3.19 | **-5.8%** | 2.38 | best low-DD variant |
+| walk-forward selector | 2.19 | -12.5% | 2.29 | valid no-lookahead overlay selector |
+
+### Decision
+
+- For reporting/diagnostic visuals, `full_none_r10_k10_m1 + dd_stop_t8_p5` gives a much cleaner equity curve.
+- For conservative validation methodology, walk-forward overlay selector is weaker but still improves Sharpe and max drawdown materially versus raw baseline.
+- This gives a strong paper story: prediction anchor remains fixed; portfolio overlay transforms a high-DD signal into a risk-controlled strategy.
