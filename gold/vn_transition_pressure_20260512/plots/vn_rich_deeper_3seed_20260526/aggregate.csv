@@ -1,0 +1,2 @@
+variant,rel_score_mean,rel_score_std,DA_mean,n_seeds,description
+rich_deeper,0.02429286042241474,0.000982640106715217,0.5071993823586181,3,"DEFAULT + rich feats, [96,64,32]+LN, w=15"

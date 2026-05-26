@@ -1,0 +1,3 @@
+variant,rel_score_mean,rel_score_std,DA_mean,n_seeds,description
+rich_feat,0.021592562644797992,0.0018668585521485473,0.5047729340722972,3,"DEFAULT + vwap_gap_20/above_ma_200/alpha_sector/cs_ranks, [64,32], w=15"
+baseline,0.020732337464900514,0.012821508800882305,0.5010450271596768,3,"DEFAULT 26 feats, [64,32], w=15"

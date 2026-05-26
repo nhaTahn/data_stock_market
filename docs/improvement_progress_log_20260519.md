@@ -1555,3 +1555,44 @@ Build a market-context adapter LSTM experiment:
 - Context adapters help JP (market is more index-correlated); hurt US raw rel_score (US is more stock-specific).
 - VN anchor (`0.04478`) demonstrates what market specialization can achieve.
 - Do **not** open holdout.
+
+---
+
+## Step 27: VN Improvement Smoke — Rich Features Probe — ✅ Done
+
+**File**: `experiments/training/run_vn_improvement_smoke.py` (new)
+
+**Artifacts**:
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_improvement_smoke_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_feat_full5_preds_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_feat_ensemble_calibration_20260526/`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_deeper_3seed_20260526/`
+
+### Protocol
+
+- Market: VN, full DEFAULT_FEATURE_COLUMNS (26 feats)
+- rich_feat adds: vwap_gap_20, above_ma_200, alpha_sector + cs_rank (momentum_20, volume_ratio_20, wyckoff_phase_60d)
+- rich_deeper: same rich features + [96,64,32]+LayerNorm architecture
+- Seeds: 43,52,62 (3-seed smoke), 43,52,62,71,82 (5-seed full for rich_feat)
+- Epochs=60, patience=15
+- Train: <= 2020-03-31, Validation: 2020-04-01..2022-11-15
+- Holdout/test: not used
+
+### Result
+
+| Variant | per-seed rel_score mean | ensemble (train-cal) |
+| --- | ---: | ---: |
+| old baseline (hetero_combined_full5) | 0.0339 | **0.04478** (anchor) |
+| rich_feat [64,32] | 0.0299 | **0.0387** |
+| rich_feat [64,32] val-search cal | — | **0.0423** |
+| rich_deeper [96,64,32]+LN | 0.0243 | — |
+
+### Decision
+
+- rich_feat shows **significantly lower seed variance** (std 0.0035 vs 0.0055 for baseline) but slightly lower per-seed mean.
+- After ensemble calibration with train-search, rich_feat reaches 0.0387 vs anchor 0.04478.
+- rich_deeper is worse: deeper architecture with layer norm over-regularizes.
+- Recommendation: stick with [64,32] + rich features. To close gap to anchor, either:
+  1. Reduce dropout (0.05 → 0.02) to reduce under-confidence
+  2. Add more seeds (7-9 seeds) to strengthen ensemble
+  3. Try slight LR increase or different w_rel/w_nll ratio
