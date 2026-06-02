@@ -1,2 +1,0 @@
-policy,gate,gate_active_global,mean_equity,min_equity,mean_ann_ret,mean_sharpe,min_sharpe,worst_max_dd,mean_fold_equity,worst_fold_equity,positive_folds,n_folds
-daily_bot_sig_50pct_pressure_nonneg_r20_k20_m5,wyck040,0.5948406676783005,1.523059339360748,1.4417145014999038,0.1766789698010303,1.2436482166009872,1.0662691628496244,-0.1874969780475949,1.0144817946037763,0.9532273129179925,77,155

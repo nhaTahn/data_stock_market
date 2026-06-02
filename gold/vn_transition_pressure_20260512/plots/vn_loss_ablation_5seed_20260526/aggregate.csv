@@ -1,3 +1,0 @@
-variant,rel_score_mean,rel_score_std,DA_mean,n_seeds,description
-rich_wrel085,0.029006270805041545,0.004033796091421382,0.5080089337414179,5,"DEFAULT + rich feats, [64,32], w=15, w_rel=0.85"
-rich_rel_only,0.027643417417485727,0.006109532840597428,0.5072048970138142,5,"DEFAULT + rich feats, [64,32], w=15, rel_only_loss"

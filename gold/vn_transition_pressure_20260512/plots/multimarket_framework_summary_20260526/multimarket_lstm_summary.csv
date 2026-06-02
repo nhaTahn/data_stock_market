@@ -1,7 +1,0 @@
-market,model,rel_score_mean,rel_score_std,DA_mean,pred_actual_q90_ratio_mean,n_seeds,note
-VN,portable_hetero_combined,0.0025563409059678,0.0055708967157038,0.4765202099304811,0.0899894187847773,3,portable common feature LSTM
-VN,frozen_calibrated_ensemble_anchor,0.04478,,0.5183,,5,current VN validation anchor; holdout closed
-US,portable_hetero_combined,0.0022875236927717,0.0010407655754027,0.5138196775031921,0.0983473683396975,3,portable common feature LSTM
-US,context_hetero_combined,0.0008013775430478,0.0023894692706951,0.5175147180130399,0.1126823102434476,3,market context appended to LSTM
-JP,portable_hetero_combined,0.0010159523651632,0.0028994089923114,0.5126250500200079,0.0845124187568823,3,portable common feature LSTM
-JP,context_hetero_combined,0.0020674225873908,0.0037801189928958,0.5061424569827931,0.0656370781362056,3,market context appended to LSTM

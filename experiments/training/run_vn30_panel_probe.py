@@ -21,6 +21,7 @@ from src.models.training.pipeline import (
 from src.evaluation.metric import directional_accuracy
 from src.models.architectures.panel import build_panel_model
 from src.models.config import DEFAULT_FEATURE_COLUMNS, get_config
+from src.utils.universe import filter_sequence_by_universe
 from src.models.components.callbacks import build_training_callbacks
 from src.models.training import (
     apply_feature_scaler,
@@ -69,6 +70,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-normalizer", default="volatility_20")
     parser.add_argument("--sample-weight-mode", choices=["none", "magnitude"], default="magnitude")
     parser.add_argument("--use-all-features", action="store_true")
+    parser.add_argument("--dynamic-universe", action="store_true", help="Filter sequence dataset using point-in-time constituents")
+    parser.add_argument("--constituents-csv", default=str(ROOT / "market_lists" / "vn30_historical.csv"))
     return parser.parse_args()
 
 
@@ -123,7 +126,11 @@ def main() -> None:
     config.feature_columns = DEFAULT_FEATURE_COLUMNS if not args.use_all_features else tuple(config.feature_columns)
 
     run_dir = build_run_dir(args.run_name)
-    stocks_arg = load_vn30_stocks()
+    if args.dynamic_universe:
+        # Load all stocks to ensure past and present constituents are included
+        stocks_arg = None
+    else:
+        stocks_arg = load_vn30_stocks()
     df = load_frame(config.data_path, stocks_arg)
     validate_columns(df, config.feature_columns, config.target_column, config.target_normalizer)
 
@@ -139,6 +146,13 @@ def main() -> None:
         config.window_size,
         extra_meta_columns=(target_normalizer_alias,),
     )
+    if args.dynamic_universe:
+        print(f"Filtering sequence dataset point-in-time using {args.constituents_csv}...")
+        before_len = len(x_all)
+        x_all, y_all, meta_all = filter_sequence_by_universe(
+            x_all, y_all, meta_all, Path(args.constituents_csv)
+        )
+        print(f"Filtered sequence dataset: {before_len} -> {len(x_all)} sequences.")
     splits = split_sequence_dataset(x_all, y_all, meta_all, config.train_end_date, config.val_end_date)
     x_train, y_train, meta_train = splits["train"]
     x_val, y_val, meta_val = splits["val"]

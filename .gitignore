@@ -54,9 +54,22 @@ artifacts/
 *.png
 
 # Exception: keep gold report plots (needed for advisor report on GitHub)
+# First ignore everything under gold
+gold/**
+# Unignore gold directory structure to allow scanning
 !gold/
-!gold/**
+!gold/**/
+# Keep only plots, reports, and light summary tables
 !gold/**/*.png
+!gold/**/*.jpg
+!gold/**/*.jpeg
+!gold/**/*.svg
+!gold/**/*.md
+!gold/**/summary.json
+!gold/**/summary.csv
+!gold/**/aggregate.csv
+!gold/**/results_aggregate.csv
+!gold/**/results_per_seed.csv
 
 # Training run outputs
 # Real run artifacts live under data/processed/assets/.../history/training_runs/.
@@ -105,16 +118,21 @@ data/**/history/*_quality_dataset.csv
 # keep per-run artifacts local unless they are intentionally curated by hand.
 data/**/history/training_runs/*/
 !data/**/history/training_runs/README.md
+
+# Ignore everything under training_runs/reports/
+data/**/history/training_runs/reports/**
+
+# Unignore directory structure under reports/
 !data/**/history/training_runs/reports/
-!data/**/history/training_runs/reports/*/
-!data/**/history/training_runs/reports/*/*/
-data/**/history/training_runs/reports/*/*/**
+!data/**/history/training_runs/reports/**/
+
+# Keep only curated report summaries
+!data/**/history/training_runs/reports/**/README.md
+!data/**/history/training_runs/reports/**/summary.md
+!data/**/history/training_runs/reports/**/summary.csv
+!data/**/history/training_runs/reports/**/summary.json
+!data/**/history/training_runs/reports/**/manifest.json
 !data/**/history/training_runs/reports/info/**
-!data/**/history/training_runs/reports/*/*/README.md
-!data/**/history/training_runs/reports/*/*/summary.md
-!data/**/history/training_runs/reports/*/*/summary.csv
-!data/**/history/training_runs/reports/*/*/summary.json
-!data/**/history/training_runs/reports/*/*/manifest.json
 
 # Gold reports follow the same rule: keep compact summaries, leave plots/local dumps untracked.
 data/**/gold/reports/*/**

@@ -1,4 +1,0 @@
-market,model,raw_rel_score_mean,alpha_rel_score_mean,raw_DA_mean,alpha_DA_mean,note
-US,alpha_aux_target,0.0002367841598501,-0.000299896435038,0.4963332090353345,0.5090229047312338,alpha sidecar; not promoted
-US,two_head_joint_w005,-0.0013202112788901,-0.0034250821986066,0.5092545510017289,0.4990112659186187,alpha sidecar; not promoted
-US,two_head_frozen_backbone,-0.0001261131092887,-0.0029470333164045,0.5167519802931172,0.4968812502118716,alpha sidecar; not promoted

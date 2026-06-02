@@ -1,0 +1,260 @@
+# Cleanup Executed — 2026-06-02
+
+Removed local heavy/raw artifacts only. Kept tracker workbook, gold plots/reports, current best model artifacts, and compact summaries.
+
+Removed / reduced:
+
+- `reports/stressaux_lstm_probe_20260519/` — older large seed prediction folders; advisor/gold summaries remain.
+- `reports/filter_signal/portable_lstm_filter_signal_20260509_r06_selector_module/` — old raw filter artifact.
+- `reports/filter_signal/portable_lstm_filter_signal_20260508_r05_signmag/` — old raw filter artifact.
+- `reports/filter_signal/portable_lstm_filter_signal_20260512_r01_market_leader_k3w60/` — old raw filter artifact.
+- `reports/filter_signal/portable_lstm_filter_signal_20260512_r02_no_leader_seed43/` — old raw filter artifact.
+- `reports/filter_signal/portable_lstm_filter_signal_20260508_r04/` — old raw filter artifact.
+- `reports/hetero_long_finetune_batch_20260522/daily_policy_returns.csv` — large fold daily output; summary retained.
+- `reports/hetero_long_finetune_batch_20260522/per_fold_policy_metrics.csv` — large fold metrics; summary retained.
+- `reports/hetero_long_finetune_batch_20260522/predictions/` — large fold predictions; summary retained.
+- Superseded smoke/debug/rich-feature/regime/static-error local probe folders listed in `cleanup_plan_20260602.csv`.
+
+Kept as current/important:
+
+- `hetero_combined_full5_20260521`
+- `meta_ensemble_calibration_20260528`
+- `regime_calibration_20260527`
+- `selective_2d_regime_20260527`
+- `vn30_meta_ensemble_simulation_20260529`
+- `meta_ensemble_key_report_plots_20260601`
+- `meta_ensemble_median_error_control_20260601`
+- `preliminary_model_report_20260529`
+- `static_error_hetero_anchor_3seed_20260528`
+- `teacher_style_abs_error_vn100_insample`
+
+
+## Aggressive gold/data cleanup — 2026-06-02
+
+Kept whitelist folders only for current best, paper support, risk layer, and VN30. Removed obsolete probe/smoke/search folders and trimmed non-essential VN100 teacher-style images.
+
+- Removed paths: 190
+- Kept whitelist paths: 24
+
+### Kept folder whitelist
+- `data/processed/assets/data_info_vn/history/training_runs/reports/academic_ablation_baseline_significance_20260525`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_combined_full5_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/info`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/meta_ensemble_calibration_20260528`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/meta_ensemble_key_report_plots_20260601`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/meta_ensemble_median_error_control_20260601`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/preliminary_model_report_20260529`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/regime_calibration_20260527`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/selective_2d_regime_20260527`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/static_error_hetero_anchor_3seed_20260528`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/teacher_style_abs_error_vn100_insample`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn30_meta_ensemble_simulation_20260529`
+- `gold/vn_transition_pressure_20260512/plots/academic_ablation_baseline_significance_20260525`
+- `gold/vn_transition_pressure_20260512/plots/hetero_combined_full5_20260521`
+- `gold/vn_transition_pressure_20260512/plots/meta_ensemble_calibration_20260528`
+- `gold/vn_transition_pressure_20260512/plots/meta_ensemble_key_report_plots_20260601`
+- `gold/vn_transition_pressure_20260512/plots/meta_ensemble_median_error_control_20260601`
+- `gold/vn_transition_pressure_20260512/plots/preliminary_model_report_20260529`
+- `gold/vn_transition_pressure_20260512/plots/regime_calibration_20260527`
+- `gold/vn_transition_pressure_20260512/plots/selective_2d_regime_20260527`
+- `gold/vn_transition_pressure_20260512/plots/static_error_hetero_anchor_3seed_20260528`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample`
+- `gold/vn_transition_pressure_20260512/plots/vn30_dynamic_panel_tuned_5seed`
+- `gold/vn_transition_pressure_20260512/plots/vn30_meta_ensemble_simulation_20260529`
+
+### Removed paths
+- `gold/vn_transition_pressure_20260512/plots/alpha_aux_smoke_20260526_us`
+- `gold/vn_transition_pressure_20260512/plots/confidence_shrinkage_20260520`
+- `gold/vn_transition_pressure_20260512/plots/context_gate_lstm_probe_20260521`
+- `gold/vn_transition_pressure_20260512/plots/context_hetero_3seed_20260526_jp`
+- `gold/vn_transition_pressure_20260512/plots/context_hetero_smoke_20260525_us`
+- `gold/vn_transition_pressure_20260512/plots/current_best_error_control_visuals_20260520`
+- `gold/vn_transition_pressure_20260512/plots/current_lstm_feature_redundancy_20260520`
+- `gold/vn_transition_pressure_20260512/plots/distributional_lstm_calibration_20260520`
+- `gold/vn_transition_pressure_20260512/plots/distributional_scale_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/error_floor_diagnostic_20260520`
+- `gold/vn_transition_pressure_20260512/plots/error_hist_report`
+- `gold/vn_transition_pressure_20260512/plots/error_hist_report_v2`
+- `gold/vn_transition_pressure_20260512/plots/feature_denoise_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/feature_prune_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/fixed_train_ensemble_calibration_20260524`
+- `gold/vn_transition_pressure_20260512/plots/fixed_train_fold_relscore_series_20260524`
+- `gold/vn_transition_pressure_20260512/plots/fixed_train_relscore_calibration_20260524`
+- `gold/vn_transition_pressure_20260512/plots/frozen_validation_candidate_20260524`
+- `gold/vn_transition_pressure_20260512/plots/futurestress_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/hetero_combined_9seed_ensemble_20260526`
+- `gold/vn_transition_pressure_20260512/plots/hetero_combined_extra4_20260526`
+- `gold/vn_transition_pressure_20260512/plots/hetero_gate_metric_compare_20260524`
+- `gold/vn_transition_pressure_20260512/plots/hetero_holding_period_grid_20260521`
+- `gold/vn_transition_pressure_20260512/plots/hetero_long_finetune_batch_20260522`
+- `gold/vn_transition_pressure_20260512/plots/hetero_market_gate_overlays_20260524`
+- `gold/vn_transition_pressure_20260512/plots/hetero_nll_probe_20260521`
+- `gold/vn_transition_pressure_20260512/plots/hetero_pressure_gate_grid_20260521`
+- `gold/vn_transition_pressure_20260512/plots/hetero_pressure_gate_top3_5_20260521`
+- `gold/vn_transition_pressure_20260512/plots/hetero_rolling_backtest_20260521`
+- `gold/vn_transition_pressure_20260512/plots/hetero_stop_cash_overlay_20260524`
+- `gold/vn_transition_pressure_20260512/plots/hetero_wyckoff_metric_series_20260524`
+- `gold/vn_transition_pressure_20260512/plots/hetero_wyckoff_metric_series_5seed_20260524`
+- `gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_ensemble_w20_seed43_52`
+- `gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_probe_w10_seed43`
+- `gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_probe_w20_seed52`
+- `gold/vn_transition_pressure_20260512/plots/high_error_lstm_filter_probe_w30_seed43`
+- `gold/vn_transition_pressure_20260512/plots/input_clip_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/long_window_relscore_probe_20260524`
+- `gold/vn_transition_pressure_20260512/plots/marketaux_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/multimarket_context_adapter_probe_20260525`
+- `gold/vn_transition_pressure_20260512/plots/multimarket_framework_summary_20260526`
+- `gold/vn_transition_pressure_20260512/plots/multimarket_portable_baseline_significance_20260525`
+- `gold/vn_transition_pressure_20260512/plots/multimarket_portable_ensemble_academic_20260525`
+- `gold/vn_transition_pressure_20260512/plots/multimarket_portable_hetero_summary_20260525`
+- `gold/vn_transition_pressure_20260512/plots/next_day_prediction_plots`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_3seed_20260525_jp`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_3seed_20260525_us`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_3seed_20260525_vn`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_3seed_20260526_jp`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_5seed_preds_20260525_jp`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_5seed_preds_20260525_us`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_5seed_preds_20260525_vn`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_smoke_20260525_jp`
+- `gold/vn_transition_pressure_20260512/plots/portable_hetero_smoke_20260525_us`
+- `gold/vn_transition_pressure_20260512/plots/portfolio_overlay_grid_20260526`
+- `gold/vn_transition_pressure_20260512/plots/raw_residual_alpha_blend_20260520`
+- `gold/vn_transition_pressure_20260512/plots/regime_retrain_smoke_20260527`
+- `gold/vn_transition_pressure_20260512/plots/relscore_histograms_20260521`
+- `gold/vn_transition_pressure_20260512/plots/residual_market_component_processing_20260520`
+- `gold/vn_transition_pressure_20260512/plots/residual_reconstruction_20260520`
+- `gold/vn_transition_pressure_20260512/plots/residual_target_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/riskaux_detached_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/riskaux_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/segment_2017_d200_250_vn100_high_error`
+- `gold/vn_transition_pressure_20260512/plots/selective_error_control_20260520`
+- `gold/vn_transition_pressure_20260512/plots/selective_error_control_strict2p5_20260520`
+- `gold/vn_transition_pressure_20260512/plots/selective_error_control_target3p0_20260520`
+- `gold/vn_transition_pressure_20260512/plots/sigma_selection_full5_20260521`
+- `gold/vn_transition_pressure_20260512/plots/sigma_selection_probe_20260521`
+- `gold/vn_transition_pressure_20260512/plots/sigma_shrinkage_probe_20260521`
+- `gold/vn_transition_pressure_20260512/plots/static_error_hetero_anchor_probe_20260528`
+- `gold/vn_transition_pressure_20260512/plots/static_error_hetero_anchor_seed43_long_20260528`
+- `gold/vn_transition_pressure_20260512/plots/static_error_riskaux_attached_probe_20260528`
+- `gold/vn_transition_pressure_20260512/plots/static_error_riskaux_probe_20260528`
+- `gold/vn_transition_pressure_20260512/plots/stressaux_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tail_aware_lstm_multiseed_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tail_aware_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tail_calibration_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tail_control_calibration_20260526`
+- `gold/vn_transition_pressure_20260512/plots/tail_loss_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tail_risk_aware_gate_20260526`
+- `gold/vn_transition_pressure_20260512/plots/tailsign_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tailstress_gate_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/tailstress_lstm_probe_20260519`
+- `gold/vn_transition_pressure_20260512/plots/target_scale_lstm_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn30_insample`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_best_error_control_vn100_index_all_error_val`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_day_guard_lowspike_disagreement_vn100_index_all_error_val`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_day_guard_lowspike_vn100_index_all_error_val`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_strict_lowspike_hgb_calibrated_vn100_index_all_error_val`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_threshold_replot_20260521`
+- `gold/vn_transition_pressure_20260512/plots/two_head_alpha_frozen_3seed_20260526_us`
+- `gold/vn_transition_pressure_20260512/plots/two_head_alpha_frozen_smoke_20260526_us_seed43`
+- `gold/vn_transition_pressure_20260512/plots/two_head_alpha_smoke_20260526_us_seed43`
+- `gold/vn_transition_pressure_20260512/plots/two_head_alpha_w005_smoke_20260526_us`
+- `gold/vn_transition_pressure_20260512/plots/two_stream_probe_20260520`
+- `gold/vn_transition_pressure_20260512/plots/vn30_dynamic_panel_run`
+- `gold/vn_transition_pressure_20260512/plots/vn_improvement_smoke_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_improvement_smoke_debug_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_loss_ablation_5seed_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_rich_deeper_3seed_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_rich_feat_d002_5seed_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_rich_feat_full5_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_rich_feat_full5_preds_20260526`
+- `gold/vn_transition_pressure_20260512/plots/vn_train_selected_blend_router_20260526`
+- `gold/vn_transition_pressure_20260512/plots/walkforward_overlay_selector_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/advisor_report_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/filter_signal`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/fixed_train_ensemble_calibration_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/fixed_train_fold_relscore_series_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/fixed_train_relscore_calibration_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/frozen_validation_candidate_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_gate_metric_compare_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_holding_period_grid_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_long_finetune_batch_20260522`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_market_gate_overlays_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_nll_probe_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_pressure_gate_grid_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_pressure_gate_top3_5_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_rolling_backtest_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_stop_cash_overlay_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_wyckoff_metric_series_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/hetero_wyckoff_metric_series_5seed_20260524`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/market_leader_signal`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/market_predictability_diagnostic_20260519`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/multimarket_context_adapter_probe_20260525`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/multimarket_framework_summary_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/multimarket_portable_baseline_significance_20260525`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/multimarket_portable_ensemble_academic_20260525`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/multimarket_portable_hetero_summary_20260525`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/ood_readiness`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/portability_ablation`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/portable_hetero_5seed_preds_20260525_vn`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/portfolio_overlay_grid_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/sigma_selection_full5_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/sigma_selection_probe_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/sigma_shrinkage_probe_20260521`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/standard_error_control_20260520`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/tail_control_calibration_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/tail_risk_aware_gate_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_anchor_rich_blend_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_loss_ablation_5seed_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_loss_ablation_calibration_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_feat_ensemble_calibration_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_rich_feat_full5_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/vn_train_selected_blend_router_20260526`
+- `data/processed/assets/data_info_vn/history/training_runs/reports/walkforward_overlay_selector_20260526`
+- `data/processed/assets/data_info_jp/history/training_runs/reports/context_hetero_3seed_20260526_jp`
+- `data/processed/assets/data_info_jp/history/training_runs/reports/portable_hetero_3seed_20260525_jp`
+- `data/processed/assets/data_info_jp/history/training_runs/reports/portable_hetero_3seed_20260526_jp`
+- `data/processed/assets/data_info_jp/history/training_runs/reports/portable_hetero_5seed_preds_20260525_jp`
+- `data/processed/assets/data_info_jp/history/training_runs/reports/portable_hetero_smoke_20260525_jp`
+- `data/processed/assets/data_info_us/history/training_runs/reports/alpha_aux_smoke_20260526_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/context_hetero_smoke_20260525_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/portable_hetero_3seed_20260525_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/portable_hetero_5seed_preds_20260525_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/portable_hetero_smoke_20260525_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/two_head_alpha_frozen_3seed_20260526_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/two_head_alpha_frozen_smoke_20260526_us_seed43`
+- `data/processed/assets/data_info_us/history/training_runs/reports/two_head_alpha_smoke_20260526_us_seed43`
+- `data/processed/assets/data_info_us/history/training_runs/reports/two_head_alpha_w005_smoke_20260526_us`
+- `data/processed/assets/data_info_us/history/training_runs/reports/us_native`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/.DS_Store`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/abs_error_histogram_by_year_validation.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/by_year`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/extended_vn100_q90_abs_error_by_year.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/extended_vn100_q90_abs_error_by_year_series.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/extended_vn100_q90_abs_error_by_year_summary.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/extended_vn100_q90_abs_error_by_year_summary.md`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/histogram_prediction_minus_actual_test_like_sample.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/histogram_prediction_minus_actual_test_like_sample_stats.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/histogram_prediction_minus_actual_train_vn100.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/histogram_prediction_minus_actual_train_vn100_stats.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/histogram_prediction_minus_actual_validation_normalized.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gate_coverage_error_frontier_validation.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gate_coverage_error_frontier_validation.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gate_selected_strict_vn100_q90_by_year_validation.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gate_selected_strict_vn100_q90_by_year_validation.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gated_vn100_q90_abs_error_by_year_validation.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gated_vn100_q90_abs_error_by_year_validation.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/risk_gated_vn100_q90_abs_error_by_year_validation_summary.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/teacher_style_abs_error.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/teacher_style_index_vs_q90_abs_error.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/teacher_style_index_vs_q90_abs_error_by_year.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/vn100_vs_q90_abs_error_by_year_validation.csv`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/vn100_vs_q90_abs_error_by_year_validation.png`
+- `gold/vn_transition_pressure_20260512/plots/teacher_style_abs_error_vn100_insample/vn100_vs_q90_abs_error_by_year_validation_summary.csv`
+- `gold/vn_transition_pressure_20260512/plots/vn30_dynamic_panel_tuned_5seed/selective_frontier_data.csv`
+- `gold/vn_transition_pressure_20260512/plots/vn30_dynamic_panel_tuned_5seed/selective_seedstd_validation.csv`
+- `gold/vn_transition_pressure_20260512/plots/vn30_dynamic_panel_tuned_5seed/vn30_dynamic_run_comparison.csv`
+
+
+## Remaining curated artifact manifest
+
+Created `docs/model_artifact_tracker_20260602/remaining_curated_artifacts_20260602.csv` to record the small post-cleanup whitelist.

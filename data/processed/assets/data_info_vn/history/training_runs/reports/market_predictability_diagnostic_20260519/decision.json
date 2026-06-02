@@ -1,9 +1,0 @@
-{
-  "best_train_set": "combined_full",
-  "best_train_r2": 0.014320173968579208,
-  "best_val_set": "tail_ewm",
-  "best_val_r2": 0.003001507420612004,
-  "best_abs_autocorr": 0.10946271672641812,
-  "best_abs_autocorr_lag": 1,
-  "recommendation": "proceed_two_stream"
-}
